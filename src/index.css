@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* Helvetica everywhere, falling back through the closest grotesques
+     available on macOS / Windows / Linux. */
+  --font-sans: Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --font-display: Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+
+  /* Exact hex values from the Figma file (the design uses raw hex, not
+     Figma variables — these are transcribed 1:1). */
+  --color-ink: #000000; /* body copy */
+  --color-paper: #ffffff; /* the page sheet */
+  --color-canvas: #f5f5f5; /* area behind the sheet */
+  --color-muted: #848484; /* meta grid labels */
+  --color-accent: #717dff; /* portfolio pill, Skillset heading, highlights */
+  --color-skill: #015e0a; /* skill titles */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    /* Helvetica Light is the default weight in the design. */
+    font-weight: 300;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+}
