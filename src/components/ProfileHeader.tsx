@@ -3,6 +3,12 @@ import portrait from '@/assets/Ramesh-DP.png'
 import { profile } from '@/data/profile'
 
 /**
+ * Splits the role line on its "|" and "&" separators, keeping them as their own
+ * pieces so they can be dimmed and let the titles themselves carry the line.
+ */
+const titleParts = profile.title.split(/\s*([|&])\s*/)
+
+/**
  * Portrait + name on the left, portfolio pill on the right.
  * The pill bleeds past the sheet's horizontal padding so it sits flush to the
  * right edge with left-only rounding, as in the Figma design.
@@ -21,7 +27,15 @@ export default function ProfileHeader() {
         <div className="min-w-0">
           <p className="text-base font-bold md:text-lg">{profile.name}</p>
           <p className="text-sm font-normal text-balance md:text-base">
-            {profile.title}
+            {titleParts.map((part, index) =>
+              part === '|' || part === '&' ? (
+                <span key={`${part}-${index}`} className="mx-1.5 text-muted">
+                  {part}
+                </span>
+              ) : (
+                <span key={`${part}-${index}`}>{part}</span>
+              ),
+            )}
           </p>
         </div>
       </div>
