@@ -6,6 +6,10 @@
 import projectCase1 from '@/assets/project-case-1.png'
 import projectCase2 from '@/assets/project-case-2.png'
 import projectCase3 from '@/assets/project-case-3.png'
+import hfiLogo from '@/assets/hfi-logo.svg'
+import nngLogo from '@/assets/nng-logo.png'
+import scrumLogo from '@/assets/scrum-po-logo.png'
+import graduationCap from '@/assets/graduation-cap.svg'
 
 /** Width of the Figma page frame, used to derive proportions from the design. */
 export const DESIGN_PAGE_WIDTH = 595
@@ -152,21 +156,46 @@ export const experience: Role[] = [
 ]
 
 /**
- * Credentials. `icon` names a lucide glyph (mapped in Credentials.tsx); set
- * `logo` to a Vite asset import to show a real brand mark instead.
+ * Credentials. Each mark is exported from the Figma frame (node 9:63) and sits
+ * in a 44px disc; `logoWidth`/`logoHeight` are its size inside that disc.
  */
 export type Credential = {
   label: string
-  icon: 'badge' | 'award' | 'medal' | 'scroll' | 'graduation'
-  logo?: string
-  logoAlt?: string
+  logo: string
+  logoAlt: string
+  logoWidth: number
+  logoHeight: number
 }
 
 export const credentials: Credential[] = [
-  { label: 'HFI CUA & CXA Certified', icon: 'badge' },
-  { label: 'NNG Certified', icon: 'award' },
-  { label: 'Scrum Product Owner', icon: 'medal' },
-  { label: "Bachelor's Degree in Computer Science", icon: 'graduation' },
+  {
+    label: 'HFI CUA & CXA Certified',
+    logo: hfiLogo,
+    logoAlt: 'Human Factors International',
+    logoWidth: 23,
+    logoHeight: 12,
+  },
+  {
+    label: 'NNG Certified',
+    logo: nngLogo,
+    logoAlt: 'Nielsen Norman Group',
+    logoWidth: 31,
+    logoHeight: 15,
+  },
+  {
+    label: 'Scrum Product Owner',
+    logo: scrumLogo,
+    logoAlt: 'Professional Scrum Product Owner',
+    logoWidth: 24,
+    logoHeight: 24,
+  },
+  {
+    label: "Bachelor's Degree in Computer Science",
+    logo: graduationCap,
+    logoAlt: '',
+    logoWidth: 44,
+    logoHeight: 44,
+  },
 ]
 
 /** Closing note in the page footer. */

@@ -13,6 +13,7 @@
   --color-canvas: #f5f5f5; /* area behind the sheet */
   --color-muted: #848484; /* meta grid labels */
   --color-accent: #717dff; /* portfolio pill, Skillset heading, highlights */
+  --color-disc: #f1f2ff; /* credential logo discs */
   --color-skill: #015e0a; /* skill titles */
 }
 
