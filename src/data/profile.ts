@@ -8,7 +8,7 @@ import projectCase2 from '@/assets/project-case-2.png'
 import projectCase3 from '@/assets/project-case-3.png'
 import hfiLogo from '@/assets/hfi-logo.svg'
 import nngLogo from '@/assets/nng-logo.png'
-import scrumLogo from '@/assets/scrum-po-logo.png'
+import scrumLogo from '@/assets/scrum-logo.png'
 import graduationCap from '@/assets/graduation-cap.svg'
 
 /** Width of the Figma page frame, used to derive proportions from the design. */

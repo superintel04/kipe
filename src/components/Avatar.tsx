@@ -10,15 +10,16 @@ type AvatarProps = {
 }
 
 /**
- * Circular portrait. Falls back to initials rather than a broken image so the
- * header stays intact before a photo has been dropped into /public.
+ * Portrait card — a rounded rectangle, matching the 114 × 137.8 frame with a
+ * 20px radius in the design (Figma node 11:216). Falls back to initials rather
+ * than showing a broken image.
  */
 export default function Avatar({ src, alt, initials, className = '' }: AvatarProps) {
   const [failed, setFailed] = useState(false)
 
   return (
     <div
-      className={`relative shrink-0 overflow-hidden rounded-full bg-canvas ${className}`}
+      className={`relative shrink-0 overflow-hidden rounded-2xl bg-canvas md:rounded-[20px] ${className}`}
     >
       {failed ? (
         <span

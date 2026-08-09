@@ -1,5 +1,5 @@
 import Avatar from './Avatar'
-import portrait from '@/assets/Ramesh-DP.png'
+import portrait from '@/assets/Ramesh-New-dp.jpg'
 import { profile } from '@/data/profile'
 
 /**
@@ -21,7 +21,7 @@ export default function ProfileHeader() {
           src={portrait}
           alt={`Portrait of ${profile.name}`}
           initials={profile.initials}
-          className="size-16 md:size-24"
+          className="aspect-[114/138] w-20 md:w-28"
         />
         {/* min-w-0 lets the longer role line wrap instead of squeezing the pill. */}
         <div className="min-w-0">
