@@ -39,7 +39,7 @@ Treat these as measurements, not tunables — adjust them only against the desig
 
 - **Full-bleed sections** escape the sheet's padding with negative margins matching it (`-mx-6 md:-mx-10` against `px-6 md:px-10`). The header's portfolio pill uses the same trick asymmetrically (`-mr-6 md:-mr-10`). Changing the sheet padding means updating these in step.
 - **Accented phrases** inside body copy are data, not markup: a `Segment` is either a string or `{ accent: string }`, and `Skillset.tsx` renders the latter in the accent colour. Use this instead of embedding spans in content.
-- **Icons are keyed by string.** `Credential.icon` is a union of key names mapped to lucide glyphs in `Credentials.tsx`; adding a key requires updating both the type in `profile.ts` and the `icons` map. An optional `logo` (a Vite asset import) overrides the glyph.
+- **Credential marks carry their own dimensions.** Each entry supplies `logo` (a Vite asset import) plus `logoWidth`/`logoHeight`, its size as designed inside the shared 44px disc — the logos are deliberately not normalised to one icon size.
 - **Images are ES imports** from `src/assets`, never `/public` paths, so Vite fingerprints them. `Avatar` degrades to initials via `onError` rather than showing a broken image.
 - Components are default exports taking a props object, with a doc comment explaining the design intent.
 
