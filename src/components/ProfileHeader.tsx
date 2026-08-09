@@ -1,5 +1,5 @@
 import Avatar from './Avatar'
-import portrait from '@/assets/Ramesh-New-dp.jpg'
+import portrait from '@/assets/Ramesh-New-dp2.jpg'
 import { profile } from '@/data/profile'
 
 /**
