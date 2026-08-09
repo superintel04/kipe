@@ -16,9 +16,10 @@ npm run lint     # oxlint
 
 ## The portrait
 
-The header photo is **`src/assets/Ramesh-DP.png`**, imported by
+The header photo is **`src/assets/Ramesh-New-dp.jpg`**, imported by
 `ProfileHeader.tsx` so Vite fingerprints and optimises it at build time. To swap
-it, drop a replacement at that path (square crop — it's masked to a circle). If
+it, drop a replacement at that path and update the import (crop to the design's
+114 × 138 portrait ratio — it's rendered as a rounded card, not a circle). If
 the image ever fails to load, `Avatar` falls back to the initials `RP` rather
 than showing a broken image.
 
