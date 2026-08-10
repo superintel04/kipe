@@ -1,3 +1,4 @@
+import Reveal from './Reveal'
 import { experience } from '@/data/profile'
 
 /**
@@ -8,16 +9,18 @@ import { experience } from '@/data/profile'
 export default function Experience() {
   return (
     <section aria-labelledby="experience-heading" className="pt-16 md:pt-24">
-      <h2
-        id="experience-heading"
-        className="text-3xl font-light text-accent md:text-4xl"
-      >
-        Experience
-      </h2>
+      <Reveal>
+        <h2
+          id="experience-heading"
+          className="text-3xl font-light text-accent md:text-4xl"
+        >
+          Experience
+        </h2>
+      </Reveal>
 
       <div className="mt-8 flex flex-col gap-6 md:mt-10 md:gap-8">
         {experience.map((role) => (
-          <article
+          <Reveal
             key={`${role.company}-${role.title}-${role.period}`}
             className="flex flex-col gap-1"
           >
@@ -29,7 +32,7 @@ export default function Experience() {
               {role.company} · {role.period}
               {role.location ? ` · ${role.location}` : ''}
             </p>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>

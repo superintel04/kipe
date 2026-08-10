@@ -1,3 +1,4 @@
+import Reveal from './Reveal'
 import type { MetaItem } from '@/data/profile'
 
 type MetaGridProps = {
@@ -12,14 +13,18 @@ type MetaGridProps = {
  * then one. Set in Helvetica Regular per the design. Shared by the profile
  * header details and each case study's role/users/platform row.
  */
-export default function MetaGrid({ items, label, className = '' }: MetaGridProps) {
+export default function MetaGrid({
+  items,
+  label,
+  className = '',
+}: MetaGridProps) {
   return (
     <section
       aria-label={label}
       className={`grid grid-cols-1 gap-x-10 gap-y-6 font-normal sm:grid-cols-2 md:grid-cols-3 ${className}`}
     >
-      {items.map((item) => (
-        <div key={item.label}>
+      {items.map((item, index) => (
+        <Reveal key={item.label} delay={Math.min(index, 5) * 60}>
           <p className="text-xs text-muted md:text-sm">{item.label}</p>
           {item.href ? (
             <a
@@ -33,7 +38,7 @@ export default function MetaGrid({ items, label, className = '' }: MetaGridProps
               {item.value}
             </p>
           )}
-        </div>
+        </Reveal>
       ))}
     </section>
   )

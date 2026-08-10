@@ -14,7 +14,12 @@ type AvatarProps = {
  * 20px radius in the design (Figma node 11:216). Falls back to initials rather
  * than showing a broken image.
  */
-export default function Avatar({ src, alt, initials, className = '' }: AvatarProps) {
+export default function Avatar({
+  src,
+  alt,
+  initials,
+  className = '',
+}: AvatarProps) {
   const [failed, setFailed] = useState(false)
 
   return (

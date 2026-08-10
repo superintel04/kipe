@@ -1,5 +1,9 @@
 import MetaGrid from './MetaGrid'
-import { DESIGN_PAGE_WIDTH, type CaseStudy as CaseStudyType } from '@/data/profile'
+import Reveal from './Reveal'
+import {
+  DESIGN_PAGE_WIDTH,
+  type CaseStudy as CaseStudyType,
+} from '@/data/profile'
 
 type CaseStudyProps = {
   study: CaseStudyType
@@ -44,31 +48,38 @@ export default function CaseStudy({ study }: CaseStudyProps) {
         </div>
 
         <div className="relative px-6 pt-6 md:px-10 md:pt-8">
-          <header>
-            <p className="text-lg leading-snug font-light md:text-xl">
-              {study.eyebrow}
-            </p>
-            <h2 className="text-lg leading-snug font-light md:text-xl">
-              <span className="font-normal text-accent">{study.name}</span>
-              <span>{study.client}</span>
-            </h2>
-          </header>
+          <Reveal>
+            <header>
+              <p className="text-lg leading-snug font-light md:text-xl">
+                {study.eyebrow}
+              </p>
+              <h2 className="text-lg leading-snug font-light md:text-xl">
+                <span className="font-normal text-accent">{study.name}</span>
+                <span>{study.client}</span>
+              </h2>
+            </header>
+          </Reveal>
 
-          <img
-            src={study.image}
-            alt={study.imageAlt}
-            width={study.imageWidth}
-            height={study.imageHeight}
-            loading="lazy"
-            style={{ '--mockup-width': imageWidth } as React.CSSProperties}
-            className="mx-auto mt-6 block h-auto w-[88%] max-w-[700px] sm:w-[var(--mockup-width)] md:mt-8"
-          />
+          <Reveal delay={120}>
+            <img
+              src={study.image}
+              alt={study.imageAlt}
+              width={study.imageWidth}
+              height={study.imageHeight}
+              loading="lazy"
+              decoding="async"
+              style={{ '--mockup-width': imageWidth } as React.CSSProperties}
+              className="mx-auto mt-6 block h-auto w-[88%] max-w-[700px] sm:w-[var(--mockup-width)] md:mt-8"
+            />
+          </Reveal>
         </div>
       </div>
 
-      <p className="mt-10 max-w-3xl text-[15px] leading-relaxed font-light text-ink md:mt-12 md:text-base">
-        {study.summary}
-      </p>
+      <Reveal>
+        <p className="mt-10 max-w-3xl text-[15px] leading-relaxed font-light text-ink md:mt-12 md:text-base">
+          {study.summary}
+        </p>
+      </Reveal>
 
       <MetaGrid
         items={study.meta}
