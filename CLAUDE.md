@@ -41,6 +41,7 @@ Treat these as measurements, not tunables — adjust them only against the desig
 - **Accented phrases** inside body copy are data, not markup: a `Segment` is either a string or `{ accent: string }`, and `Skillset.tsx` renders the latter in the accent colour. Use this instead of embedding spans in content.
 - **Credential marks carry their own dimensions.** Each entry supplies `logo` (a Vite asset import) plus `logoWidth`/`logoHeight`, its size as designed inside the shared 44px disc — the logos are deliberately not normalised to one icon size.
 - **Images are ES imports** from `src/assets`, never `/public` paths, so Vite fingerprints them. `Avatar` degrades to initials via `onError` rather than showing a broken image.
+- **Scroll reveals go through `Reveal`**, which renders a `div` and toggles an `is-visible` class on first intersection. The hidden state lives in `index.css` scoped to `.js` on `<html>` (added in `main.tsx` before React renders) so content is visible without JavaScript, and `prefers-reduced-motion` disables it. Because it emits a plain `div`, wrap it *inside* semantic elements — e.g. inside `<li>`, not around it — and pass stagger via `delay`.
 - Components are default exports taking a props object, with a doc comment explaining the design intent.
 
 ## Deployment
