@@ -19,6 +19,8 @@ Vite 8 builds with rolldown. If the dev server dies with `Cannot find native bin
 
 A single-page, statically-composed portfolio. There is no router, no state management, and no data fetching — `App.tsx` renders one fixed sequence of sections, and the "View Projects" link is an in-page `#projects` anchor.
 
+The one interactive surface is the case study dialog: a project with an optional `detail` entry gets a "View Case study" button that opens `CaseStudyDialog` — a native `<dialog>` opened via `showModal()`, so focus trapping, background inerting and Esc-to-close come from the platform rather than hand-rolled JavaScript. Its `onCancel` intercepts Esc so a nested `Lightbox` closes first.
+
 **All content lives in `src/data/profile.ts`.** Components import named exports from it (`profile`, `meta`, `skills`, `callout`, `experience`, `credentials`, `closing`, `caseStudies`) and hold no copy of their own. Copy and content-shape changes belong in that file; components change only when the *rendering* changes. `caseStudies` is the one array that drives repetition — appending an entry renders another full case-study section. See README.md for the field-by-field content guide.
 
 `src/index.css` is the whole style layer. Tailwind v4 is configured CSS-first via `@theme` — **there is no `tailwind.config.js`**, so add design tokens as CSS custom properties there and they become utilities (`--color-accent` → `bg-accent`/`text-accent`). Base `font-weight: 300` is set on `body`, which is why components spell out `font-light`/`font-normal`/`font-bold` explicitly.
@@ -31,7 +33,7 @@ The design is [`Kipe / Content`](https://www.figma.com/design/I1nCoRD5vABRiKUgiT
 
 - `DESIGN_PAGE_WIDTH` (595) is the Figma frame width. Case-study mockups size themselves as `imageWidth / DESIGN_PAGE_WIDTH`, so an image keeps its designed proportion of the page at any viewport. `imageWidth`/`imageHeight` are the **1x design dimensions** even though the PNGs are exported at 2x.
 - `bandRatio` is the gradient band's height as a fraction of the block, taken from Figma as band height ÷ mockup bottom edge. The mockup is meant to overhang the band.
-- `CURVE_PATH` in `CaseStudy.tsx` is a literal Figma vector export (597×14), stretched with `preserveAspectRatio="none"`.
+- `CURVE_PATH` in `Curve.tsx` is a literal Figma vector export (597×14), stretched with `preserveAspectRatio="none"`. `Curve` caps both the project card's band and the dialog hero.
 
 Treat these as measurements, not tunables — adjust them only against the design.
 
