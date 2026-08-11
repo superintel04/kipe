@@ -208,6 +208,21 @@ export const closing = {
   signOff: 'Regards,',
 } as const
 
+/**
+ * The long-form write-up shown in the dialog (Figma node 41:59). Optional —
+ * a project without one simply has no "View Case study" button.
+ */
+export type CaseStudyDetail = {
+  challenge: string
+  approach: {
+    intro: string
+    steps: string[]
+  }
+  outcomes: string[]
+  /** Extra screens, shown as a grid and openable in the lightbox. */
+  gallery?: { src: string; alt: string }[]
+}
+
 export type CaseStudy = {
   eyebrow: string
   /** Accented first half of the title, e.g. the product name. */
@@ -232,6 +247,7 @@ export type CaseStudy = {
    * band height ÷ mockup bottom edge.
    */
   bandRatio: number
+  detail?: CaseStudyDetail
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -252,6 +268,25 @@ export const caseStudies: CaseStudy[] = [
     imageWidth: 464,
     imageHeight: 259,
     bandRatio: 0.86,
+    detail: {
+      challenge:
+        'The Ministry of Culture runs a large catalogue of services for its own employees, and most of them were manual. Requests meant paperwork and constant manual intervention, there was no reliable way to track where a request stood, and delays were routine — with no proper service management underneath any of it. They wanted an intranet portal: an employee digital hub called Dewane.',
+      approach: {
+        intro:
+          'We built Dewane as a web and mobile employee digital hub covering more than 50 services, digitising the full catalogue across both platforms.',
+        steps: [
+          'Ran foundational user research to establish which services employees used most, and how they actually used them.',
+          'Documented the research findings and shared them with stakeholders.',
+          'Built the design system and information architecture for the entire platform, and produced the prototypes.',
+          'Ran business reviews and design iterations, then handed over to the development team and supported user testing through to completion.',
+        ],
+      },
+      outcomes: [
+        'Digitised the most critical services and automated several of them, letting every employee raise and track a request themselves.',
+        'Normalised the approval centre across all approval levels, with dashboards that let management track requests at department level.',
+        'Extended the services platform to all commissions across the Ministry of Culture.',
+      ],
+    },
   },
   {
     eyebrow: 'Project',

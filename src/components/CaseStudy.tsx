@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import CaseStudyDialog from './CaseStudyDialog'
+import Curve from './Curve'
 import MetaGrid from './MetaGrid'
 import Reveal from './Reveal'
 import {
@@ -9,12 +12,27 @@ type CaseStudyProps = {
   study: CaseStudyType
 }
 
-/**
- * Exact geometry of the curved divider, exported from the Figma vector
- * (node 1:48, 597×14). Stretched to the container width with
- * preserveAspectRatio="none", exactly as it scales in the design.
- */
-const CURVE_PATH = 'M0 14C78.8994 3.43527 308.759 -11.3554 597 14H0Z'
+/** 16px glyph on the CTA, exported from Figma (node 41:341). */
+function ExternalLinkIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path
+        d="M9 4H3.5C3.10218 4 2.72064 4.15804 2.43934 4.43934C2.15804 4.72064 2 5.10218 2 5.5V12.5C2 12.8978 2.15804 13.2794 2.43934 13.5607C2.72064 13.842 3.10218 14 3.5 14H10.5C10.8978 14 11.2794 13.842 11.5607 13.5607C11.842 13.2794 12 12.8978 12 12.5V7M5 11L14 2M14 5.5V2H10.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
 
 /**
  * A single project write-up (Figma node 1:40).
@@ -26,6 +44,7 @@ const CURVE_PATH = 'M0 14C78.8994 3.43527 308.759 -11.3554 597 14H0Z'
 export default function CaseStudy({ study }: CaseStudyProps) {
   /** The mockup's share of the page width in the design, preserved at any size. */
   const imageWidth = `${(study.imageWidth / DESIGN_PAGE_WIDTH) * 100}%`
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   return (
     <article className="mt-16 md:mt-24">
@@ -37,27 +56,33 @@ export default function CaseStudy({ study }: CaseStudyProps) {
           style={{ height: `${study.bandRatio * 100}%` }}
           className="absolute inset-x-0 top-0 bg-gradient-to-b from-paper to-[#dfe2ff]"
         >
-          <svg
-            viewBox="0 0 597 14"
-            preserveAspectRatio="none"
-            className="absolute inset-x-0 bottom-0 h-[14px] w-full md:h-[21px]"
-            aria-hidden="true"
-          >
-            <path d={CURVE_PATH} fill="var(--color-paper)" />
-          </svg>
+          <Curve />
         </div>
 
         <div className="relative px-6 pt-6 md:px-10 md:pt-8">
           <Reveal>
-            <header>
-              <p className="text-lg leading-snug font-light md:text-xl">
-                {study.eyebrow}
-              </p>
-              <h2 className="text-lg leading-snug font-light md:text-xl">
-                <span className="font-normal text-accent">{study.name}</span>
-                <span>{study.client}</span>
-              </h2>
-            </header>
+            <div className="flex items-start justify-between gap-4">
+              <header>
+                <p className="text-lg leading-snug font-light md:text-xl">
+                  {study.eyebrow}
+                </p>
+                <h2 className="text-lg leading-snug font-light md:text-xl">
+                  <span className="font-normal text-accent">{study.name}</span>
+                  <span>{study.client}</span>
+                </h2>
+              </header>
+
+              {study.detail && (
+                <button
+                  type="button"
+                  onClick={() => setDialogOpen(true)}
+                  className="-mr-6 flex shrink-0 items-center gap-2.5 rounded-l-full bg-[#5c5c5c] py-3 pr-6 pl-7 text-xs font-bold whitespace-nowrap text-paper transition-opacity hover:opacity-90 md:-mr-10 md:py-4 md:pr-10 md:pl-9 md:text-sm"
+                >
+                  View Case study
+                  <ExternalLinkIcon />
+                </button>
+              )}
+            </div>
           </Reveal>
 
           <Reveal delay={120}>
@@ -86,6 +111,14 @@ export default function CaseStudy({ study }: CaseStudyProps) {
         label={`${study.name} project details`}
         className="mt-10 md:mt-12"
       />
+
+      {study.detail && (
+        <CaseStudyDialog
+          study={study}
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+        />
+      )}
     </article>
   )
 }
