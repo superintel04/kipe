@@ -305,6 +305,23 @@ export const caseStudies: CaseStudy[] = [
     imageWidth: 459,
     imageHeight: 220,
     bandRatio: 0.95,
+    detail: {
+      challenge:
+        'Cultural Hub is a source of inspiration for everything that promotes and preserves the unique Saudi culture shaped over time. The Ministry wanted the portal rebuilt on DGA Code — the Digital Government Authority’s unified design library for all government applications — so we redesigned the portal’s experience end to end.',
+      approach: {
+        intro:
+          'We rebuilt the portal on DGA Code, starting from an audit of the existing experience rather than a visual refresh.',
+        steps: [
+          'Ran a heuristic evaluation and identified the navigation problems in the existing portal.',
+          'Conducted user research with several commission departments and pinpointed their expectations and needs.',
+          'Redesigned the complete portal against DGA Code.',
+        ],
+      },
+      outcomes: [
+        'The revamp earned users’ trust — building on DGA Code makes the portal immediately recognisable as an official government application.',
+        'Improved the portal’s responsiveness and made the experience more intuitive, with a fully responsive layout that works properly on mobile.',
+      ],
+    },
   },
   {
     eyebrow: 'Project',
