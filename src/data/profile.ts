@@ -114,7 +114,7 @@ export const skills: Skill[] = [
 
 /** Accent banner closing the Skillset section. */
 export const callout =
-  '5+ years managing Middle East projects — Arabic interface design, Saudi design culture, and KSA Design Library.'
+  '5+ years managing Middle East projects — Experience in Arabic interface design, Saudi design context & culture, and KSA Design Library.'
 
 export type Role = {
   title: string
