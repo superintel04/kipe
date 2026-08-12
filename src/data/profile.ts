@@ -36,7 +36,7 @@ export const meta: MetaItem[] = [
   { label: 'Current Location', value: 'Riyadh, KSA' },
   { label: 'Client', value: 'ITCI (Ministry of Culture)' },
   { label: 'Ready to Join', value: 'Immediately' },
-  { label: 'Contact', value: '0537313849', href: 'tel:+966537313849' },
+  { label: 'Contact', value: '+966 53 731 3849', href: 'tel:+966537313849' },
   {
     label: 'Email',
     value: 'superintel04@gmail.com',
@@ -202,7 +202,7 @@ export const credentials: Credential[] = [
 export const closing = {
   message:
     'Thank you for considering my profile. I am looking forward to taking on a new challenge, whether as a Team Leader or an Individual Contributor.',
-  phone: '0537313849',
+  phone: '+966 53 731 3849',
   phoneHref: 'tel:+966537313849',
   email: 'superintel04@gmail.com',
   signOff: 'Regards,',
