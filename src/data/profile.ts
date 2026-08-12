@@ -270,7 +270,7 @@ export const caseStudies: CaseStudy[] = [
     bandRatio: 0.86,
     detail: {
       challenge:
-        'The Ministry of Culture runs a large catalogue of services for its own employees, and most of them were manual. Requests meant paperwork and constant manual intervention, there was no reliable way to track where a request stood, and delays were routine — with no proper service management underneath any of it. They wanted an intranet portal: an employee digital hub called Dewane.',
+        'The Ministry of Culture runs a large catalogue of services for its own employees, and most of them were manual. Requests meant paperwork and constant manual intervention, there was no reliable way to track where a request stood, and delays were routine with no proper service management underneath any of it. They wanted an intranet portal: an employee digital hub called Dewane.',
       approach: {
         intro:
           'We built Dewane as a web and mobile employee digital hub covering more than 50 services, digitising the full catalogue across both platforms.',
@@ -307,7 +307,7 @@ export const caseStudies: CaseStudy[] = [
     bandRatio: 0.95,
     detail: {
       challenge:
-        'Cultural Hub is a source of inspiration for everything that promotes and preserves the unique Saudi culture shaped over time. The Ministry wanted the portal rebuilt on DGA Code — the Digital Government Authority’s unified design library for all government applications — so we redesigned the portal’s experience end to end.',
+        'Cultural Hub is a source of inspiration for everything that promotes and preserves the unique Saudi culture shaped over time. The Ministry wanted the portal rebuilt on DGA Code the Digital Government Authority’s unified design library for all government applications so we redesigned the portal’s experience end to end.',
       approach: {
         intro:
           'We rebuilt the portal on DGA Code, starting from an audit of the existing experience rather than a visual refresh.',
@@ -318,7 +318,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       outcomes: [
-        'The revamp earned users’ trust — building on DGA Code makes the portal immediately recognisable as an official government application.',
+        'The revamp earned users’ trust building on DGA Code makes the portal immediately recognisable as an official government application.',
         'Improved the portal’s responsiveness and made the experience more intuitive, with a fully responsive layout that works properly on mobile.',
       ],
     },
@@ -340,5 +340,26 @@ export const caseStudies: CaseStudy[] = [
     imageWidth: 451,
     imageHeight: 200,
     bandRatio: 0.88,
+    detail: {
+      challenge:
+        'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys hard work: enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt — responsive, consistent with the brand, and properly integrated with the loyalty programme.',
+      approach: {
+        intro:
+          'We led research, visual design, and the design system for the redesign, working from evidence before touching the interface.',
+        steps: [
+          'Interviewed stakeholders across marketing, the Beyond Business team, product, and engineering to fix the scope and surface the pain points each group was hitting.',
+          'Ran a heuristic evaluation of the live portal across the core journeys — enrolment, promotions, account settings — documenting every issue with screenshots, then grouping and prioritising them by severity and user impact.',
+          'Benchmarked the corporate loyalty portals of Emirates, Etihad Airways, Singapore Airlines, and Oman Air to establish what users would expect from earning, redemption, membership tiers, and partner offers.',
+          'Rebuilt the information architecture using card sorting and tree testing, mapped the user flows for each task, and produced sitemaps for the full portal.',
+          'Designed the responsive interface against Qatar Airways’ brand style guide, covering colour, typography, icons, and imagery.',
+        ],
+      },
+      outcomes: [
+        'Critical usability issues were addressed first — clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
+        'A responsive design that adapts across desktop, laptop, tablet, and mobile, giving business travellers the same experience on whichever device they reach for.',
+        'Exclusive offers, new benefits, and limited-time promotions surfaced deliberately within the architecture, so users can find and act on them.',
+        'Visual language aligned to Qatar Airways’ brand identity, building the familiarity and credibility users expect from the airline.',
+      ],
+    },
   },
 ]
