@@ -17,7 +17,7 @@ export const DESIGN_PAGE_WIDTH = 595
 export const profile = {
   name: 'Ramesh Panti',
   title:
-    'Experience Designer | Usability Analyst | Visual Designer & AI First Designer',
+    'Experience Designer | Usability Analyst Visual Designer & Value AI Strategist',
   /** Jumps to the case studies further down this page. */
   portfolioLabel: 'View Projects',
   portfolioUrl: '#projects',
@@ -103,10 +103,10 @@ export const skills: Skill[] = [
     ],
   },
   {
-    title: 'AI-First Designer',
+    title: 'Value AI Strategist',
     body: [
-      'Used AI tools ',
-      { accent: '(Claude Code + Figma + Cursor + Chat GPT)' },
+      'Research, Building, Testing and Shipping the Apps using',
+      { accent: '(Claude Code + Figma + Figma MCP + Cursor )' },
       ' and workflows to accelerate concept exploration, research synthesis, and prototype-to-code handoff.',
     ],
   },
@@ -348,14 +348,14 @@ export const caseStudies: CaseStudy[] = [
           'We led research, visual design, and the design system for the redesign, working from evidence before touching the interface.',
         steps: [
           'Interviewed stakeholders across marketing, the Beyond Business team, product, and engineering to fix the scope and surface the pain points each group was hitting.',
-          'Ran a heuristic evaluation of the live portal across the core journeys — enrolment, promotions, account settings — documenting every issue with screenshots, then grouping and prioritising them by severity and user impact.',
+          'Ran a heuristic evaluation of the live portal across the core journeys enrolment, promotions, account settings documenting every issue with screenshots, then grouping and prioritising them by severity and user impact.',
           'Benchmarked the corporate loyalty portals of Emirates, Etihad Airways, Singapore Airlines, and Oman Air to establish what users would expect from earning, redemption, membership tiers, and partner offers.',
           'Rebuilt the information architecture using card sorting and tree testing, mapped the user flows for each task, and produced sitemaps for the full portal.',
           'Designed the responsive interface against Qatar Airways’ brand style guide, covering colour, typography, icons, and imagery.',
         ],
       },
       outcomes: [
-        'Critical usability issues were addressed first — clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
+        'Critical usability issues were addressed first clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
         'A responsive design that adapts across desktop, laptop, tablet, and mobile, giving business travellers the same experience on whichever device they reach for.',
         'Exclusive offers, new benefits, and limited-time promotions surfaced deliberately within the architecture, so users can find and act on them.',
         'Visual language aligned to Qatar Airways’ brand identity, building the familiarity and credibility users expect from the airline.',
