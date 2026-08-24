@@ -35,7 +35,6 @@ export const meta: MetaItem[] = [
   { label: 'Experience', value: '15+ Yrs' },
   { label: 'Current Location', value: 'Riyadh, KSA' },
   { label: 'Client', value: 'ITCI (Ministry of Culture)' },
-  { label: 'Ready to Join', value: 'Immediately' },
   { label: 'Contact', value: '+966 53 731 3849', href: 'tel:+966537313849' },
   {
     label: 'Email',
@@ -114,7 +113,7 @@ export const skills: Skill[] = [
 
 /** Accent banner closing the Skillset section. */
 export const callout =
-  '5+ years managing Middle East projects — Experience in Arabic interface design, Saudi design context & culture, and KSA Design Library.'
+  '5+ years experience in Middle East projects. Experience in Arabic interface design, Saudi design context & culture, and KSA Design Library.'
 
 export type Role = {
   title: string
