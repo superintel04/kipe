@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import Reveal from './Reveal'
-import { skills, type Segment } from '@/data/profile'
+import { useContent, type Segment } from '@/content'
 
 function renderSegment(segment: Segment, index: number) {
   if (typeof segment === 'string') {
@@ -14,6 +14,8 @@ function renderSegment(segment: Segment, index: number) {
 }
 
 export default function Skillset() {
+  const { skills, ui } = useContent()
+
   return (
     <section aria-labelledby="skillset-heading" className="pt-16 md:pt-24">
       <Reveal>
@@ -21,7 +23,7 @@ export default function Skillset() {
           id="skillset-heading"
           className="text-3xl font-light text-accent md:text-4xl"
         >
-          Skillset
+          {ui.skillset}
         </h2>
       </Reveal>
 

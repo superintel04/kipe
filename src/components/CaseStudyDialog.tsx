@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Curve from './Curve'
 import Lightbox from './Lightbox'
 import MetaGrid from './MetaGrid'
-import type { CaseStudy } from '@/data/profile'
+import { useContent, type CaseStudy } from '@/content'
 
 type CaseStudyDialogProps = {
   study: CaseStudy
@@ -26,6 +26,7 @@ export default function CaseStudyDialog({
 }: CaseStudyDialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [enlarged, setEnlarged] = useState<Enlarged>(null)
+  const { ui } = useContent()
   const detail = study.detail
 
   useEffect(() => {
@@ -75,8 +76,8 @@ export default function CaseStudyDialog({
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close case study"
-        className="fixed top-4 right-4 z-40 flex size-10 items-center justify-center rounded-full bg-ink/70 text-xl leading-none text-paper backdrop-blur transition-colors hover:bg-ink md:top-6 md:right-6"
+        aria-label={ui.closeCaseStudy}
+        className="fixed top-4 end-4 z-40 flex size-10 items-center justify-center rounded-full bg-ink/70 text-xl leading-none text-paper backdrop-blur transition-colors hover:bg-ink md:top-6 md:end-6"
       >
         <span aria-hidden="true">×</span>
       </button>
@@ -108,19 +109,19 @@ export default function CaseStudyDialog({
 
         <MetaGrid
           items={study.meta}
-          label={`${study.name} project details`}
+          label={ui.projectDetails(study.name)}
           className="mt-8 md:mt-10"
         />
 
         <section className="mt-12 md:mt-16">
-          <h3 className="text-lg font-normal md:text-xl">Challenge</h3>
+          <h3 className="text-lg font-normal md:text-xl">{ui.challenge}</h3>
           <p className="mt-3 text-[15px] leading-relaxed font-light md:text-base">
             {detail.challenge}
           </p>
         </section>
 
         <section className="mt-12 md:mt-16">
-          <h3 className="text-lg font-normal md:text-xl">Approach</h3>
+          <h3 className="text-lg font-normal md:text-xl">{ui.approach}</h3>
           <p className="mt-3 text-[15px] leading-relaxed font-light md:text-base">
             {detail.approach.intro}
           </p>
@@ -142,12 +143,12 @@ export default function CaseStudyDialog({
         </section>
 
         <section className="mt-12 md:mt-16">
-          <h3 className="text-lg font-normal md:text-xl">Outcome</h3>
+          <h3 className="text-lg font-normal md:text-xl">{ui.outcome}</h3>
           <ul className="mt-4 flex flex-col gap-3">
             {detail.outcomes.map((outcome) => (
               <li
                 key={outcome}
-                className="border-l-2 border-accent/30 pl-4 text-[15px] leading-relaxed font-light md:text-base"
+                className="border-s-2 border-accent/30 ps-4 text-[15px] leading-relaxed font-light md:text-base"
               >
                 {outcome}
               </li>
@@ -157,7 +158,7 @@ export default function CaseStudyDialog({
 
         {detail.gallery && detail.gallery.length > 0 && (
           <section className="mt-12 md:mt-16">
-            <h3 className="text-lg font-normal md:text-xl">Screens</h3>
+            <h3 className="text-lg font-normal md:text-xl">{ui.screens}</h3>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {detail.gallery.map((shot) => (
                 <button
@@ -184,6 +185,7 @@ export default function CaseStudyDialog({
         <Lightbox
           src={enlarged.src}
           alt={enlarged.alt}
+          closeLabel={ui.closeImage}
           onClose={() => setEnlarged(null)}
         />
       )}

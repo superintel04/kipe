@@ -1,5 +1,5 @@
 import Reveal from './Reveal'
-import { experience } from '@/data/profile'
+import { useContent } from '@/content'
 
 /**
  * Work history, using the Skillset section's type rhythm: accent heading,
@@ -7,6 +7,8 @@ import { experience } from '@/data/profile'
  * label style.
  */
 export default function Experience() {
+  const { experience, ui } = useContent()
+
   return (
     <section aria-labelledby="experience-heading" className="pt-16 md:pt-24">
       <Reveal>
@@ -14,7 +16,7 @@ export default function Experience() {
           id="experience-heading"
           className="text-3xl font-light text-accent md:text-4xl"
         >
-          Experience
+          {ui.experience}
         </h2>
       </Reveal>
 

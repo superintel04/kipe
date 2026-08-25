@@ -1,25 +1,28 @@
 import Avatar from './Avatar'
 import portrait from '@/assets/portrait.jpg'
-import { profile } from '@/data/profile'
-
-/**
- * Splits the role line on its "|" and "&" separators, keeping them as their own
- * pieces so they can be dimmed and let the titles themselves carry the line.
- */
-const titleParts = profile.title.split(/\s*([|&])\s*/)
+import { useContent } from '@/content'
 
 /**
  * Portrait + name on the left, portfolio pill on the right.
- * The pill bleeds past the sheet's horizontal padding so it sits flush to the
- * right edge with left-only rounding, as in the Figma design.
+ * The pill bleeds past the sheet's inline padding so it sits flush to the
+ * trailing edge with rounding on its leading side, as in the Figma design.
+ * Logical properties mean it mirrors automatically in Arabic.
  */
 export default function ProfileHeader() {
+  const { profile } = useContent()
+
+  /**
+   * Split the role line on its "|" and "&" separators, keeping them as their
+   * own pieces so they can be dimmed and let the titles carry the line.
+   */
+  const titleParts = profile.title.split(/\s*([|&])\s*/)
+
   return (
     <header className="flex items-center justify-between gap-4 md:gap-8">
       <div className="flex items-center gap-4 md:gap-5">
         <Avatar
           src={portrait}
-          alt={`Portrait of ${profile.name}`}
+          alt={profile.name}
           initials={profile.initials}
           className="aspect-[114/138] w-20 md:w-28"
         />
@@ -42,7 +45,7 @@ export default function ProfileHeader() {
 
       <a
         href={profile.portfolioUrl}
-        className="-mr-6 flex shrink-0 items-center rounded-l-full bg-accent py-3 pr-6 pl-7 text-xs font-bold whitespace-nowrap text-paper transition-opacity hover:opacity-90 md:-mr-10 md:py-4 md:pr-10 md:pl-9 md:text-sm"
+        className="-me-6 flex shrink-0 items-center rounded-s-full bg-accent py-3 pe-6 ps-7 text-xs font-bold whitespace-nowrap text-paper transition-opacity hover:opacity-90 md:-me-10 md:py-4 md:pe-10 md:ps-9 md:text-sm"
       >
         {profile.portfolioLabel}
       </a>

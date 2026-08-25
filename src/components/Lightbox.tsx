@@ -1,6 +1,7 @@
 type LightboxProps = {
   src: string
   alt: string
+  closeLabel: string
   onClose: () => void
 }
 
@@ -9,7 +10,12 @@ type LightboxProps = {
  * study dialog; Esc is handled there so it closes the lightbox before the
  * dialog itself.
  */
-export default function Lightbox({ src, alt, onClose }: LightboxProps) {
+export default function Lightbox({
+  src,
+  alt,
+  closeLabel,
+  onClose,
+}: LightboxProps) {
   return (
     <div
       role="dialog"
@@ -21,8 +27,8 @@ export default function Lightbox({ src, alt, onClose }: LightboxProps) {
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close image"
-        className="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-xl leading-none text-white transition-colors hover:bg-white/20 md:top-6 md:right-6"
+        aria-label={closeLabel}
+        className="absolute top-4 end-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-xl leading-none text-white transition-colors hover:bg-white/20 md:top-6 md:end-6"
       >
         <span aria-hidden="true">×</span>
       </button>

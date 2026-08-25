@@ -1,10 +1,12 @@
 import Reveal from './Reveal'
-import { closing, profile } from '@/data/profile'
+import { useContent } from '@/content'
 
 /**
  * Closing note that ends the page — the message, contact details, and sign-off.
  */
 export default function Footer() {
+  const { closing, profile } = useContent()
+
   return (
     <footer className="mt-16 border-t border-black/5 pt-10 md:mt-24 md:pt-12">
       <Reveal>
@@ -13,16 +15,18 @@ export default function Footer() {
         </p>
 
         <p className="mt-6 text-[15px] leading-relaxed font-light text-ink md:text-base">
-          Please reach out to me on mobile:{' '}
+          {closing.contactPrefix}{' '}
           <a
             href={closing.phoneHref}
+            dir="ltr"
             className="font-bold transition-colors hover:text-accent"
           >
             {closing.phone}
           </a>{' '}
-          | email:{' '}
+          | {closing.emailLabel}{' '}
           <a
             href={`mailto:${closing.email}`}
+            dir="ltr"
             className="underline underline-offset-2 transition-colors hover:text-accent"
           >
             {closing.email}

@@ -1,11 +1,13 @@
 import Reveal from './Reveal'
-import { credentials } from '@/data/profile'
+import { useContent } from '@/content'
 
 /**
  * Education & certification (Figma node 9:63). Each credential pairs its brand
  * mark, sized as in the design, with a 44px disc in the pale accent tint.
  */
 export default function Credentials() {
+  const { credentials, ui } = useContent()
+
   return (
     <section aria-labelledby="credentials-heading" className="pt-16 md:pt-24">
       <Reveal>
@@ -13,7 +15,7 @@ export default function Credentials() {
           id="credentials-heading"
           className="text-3xl font-light text-accent md:text-4xl"
         >
-          Education &amp; Certification
+          {ui.credentials}
         </h2>
       </Reveal>
 

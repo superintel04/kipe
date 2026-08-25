@@ -21,7 +21,11 @@ A single-page, statically-composed portfolio. There is no router, no state manag
 
 The one interactive surface is the case study dialog: a project with an optional `detail` entry gets a "View Case study" button that opens `CaseStudyDialog` — a native `<dialog>` opened via `showModal()`, so focus trapping, background inerting and Esc-to-close come from the platform rather than hand-rolled JavaScript. Its `onCancel` intercepts Esc so a nested `Lightbox` closes first.
 
-**All content lives in `src/data/profile.ts`.** Components import named exports from it (`profile`, `meta`, `skills`, `callout`, `experience`, `credentials`, `closing`, `caseStudies`) and hold no copy of their own. Copy and content-shape changes belong in that file; components change only when the *rendering* changes. `caseStudies` is the one array that drives repetition — appending an entry renders another full case-study section. See README.md for the field-by-field content guide.
+**All content lives in `src/content/`, and the site is bilingual.** `types.ts` defines the `Content` shape; `en.ts` and `ar.ts` each satisfy it in full. Components never import a locale — they call `useContent()` (from `@/content`) and hold no copy of their own, including section headings, which live under `content.ui`. Adding a language means adding one bundle and listing it in `context.ts`.
+
+`caseStudies` is the array that drives repetition — appending an entry renders another full case-study section, and a `detail` field is what gives a project its "View Case study" button. **Any copy change must be made in both `en.ts` and `ar.ts`**, or the two languages drift apart. Images are shared via `assets.ts`; only `alt` text is translated.
+
+Language state lives in `LanguageProvider.tsx`, which sets `<html lang>` and `<html dir>` and persists the choice to `localStorage`. Because `dir` drives the layout, **use logical Tailwind utilities everywhere** — `ms-`/`me-`, `ps-`/`pe-`, `start-`/`end-`, `rounded-s-`, `border-s-` — never `ml-`, `pr-`, `left-`, `rounded-l-`. Physical utilities will not mirror in Arabic. Latin-script runs inside Arabic (phone, email) carry `dir="ltr"` so they don't reorder.
 
 `src/index.css` is the whole style layer. Tailwind v4 is configured CSS-first via `@theme` — **there is no `tailwind.config.js`**, so add design tokens as CSS custom properties there and they become utilities (`--color-accent` → `bg-accent`/`text-accent`). Base `font-weight: 300` is set on `body`, which is why components spell out `font-light`/`font-normal`/`font-bold` explicitly.
 
@@ -39,7 +43,7 @@ Treat these as measurements, not tunables — adjust them only against the desig
 
 ### Recurring patterns
 
-- **Full-bleed sections** escape the sheet's padding with negative margins matching it (`-mx-6 md:-mx-10` against `px-6 md:px-10`). The header's portfolio pill uses the same trick asymmetrically (`-mr-6 md:-mr-10`). Changing the sheet padding means updating these in step.
+- **Full-bleed sections** escape the sheet's padding with negative margins matching it (`-mx-6 md:-mx-10` against `px-6 md:px-10`). The header's portfolio pill and each case study's CTA use the same trick on one side only (`-me-6 md:-me-10`). Changing the sheet padding means updating these in step.
 - **Accented phrases** inside body copy are data, not markup: a `Segment` is either a string or `{ accent: string }`, and `Skillset.tsx` renders the latter in the accent colour. Use this instead of embedding spans in content.
 - **Credential marks carry their own dimensions.** Each entry supplies `logo` (a Vite asset import) plus `logoWidth`/`logoHeight`, its size as designed inside the shared 44px disc — the logos are deliberately not normalised to one icon size.
 - **Images are ES imports** from `src/assets`, never `/public` paths, so Vite fingerprints them. `Avatar` degrades to initials via `onError` rather than showing a broken image.

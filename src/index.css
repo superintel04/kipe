@@ -7,6 +7,10 @@
     Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
   --font-display:
     Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  /* IBM Plex Sans Arabic is the face used across Saudi government digital
+     services, so the Arabic side reads as native to this audience. */
+  --font-arabic:
+    "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif;
 
   /* Exact hex values from the Figma file (the design uses raw hex, not
      Figma variables — these are transcribed 1:1). */
@@ -28,6 +32,13 @@
     @apply bg-canvas text-ink font-sans antialiased;
     /* Helvetica Light is the default weight in the design. */
     font-weight: 300;
+  }
+
+  /* Arabic sets in IBM Plex Sans Arabic and needs a little more leading than
+     Helvetica, since the script carries taller ascenders and lower descenders. */
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
+    line-height: 1.85;
   }
 
   ::selection {

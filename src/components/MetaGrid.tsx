@@ -1,5 +1,5 @@
 import Reveal from './Reveal'
-import type { MetaItem } from '@/data/profile'
+import type { MetaItem } from '@/content'
 
 type MetaGridProps = {
   items: MetaItem[]
@@ -10,8 +10,11 @@ type MetaGridProps = {
 
 /**
  * Label/value pairs in a three-column grid (as designed), collapsing to two
- * then one. Set in Helvetica Regular per the design. Shared by the profile
- * header details and each case study's role/users/platform row.
+ * then one. Shared by the profile header details and each case study's
+ * role/users/platform row.
+ *
+ * Phone numbers and email addresses carry `dir="ltr"` so they stay readable
+ * when the page mirrors into Arabic.
  */
 export default function MetaGrid({
   items,
@@ -29,7 +32,8 @@ export default function MetaGrid({
           {item.href ? (
             <a
               href={item.href}
-              className="text-[15px] break-words text-ink transition-colors hover:text-accent md:text-base"
+              dir="ltr"
+              className="block text-[15px] break-words text-ink transition-colors hover:text-accent md:text-base rtl:text-right"
             >
               {item.value}
             </a>
