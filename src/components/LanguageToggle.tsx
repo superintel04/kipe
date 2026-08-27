@@ -5,9 +5,9 @@ import { useLanguage } from '@/content/context'
  * outer corner is rounded to match the sheet, the inner one to soften where it
  * meets the page — logical radii, so both mirror in Arabic.
  *
- * Grey while the site is in English, green once Arabic is on — the two states
- * in the design. The glyph tile carries "ع" or "En", so the control reads at a
- * glance without relying on the label.
+ * Icon only: the tile carries "ع" or "En", naming the language it switches to.
+ * The accessible name and tooltip carry the full sentence, since a lone glyph
+ * would otherwise announce as a bare letter.
  */
 export default function LanguageToggle({
   className = '',
@@ -22,11 +22,8 @@ export default function LanguageToggle({
       onClick={toggleLanguage}
       aria-pressed={isRtl}
       aria-label={content.ui.languageToggleAria}
-      className={`flex items-center gap-2 rounded-ss-none rounded-se-[17px] rounded-ee-none rounded-es-[17px] px-5 py-2.5 text-[0.7rem] font-bold whitespace-nowrap transition-colors ${
-        isRtl
-          ? 'bg-[#66b166] text-paper hover:bg-[#5aa25a]'
-          : 'bg-[#e8e8e8] text-ink hover:bg-[#dcdcdc]'
-      } ${className}`}
+      title={content.ui.languageToggleAria}
+      className={`flex items-center justify-center rounded-ss-none rounded-se-[17px] rounded-ee-none rounded-es-[17px] bg-[#e8e8e8] px-4 py-2.5 transition-colors hover:bg-[#dcdcdc] ${className}`}
     >
       <span
         aria-hidden="true"
@@ -35,7 +32,6 @@ export default function LanguageToggle({
       >
         {content.ui.languageToggleGlyph}
       </span>
-      {content.ui.languageToggle}
     </button>
   )
 }
