@@ -23,8 +23,13 @@ export const en: Content = {
 
   profile: {
     name: 'Ramesh Panti',
-    title:
-      'Experience Designer | Usability Analyst Visual Designer & Value AI Strategist',
+    tagline: [
+      'Lead Product Designer with ',
+      { highlight: '15+ years' },
+      ' across UX strategy, research, and design systems. Research-led product design, end to end: from user insight to interface to front-end. Currently with the ',
+      { strong: 'Ministry of Culture' },
+      ' in Riyadh, KSA.',
+    ],
     portfolioLabel: 'View Projects',
     portfolioUrl: '#projects',
     initials: 'RP',

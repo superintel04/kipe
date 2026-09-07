@@ -2,22 +2,17 @@ import Avatar from './Avatar'
 import Magnetic from './Magnetic'
 import Parallax from './Parallax'
 import Reveal from './Reveal'
+import RichText from './RichText'
 import Section from './Section'
 import portrait from '@/assets/portrait.jpg'
 import { useContent } from '@/content'
 
 /**
- * Opening band: the name at display scale, the role line broken onto its own
- * lines, and the portrait drifting gently against the scroll.
+ * Opening band: the name at display scale, the positioning statement beneath
+ * it, and the portrait drifting gently against the scroll.
  */
 export default function Hero() {
   const { profile } = useContent()
-
-  /** Split the role line so each title can sit on its own row. */
-  const roles = profile.title
-    .split(/\s*[|&]\s*/)
-    .map((role) => role.trim())
-    .filter(Boolean)
 
   return (
     <Section className="pt-28 pb-20 md:pt-40 md:pb-32" innerClassName="">
@@ -27,13 +22,13 @@ export default function Hero() {
             <h1 className="text-h1 font-extrabold">{profile.name}</h1>
           </Reveal>
 
-          <ul className="mt-8 flex flex-col gap-1 md:mt-10">
-            {roles.map((role, index) => (
-              <Reveal key={role} delay={120 + index * 80}>
-                <li className="text-h4 font-medium text-fg-muted">{role}</li>
-              </Reveal>
-            ))}
-          </ul>
+          {/* Capped near 46 characters a line — the width prose stays
+              comfortable to read at this size. */}
+          <Reveal delay={140}>
+            <p className="mt-8 max-w-[46ch] text-h4 leading-[1.35] font-medium text-fg-muted text-pretty md:mt-10">
+              <RichText segments={profile.tagline} />
+            </p>
+          </Reveal>
 
           <Reveal delay={400}>
             <Magnetic className="mt-10 md:mt-14">

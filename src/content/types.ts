@@ -173,7 +173,8 @@ export type UiStrings = {
 export type Content = {
   profile: {
     name: string
-    title: string
+    /** Positioning statement under the name, as accentable segments. */
+    tagline: Segment[]
     portfolioLabel: string
     portfolioUrl: string
     initials: string
