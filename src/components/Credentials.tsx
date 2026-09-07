@@ -1,32 +1,30 @@
 import Reveal from './Reveal'
+import Section from './Section'
 import { useContent } from '@/content'
 
 /**
- * Education & certification (Figma node 9:63). Each credential pairs its brand
- * mark, sized as in the design, with a 44px disc in the pale accent tint.
+ * Education & certification as bordered cards. Each lifts slightly on hover
+ * and its border takes the accent, matching the DS's outline button treatment.
  */
 export default function Credentials() {
   const { credentials, ui } = useContent()
 
   return (
-    <section aria-labelledby="credentials-heading" className="pt-16 md:pt-24">
+    <Section labelledBy="credentials-heading" innerClassName="py-24 md:py-36">
       <Reveal>
-        <h2
-          id="credentials-heading"
-          className="text-3xl font-light text-accent md:text-4xl"
-        >
+        <h2 id="credentials-heading" className="text-h2 font-extrabold">
           {ui.credentials}
         </h2>
       </Reveal>
 
-      <ul className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 md:mt-10">
+      <ul className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
         {credentials.map((item, index) => (
           <li key={item.label}>
             <Reveal
-              delay={Math.min(index, 3) * 70}
-              className="flex items-center gap-2.5"
+              delay={Math.min(index, 3) * 90}
+              className="group h-full rounded-xl border border-border p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_12px_32px_rgba(2,178,98,0.12)]"
             >
-              <span className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-disc">
+              <span className="flex size-14 items-center justify-center overflow-hidden rounded-lg bg-accent-subtle transition-colors duration-300 group-hover:bg-accent/15">
                 <img
                   src={item.logo}
                   alt={item.logoAlt}
@@ -37,13 +35,11 @@ export default function Credentials() {
                 />
               </span>
 
-              <span className="text-sm font-light text-ink md:text-base">
-                {item.label}
-              </span>
+              <p className="mt-6 text-body-lg font-medium">{item.label}</p>
             </Reveal>
           </li>
         ))}
       </ul>
-    </section>
+    </Section>
   )
 }

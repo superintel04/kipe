@@ -71,19 +71,19 @@ export default function CaseStudyDialog({
           setEnlarged(null)
         }
       }}
-      className="m-0 h-dvh max-h-dvh w-screen max-w-none overflow-y-auto overscroll-contain bg-paper text-ink backdrop:bg-black/50"
+      className="m-0 h-dvh max-h-dvh w-screen max-w-none overflow-y-auto overscroll-contain bg-bg text-fg backdrop:bg-fg/50"
     >
       <button
         type="button"
         onClick={onClose}
         aria-label={ui.closeCaseStudy}
-        className="fixed top-4 end-4 z-40 flex size-10 items-center justify-center rounded-full bg-ink/70 text-xl leading-none text-paper backdrop-blur transition-colors hover:bg-ink md:top-6 md:end-6"
+        className="fixed top-4 end-4 z-40 flex size-10 items-center justify-center rounded-full bg-fg/70 text-xl leading-none text-fg-inverse backdrop-blur transition-colors hover:bg-fg md:top-6 md:end-6"
       >
         <span aria-hidden="true">×</span>
       </button>
 
       {/* Hero, capped by the same curve as the project cards. */}
-      <div className="relative bg-gradient-to-b from-paper to-[#dfe2ff]">
+      <div className="relative bg-gradient-to-b from-bg to-accent-subtle">
         <img
           src={study.image}
           alt={study.imageAlt}
@@ -130,7 +130,7 @@ export default function CaseStudyDialog({
               <li key={step} className="flex gap-4">
                 <span
                   aria-hidden="true"
-                  className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-disc text-xs font-normal text-accent"
+                  className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-accent-subtle text-xs font-normal text-accent"
                 >
                   {index + 1}
                 </span>
@@ -165,7 +165,7 @@ export default function CaseStudyDialog({
                   key={shot.src}
                   type="button"
                   onClick={() => setEnlarged(shot)}
-                  className="cursor-zoom-in overflow-hidden rounded-lg bg-canvas"
+                  className="cursor-zoom-in overflow-hidden rounded-lg bg-bg-muted"
                 >
                   <img
                     src={shot.src}

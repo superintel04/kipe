@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
+/**
+ * Tokens transcribed from the Kipe design system (Figma file DSK), resolved
+ * from its Primitives / Color / Scale / Typography variable collections.
+ * The Dark values for each colour are noted alongside so the second mode can
+ * be switched on later without going back to Figma.
+ */
 @theme {
-  /* Helvetica everywhere, falling back through the closest grotesques
-     available on macOS / Windows / Linux. */
-  --font-sans:
-    Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
-  --font-display:
-    Helvetica, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  /* ---- Typography ------------------------------------------------------ */
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
   /* IBM Plex Sans Arabic is the face used across Saudi government digital
      services, so the Arabic side reads as native to this audience. */
   --font-arabic:
     "IBM Plex Sans Arabic", "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif;
 
-  /* Exact hex values from the Figma file (the design uses raw hex, not
-     Figma variables — these are transcribed 1:1). */
-  --color-ink: #000000; /* body copy */
-  --color-paper: #ffffff; /* the page sheet */
-  --color-canvas: #f5f5f5; /* area behind the sheet */
-  --color-muted: #848484; /* meta grid labels */
-  --color-accent: #717dff; /* portfolio pill, Skillset heading, highlights */
-  --color-disc: #f1f2ff; /* credential logo discs */
-  --color-skill: #015e0a; /* skill titles */
+  /* The DS scale is authored at 1440px; the large steps are clamped so they
+     stay usable on a phone without inventing a second scale. */
+  --text-display-1: clamp(4rem, 12vw, 10.5rem); /* 168 */
+  --text-display-2: clamp(3.25rem, 8vw, 7rem); /* 112 */
+  --text-h1: clamp(2.5rem, 6vw, 4.5rem); /* 72 */
+  --text-h2: clamp(2rem, 4.5vw, 3.25rem); /* 52 */
+  --text-h3: clamp(1.5rem, 3vw, 2.25rem); /* 36 */
+  --text-h4: clamp(1.25rem, 2.2vw, 1.625rem); /* 26 */
+  --text-h5: 1.125rem; /* 18 */
+  --text-h6: 0.9375rem; /* 15 */
+  /* The case study's reading size, between h4 and body-lg. */
+  --text-lead: 1.875rem; /* 30 */
+  --text-body-lg: 1.1875rem; /* 19 */
+  --text-body: 1rem; /* 16 */
+  --text-body-sm: 0.875rem; /* 14 */
+  --text-caption: 0.75rem; /* 12 */
+  --text-overline: 0.6875rem; /* 11 */
+
+  /* ---- Colour: neutral ramp -------------------------------------------- */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f4;
+  --color-neutral-200: #e4e4e4;
+  --color-neutral-300: #d1d1d1;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #757575;
+  --color-neutral-600: #525252;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+  --color-neutral-1000: #000000;
+
+  /* ---- Colour: semantic (Light mode) ----------------------------------- */
+  --color-bg: #ffffff; /* dark: #000000 */
+  --color-bg-subtle: #fafafa; /* dark: #0a0a0a */
+  --color-bg-muted: #f4f4f4; /* dark: #171717 */
+  --color-bg-sunken: #e4e4e4; /* dark: #000000 */
+  --color-bg-inverse: #000000; /* dark: #ffffff */
+
+  --color-fg: #000000; /* dark: #ffffff */
+  --color-fg-muted: #525252; /* dark: #a3a3a3 */
+  --color-fg-subtle: #757575; /* dark: #757575 */
+  --color-fg-inverse: #ffffff; /* dark: #000000 */
+  --color-fg-on-accent: #ffffff; /* dark: #000000 */
+
+  --color-border: #d1d1d1; /* dark: #262626 */
+  --color-border-subtle: #e4e4e4; /* dark: #171717 */
+  --color-border-strong: #000000; /* dark: #ffffff */
+
+  --color-accent: #02b262;
+  --color-accent-hover: #029b55; /* dark: #16be74 */
+  --color-accent-active: #027a43; /* dark: #4ace93 */
+  --color-accent-fg: #027a43; /* dark: #4ace93 */
+  --color-accent-subtle: #e6f8ef; /* dark: #01371e */
+  --color-accent-border: #8cdeb8; /* dark: #027a43 */
+  --color-accent-solid: #027a43; /* dark: #02b262 */
+  --color-focus: #027a43; /* dark: #02b262 */
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-2xl: 32px;
+  --radius-pill: 999px;
 }
 
 @layer base {
@@ -29,20 +90,37 @@
   }
 
   body {
-    @apply bg-canvas text-ink font-sans antialiased;
-    /* Helvetica Light is the default weight in the design. */
-    font-weight: 300;
+    @apply bg-bg text-fg font-sans antialiased;
   }
 
   /* Arabic sets in IBM Plex Sans Arabic and needs a little more leading than
-     Helvetica, since the script carries taller ascenders and lower descenders. */
+     Inter, since the script carries taller ascenders and lower descenders. */
   html[dir="rtl"] body {
     font-family: var(--font-arabic);
-    line-height: 1.85;
+    line-height: 1.8;
+  }
+
+  /* Display type is tightened; the DS sets it large enough that default
+     leading and tracking read as loose. */
+  h1,
+  h2 {
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2 {
+    letter-spacing: normal;
+    line-height: 1.25;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
   }
 
   ::selection {
-    @apply bg-accent text-white;
+    @apply bg-accent text-fg-on-accent;
   }
 }
 
@@ -51,10 +129,10 @@
      Reveal.tsx adds `is-visible` when the element enters the viewport. */
   .js .reveal {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(24px);
     transition:
-      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform;
   }
@@ -65,12 +143,134 @@
     will-change: auto;
   }
 
+  /* ---- Case study hero -------------------------------------------------- */
+
+  /* Layers drift by different amounts against the pointer, which is what
+     reads as depth. `--px`/`--py` are written by CaseStudyHero. */
+  .hero-img {
+    transform: translate3d(
+        calc(var(--px, 0) * -14px),
+        calc(var(--py, 0) * -14px),
+        0
+      )
+      scale(1.06);
+    animation: hero-zoom 14s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
+    will-change: transform;
+  }
+
+  .hero-layer-1 {
+    transform: translate3d(
+      calc(var(--px, 0) * 5px),
+      calc(var(--py, 0) * 5px),
+      0
+    );
+  }
+
+  .hero-layer-2 {
+    transform: translate3d(
+      calc(var(--px, 0) * 9px),
+      calc(var(--py, 0) * 9px),
+      0
+    );
+  }
+
+  @keyframes hero-zoom {
+    from {
+      scale: 1.14;
+    }
+    to {
+      scale: 1;
+    }
+  }
+
+  /* Staggered entrance for the hero's own content — it is above the fold, so
+     it animates on load rather than on intersection. */
+  .rise {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .rise-1 {
+    animation-delay: 60ms;
+  }
+  .rise-2 {
+    animation-delay: 200ms;
+  }
+  .rise-3 {
+    animation-delay: 340ms;
+  }
+  .rise-4 {
+    animation-delay: 460ms;
+  }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Accent glow following the pointer across the selected phase card.
+     `--mx`/`--my` are written by PhaseCard. */
+  .phase-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--color-accent) 9%, transparent),
+      transparent 70%
+    );
+    transition: opacity 320ms ease;
+  }
+
+  .phase-card.is-active:hover::before {
+    opacity: 1;
+  }
+
+  .scroll-sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-accent);
+    transform: translateX(-100%);
+    animation: sweep 2.2s ease-in-out infinite;
+  }
+
+  @keyframes sweep {
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Every motion effect on the site is opt-out in one place. */
   @media (prefers-reduced-motion: reduce) {
     .js .reveal,
     .js .reveal.is-visible {
       opacity: 1;
       transform: none;
       transition: none;
+    }
+
+    .rise {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    .hero-img {
+      animation: none;
+      transform: scale(1.06);
+    }
+
+    .scroll-sweep::after {
+      animation: none;
     }
   }
 }

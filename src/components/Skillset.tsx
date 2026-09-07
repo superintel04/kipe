@@ -1,44 +1,38 @@
-import { Fragment } from 'react'
 import Reveal from './Reveal'
-import { useContent, type Segment } from '@/content'
+import RichText from './RichText'
+import Section from './Section'
+import { useContent } from '@/content'
 
-function renderSegment(segment: Segment, index: number) {
-  if (typeof segment === 'string') {
-    return <Fragment key={index}>{segment}</Fragment>
-  }
-  return (
-    <span key={index} className="font-normal text-accent">
-      {segment.accent}
-    </span>
-  )
-}
-
+/**
+ * Skills as a two-column list of large headings with supporting copy. Each
+ * entry sits on a hairline rule, so the section reads as an index rather than
+ * a wall of paragraphs.
+ */
 export default function Skillset() {
   const { skills, ui } = useContent()
 
   return (
-    <section aria-labelledby="skillset-heading" className="pt-16 md:pt-24">
+    <Section labelledBy="skillset-heading" innerClassName="py-24 md:py-36">
       <Reveal>
-        <h2
-          id="skillset-heading"
-          className="text-3xl font-light text-accent md:text-4xl"
-        >
+        <h2 id="skillset-heading" className="text-h2 font-extrabold">
           {ui.skillset}
         </h2>
       </Reveal>
 
-      <div className="mt-8 flex flex-col gap-8 md:mt-10 md:gap-10">
-        {skills.map((skill) => (
-          <Reveal key={skill.title} className="flex flex-col gap-2">
-            <h3 className="text-xl font-light text-skill md:text-2xl">
-              {skill.title}
-            </h3>
-            <p className="max-w-3xl text-[15px] leading-relaxed font-light text-ink md:text-base">
-              {skill.body.map(renderSegment)}
+      <div className="mt-14 grid grid-cols-1 gap-x-16 md:mt-20 lg:grid-cols-2">
+        {skills.map((skill, index) => (
+          <Reveal
+            key={skill.title}
+            delay={(index % 2) * 90}
+            className="border-t border-border-subtle py-8 md:py-10"
+          >
+            <h3 className="text-h4 font-bold">{skill.title}</h3>
+            <p className="mt-4 max-w-2xl text-body-lg leading-relaxed text-fg-muted">
+              <RichText segments={skill.body} />
             </p>
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

@@ -17,7 +17,9 @@ Vite 8 builds with rolldown. If the dev server dies with `Cannot find native bin
 
 ## Architecture
 
-A single-page, statically-composed portfolio. There is no router, no state management, and no data fetching — `App.tsx` renders one fixed sequence of sections, and the "View Projects" link is an in-page `#projects` anchor.
+Two routes, resolved in `App.tsx` against `src/router.ts` — a ~30-line History-API hook rather than a router library, since there is currently one extra page. `/` renders `pages/Home.tsx`; each entry in `content.caseStudyPages` claims `/{slug}` and renders `pages/CaseStudyPage.tsx`. Unknown paths fall through to the profile. `vercel.json` already rewrites every path to index.html, so deep links work in production.
+
+There is no state management library and no data fetching — each page renders one fixed sequence of sections, and the "View Projects" link is an in-page `#projects` anchor.
 
 The one interactive surface is the case study dialog: a project with an optional `detail` entry gets a "View Case study" button that opens `CaseStudyDialog` — a native `<dialog>` opened via `showModal()`, so focus trapping, background inerting and Esc-to-close come from the platform rather than hand-rolled JavaScript. Its `onCancel` intercepts Esc so a nested `Lightbox` closes first.
 
@@ -27,7 +29,9 @@ The one interactive surface is the case study dialog: a project with an optional
 
 Language state lives in `LanguageProvider.tsx`, which sets `<html lang>` and `<html dir>` and persists the choice to `localStorage`. Because `dir` drives the layout, **use logical Tailwind utilities everywhere** — `ms-`/`me-`, `ps-`/`pe-`, `start-`/`end-`, `rounded-s-`, `border-s-` — never `ml-`, `pr-`, `left-`, `rounded-l-`. Physical utilities will not mirror in Arabic. Latin-script runs inside Arabic (phone, email) carry `dir="ltr"` so they don't reorder.
 
-`src/index.css` is the whole style layer. Tailwind v4 is configured CSS-first via `@theme` — **there is no `tailwind.config.js`**, so add design tokens as CSS custom properties there and they become utilities (`--color-accent` → `bg-accent`/`text-accent`). Base `font-weight: 300` is set on `body`, which is why components spell out `font-light`/`font-normal`/`font-bold` explicitly.
+`src/index.css` is the whole style layer, and **every token in it is transcribed from the Kipe design system** ([Figma file DSK](https://www.figma.com/design/9DassLSrZMqAfvnUwJZ5vJ/DSK)) — resolved from its Primitives / Color / Scale / Typography variable collections. Tailwind v4 is configured CSS-first via `@theme`, **there is no `tailwind.config.js`**, so tokens are CSS custom properties that become utilities (`--color-accent` → `bg-accent`, `--text-h1` → `text-h1`).
+
+Use the semantic colour tokens (`bg`, `bg-subtle`, `bg-muted`, `bg-inverse`, `fg`, `fg-muted`, `fg-subtle`, `fg-inverse`, `fg-on-accent`, `border`, `border-subtle`, `border-strong`, `accent`, `accent-fg`, `accent-subtle`) rather than raw hex or the neutral ramp — the ramp exists to define the semantics, not to be used directly. Type comes from the DS scale (`text-display-1` … `text-overline`); the large steps are `clamp()`ed so one scale serves mobile and desktop. Each colour's Dark-mode value is noted in a comment beside it, so the second mode can be switched on without reopening Figma.
 
 Imports use the `@/` alias for `src/`, declared in **both** `vite.config.ts` (resolve.alias) and `tsconfig.app.json` (paths) — changing one requires changing the other.
 
@@ -43,7 +47,8 @@ Treat these as measurements, not tunables — adjust them only against the desig
 
 ### Recurring patterns
 
-- **Full-bleed sections** escape the sheet's padding with negative margins matching it (`-mx-6 md:-mx-10` against `px-6 md:px-10`). The header's portfolio pill and each case study's CTA use the same trick on one side only (`-me-6 md:-me-10`). Changing the sheet padding means updating these in step.
+- **Every band is a `Section`.** It carries the full-width background and puts its children in the one shared container (`max-w-[92rem]`, `px-6 md:px-12`). The site is edge-to-edge: there is no centred sheet, so don't reintroduce per-section max widths — change `Section` instead.
+- **Motion primitives are opt-out by default.** `Magnetic` (cursor pull), `Parallax` (scroll drift) and `Counter` (count-up) each check `prefers-reduced-motion` and no-op. `Magnetic` additionally ignores non-mouse pointers, and `Counter` renders its final value for screen readers. Keep that contract when adding effects.
 - **Accented phrases** inside body copy are data, not markup: a `Segment` is either a string or `{ accent: string }`, and `Skillset.tsx` renders the latter in the accent colour. Use this instead of embedding spans in content.
 - **Credential marks carry their own dimensions.** Each entry supplies `logo` (a Vite asset import) plus `logoWidth`/`logoHeight`, its size as designed inside the shared 44px disc — the logos are deliberately not normalised to one icon size.
 - **Images are ES imports** from `src/assets`, never `/public` paths, so Vite fingerprints them. `Avatar` degrades to initials via `onError` rather than showing a broken image.

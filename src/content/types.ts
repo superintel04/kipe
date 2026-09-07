@@ -16,10 +16,14 @@ export type MetaItem = {
 }
 
 /**
- * Body copy is a list of segments so individual phrases can be accented
- * (matching the highlighted "Figma" / "DGA Code" runs in the design).
+ * Body copy is a list of segments so individual phrases can be emphasised
+ * without putting markup in the content:
+ * - `accent`    — set in the accent colour (the "Figma" / "DGA Code" runs)
+ * - `strong`    — bold, in the foreground colour
+ * - `highlight` — bold with an accent underline wash behind it
  */
-export type Segment = string | { accent: string }
+export type Segment =
+  string | { accent: string } | { strong: string } | { highlight: string }
 
 export type Skill = {
   title: string
@@ -88,6 +92,60 @@ export type CaseStudy = {
   detail?: CaseStudyDetail
 }
 
+/**
+ * A standalone case study page (Figma node 402:265), reached at its own URL —
+ * e.g. `/project1`. Each step is a card straddling the central timeline rail:
+ * what was done on one side, what it produced on the other.
+ */
+export type CaseStudyPhase = {
+  title: string
+  /** Small pill above the phase, e.g. "Phase 01 · Alignment". */
+  chip: string
+  bullets: string[]
+  outcome: string
+}
+
+export type CaseStudyPage = {
+  /** URL segment — the page lives at `/{slug}`. */
+  slug: string
+  /** Breadcrumb-ish line over the hero title. */
+  heroEyebrow: string
+  name: string
+  heroSubtitle: string
+  /** Full-bleed hero photograph — a Vite asset import. */
+  heroImage: string
+  heroAlt: string
+  /** Client mark shown over the hero. Omitted when there is no usable mark. */
+  heroLogo?: string
+  logoAlt?: string
+  scrollCue: string
+  meta: MetaItem[]
+  /** Section eyebrows, e.g. "01 — The brief". */
+  briefLabel: string
+  processLabel: string
+  resultLabel: string
+  challenge: Segment[]
+  approachIntro: string
+  phases: CaseStudyPhase[]
+  /** Closing summary of what the work delivered overall. */
+  overallOutcome: {
+    label: string
+    items: string[]
+  }
+  nextLabel: string
+  footerTagline: string
+}
+
+/**
+ * Figures for the stats band. Every number here is one already stated
+ * elsewhere on the page — nothing is invented for effect.
+ */
+export type Stat = {
+  value: number
+  suffix?: string
+  label: string
+}
+
 /** Section headings, button labels and other chrome. */
 export type UiStrings = {
   skillset: string
@@ -97,6 +155,8 @@ export type UiStrings = {
   approach: string
   outcome: string
   screens: string
+  caseStudy: string
+  backToProfile: string
   viewCaseStudy: string
   closeCaseStudy: string
   closeImage: string
@@ -119,6 +179,7 @@ export type Content = {
     initials: string
   }
   meta: MetaItem[]
+  stats: Stat[]
   skills: Skill[]
   callout: string
   experience: Role[]
@@ -133,6 +194,8 @@ export type Content = {
     signOff: string
   }
   caseStudies: CaseStudy[]
+  /** Long-form project pages, each at its own route. */
+  caseStudyPages: CaseStudyPage[]
   ui: UiStrings
   /** Used for the <html lang> and <title> attributes. */
   documentTitle: string

@@ -14,7 +14,7 @@ export default function Curve({ className = '' }: { className?: string }) {
       aria-hidden="true"
       className={`absolute inset-x-0 bottom-0 h-[14px] w-full md:h-[21px] ${className}`}
     >
-      <path d={CURVE_PATH} fill="var(--color-paper)" />
+      <path d={CURVE_PATH} fill="var(--color-bg)" />
     </svg>
   )
 }

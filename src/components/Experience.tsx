@@ -1,42 +1,49 @@
 import Reveal from './Reveal'
+import Section from './Section'
 import { useContent } from '@/content'
 
 /**
- * Work history, using the Skillset section's type rhythm: accent heading,
- * green role titles, and a muted company / period line in the meta-grid
- * label style.
+ * Work history as a list of ruled rows. Each row highlights on hover, with the
+ * accent bar growing in from the leading edge — a cheap, pointer-only cue that
+ * costs nothing on touch.
  */
 export default function Experience() {
   const { experience, ui } = useContent()
 
   return (
-    <section aria-labelledby="experience-heading" className="pt-16 md:pt-24">
+    <Section
+      labelledBy="experience-heading"
+      className="bg-bg-subtle"
+      innerClassName="py-24 md:py-36"
+    >
       <Reveal>
-        <h2
-          id="experience-heading"
-          className="text-3xl font-light text-accent md:text-4xl"
-        >
+        <h2 id="experience-heading" className="text-h2 font-extrabold">
           {ui.experience}
         </h2>
       </Reveal>
 
-      <div className="mt-8 flex flex-col gap-6 md:mt-10 md:gap-8">
+      <ul className="mt-14 md:mt-20">
         {experience.map((role) => (
-          <Reveal
-            key={`${role.company}-${role.title}-${role.period}`}
-            className="flex flex-col gap-1"
-          >
-            <h3 className="text-xl font-light text-skill md:text-2xl">
-              {role.title}
-            </h3>
-
-            <p className="text-xs font-normal text-muted md:text-sm">
-              {role.company} · {role.period}
-              {role.location ? ` · ${role.location}` : ''}
-            </p>
-          </Reveal>
+          <li key={`${role.company}-${role.title}-${role.period}`}>
+            <Reveal className="group relative border-t border-border-subtle py-8 md:py-10">
+              <span
+                aria-hidden="true"
+                className="absolute inset-y-0 start-0 w-0.5 bg-accent transition-transform duration-500 [transform-origin:top] scale-y-0 group-hover:scale-y-100"
+              />
+              <div className="flex flex-col gap-2 transition-transform duration-500 group-hover:translate-x-2 md:flex-row md:items-baseline md:justify-between rtl:group-hover:-translate-x-2">
+                <h3 className="text-h4 font-bold">{role.title}</h3>
+                <p className="text-body font-medium text-fg-muted md:text-end">
+                  {role.company}
+                  <span className="block text-body-sm text-fg-subtle">
+                    {role.period}
+                    {role.location ? ` · ${role.location}` : ''}
+                  </span>
+                </p>
+              </div>
+            </Reveal>
+          </li>
         ))}
-      </div>
-    </section>
+      </ul>
+    </Section>
   )
 }

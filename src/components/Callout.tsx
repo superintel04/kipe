@@ -1,19 +1,23 @@
 import Reveal from './Reveal'
+import Section from './Section'
 import { useContent } from '@/content'
 
 /**
- * Accent banner closing the page (Figma node 1:38).
+ * Regional-experience statement, set large on the accent-subtle tint with a
+ * heavy accent rule on its leading edge.
  */
 export default function Callout() {
   const { callout } = useContent()
 
   return (
-    <Reveal className="mt-14 md:mt-20">
-      <aside className="rounded-[10px] bg-accent px-6 py-4 md:px-8 md:py-5">
-        <p className="text-[1.4rem] leading-[32px] font-normal text-paper">
-          {callout}
-        </p>
-      </aside>
-    </Reveal>
+    <Section innerClassName="pb-24 md:pb-36">
+      <Reveal>
+        <aside className="rounded-2xl border-s-4 border-accent bg-accent-subtle px-8 py-10 md:px-14 md:py-16">
+          <p className="max-w-5xl text-h3 leading-snug font-medium text-balance">
+            {callout}
+          </p>
+        </aside>
+      </Reveal>
+    </Section>
   )
 }

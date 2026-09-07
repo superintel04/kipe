@@ -24,12 +24,12 @@ export default function Avatar({
 
   return (
     <div
-      className={`relative shrink-0 overflow-hidden rounded-2xl bg-canvas md:rounded-[20px] ${className}`}
+      className={`relative shrink-0 overflow-hidden rounded-2xl bg-bg-muted md:rounded-[20px] ${className}`}
     >
       {failed ? (
         <span
           aria-hidden="true"
-          className="flex size-full items-center justify-center text-lg font-medium tracking-wide text-muted md:text-xl"
+          className="flex size-full items-center justify-center text-lg font-medium tracking-wide text-fg-subtle md:text-xl"
         >
           {initials}
         </span>

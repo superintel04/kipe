@@ -10,6 +10,11 @@ import {
   projectCase2,
   projectCase3,
   scrumLogo,
+  dewaneHero,
+  culturalHubHero,
+  beyondBusinessHero,
+  mocLogo,
+  qatarAirwaysLogo,
 } from './assets'
 import type { Content } from './types'
 
@@ -36,6 +41,13 @@ export const en: Content = {
       href: 'mailto:superintel04@gmail.com',
     },
     { label: 'Work Visa', value: 'Transferable Iqama' },
+  ],
+
+  stats: [
+    { value: 15, suffix: '+', label: 'Years designing' },
+    { value: 50, suffix: '+', label: 'Services digitised' },
+    { value: 5, suffix: '+', label: 'Years in the Middle East' },
+    { value: 3, label: 'Flagship platforms' },
   ],
 
   skills: [
@@ -284,6 +296,338 @@ export const en: Content = {
     },
   ],
 
+  caseStudyPages: [
+    {
+      slug: 'project1',
+      heroEyebrow: 'Case study  /  Employee digital hub  /  Government',
+      name: 'Dewane',
+      heroSubtitle: 'Employee Digital Hub for the Ministry of Culture',
+      heroImage: dewaneHero,
+      heroAlt: 'Ministry of Culture headquarters at dusk',
+      heroLogo: mocLogo,
+      logoAlt: 'Ministry of Culture',
+      scrollCue: 'SCROLL',
+      meta: [
+        { label: 'Role', value: 'Lead UX Designer' },
+        { label: 'Users', value: 'MoC Employees' },
+        { label: 'Application platform', value: 'Web & React Native' },
+      ],
+      briefLabel: '01 — The brief',
+      processLabel: '02 — Process',
+      resultLabel: '03 — Result',
+      challenge: [
+        'The Ministry of Culture runs a large catalogue of services for its own employees. Most of them were still ',
+        { highlight: 'manual' },
+        ' — paper forms, hand-offs between departments, no way to track a request once it was raised. The result was constant manual intervention, delayed services and no single view of how anything was performing. They wanted one intranet portal to absorb all of it: an employee digital hub called ',
+        { strong: 'Dewane' },
+        '.',
+      ],
+      approachIntro:
+        'Three phases ran before a single screen was designed. Select a phase to read it.',
+      phases: [
+        {
+          title: 'Business Intent',
+          chip: 'Phase 01  ·  Alignment',
+          bullets: [
+            'Defined product vision',
+            'Scoped 50+ services',
+            'Set on-premises requirement',
+            'Translated intent into KPIs',
+            'Aligned executive dashboard needs',
+          ],
+          outcome:
+            'A shared definition of success gave every team the same target. KPIs turned an abstract vision into something trackable, kept cross-functional teams pulling in one direction, and gave stakeholders regular visibility into progress and early wins.',
+        },
+        {
+          title: 'Product & Technical Focus Group',
+          chip: 'Phase 02  ·  Feasibility',
+          bullets: [
+            'Ran cross-team focus group',
+            'Captured product owner vision',
+            'Documented technical constraints',
+            'Estimated project scope',
+            'Mapped stakeholders and dependencies',
+          ],
+          outcome:
+            'Technical constraints surfaced early rather than mid-build, so design decisions stayed within what the chosen stack could support. This cut feasibility rework and let product items be prioritized realistically against the release plan.',
+        },
+        {
+          title: 'UX Roadmap & Requirements Analysis',
+          chip: 'Phase 03  ·  Definition',
+          bullets: [
+            'Built UX roadmap',
+            'Planned timeline and resources',
+            'Analysed BRD documentation',
+            'Raised stakeholder clarifications',
+            'Secured requirement sign-off',
+          ],
+          outcome:
+            'Ambiguous and missing requirements were resolved — and unnecessary functions eliminated before a single screen was designed. Design began from a validated, signed-off baseline, which reduced downstream development rework.',
+        },
+        {
+          title: 'Research',
+          chip: 'Phase 04  ·  Discovery',
+          bullets: [
+            'Interviewed MoC employees',
+            'Studied existing processes',
+            'Mapped request journeys',
+            'Compared service workflows',
+            'Observed the legacy platform',
+          ],
+          outcome:
+            'Service journeys were simplified and opportunities for reusable UX patterns identified. User needs were prioritised against the research analysis rather than assumption.',
+        },
+        {
+          title: 'Information Architecture & User Flows',
+          chip: 'Phase 05  ·  Structure',
+          bullets: [
+            'Categorised 50+ services',
+            'Defined navigation structure',
+            'Created task flows',
+            'Split experiences by role',
+          ],
+          outcome:
+            'Employees could discover services easily and understand what action to take next, with distinct paths for employees, approvers and administrators.',
+        },
+        {
+          title: 'Brand Styleguide & Design System',
+          chip: 'Phase 06  ·  Foundations',
+          bullets: [
+            'Followed MoC brand guidelines',
+            'Built reusable components',
+            'Aligned web and mobile',
+          ],
+          outcome:
+            'A consistent, scalable design foundation across multiple services. Predefined components cut front-end effort, and Lovable was used to generate front-end code.',
+        },
+        {
+          title: 'Wireframes & Visual Design',
+          chip: 'Phase 07  ·  Design',
+          bullets: [
+            'Wireframed key screens',
+            'Reviewed flows with teams',
+            'Ran design reviews',
+            'Checked technical feasibility',
+            'Iterated against constraints',
+          ],
+          outcome:
+            'Structure and journeys were validated before investing in visual design, producing solutions that were both user-focused and technically feasible — and a realistic product experience ready for stakeholder validation and development.',
+        },
+        {
+          title: 'Usability Testing',
+          chip: 'Phase 08  ·  Validation',
+          bullets: [
+            'Scripted testing scenarios',
+            'Identified usability issues',
+          ],
+          outcome:
+            'Designs were validated with real users, improving the experience before and during development rather than after release.',
+        },
+        {
+          title: 'Developer Handover',
+          chip: 'Phase 09  ·  Handover',
+          bullets: ['Prepared final UI specs', 'Supported implementation'],
+          outcome:
+            'A smooth design-to-development transition, with reduced ambiguity and less rework during the build.',
+        },
+      ],
+
+      overallOutcome: {
+        label: 'Overall UX outcome',
+        items: [
+          '50+ employee services moved to digital, trackable workflows.',
+          'Reduced dependency on manual processes.',
+          'Improved request visibility and approval tracking.',
+          'A consistent experience across every employee service.',
+          'Secure access to internal services on web and mobile.',
+          'A scalable design system ready for future services.',
+          'KPI-driven decision-making for stakeholders and leadership.',
+        ],
+      },
+      nextLabel: 'See all case studies',
+      footerTagline: 'Ramesh  ·  Product & UX design',
+    },
+    {
+      slug: 'project2',
+      heroEyebrow: 'Case study  /  Public cultural portal  /  Government',
+      name: 'Cultural Hub',
+      heroSubtitle:
+        'A public portal for Saudi culture, heritage, events and initiatives',
+      heroImage: culturalHubHero,
+      heroAlt: 'A Saudi heritage fort at dusk',
+      heroLogo: mocLogo,
+      logoAlt: 'Ministry of Culture',
+      scrollCue: 'SCROLL',
+      meta: [
+        { label: 'Role', value: 'Lead UX Designer' },
+        { label: 'Users', value: 'All KSA citizens' },
+        { label: 'Application platform', value: 'Responsive Web Portal' },
+      ],
+      briefLabel: '01 — The brief',
+      processLabel: '02 — Process',
+      resultLabel: '03 — Result',
+      challenge: [
+        'Cultural Hub is a source of inspiration for everything that promotes and preserves the ',
+        { highlight: 'unique Saudi culture' },
+        ' shaped over time. The Ministry wanted the portal rebuilt on ',
+        { strong: 'DGA Code' },
+        ' — the Digital Government Authority’s unified design library for all government applications — so we redesigned the portal’s experience end to end.',
+      ],
+      approachIntro:
+        'The rebuild started from an audit of the existing experience rather than a visual refresh. Select a phase to read it.',
+      phases: [
+        {
+          title: 'Heuristic Evaluation',
+          chip: 'Phase 01  ·  Audit',
+          bullets: [
+            'Ran heuristic evaluation',
+            'Identified navigation problems',
+          ],
+          outcome:
+            'Navigation problems in the existing portal were identified and documented, so the redesign began from evidence rather than from a visual refresh.',
+        },
+        {
+          title: 'Departmental User Research',
+          chip: 'Phase 02  ·  Research',
+          bullets: [
+            'Researched commission departments',
+            'Pinpointed expectations and needs',
+          ],
+          outcome:
+            'Expectations and needs were pinpointed across several commission departments, so the redesign reflected how the portal is actually used rather than how it was assumed to be used.',
+        },
+        {
+          title: 'Redesign on DGA Code',
+          chip: 'Phase 03  ·  Rebuild',
+          bullets: [
+            'Rebuilt on DGA Code',
+            'Redesigned the complete portal',
+            'Made the layout responsive',
+          ],
+          outcome:
+            'Building on DGA Code makes the portal immediately recognisable as an official government application, while responsiveness improved and the experience became more intuitive — with a layout that works properly on mobile.',
+        },
+      ],
+
+      overallOutcome: {
+        label: 'Overall UX outcome',
+        items: [
+          'The portal reads immediately as an official government service.',
+          'Users’ trust earned through a recognisably DGA-compliant experience.',
+          'Improved responsiveness across the portal.',
+          'A more intuitive route to cultural information, heritage and events.',
+          'A fully responsive layout that works properly on mobile.',
+          'One accessible platform serving citizens nationwide.',
+        ],
+      },
+
+      nextLabel: 'See all case studies',
+      footerTagline: 'Ramesh  ·  Product & UX design',
+    },
+    {
+      slug: 'project3',
+      heroEyebrow: 'Case study  /  Corporate loyalty platform  /  Aviation',
+      name: 'Beyond Business',
+      heroSubtitle:
+        'The corporate rewards platform for Qatar Airways business travellers',
+      heroImage: beyondBusinessHero,
+      heroAlt: 'Qatar Airways business travellers',
+      heroLogo: qatarAirwaysLogo,
+      logoAlt: 'Qatar Airways',
+      scrollCue: 'SCROLL',
+      meta: [
+        { label: 'Role', value: 'UX Designer' },
+        { label: 'Users', value: 'Corporate companies & business travellers' },
+        { label: 'Application platform', value: 'Responsive Web Portal' },
+      ],
+      briefLabel: '01 — The brief',
+      processLabel: '02 — Process',
+      resultLabel: '03 — Result',
+      challenge: [
+        'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys ',
+        { highlight: 'hard work' },
+        ': enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt — responsive, consistent with the brand, and properly integrated with the ',
+        { strong: 'loyalty programme' },
+        '.',
+      ],
+      approachIntro:
+        'Research, visual design and the design system, working from evidence before touching the interface. Select a phase to read it.',
+      phases: [
+        {
+          title: 'Stakeholder Interviews',
+          chip: 'Phase 01  ·  Discovery',
+          bullets: [
+            'Interviewed marketing and product',
+            'Fixed the project scope',
+            'Surfaced team pain points',
+          ],
+          outcome:
+            'Scope was agreed across marketing, the Beyond Business team, product and engineering, and the pain points each group was hitting surfaced before design work began.',
+        },
+        {
+          title: 'Heuristic Evaluation',
+          chip: 'Phase 02  ·  Audit',
+          bullets: [
+            'Audited the core journeys',
+            'Documented issues with screenshots',
+            'Prioritised by severity',
+          ],
+          outcome:
+            'Critical usability issues were addressed first — clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
+        },
+        {
+          title: 'Competitor Benchmarking',
+          chip: 'Phase 03  ·  Benchmarking',
+          bullets: [
+            'Benchmarked four airlines',
+            'Compared earning and redemption',
+            'Reviewed membership tiers',
+          ],
+          outcome:
+            'Measured against Emirates, Etihad Airways, Singapore Airlines and Oman Air, establishing what users would expect from earning, redemption, membership tiers and partner offers.',
+        },
+        {
+          title: 'Information Architecture',
+          chip: 'Phase 04  ·  Structure',
+          bullets: [
+            'Ran card sorting',
+            'Ran tree testing',
+            'Mapped user flows',
+            'Produced full sitemaps',
+          ],
+          outcome:
+            'Exclusive offers, new benefits and limited-time promotions were surfaced deliberately within the architecture, so users can find and act on them.',
+        },
+        {
+          title: 'Responsive Interface Design',
+          chip: 'Phase 05  ·  Design',
+          bullets: [
+            'Designed the responsive interface',
+            'Applied the brand style guide',
+            'Covered colour and typography',
+          ],
+          outcome:
+            'A design that adapts across desktop, laptop, tablet and mobile, with visual language aligned to Qatar Airways’ brand identity.',
+        },
+      ],
+
+      overallOutcome: {
+        label: 'Overall UX outcome',
+        items: [
+          'Critical usability issues resolved ahead of everything else.',
+          'A simpler enrolment flow and clearer navigation labels.',
+          'One responsive experience across desktop, tablet and mobile.',
+          'Offers and promotions surfaced where users will act on them.',
+          'Consistent visual language across the whole portal.',
+          'Familiarity and credibility users expect from the airline.',
+        ],
+      },
+
+      nextLabel: 'See all case studies',
+      footerTagline: 'Ramesh  ·  Product & UX design',
+    },
+  ],
+
   ui: {
     skillset: 'Skillset',
     experience: 'Experience',
@@ -292,6 +636,8 @@ export const en: Content = {
     approach: 'Approach',
     outcome: 'Outcome',
     screens: 'Screens',
+    caseStudy: 'Case study',
+    backToProfile: 'Back to profile',
     viewCaseStudy: 'View Case study',
     closeCaseStudy: 'Close case study',
     closeImage: 'Close image',

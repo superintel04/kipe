@@ -9,8 +9,7 @@ type MetaGridProps = {
 }
 
 /**
- * Label/value pairs in a three-column grid (as designed), collapsing to two
- * then one. Shared by the profile header details and each case study's
+ * Label/value pairs. Shared by the profile details band and each case study's
  * role/users/platform row.
  *
  * Phone numbers and email addresses carry `dir="ltr"` so they stay readable
@@ -24,23 +23,23 @@ export default function MetaGrid({
   return (
     <section
       aria-label={label}
-      className={`grid grid-cols-1 gap-x-10 gap-y-6 font-normal sm:grid-cols-2 md:grid-cols-3 ${className}`}
+      className={`grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 ${className}`}
     >
       {items.map((item, index) => (
-        <Reveal key={item.label} delay={Math.min(index, 5) * 60}>
-          <p className="text-xs text-muted md:text-sm">{item.label}</p>
+        <Reveal key={item.label} delay={Math.min(index, 5) * 70}>
+          <p className="text-overline font-bold tracking-[0.14em] text-fg-subtle uppercase">
+            {item.label}
+          </p>
           {item.href ? (
             <a
               href={item.href}
               dir="ltr"
-              className="block text-[15px] break-words text-ink transition-colors hover:text-accent md:text-base rtl:text-right"
+              className="mt-2 block text-h5 font-medium break-words transition-colors hover:text-accent-fg rtl:text-right"
             >
               {item.value}
             </a>
           ) : (
-            <p className="text-[15px] break-words text-ink md:text-base">
-              {item.value}
-            </p>
+            <p className="mt-2 text-h5 font-medium break-words">{item.value}</p>
           )}
         </Reveal>
       ))}
