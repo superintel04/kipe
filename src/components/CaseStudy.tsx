@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import CaseStudyDialog from './CaseStudyDialog'
 import Link from './Link'
 import Magnetic from './Magnetic'
@@ -32,6 +32,41 @@ function ExternalLinkIcon() {
         strokeLinejoin="round"
       />
     </svg>
+  )
+}
+
+/**
+ * Wraps the mockup in a link when the project has a page of its own, and in a
+ * plain div when it doesn't — so the frame's styling lives in one place and
+ * `group-hover:` keeps working either way.
+ */
+function ImageFrame({
+  to,
+  label,
+  children,
+}: {
+  to?: string | false
+  label: string
+  children: ReactNode
+}) {
+  const className =
+    'group relative mt-12 block overflow-hidden rounded-2xl bg-bg-muted md:mt-16'
+
+  if (!to) return <div className={className}>{children}</div>
+
+  return (
+    <Link to={to} aria-label={label} className={className}>
+      {children}
+      {/* Appears on hover so the image reads as clickable; hidden from
+          assistive tech, which already has the link's own label. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-6 end-6 inline-flex h-[44px] items-center gap-2 rounded-pill bg-bg-inverse px-6 text-body-sm font-bold text-fg-inverse opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 md:bottom-10 md:end-10 md:translate-y-2"
+      >
+        {label}
+        <ExternalLinkIcon />
+      </span>
+    </Link>
   )
 }
 
@@ -102,7 +137,10 @@ export default function CaseStudy({ study, index }: CaseStudyProps) {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="group mt-12 overflow-hidden rounded-2xl bg-bg-muted md:mt-16">
+          {/* The mockup is a second route into the case study, so the whole
+              image is the target rather than the button alone. Wrapped only
+              when there is somewhere to go. */}
+          <ImageFrame to={page && `/${page.slug}`} label={ui.viewCaseStudy}>
             <Parallax distance={-28}>
               <img
                 src={study.image}
@@ -114,7 +152,7 @@ export default function CaseStudy({ study, index }: CaseStudyProps) {
                 className="mx-auto block h-auto w-full max-w-[1100px] px-6 py-14 transition-transform duration-700 ease-out group-hover:scale-[1.03] md:px-16 md:py-20"
               />
             </Parallax>
-          </div>
+          </ImageFrame>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-12 md:mt-20 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
