@@ -320,8 +320,6 @@ export const en: Content = {
         { strong: 'Dewane' },
         '.',
       ],
-      approachIntro:
-        'Three phases ran before a single screen was designed. Select a phase to read it.',
       phases: [
         {
           title: 'Business Intent',

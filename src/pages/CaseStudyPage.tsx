@@ -185,9 +185,11 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
           </Reveal>
           <Reveal delay={90}>
             <h2 className="text-h1 font-bold">{ui.approach}</h2>
-            <p className="mt-7 max-w-[720px] text-body-lg leading-[1.6] text-fg-muted">
-              {page.approachIntro}
-            </p>
+            {page.approachIntro && (
+              <p className="mt-7 max-w-[720px] text-body-lg leading-[1.6] text-fg-muted">
+                {page.approachIntro}
+              </p>
+            )}
           </Reveal>
         </div>
 

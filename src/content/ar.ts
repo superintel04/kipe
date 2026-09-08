@@ -332,8 +332,6 @@ export const ar: Content = {
         { strong: 'Dewane' },
         '.',
       ],
-      approachIntro:
-        'ثلاث مراحل سبقت تصميم أي شاشة. اختر مرحلة للاطلاع على تفاصيلها.',
       phases: [
         {
           title: 'مقصد الأعمال',
