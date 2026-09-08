@@ -7,6 +7,7 @@ import Parallax from './Parallax'
 import Reveal from './Reveal'
 import Section from './Section'
 import { useContent, type CaseStudy as CaseStudyType } from '@/content'
+import { slugify } from '@/router'
 
 type CaseStudyProps = {
   study: CaseStudyType
@@ -88,7 +89,10 @@ export default function CaseStudy({ study, index }: CaseStudyProps) {
     'group inline-flex h-[56px] items-center gap-3 rounded-pill border border-border-strong px-8 text-body font-bold transition-colors hover:bg-bg-inverse hover:text-fg-inverse'
 
   return (
-    <Section innerClassName="py-16 md:py-24">
+    <Section
+      id={slugify(study.name)}
+      innerClassName="scroll-mt-8 py-16 md:py-24"
+    >
       <article>
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6 border-t border-border-strong pt-8">

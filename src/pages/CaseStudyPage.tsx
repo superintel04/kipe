@@ -8,7 +8,7 @@ import RichText from '@/components/RichText'
 import ScrollProgress from '@/components/ScrollProgress'
 import Section from '@/components/Section'
 import { useContent, type CaseStudyPage as CaseStudyPageType } from '@/content'
-import { navigate } from '@/router'
+import { goBack, slugify } from '@/router'
 
 type CaseStudyPageProps = {
   page: CaseStudyPageType
@@ -69,14 +69,22 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
     return () => observer.disconnect()
   }, [page.phases.length])
 
+  /**
+   * Where closing leads. Stepping back through history is preferred, because
+   * the browser restores the visitor's scroll position — they land on the
+   * project they were reading, not the top of the page. The anchor is the
+   * fallback for anyone who opened this page directly.
+   */
+  const homeAnchor = `/#${slugify(page.name)}`
+
   // Esc leaves the case study, matching the dialog the other projects open.
   useEffect(() => {
     const onEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') navigate('/')
+      if (event.key === 'Escape') goBack(homeAnchor)
     }
     window.addEventListener('keydown', onEscape)
     return () => window.removeEventListener('keydown', onEscape)
-  }, [])
+  }, [homeAnchor])
 
   const select = (index: number) => {
     setPhase(index)
@@ -108,7 +116,11 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
           the way out is always one click away. A link, not a button — it can
           be opened in a new tab and shows where it goes. */}
       <Link
-        to="/"
+        to={homeAnchor}
+        onClick={(event) => {
+          event.preventDefault()
+          goBack(homeAnchor)
+        }}
         aria-label={ui.closeCaseStudy}
         title={ui.closeCaseStudy}
         className="fixed top-5 end-5 z-[90] flex size-12 items-center justify-center rounded-full border border-white/25 bg-fg/60 text-2xl leading-none text-fg-inverse backdrop-blur transition-all duration-200 hover:scale-105 hover:border-accent hover:bg-accent hover:text-white md:top-7 md:end-7"

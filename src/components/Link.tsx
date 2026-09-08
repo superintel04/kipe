@@ -17,6 +17,7 @@ export default function Link({
   to,
   children,
   className = '',
+  onClick,
   ...rest
 }: LinkProps) {
   return (
@@ -25,6 +26,11 @@ export default function Link({
       href={to}
       className={className}
       onClick={(event) => {
+        // A caller's handler runs first and can take over by calling
+        // preventDefault — used by the case study's close control, which
+        // steps back through history instead of navigating forward.
+        onClick?.(event)
+
         // Let the browser handle modified clicks (new tab, download, etc.).
         if (
           event.defaultPrevented ||
