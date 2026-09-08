@@ -19,7 +19,7 @@ import {
 import type { Content } from './types'
 
 export const en: Content = {
-  documentTitle: 'Ramesh Panti — Lead UX Designer',
+  documentTitle: 'Ramesh Panti · Lead UX Designer',
 
   profile: {
     name: 'Ramesh Panti',
@@ -133,7 +133,7 @@ export const en: Content = {
     },
     {
       title: 'Lead UX/UI',
-      company: 'HAPP — The Healthcare App',
+      company: 'HAPP · The Healthcare App',
       period: 'Feb 2016 – Jul 2017 · 1 yr 6 mos',
     },
   ],
@@ -272,7 +272,7 @@ export const en: Content = {
       bandRatio: 0.88,
       detail: {
         challenge:
-          'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys hard work: enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt — responsive, consistent with the brand, and properly integrated with the loyalty programme.',
+          'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys hard work: enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt: responsive, consistent with the brand, and properly integrated with the loyalty programme.',
         approach: {
           intro:
             'We led research, visual design, and the design system for the redesign, working from evidence before touching the interface.',
@@ -310,13 +310,13 @@ export const en: Content = {
         { label: 'Users', value: 'MoC Employees' },
         { label: 'Application platform', value: 'Web & React Native' },
       ],
-      briefLabel: '01 — The brief',
-      processLabel: '02 — Process',
-      resultLabel: '03 — Result',
+      briefLabel: '01 · The brief',
+      processLabel: '02 · Process',
+      resultLabel: '03 · Result',
       challenge: [
         'The Ministry of Culture runs a large catalogue of services for its own employees. Most of them were still ',
         { highlight: 'manual' },
-        ' — paper forms, hand-offs between departments, no way to track a request once it was raised. The result was constant manual intervention, delayed services and no single view of how anything was performing. They wanted one intranet portal to absorb all of it: an employee digital hub called ',
+        ': paper forms, hand-offs between departments, no way to track a request once it was raised. The result was constant manual intervention, delayed services and no single view of how anything was performing. They wanted one intranet portal to absorb all of it: an employee digital hub called ',
         { strong: 'Dewane' },
         '.',
       ],
@@ -360,7 +360,7 @@ export const en: Content = {
             'Secured requirement sign-off',
           ],
           outcome:
-            'Ambiguous and missing requirements were resolved — and unnecessary functions eliminated before a single screen was designed. Design began from a validated, signed-off baseline, which reduced downstream development rework.',
+            'Ambiguous and missing requirements were resolved, and unnecessary functions eliminated, before a single screen was designed. Design began from a validated, signed-off baseline, which reduced downstream development rework.',
         },
         {
           title: 'Research',
@@ -409,7 +409,7 @@ export const en: Content = {
             'Iterated against constraints',
           ],
           outcome:
-            'Structure and journeys were validated before investing in visual design, producing solutions that were both user-focused and technically feasible — and a realistic product experience ready for stakeholder validation and development.',
+            'Structure and journeys were validated before investing in visual design, producing solutions that were both user-focused and technically feasible, and a realistic product experience ready for stakeholder validation and development.',
         },
         {
           title: 'Usability Testing',
@@ -461,15 +461,15 @@ export const en: Content = {
         { label: 'Users', value: 'All KSA citizens' },
         { label: 'Application platform', value: 'Responsive Web Portal' },
       ],
-      briefLabel: '01 — The brief',
-      processLabel: '02 — Process',
-      resultLabel: '03 — Result',
+      briefLabel: '01 · The brief',
+      processLabel: '02 · Process',
+      resultLabel: '03 · Result',
       challenge: [
         'Cultural Hub is a source of inspiration for everything that promotes and preserves the ',
         { highlight: 'unique Saudi culture' },
         ' shaped over time. The Ministry wanted the portal rebuilt on ',
         { strong: 'DGA Code' },
-        ' — the Digital Government Authority’s unified design library for all government applications — so we redesigned the portal’s experience end to end.',
+        ' (the Digital Government Authority’s unified design library for all government applications), so we redesigned the portal’s experience end to end.',
       ],
       approachIntro:
         'The rebuild started from an audit of the existing experience rather than a visual refresh. Select a phase to read it.',
@@ -503,7 +503,7 @@ export const en: Content = {
             'Made the layout responsive',
           ],
           outcome:
-            'Building on DGA Code makes the portal immediately recognisable as an official government application, while responsiveness improved and the experience became more intuitive — with a layout that works properly on mobile.',
+            'Building on DGA Code makes the portal immediately recognisable as an official government application, while responsiveness improved and the experience became more intuitive, with a layout that works properly on mobile.',
         },
       ],
 
@@ -538,13 +538,13 @@ export const en: Content = {
         { label: 'Users', value: 'Corporate companies & business travellers' },
         { label: 'Application platform', value: 'Responsive Web Portal' },
       ],
-      briefLabel: '01 — The brief',
-      processLabel: '02 — Process',
-      resultLabel: '03 — Result',
+      briefLabel: '01 · The brief',
+      processLabel: '02 · Process',
+      resultLabel: '03 · Result',
       challenge: [
         'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys ',
         { highlight: 'hard work' },
-        ': enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt — responsive, consistent with the brand, and properly integrated with the ',
+        ': enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt: responsive, consistent with the brand, and properly integrated with the ',
         { strong: 'loyalty programme' },
         '.',
       ],
@@ -571,7 +571,7 @@ export const en: Content = {
             'Prioritised by severity',
           ],
           outcome:
-            'Critical usability issues were addressed first — clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
+            'Critical usability issues were addressed first: clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
         },
         {
           title: 'Competitor Benchmarking',
