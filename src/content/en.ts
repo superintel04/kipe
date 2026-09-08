@@ -431,7 +431,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall UX outcome',
+        label: 'Overall outcome',
         items: [
           '50+ employee services moved to digital, trackable workflows.',
           'Reduced dependency on manual processes.',
@@ -508,7 +508,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall UX outcome',
+        label: 'Overall outcome',
         items: [
           'The portal reads immediately as an official government service.',
           'Users’ trust earned through a recognisably DGA-compliant experience.',
@@ -610,7 +610,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall UX outcome',
+        label: 'Overall outcome',
         items: [
           'Critical usability issues resolved ahead of everything else.',
           'A simpler enrolment flow and clearer navigation labels.',
