@@ -48,13 +48,6 @@ export const en: Content = {
     { label: 'Work Visa', value: 'Transferable Iqama' },
   ],
 
-  stats: [
-    { value: 15, suffix: '+', label: 'Years designing' },
-    { value: 50, suffix: '+', label: 'Services digitised' },
-    { value: 5, suffix: '+', label: 'Years in the Middle East' },
-    { value: 3, label: 'Flagship platforms' },
-  ],
-
   skills: [
     {
       title: 'UX Strategist',

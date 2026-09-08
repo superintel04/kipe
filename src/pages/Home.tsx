@@ -1,5 +1,4 @@
 import Hero from '@/components/Hero'
-import Stats from '@/components/Stats'
 import MetaGrid from '@/components/MetaGrid'
 import Section from '@/components/Section'
 import Skillset from '@/components/Skillset'
@@ -22,7 +21,6 @@ export default function Home() {
       <LanguageToggle className="fixed end-6 top-6 z-50 md:end-12" />
 
       <Hero />
-      <Stats />
 
       <Section innerClassName="py-24 md:py-36">
         <MetaGrid items={content.meta} label={content.ui.profileDetails} />

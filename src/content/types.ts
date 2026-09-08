@@ -136,16 +136,6 @@ export type CaseStudyPage = {
   footerTagline: string
 }
 
-/**
- * Figures for the stats band. Every number here is one already stated
- * elsewhere on the page — nothing is invented for effect.
- */
-export type Stat = {
-  value: number
-  suffix?: string
-  label: string
-}
-
 /** Section headings, button labels and other chrome. */
 export type UiStrings = {
   skillset: string
@@ -180,7 +170,6 @@ export type Content = {
     initials: string
   }
   meta: MetaItem[]
-  stats: Stat[]
   skills: Skill[]
   callout: string
   experience: Role[]

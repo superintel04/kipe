@@ -60,13 +60,6 @@ export const ar: Content = {
     { label: 'تصريح العمل', value: 'إقامة قابلة للنقل' },
   ],
 
-  stats: [
-    { value: 15, suffix: '+', label: 'سنة في التصميم' },
-    { value: 50, suffix: '+', label: 'خدمة جرت رقمنتها' },
-    { value: 5, suffix: '+', label: 'سنوات في الشرق الأوسط' },
-    { value: 3, label: 'منصات رئيسية' },
-  ],
-
   skills: [
     {
       title: 'استراتيجية تجربة المستخدم',

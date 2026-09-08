@@ -48,7 +48,7 @@ Treat these as measurements, not tunables — adjust them only against the desig
 ### Recurring patterns
 
 - **Every band is a `Section`.** It carries the full-width background and puts its children in the one shared container (`max-w-[92rem]`, `px-6 md:px-12`). The site is edge-to-edge: there is no centred sheet, so don't reintroduce per-section max widths — change `Section` instead.
-- **Motion primitives are opt-out by default.** `Magnetic` (cursor pull), `Parallax` (scroll drift) and `Counter` (count-up) each check `prefers-reduced-motion` and no-op. `Magnetic` additionally ignores non-mouse pointers, and `Counter` renders its final value for screen readers. Keep that contract when adding effects.
+- **Motion primitives are opt-out by default.** `Magnetic` (cursor pull) and `Parallax` (scroll drift) each check `prefers-reduced-motion` and no-op; `Magnetic` additionally ignores non-mouse pointers. Keep that contract when adding effects.
 - **Accented phrases** inside body copy are data, not markup: a `Segment` is either a string or `{ accent: string }`, and `Skillset.tsx` renders the latter in the accent colour. Use this instead of embedding spans in content.
 - **Credential marks carry their own dimensions.** Each entry supplies `logo` (a Vite asset import) plus `logoWidth`/`logoHeight`, its size as designed inside the shared 44px disc — the logos are deliberately not normalised to one icon size.
 - **Images are ES imports** from `src/assets`, never `/public` paths, so Vite fingerprints them. `Avatar` degrades to initials via `onError` rather than showing a broken image.
