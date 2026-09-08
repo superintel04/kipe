@@ -132,7 +132,7 @@ export const en: Content = {
       location: 'Greater Hyderabad Area',
     },
     {
-      title: 'Lead UX/UI',
+      title: 'Senior UX Designer',
       company: 'HAPP · The Healthcare App',
       period: 'Feb 2016 – Jul 2017 · 1 yr 6 mos',
     },
