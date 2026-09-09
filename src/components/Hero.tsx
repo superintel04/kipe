@@ -34,7 +34,10 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative max-w-[772px] pt-20 pb-16 md:pt-40 md:pb-32">
+      {/* The copy paints above the portrait, so between `lg` and `2xl` it is
+          capped short of the panel's leading edge rather than running under
+          it; only past `2xl` is there room for the design's 772px measure. */}
+      <div className="relative max-w-[772px] pt-20 pb-16 md:pt-40 md:pb-32 lg:max-w-[56%] 2xl:max-w-[772px]">
         <Reveal>
           <h1 className="text-h1 font-extrabold">{profile.name}</h1>
         </Reveal>
