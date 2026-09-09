@@ -2,7 +2,7 @@ import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 import RichText from './RichText'
 import Section from './Section'
-import portrait from '@/assets/portrait.jpg'
+import heroPortrait from '@/assets/hero-portrait.webp'
 import { useContent } from '@/content'
 
 /**
@@ -25,8 +25,11 @@ export default function Hero() {
         className="absolute inset-y-0 -end-6 hidden w-[46%] lg:block md:-end-12"
       >
         <img
-          src={portrait}
+          src={heroPortrait}
           alt=""
+          width={1254}
+          height={1254}
+          fetchPriority="high"
           className="size-full rounded-[60px] object-cover"
         />
       </div>
@@ -57,8 +60,10 @@ export default function Hero() {
             alongside the copy. */}
         <Reveal delay={200} className="lg:hidden">
           <img
-            src={portrait}
+            src={heroPortrait}
             alt={profile.name}
+            width={1254}
+            height={1254}
             className="mt-14 aspect-[707/654] w-full rounded-3xl object-cover"
           />
         </Reveal>
