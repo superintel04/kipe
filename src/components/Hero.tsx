@@ -1,8 +1,8 @@
+import HeroPortrait from './HeroPortrait'
 import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 import RichText from './RichText'
 import Section from './Section'
-import heroPortrait from '@/assets/hero-portrait.webp'
 import { useContent } from '@/content'
 
 /**
@@ -14,6 +14,10 @@ import { useContent } from '@/content'
  * container gutter to reach the viewport edge; below `lg` it drops into the
  * flow beneath the CTA, since a half-width portrait has nowhere to go on a
  * phone.
+ *
+ * Hovering the desktop panel scatters four candid photographs from behind it —
+ * see `HeroPortrait`. The stacked mobile copy leaves them out, since there is
+ * no hover there and no room for them.
  */
 export default function Hero() {
   const { profile } = useContent()
@@ -24,13 +28,12 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute inset-y-0 -end-6 hidden w-[46%] lg:block md:-end-12"
       >
-        <img
-          src={heroPortrait}
+        <HeroPortrait
           alt=""
-          width={1254}
-          height={1254}
-          fetchPriority="high"
-          className="size-full rounded-[60px] object-cover"
+          priority
+          withThumbnails
+          className="size-full"
+          imageClassName="size-full rounded-[60px] object-cover"
         />
       </div>
 
@@ -59,12 +62,10 @@ export default function Hero() {
         {/* The same portrait, in flow, for viewports too narrow to sit it
             alongside the copy. */}
         <Reveal delay={200} className="lg:hidden">
-          <img
-            src={heroPortrait}
+          <HeroPortrait
             alt={profile.name}
-            width={1254}
-            height={1254}
-            className="mt-14 aspect-[707/654] w-full rounded-3xl object-cover"
+            className="mt-14"
+            imageClassName="aspect-[707/654] w-full rounded-3xl object-cover"
           />
         </Reveal>
       </div>
