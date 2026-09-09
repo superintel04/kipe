@@ -1,6 +1,4 @@
-import Avatar from './Avatar'
 import Magnetic from './Magnetic'
-import Parallax from './Parallax'
 import Reveal from './Reveal'
 import RichText from './RichText'
 import Section from './Section'
@@ -8,49 +6,61 @@ import portrait from '@/assets/portrait.jpg'
 import { useContent } from '@/content'
 
 /**
- * Opening band: the name at display scale, the positioning statement beneath
- * it, and the portrait drifting gently against the scroll.
+ * Opening band (Figma node 520:1494). The copy sits in the leading half at the
+ * design's 160/128 vertical rhythm, and the portrait fills the trailing half
+ * as a 60px-radius panel running the full height of the band.
+ *
+ * The portrait is absolutely positioned above `lg` and bleeds out by the
+ * container gutter to reach the viewport edge; below `lg` it drops into the
+ * flow beneath the CTA, since a half-width portrait has nowhere to go on a
+ * phone.
  */
 export default function Hero() {
   const { profile } = useContent()
 
   return (
-    <Section className="pt-28 pb-20 md:pt-40 md:pb-32" innerClassName="">
-      <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
-        <div>
-          <Reveal>
-            <h1 className="text-h1 font-extrabold">{profile.name}</h1>
-          </Reveal>
+    <Section innerClassName="relative lg:min-h-[654px]">
+      <div
+        aria-hidden="true"
+        className="absolute inset-y-0 -end-6 hidden w-[46%] lg:block md:-end-12"
+      >
+        <img
+          src={portrait}
+          alt=""
+          className="size-full rounded-[60px] object-cover"
+        />
+      </div>
 
-          {/* Capped near 46 characters a line — the width prose stays
-              comfortable to read at this size. */}
-          <Reveal delay={140}>
-            <p className="mt-8 max-w-[46ch] text-h4 leading-[1.35] font-medium text-fg-muted text-pretty md:mt-10">
-              <RichText segments={profile.tagline} />
-            </p>
-          </Reveal>
+      <div className="relative max-w-[772px] pt-20 pb-16 md:pt-40 md:pb-32">
+        <Reveal>
+          <h1 className="text-h1 font-extrabold">{profile.name}</h1>
+        </Reveal>
 
-          <Reveal delay={400}>
-            <Magnetic className="mt-10 md:mt-14">
-              <a
-                href={profile.portfolioUrl}
-                className="inline-flex h-[56px] items-center rounded-pill bg-accent px-10 text-body font-bold text-fg-on-accent transition-colors hover:bg-accent-hover"
-              >
-                {profile.portfolioLabel}
-              </a>
-            </Magnetic>
-          </Reveal>
-        </div>
+        <Reveal delay={140}>
+          <p className="mt-10 text-h4 leading-[1.35] font-medium text-pretty">
+            <RichText segments={profile.tagline} />
+          </p>
+        </Reveal>
 
-        <Reveal delay={200}>
-          <Parallax distance={-40}>
-            <Avatar
-              src={portrait}
-              alt={profile.name}
-              initials={profile.initials}
-              className="aspect-[114/138] w-48 rounded-2xl md:w-64 lg:w-72"
-            />
-          </Parallax>
+        <Reveal delay={280}>
+          <Magnetic className="mt-14">
+            <a
+              href={profile.portfolioUrl}
+              className="inline-flex h-[56px] items-center rounded-pill bg-accent px-10 text-body font-bold text-fg-on-accent transition-colors hover:bg-accent-hover"
+            >
+              {profile.portfolioLabel}
+            </a>
+          </Magnetic>
+        </Reveal>
+
+        {/* The same portrait, in flow, for viewports too narrow to sit it
+            alongside the copy. */}
+        <Reveal delay={200} className="lg:hidden">
+          <img
+            src={portrait}
+            alt={profile.name}
+            className="mt-14 aspect-[707/654] w-full rounded-3xl object-cover"
+          />
         </Reveal>
       </div>
     </Section>
