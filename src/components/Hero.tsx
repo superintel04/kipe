@@ -12,8 +12,9 @@ import { useContent } from '@/content'
  *
  * The portrait is absolutely positioned above `lg`, starting 92px down so it
  * clears the fixed language toggle (24px inset + its 44px tile + a 24px gap)
- * and ending 64px above the band's foot. Below `lg` it drops into the flow
- * beneath the CTA, since a half-width portrait has nowhere to go on a phone.
+ * and ending 64px above the band's foot. Only its leading corners are rounded
+ * — the trailing edge is cut square. Below `lg` it drops into the flow beneath
+ * the CTA, since a half-width portrait has nowhere to go on a phone.
  */
 export default function Hero() {
   const { profile } = useContent()
@@ -30,7 +31,7 @@ export default function Hero() {
           width={1254}
           height={1254}
           fetchPriority="high"
-          className="size-full rounded-[48px] object-cover"
+          className="size-full rounded-s-[48px] rounded-e-none object-cover"
         />
       </div>
 
