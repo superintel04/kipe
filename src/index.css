@@ -211,36 +211,6 @@
     }
   }
 
-  /* Candid photographs that fan out from behind the hero portrait on hover.
-     Each thumbnail's rest position, tilt and stagger come from HeroPortrait as
-     custom properties; only the timing lives here. `--thumb-dir` flips the
-     horizontal drift and the tilt in Arabic, since the anchors themselves are
-     already mirrored by the logical `start-`/`end-` utilities. */
-  .hero-thumb {
-    --thumb-dir: 1;
-    opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.72) rotate(0deg);
-    transition:
-      opacity 400ms ease,
-      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: var(--thumb-delay, 0ms);
-    pointer-events: none;
-  }
-
-  [dir="rtl"] .hero-thumb {
-    --thumb-dir: -1;
-  }
-
-  .hero-portrait:hover .hero-thumb {
-    opacity: 1;
-    transform: translate3d(
-        calc(var(--thumb-x) * var(--thumb-dir)),
-        var(--thumb-y),
-        0
-      )
-      scale(1) rotate(calc(var(--thumb-rot) * var(--thumb-dir)));
-  }
-
   /* Accent glow following the pointer across the selected phase card.
      `--mx`/`--my` are written by PhaseCard. */
   .phase-card::before {
@@ -301,16 +271,6 @@
 
     .scroll-sweep::after {
       animation: none;
-    }
-
-    /* The scatter still appears, it just arrives without the travel. */
-    .hero-thumb {
-      transition: opacity 200ms ease;
-      transform: none;
-    }
-
-    .hero-portrait:hover .hero-thumb {
-      transform: none;
     }
   }
 }

@@ -1,8 +1,8 @@
-import HeroPortrait from './HeroPortrait'
 import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 import RichText from './RichText'
 import Section from './Section'
+import heroPortrait from '@/assets/hero-portrait.webp'
 import { useContent } from '@/content'
 
 /**
@@ -10,14 +10,10 @@ import { useContent } from '@/content'
  * design's 160/128 vertical rhythm, and the portrait fills the trailing half
  * as a 60px-radius panel running the full height of the band.
  *
- * The portrait is absolutely positioned above `lg` and bleeds out by the
- * container gutter to reach the viewport edge; below `lg` it drops into the
- * flow beneath the CTA, since a half-width portrait has nowhere to go on a
- * phone.
- *
- * Hovering the desktop panel scatters four candid photographs from behind it —
- * see `HeroPortrait`. The stacked mobile copy leaves them out, since there is
- * no hover there and no room for them.
+ * The portrait is absolutely positioned above `lg`, starting 92px down so it
+ * clears the fixed language toggle (24px inset + its 44px tile + a 24px gap)
+ * and ending 64px above the band's foot. Below `lg` it drops into the flow
+ * beneath the CTA, since a half-width portrait has nowhere to go on a phone.
  */
 export default function Hero() {
   const { profile } = useContent()
@@ -26,14 +22,15 @@ export default function Hero() {
     <Section innerClassName="relative lg:min-h-[654px]">
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 -end-6 hidden w-[46%] lg:block md:-end-12"
+        className="absolute end-0 top-[92px] bottom-16 hidden w-[40%] lg:block"
       >
-        <HeroPortrait
+        <img
+          src={heroPortrait}
           alt=""
-          priority
-          withThumbnails
-          className="size-full"
-          imageClassName="size-full rounded-[60px] object-cover"
+          width={1254}
+          height={1254}
+          fetchPriority="high"
+          className="size-full rounded-[48px] object-cover"
         />
       </div>
 
@@ -62,10 +59,12 @@ export default function Hero() {
         {/* The same portrait, in flow, for viewports too narrow to sit it
             alongside the copy. */}
         <Reveal delay={200} className="lg:hidden">
-          <HeroPortrait
+          <img
+            src={heroPortrait}
             alt={profile.name}
-            className="mt-14"
-            imageClassName="aspect-[707/654] w-full rounded-3xl object-cover"
+            width={1254}
+            height={1254}
+            className="mt-14 aspect-[707/654] w-full rounded-3xl object-cover"
           />
         </Reveal>
       </div>
