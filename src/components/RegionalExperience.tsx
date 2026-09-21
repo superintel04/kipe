@@ -22,6 +22,11 @@ import { useContent } from '@/content'
  * below it the skyline drops into the flow above the card and the claims
  * stack, since neither survives a phone's width in a row.
  *
+ * The skyline's box is bottom-aligned to the card, clipped, and padded at the
+ * top by the drift distance: the towers can rise clear of the card but the
+ * base can never slide past its bottom edge, which would otherwise break the
+ * card's rounded bottom corner as the band scrolls in.
+ *
  * The motion is layered so any one piece can be dropped on its own: the
  * skyline rises as the band enters view (`Reveal`), then keeps drifting
  * against the scroll (`Parallax`), and the claims stagger in behind it. All of
@@ -36,25 +41,24 @@ export default function RegionalExperience() {
       <div className="relative">
         {/* In flow on small screens; lifted out of it at `lg`, where its
             bottom edge meets the card's and the towers overhang the top. */}
-        <Parallax
-          distance={-24}
-          className="mx-auto mb-[-1px] block w-[62%] max-w-[320px] lg:absolute lg:bottom-0 lg:start-0 lg:z-10 lg:mx-0 lg:mb-0 lg:w-[30.7%] lg:max-w-none"
-        >
-          <Reveal>
-            <img
-              src={saudiSkyline}
-              alt={regional.skylineAlt}
-              width={558}
-              height={518}
-              loading="lazy"
-              decoding="async"
-              className="block w-full"
-            />
-          </Reveal>
-        </Parallax>
+        <div className="mx-auto mb-[-1px] block w-[62%] max-w-[320px] lg:absolute lg:bottom-0 lg:start-0 lg:z-10 lg:mx-0 lg:mb-0 lg:w-[30.7%] lg:max-w-none lg:overflow-hidden lg:pt-12">
+          <Parallax distance={-24}>
+            <Reveal>
+              <img
+                src={saudiSkyline}
+                alt={regional.skylineAlt}
+                width={558}
+                height={518}
+                loading="lazy"
+                decoding="async"
+                className="block w-full"
+              />
+            </Reveal>
+          </Parallax>
+        </div>
 
         <div className="regional-card relative overflow-hidden rounded-[15px] px-8 py-12 md:px-12 lg:py-20 lg:ps-[32%] lg:pe-12">
-          <ul className="relative flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-[75px]">
+          <ul className="relative flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12">
             {regional.points.map((point, index) => (
               <li key={point.label} className="lg:flex-1">
                 <Reveal delay={index * 120}>
@@ -75,7 +79,7 @@ export default function RegionalExperience() {
                         className="block size-auto max-h-[60px] max-w-[60px]"
                       />
                     </span>
-                    <p className="text-h4 leading-[1.14] font-bold tracking-[-0.31px] text-fg-on-accent text-balance">
+                    <p className="text-h4 leading-[1.2] font-bold tracking-[-0.31px] text-fg-on-accent text-balance lg:text-[20px]">
                       {point.label}
                     </p>
                   </div>
