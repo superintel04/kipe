@@ -132,9 +132,6 @@ export const en: Content = {
     ],
   },
 
-  callout:
-    '5+ years experience in Middle East projects. Experience in Arabic interface design, Saudi design context & culture, and KSA Design Library.',
-
   experience: [
     {
       title: 'User Experience Lead',

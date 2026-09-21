@@ -30,7 +30,7 @@ export default function RegionalExperience() {
   const { regional } = useContent()
 
   return (
-    <Section innerClassName="pt-16 pb-16 md:pb-24 lg:pt-32">
+    <Section innerClassName="pt-16 pb-24 md:pb-36 lg:pt-32">
       <div className="relative">
         {/* In flow on small screens; lifted out of it at `lg`, where its
             bottom edge meets the card's and the towers overhang the top. */}

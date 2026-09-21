@@ -2,7 +2,6 @@ import Hero from '@/components/Hero'
 import MetaGrid from '@/components/MetaGrid'
 import Section from '@/components/Section'
 import Skillset from '@/components/Skillset'
-import Callout from '@/components/Callout'
 import RegionalExperience from '@/components/RegionalExperience'
 import CaseStudy from '@/components/CaseStudy'
 import Experience from '@/components/Experience'
@@ -29,7 +28,6 @@ export default function Home() {
 
       <Skillset />
       <RegionalExperience />
-      <Callout />
 
       <div id="projects" className="scroll-mt-16">
         <Section innerClassName="pt-8 md:pt-16">

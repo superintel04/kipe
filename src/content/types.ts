@@ -189,7 +189,6 @@ export type Content = {
     points: RegionalPoint[]
     skylineAlt: string
   }
-  callout: string
   experience: Role[]
   credentials: Credential[]
   closing: {
