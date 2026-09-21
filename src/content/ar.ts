@@ -651,6 +651,15 @@ export const ar: Content = {
   ],
 
   ui: {
+    nav: {
+      label: 'أقسام الصفحة',
+      skills: 'المهارات',
+      projects: 'المشاريع',
+      certifications: 'الشهادات',
+      resume: 'تحميل السيرة الذاتية',
+      linkedin: 'لينكدإن',
+      newTab: 'يفتح في تبويب جديد',
+    },
     skillset: 'المهارات',
     experience: 'الخبرات العملية',
     credentials: 'المؤهلات والشهادات',

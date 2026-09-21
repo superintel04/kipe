@@ -139,6 +139,21 @@ export type CaseStudyPage = {
 
 /** Section headings, button labels and other chrome. */
 export type UiStrings = {
+  /**
+   * Hero navigation labels. The targets themselves are structure, not copy,
+   * so they live in `Nav.tsx` — only the wording is translated.
+   */
+  nav: {
+    skills: string
+    projects: string
+    certifications: string
+    resume: string
+    linkedin: string
+    /** Accessible name for the bar itself. */
+    label: string
+    /** Appended to the LinkedIn link, which opens in a new tab. */
+    newTab: string
+  }
   skillset: string
   experience: string
   credentials: string

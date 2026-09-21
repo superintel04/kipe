@@ -1,4 +1,5 @@
 import Magnetic from './Magnetic'
+import Nav from './Nav'
 import Reveal from './Reveal'
 import RichText from './RichText'
 import Section from './Section'
@@ -6,9 +7,9 @@ import heroPortrait from '@/assets/hero-portrait.webp'
 import { useContent } from '@/content'
 
 /**
- * Opening band (Figma node 520:1494). The copy sits in the leading half at the
- * design's 160/128 vertical rhythm, and the portrait fills the trailing half
- * as a 60px-radius panel running the full height of the band.
+ * Opening band (Figma node 520:1494). The section navigation opens the copy
+ * column, the name and tagline follow at the design's vertical rhythm, and the
+ * portrait fills the trailing half as a rounded panel.
  *
  * The portrait is absolutely positioned above `lg`, starting 92px down so it
  * clears the fixed language toggle (24px inset + its 44px tile + a 24px gap)
@@ -38,9 +39,16 @@ export default function Hero() {
       {/* The copy paints above the portrait, so between `lg` and `2xl` it is
           capped short of the panel's leading edge rather than running under
           it; only past `2xl` is there room for the design's 772px measure. */}
-      <div className="relative max-w-[772px] pt-20 pb-16 md:pt-40 md:pb-32 lg:max-w-[56%] 2xl:max-w-[772px]">
+      <div className="relative max-w-[772px] pt-16 pb-16 md:pt-24 md:pb-32 lg:max-w-[56%] lg:pt-[92px] 2xl:max-w-[772px]">
+        {/* Above `lg` the 92px top matches the portrait's, so the bar and the
+            photograph start on the same line; the name then lands at the
+            design's 160px. */}
         <Reveal>
-          <h1 className="text-h1 font-extrabold">{profile.name}</h1>
+          <Nav />
+        </Reveal>
+
+        <Reveal delay={60}>
+          <h1 className="mt-10 text-h1 font-extrabold">{profile.name}</h1>
         </Reveal>
 
         <Reveal delay={140}>

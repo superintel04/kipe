@@ -650,6 +650,15 @@ export const en: Content = {
   ],
 
   ui: {
+    nav: {
+      label: 'Sections',
+      skills: 'Skills',
+      projects: 'Projects',
+      certifications: 'Certifications',
+      resume: 'Download Resume',
+      linkedin: 'Linkedin',
+      newTab: 'opens in a new tab',
+    },
     skillset: 'Skillset',
     experience: 'Experience',
     credentials: 'Education & Certification',

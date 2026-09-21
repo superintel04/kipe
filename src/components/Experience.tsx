@@ -12,8 +12,9 @@ export default function Experience() {
 
   return (
     <Section
+      id="experience"
       labelledBy="experience-heading"
-      className="bg-bg-subtle"
+      className="scroll-mt-8 bg-bg-subtle"
       innerClassName="py-24 md:py-36"
     >
       <Reveal>

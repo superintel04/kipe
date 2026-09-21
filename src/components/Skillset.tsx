@@ -12,7 +12,12 @@ export default function Skillset() {
   const { skills, ui } = useContent()
 
   return (
-    <Section labelledBy="skillset-heading" innerClassName="py-24 md:py-36">
+    <Section
+      id="skills"
+      labelledBy="skillset-heading"
+      className="scroll-mt-8"
+      innerClassName="py-24 md:py-36"
+    >
       <Reveal>
         <h2 id="skillset-heading" className="text-h2 font-extrabold">
           {ui.skillset}
