@@ -23,6 +23,9 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
+  saudiFlagMark,
+  arabicEnglishMark,
+  dgaMark,
 } from './assets'
 import type { Content } from './types'
 
@@ -115,6 +118,30 @@ export const ar: Content = {
       ],
     },
   ],
+
+  regional: {
+    skylineAlt: 'أفق الرياض خلف أسوار حي الطريف الطينية في الدرعية',
+    points: [
+      {
+        icon: saudiFlagMark,
+        iconWidth: 53,
+        iconHeight: 59,
+        label: 'خبرة في السياق التصميمي والثقافة السعودية',
+      },
+      {
+        icon: arabicEnglishMark,
+        iconWidth: 63,
+        iconHeight: 31,
+        label: 'تصميم واجهات عربية بمنهجية «العربية أولاً»',
+      },
+      {
+        icon: dgaMark,
+        iconWidth: 43,
+        iconHeight: 65,
+        label: 'مكتبة التصميم السعودية',
+      },
+    ],
+  },
 
   callout:
     'أكثر من 5 سنوات من الخبرة في مشاريع منطقة الشرق الأوسط، تشمل تصميم الواجهات العربية، والإلمام بالسياق الثقافي السعودي في التصميم، ومكتبة التصميم السعودية.',

@@ -15,6 +15,9 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
+  saudiFlagMark,
+  arabicEnglishMark,
+  dgaMark,
 } from './assets'
 import type { Content } from './types'
 
@@ -103,6 +106,31 @@ export const en: Content = {
       ],
     },
   ],
+
+  regional: {
+    skylineAlt:
+      'The Riyadh skyline rising behind the mud-brick walls of At-Turaif in Diriyah',
+    points: [
+      {
+        icon: saudiFlagMark,
+        iconWidth: 53,
+        iconHeight: 59,
+        label: 'Experience in Saudi design context & culture',
+      },
+      {
+        icon: arabicEnglishMark,
+        iconWidth: 63,
+        iconHeight: 31,
+        label: 'Arabic interface design, RTL-first',
+      },
+      {
+        icon: dgaMark,
+        iconWidth: 43,
+        iconHeight: 65,
+        label: 'KSA Design Library',
+      },
+    ],
+  },
 
   callout:
     '5+ years experience in Middle East projects. Experience in Arabic interface design, Saudi design context & culture, and KSA Design Library.',

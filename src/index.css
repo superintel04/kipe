@@ -211,6 +211,74 @@
     }
   }
 
+  /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
+
+  /* The card's gradient runs along the reading direction, so it has to flip in
+     Arabic — Tailwind has no logical gradient utility. The first stop is the
+     DS accent-active; the second is a literal from the design with no token. */
+  .regional-card {
+    background-image: linear-gradient(
+      to right,
+      var(--color-accent-active),
+      #019652
+    );
+  }
+
+  [dir="rtl"] .regional-card {
+    background-image: linear-gradient(
+      to left,
+      var(--color-accent-active),
+      #019652
+    );
+  }
+
+  /* A slow band of light crossing the card, to keep the green from reading as
+     a flat block. Sits under the content and never intercepts the pointer. */
+  .regional-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.07) 50%,
+      transparent 70%
+    );
+    background-size: 220% 100%;
+    animation: regional-sheen 9s ease-in-out infinite;
+  }
+
+  @keyframes regional-sheen {
+    0%,
+    100% {
+      background-position: 120% 0;
+    }
+    50% {
+      background-position: -20% 0;
+    }
+  }
+
+  /* Each claim lifts slightly and its mark leans in on hover. */
+  .regional-row {
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .regional-mark {
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 420ms ease;
+  }
+
+  .regional-row:hover {
+    transform: translateY(-4px);
+  }
+
+  .regional-row:hover .regional-mark {
+    transform: scale(1.12);
+    filter: drop-shadow(0 6px 18px rgb(0 0 0 / 0.3));
+  }
+
   /* Accent glow following the pointer across the selected phase card.
      `--mx`/`--my` are written by PhaseCard. */
   .phase-card::before {
@@ -271,6 +339,16 @@
 
     .scroll-sweep::after {
       animation: none;
+    }
+
+    .regional-card::after {
+      animation: none;
+      background: none;
+    }
+
+    .regional-row:hover,
+    .regional-row:hover .regional-mark {
+      transform: none;
     }
   }
 }

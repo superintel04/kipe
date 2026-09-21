@@ -161,6 +161,18 @@ export type UiStrings = {
   languageToggleAria: string
 }
 
+/**
+ * One claim in the Saudi-experience band. The mark keeps its own designed
+ * dimensions rather than being normalised, as in `Credential`.
+ */
+export type RegionalPoint = {
+  /** Vite asset import for the mark, drawn in white on the green card. */
+  icon: string
+  iconWidth: number
+  iconHeight: number
+  label: string
+}
+
 export type Content = {
   profile: {
     name: string
@@ -172,6 +184,11 @@ export type Content = {
   }
   meta: MetaItem[]
   skills: Skill[]
+  /** Saudi-experience band: three claims over the Riyadh skyline. */
+  regional: {
+    points: RegionalPoint[]
+    skylineAlt: string
+  }
   callout: string
   experience: Role[]
   credentials: Credential[]
