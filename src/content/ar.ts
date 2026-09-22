@@ -669,6 +669,7 @@ export const ar: Content = {
     screens: 'لقطات من المشروع',
     caseStudy: 'دراسة الحالة',
     backToProfile: 'العودة إلى الملف الشخصي',
+    backToTop: 'العودة إلى الأعلى',
     viewCaseStudy: 'عرض دراسة الحالة',
     closeCaseStudy: 'إغلاق دراسة الحالة',
     closeImage: 'إغلاق الصورة',

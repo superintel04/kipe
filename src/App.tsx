@@ -1,3 +1,4 @@
+import BackToTop from '@/components/BackToTop'
 import Home from '@/pages/Home'
 import CaseStudyPage from '@/pages/CaseStudyPage'
 import { useContent } from '@/content'
@@ -13,7 +14,12 @@ export default function App() {
   const path = usePath()
 
   const page = caseStudyPages.find((candidate) => `/${candidate.slug}` === path)
-  if (page) return <CaseStudyPage page={page} />
 
-  return <Home />
+  return (
+    <>
+      {page ? <CaseStudyPage page={page} /> : <Home />}
+      {/* Mounted here rather than per page, so it is present on every route. */}
+      <BackToTop />
+    </>
+  )
 }

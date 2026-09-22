@@ -163,6 +163,8 @@ export type UiStrings = {
   screens: string
   caseStudy: string
   backToProfile: string
+  /** Accessible name for the floating return-to-top control. */
+  backToTop: string
   viewCaseStudy: string
   closeCaseStudy: string
   closeImage: string

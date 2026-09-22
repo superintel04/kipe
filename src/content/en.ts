@@ -668,6 +668,7 @@ export const en: Content = {
     screens: 'Screens',
     caseStudy: 'Case study',
     backToProfile: 'Back to profile',
+    backToTop: 'Back to top',
     viewCaseStudy: 'View Case study',
     closeCaseStudy: 'Close case study',
     closeImage: 'Close image',
