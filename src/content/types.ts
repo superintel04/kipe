@@ -218,9 +218,12 @@ export type SkillCard = {
   title: string[]
   /** Reverse face. */
   back: SkillCardLine[]
-  /** Whether the reverse also carries the Figma / Illustrator / Canva marks. */
-  showTools?: boolean
+  /** Which set of tool marks the reverse carries, if any. */
+  tools?: SkillToolSet
 }
+
+/** Named groups of tool marks; the images themselves live in `SkillCards`. */
+export type SkillToolSet = 'design' | 'ai' | 'frontend'
 
 export type Content = {
   profile: {

@@ -22,6 +22,10 @@ import {
   skillBruceLee,
   skillEinstein,
   skillJackson,
+  skillDravid,
+  skillJobs,
+  skillTerminator,
+  skillBean,
 } from './assets'
 import type { Content } from './types'
 
@@ -152,8 +156,56 @@ export const en: Content = {
       imageAlt: 'Michael Jackson performing on stage',
       person: 'Michael Jackson',
       title: ['UI', 'Design'],
-      showTools: true,
+      tools: 'design',
       back: [{ text: '15+ Years of Exp in Visual Design', tone: 'indigo' }],
+    },
+    {
+      image: skillDravid,
+      imageAlt: 'Rahul Dravid walking off the field, bat in hand',
+      person: 'Rahul Dravid',
+      title: ['Stakeholder', 'Management'],
+      back: [
+        {
+          text: 'Stakeholder & cross-functional team collaboration',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillJobs,
+      imageAlt: 'Steve Jobs in portrait',
+      person: 'Steve Jobs',
+      title: ['UX Team', 'Management'],
+      back: [
+        {
+          text: '5 Years of Exp in UX Team Management and…',
+          tone: 'indigo',
+        },
+        { text: 'Design Ops', tone: 'muted', spaced: true },
+        { text: 'Product Owner', tone: 'muted' },
+        { text: 'Agile', tone: 'muted' },
+      ],
+    },
+    {
+      image: skillTerminator,
+      imageAlt: 'The T-800 Terminator',
+      person: 'Terminator',
+      title: ['AI', 'UX Engineering'],
+      tools: 'ai',
+      back: [],
+    },
+    {
+      image: skillBean,
+      imageAlt: 'Mr Bean pulling a face',
+      person: 'MR Bean',
+      title: ['Front-end', 'Code'],
+      tools: 'frontend',
+      back: [
+        {
+          text: 'Working experience with Front end tools',
+          tone: 'indigo',
+        },
+      ],
     },
   ],
 

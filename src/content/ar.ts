@@ -30,6 +30,10 @@ import {
   skillBruceLee,
   skillEinstein,
   skillJackson,
+  skillDravid,
+  skillJobs,
+  skillTerminator,
+  skillBean,
 } from './assets'
 import type { Content } from './types'
 
@@ -167,10 +171,58 @@ export const ar: Content = {
       imageAlt: 'مايكل جاكسون أثناء أدائه على المسرح',
       person: 'Michael Jackson',
       title: ['تصميم', 'الواجهات'],
-      showTools: true,
+      tools: 'design',
       back: [
         {
           text: 'أكثر من 15 سنة من الخبرة في التصميم البصري',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillDravid,
+      imageAlt: 'راهول درافيد يغادر الملعب حاملاً مضربه',
+      person: 'Rahul Dravid',
+      title: ['إدارة', 'أصحاب المصلحة'],
+      back: [
+        {
+          text: 'التعاون مع أصحاب المصلحة والفرق متعددة التخصصات',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillJobs,
+      imageAlt: 'صورة شخصية لستيف جوبز',
+      person: 'Steve Jobs',
+      title: ['إدارة فريق', 'تجربة المستخدم'],
+      back: [
+        {
+          text: '5 سنوات من الخبرة في إدارة فرق تجربة المستخدم و…',
+          tone: 'indigo',
+        },
+        { text: 'عمليات التصميم', tone: 'muted', spaced: true },
+        { text: 'مالك المنتج', tone: 'muted' },
+        { text: 'أجايل', tone: 'muted' },
+      ],
+    },
+    {
+      image: skillTerminator,
+      imageAlt: 'الترميناتور من طراز T-800',
+      person: 'Terminator',
+      title: ['هندسة تجربة', 'المستخدم بالذكاء الاصطناعي'],
+      tools: 'ai',
+      back: [],
+    },
+    {
+      image: skillBean,
+      imageAlt: 'مستر بين وهو يرسم تعبيراً على وجهه',
+      person: 'MR Bean',
+      title: ['برمجة', 'الواجهة الأمامية'],
+      tools: 'frontend',
+      back: [
+        {
+          text: 'خبرة عملية في أدوات تطوير الواجهات الأمامية',
           tone: 'indigo',
         },
       ],

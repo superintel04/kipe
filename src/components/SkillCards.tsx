@@ -2,11 +2,23 @@ import Reveal from './Reveal'
 import Section from './Section'
 import {
   canvaMark,
+  claudeMark,
   figmaMark,
+  figmaMcpMark,
   illustratorMark,
+  lovableMark,
+  openaiMark,
+  reactMark,
   skillShapes,
+  tailwindMark,
+  vercelMark,
 } from '@/content/assets'
-import { useContent, type SkillCard, type SkillTone } from '@/content'
+import {
+  useContent,
+  type SkillCard,
+  type SkillTone,
+  type SkillToolSet,
+} from '@/content'
 
 /** Reverse-face colours. Indigo and coral are literals from Figma 710:1309. */
 const TONE: Record<SkillTone, string> = {
@@ -16,22 +28,59 @@ const TONE: Record<SkillTone, string> = {
   muted: 'text-fg-muted',
 }
 
-/** Figma / Illustrator / Canva, at the dimensions they were exported at. */
-function ToolMarks() {
+/**
+ * Tool marks, at the dimensions they were exported at. Decorative: each card's
+ * copy already names what the marks stand for, and the AI card is titled "AI
+ * UX Engineering" on its front, so nothing here is the only route to the
+ * meaning.
+ */
+const TOOL_SETS: Record<
+  SkillToolSet,
+  { src: string; width: number; height: number }[][]
+> = {
+  design: [
+    [
+      { src: figmaMark, width: 25, height: 37 },
+      { src: illustratorMark, width: 36, height: 36 },
+      { src: canvaMark, width: 80, height: 26 },
+    ],
+    [{ src: skillShapes, width: 97, height: 113 }],
+  ],
+  ai: [
+    [{ src: figmaMcpMark, width: 102, height: 102 }],
+    [{ src: claudeMark, width: 131, height: 29 }],
+    [{ src: openaiMark, width: 55, height: 55 }],
+    [{ src: vercelMark, width: 115, height: 24 }],
+    [{ src: lovableMark, width: 28, height: 28 }],
+  ],
+  frontend: [
+    [{ src: reactMark, width: 45, height: 40 }],
+    [{ src: tailwindMark, width: 120, height: 18 }],
+    [{ src: lovableMark, width: 28, height: 28 }],
+  ],
+}
+
+function ToolMarks({ set }: { set: SkillToolSet }) {
   return (
-    <div aria-hidden="true">
-      <div className="mt-5 flex items-center gap-5">
-        <img src={figmaMark} alt="" width={25} height={37} />
-        <img src={illustratorMark} alt="" width={36} height={36} />
-        <img src={canvaMark} alt="" width={80} height={26} />
-      </div>
-      <img
-        src={skillShapes}
-        alt=""
-        width={97}
-        height={113}
-        className="mt-5 block"
-      />
+    <div
+      aria-hidden="true"
+      className={`flex flex-col ${set === 'ai' ? 'items-center gap-4' : 'mt-5 gap-5'}`}
+    >
+      {TOOL_SETS[set].map((row, index) => (
+        <div key={index} className="flex items-center gap-5">
+          {row.map((mark) => (
+            <img
+              key={mark.src}
+              src={mark.src}
+              alt=""
+              width={mark.width}
+              height={mark.height}
+              loading="lazy"
+              decoding="async"
+            />
+          ))}
+        </div>
+      ))}
     </div>
   )
 }
@@ -73,17 +122,19 @@ function Card({
           />
 
           <div className="skill-face skill-face-back absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[15px] bg-bg p-4">
-            <p className="text-[24px] leading-[1.375] font-bold tracking-[-0.43px]">
-              {card.back.map((line) => (
-                <span key={line.text} className={`block ${TONE[line.tone]}`}>
-                  {line.spaced && (
-                    <span aria-hidden="true" className="block h-[1.375em]" />
-                  )}
-                  {line.text}
-                </span>
-              ))}
-            </p>
-            {card.showTools && <ToolMarks />}
+            {card.back.length > 0 && (
+              <p className="text-[24px] leading-[1.375] font-bold tracking-[-0.43px]">
+                {card.back.map((line) => (
+                  <span key={line.text} className={`block ${TONE[line.tone]}`}>
+                    {line.spaced && (
+                      <span aria-hidden="true" className="block h-[1.375em]" />
+                    )}
+                    {line.text}
+                  </span>
+                ))}
+              </p>
+            )}
+            {card.tools && <ToolMarks set={card.tools} />}
           </div>
         </div>
       </div>
@@ -109,10 +160,13 @@ function Card({
  * continuous marquee, pausing whenever one is hovered or focused so the flip
  * can be read.
  *
- * The strip holds the cards twice and slides exactly half its width, so the
- * loop is seamless; each pass carries its own trailing gap (`pe-6`) to keep
- * that halfway point exact. The direction flips in Arabic, where a strip
- * travelling leftwards would run against the reading direction.
+ * All eight cards are distinct. The strip still runs them twice — that second
+ * pass is what makes the loop seamless, since the track slides exactly half
+ * its width and lands back where it started — but it is hidden from assistive
+ * technology and out of the tab order, so nothing is announced twice. Each
+ * pass carries its own trailing gap (`pe-6`) to keep that halfway point exact.
+ * The direction flips in Arabic, where a strip travelling leftwards would run
+ * against the reading direction.
  *
  * Under `prefers-reduced-motion` the animation stops and the strip becomes an
  * ordinary horizontal scroller, so every card is still reachable. Pausing on
