@@ -754,6 +754,8 @@ export const en: Content = {
     },
     skillset: 'Skillset',
     meetSkillset: 'Meet my skillset',
+    skillDetails: (title) => `${title} — show details`,
+    closeSkillDetails: 'Close details',
     experience: 'Experience',
     credentials: 'Education & Certification',
     challenge: 'Challenge',

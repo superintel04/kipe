@@ -763,6 +763,8 @@ export const ar: Content = {
     },
     skillset: 'المهارات',
     meetSkillset: 'تعرّف على مهاراتي',
+    skillDetails: (title) => `${title} — عرض التفاصيل`,
+    closeSkillDetails: 'إغلاق التفاصيل',
     experience: 'الخبرات العملية',
     credentials: 'المؤهلات والشهادات',
     challenge: 'التحدي',

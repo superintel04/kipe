@@ -157,6 +157,9 @@ export type UiStrings = {
   skillset: string
   /** Heading over the skill-card marquee. */
   meetSkillset: string
+  /** e.g. "UX Strategist — show details"; takes the card's title. */
+  skillDetails: (title: string) => string
+  closeSkillDetails: string
   experience: string
   credentials: string
   challenge: string

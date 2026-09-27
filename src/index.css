@@ -244,6 +244,10 @@
   /* The track carries the cards twice and travels exactly half its width, so
      the join is invisible. Each pass includes its own trailing gap, which is
      what makes 50% land on a card edge rather than mid-gap. */
+  .skill-marquee {
+    overflow: hidden;
+  }
+
   /* 40s across eight cards ≈ 64px/s, so a card passes roughly every 5s. */
   .skill-track {
     animation: skill-marquee 40s linear infinite;
@@ -266,10 +270,12 @@
     }
   }
 
-  /* Stops for the pointer and for the keyboard, so the reverse can be read
-     either way — and so the movement has a stop mechanism at all. */
+  /* Stops for the pointer, for the keyboard, and while a card is held open —
+     the last of those is the one a touch visitor gets, since there is no
+     hover to pause on. */
   .skill-marquee:hover .skill-track,
-  .skill-marquee:focus-within .skill-track {
+  .skill-marquee:focus-within .skill-track,
+  .skill-marquee.is-paused .skill-track {
     animation-play-state: paused;
   }
 
@@ -283,7 +289,8 @@
   }
 
   .skill-card:hover .skill-flip-inner,
-  .skill-card:focus-within .skill-flip-inner {
+  .skill-card:focus-within .skill-flip-inner,
+  .skill-card.is-open .skill-flip-inner {
     transform: rotateY(180deg);
   }
 
@@ -294,6 +301,44 @@
 
   .skill-face-back {
     transform: rotateY(180deg);
+  }
+
+  /* Only the face you are looking at takes the click. Without this the
+     portrait's button still covers the reverse while it is turned away, and
+     the close × would never be reachable with a pointer. */
+  .skill-face-back {
+    pointer-events: none;
+  }
+
+  .skill-card:hover .skill-face-back,
+  .skill-card:focus-within .skill-face-back,
+  .skill-card.is-open .skill-face-back {
+    pointer-events: auto;
+  }
+
+  .skill-card:hover .skill-face-front,
+  .skill-card.is-open .skill-face-front {
+    pointer-events: none;
+  }
+
+  /* Phones get a swipeable strip rather than a marquee — a row that drifts out
+     from under the thumb cannot be read. The duplicate pass goes with it,
+     since nothing is looping any more. */
+  @media (max-width: 767px) {
+    .skill-track {
+      animation: none;
+    }
+
+    .skill-marquee {
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scroll-padding-inline-start: 1.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .skill-marquee ul[aria-hidden="true"] {
+      display: none;
+    }
   }
 
   /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */

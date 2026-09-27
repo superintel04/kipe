@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Reveal from './Reveal'
 import Section from './Section'
 import {
@@ -84,42 +85,77 @@ function ToolMarks({ set }: { set: SkillToolSet }) {
 }
 
 /**
- * One card. The portrait panel flips on hover or focus to reveal the claim —
- * the panel only, not the whole card, so the skill title stays put beneath it
- * and the card never changes size.
+ * One card. The portrait panel flips to reveal the claim — the panel only, not
+ * the whole card, so the skill title stays put beneath it and the card never
+ * changes size.
  *
- * The card is focusable because the flip is otherwise mouse-only. Both faces
- * stay in the accessibility tree, so a screen reader reads the portrait's
- * description and the claim together and never needs the flip at all.
+ * Two ways in, because hover does not exist on a phone: pointing at the card
+ * flips it for as long as the pointer stays (CSS), and activating the portrait
+ * holds it open until the close button is pressed (`open`). The open state is
+ * what a touch visitor gets, and it is also what keeps the marquee paused.
+ *
+ * Each face is a real control rather than the card being one big button: the
+ * portrait opens, the × closes, and neither ends up nested inside the other.
+ * Faces turned away from the viewer drop their pointer events so a click never
+ * lands on the side you cannot see.
  *
  * `duplicate` marks the second pass of the marquee: hidden from assistive
  * technology and out of the tab order, since it is the same card again.
  */
 function Card({
   card,
+  open,
+  onOpen,
+  onClose,
   duplicate = false,
 }: {
   card: SkillCard
+  open: boolean
+  onOpen: () => void
+  onClose: () => void
   duplicate?: boolean
 }) {
+  const { ui } = useContent()
+  const title = card.title.join(' ')
+
   return (
     <li
-      tabIndex={duplicate ? -1 : 0}
-      className="skill-card flex w-[298px] shrink-0 flex-col rounded-2xl bg-bg-inverse px-6 py-[18px]"
+      className={`skill-card flex w-[298px] shrink-0 snap-start flex-col rounded-2xl bg-bg-inverse px-6 py-[18px] ${
+        open ? 'is-open' : ''
+      }`}
     >
       <div className="skill-flip h-[300px] w-[250px]">
         <div className="skill-flip-inner relative size-full">
-          <img
-            src={card.image}
-            alt={card.imageAlt}
-            width={250}
-            height={300}
-            loading="lazy"
-            decoding="async"
-            className="skill-face absolute inset-0 size-full rounded-[15px] object-cover"
-          />
+          <button
+            type="button"
+            onClick={onOpen}
+            aria-expanded={open}
+            aria-label={ui.skillDetails(title)}
+            tabIndex={duplicate ? -1 : 0}
+            className="skill-face skill-face-front absolute inset-0 block size-full overflow-hidden rounded-[15px]"
+          >
+            <img
+              src={card.image}
+              alt={card.imageAlt}
+              width={250}
+              height={300}
+              loading="lazy"
+              decoding="async"
+              className="size-full object-cover"
+            />
+          </button>
 
           <div className="skill-face skill-face-back absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[15px] bg-bg p-4">
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={ui.closeSkillDetails}
+              tabIndex={duplicate || !open ? -1 : 0}
+              className="absolute end-2 top-2 flex size-9 items-center justify-center rounded-full border border-border text-body leading-none text-fg-muted transition-colors hover:bg-bg-inverse hover:text-fg-inverse"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+
             {card.back.length > 0 && (
               <p className="text-[24px] leading-[1.375] font-bold tracking-[-0.43px]">
                 {card.back.map((line) => (
@@ -161,13 +197,16 @@ function Card({
  * The direction flips in Arabic, where a strip travelling leftwards would run
  * against the reading direction.
  *
- * Under `prefers-reduced-motion` the animation stops and the strip becomes an
- * ordinary horizontal scroller, so every card is still reachable. Pausing on
- * hover *and* focus is what keeps this clear of WCAG 2.2.2, which wants a stop
- * mechanism for anything that moves for more than five seconds.
+ * Below `md`, and under `prefers-reduced-motion`, the animation stops and the
+ * strip becomes an ordinary swipeable scroller with the duplicate pass removed
+ * — a marquee that drifts out from under a thumb is no use on a phone.
+ * Pausing on hover, on focus, and while a card is held open is what keeps this
+ * clear of WCAG 2.2.2, which wants a stop mechanism for anything that moves
+ * for more than five seconds.
  */
 export default function SkillCards() {
   const { skillCards, ui } = useContent()
+  const [openCard, setOpenCard] = useState<string | null>(null)
 
   return (
     <Section
@@ -184,16 +223,33 @@ export default function SkillCards() {
           rather than stopping short and looking like a stalled carousel. */}
       {/* `py-2` is headroom for the focus ring, which `overflow-hidden` would
           otherwise clip off the top and bottom of a focused card. */}
-      <div className="skill-marquee -mx-6 mt-12 overflow-hidden py-2 md:-mx-12 md:mt-16">
+      <div
+        className={`skill-marquee -mx-6 mt-12 py-2 md:-mx-12 md:mt-16 ${
+          openCard ? 'is-paused' : ''
+        }`}
+      >
         <div className="skill-track flex w-max">
           <ul className="flex gap-6 pe-6">
             {skillCards.map((card) => (
-              <Card key={card.image} card={card} />
+              <Card
+                key={card.image}
+                card={card}
+                open={openCard === card.image}
+                onOpen={() => setOpenCard(card.image)}
+                onClose={() => setOpenCard(null)}
+              />
             ))}
           </ul>
           <ul aria-hidden="true" className="flex gap-6 pe-6">
             {skillCards.map((card) => (
-              <Card key={`${card.image}-copy`} card={card} duplicate />
+              <Card
+                key={`${card.image}-copy`}
+                card={card}
+                open={false}
+                onOpen={() => {}}
+                onClose={() => {}}
+                duplicate
+              />
             ))}
           </ul>
         </div>
