@@ -155,6 +155,8 @@ export type UiStrings = {
     newTab: string
   }
   skillset: string
+  /** Heading over the skill-card marquee. */
+  meetSkillset: string
   experience: string
   credentials: string
   challenge: string
@@ -190,6 +192,36 @@ export type RegionalPoint = {
   label: string
 }
 
+/**
+ * Colour a line of the skill card's reverse takes. Named by role rather than
+ * by hex, so the palette can move without touching the locale bundles.
+ */
+export type SkillTone = 'indigo' | 'accent' | 'coral' | 'muted'
+
+export type SkillCardLine = {
+  text: string
+  tone: SkillTone
+  /** Adds a blank line above, as the design does before "Dev Components". */
+  spaced?: boolean
+}
+
+/**
+ * One card in the "Meet my skillset" marquee: a portrait of the person the
+ * skill is likened to on the front, the claim on the reverse.
+ */
+export type SkillCard = {
+  image: string
+  imageAlt: string
+  /** The person pictured. */
+  person: string
+  /** Card title, one array entry per line, as broken in the design. */
+  title: string[]
+  /** Reverse face. */
+  back: SkillCardLine[]
+  /** Whether the reverse also carries the Figma / Illustrator / Canva marks. */
+  showTools?: boolean
+}
+
 export type Content = {
   profile: {
     name: string
@@ -201,6 +233,8 @@ export type Content = {
   }
   meta: MetaItem[]
   skills: Skill[]
+  /** "Meet my skillset" marquee. */
+  skillCards: SkillCard[]
   /** Saudi-experience band: three claims over the Riyadh skyline. */
   regional: {
     points: RegionalPoint[]

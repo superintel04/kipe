@@ -26,6 +26,10 @@ import {
   saudiFlagMark,
   arabicEnglishMark,
   dgaMark,
+  skillRahman,
+  skillBruceLee,
+  skillEinstein,
+  skillJackson,
 } from './assets'
 import type { Content } from './types'
 
@@ -115,6 +119,60 @@ export const ar: Content = {
         'البحث وبناء التطبيقات واختبارها وإطلاقها باستخدام ',
         { accent: '(Claude Code + Figma + Figma MCP + Cursor)' },
         ' وسير عمل يسرّع استكشاف المفاهيم وتحليل نتائج البحث وتحويل النماذج الأولية إلى كود.',
+      ],
+    },
+  ],
+
+  skillCards: [
+    {
+      image: skillRahman,
+      imageAlt: 'أ. ر. رحمن أثناء أدائه أمام الميكروفون',
+      person: 'A R Rahman',
+      title: ['استراتيجية', 'تجربة المستخدم'],
+      back: [
+        { text: 'خبرة في ريادة ', tone: 'indigo' },
+        { text: 'الأعمال.', tone: 'accent' },
+        {
+          text: 'أدعم الشركات الناشئة كمستشار لتجربة المستخدم',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillBruceLee,
+      imageAlt: 'صورة شخصية لبروس لي',
+      person: 'Bruce Lee',
+      title: ['أنظمة', 'التصميم'],
+      back: [
+        { text: 'الهوية البصرية', tone: 'accent' },
+        { text: 'التصميم الجرافيكي', tone: 'coral' },
+        { text: 'مكتبة التصميم', tone: 'indigo' },
+        { text: 'مكوّنات التطوير', tone: 'muted', spaced: true },
+      ],
+    },
+    {
+      image: skillEinstein,
+      imageAlt: 'صورة شخصية لألبرت أينشتاين',
+      person: 'Albert Einstein',
+      title: ['بحوث', 'المستخدم'],
+      back: [
+        {
+          text: 'أكثر من 10 سنوات من الخبرة في بحوث المستخدم ومنهجياتها',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillJackson,
+      imageAlt: 'مايكل جاكسون أثناء أدائه على المسرح',
+      person: 'Michael Jackson',
+      title: ['تصميم', 'الواجهات'],
+      showTools: true,
+      back: [
+        {
+          text: 'أكثر من 15 سنة من الخبرة في التصميم البصري',
+          tone: 'indigo',
+        },
       ],
     },
   ],
@@ -661,6 +719,7 @@ export const ar: Content = {
       newTab: 'يفتح في تبويب جديد',
     },
     skillset: 'المهارات',
+    meetSkillset: 'تعرّف على مهاراتي',
     experience: 'الخبرات العملية',
     credentials: 'المؤهلات والشهادات',
     challenge: 'التحدي',

@@ -74,6 +74,13 @@
   --color-accent-solid: #027a43; /* dark: #02b262 */
   --color-focus: #027a43; /* dark: #02b262 */
 
+  /* Skill-card reverse faces (Figma 710:1309). Not DS tokens — the design
+     introduced them for this section alone. The coral is darkened from the
+     design's #ff725e, which reaches only 2.7:1 on white and fails AA at any
+     size; #c9452f keeps the hue and clears 4.5:1. */
+  --color-skill-indigo: #717dff;
+  --color-skill-coral: #c9452f;
+
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;
   --radius-sm: 5px;
@@ -232,6 +239,62 @@
     visibility: visible;
   }
 
+  /* ---- Meet my skillset (Figma 710:1309) -------------------------------- */
+
+  /* The track carries the cards twice and travels exactly half its width, so
+     the join is invisible. Each pass includes its own trailing gap, which is
+     what makes 50% land on a card edge rather than mid-gap. */
+  .skill-track {
+    animation: skill-marquee 44s linear infinite;
+  }
+
+  /* Leftward travel reads as backwards in Arabic. */
+  [dir="rtl"] .skill-track {
+    animation-name: skill-marquee-rtl;
+  }
+
+  @keyframes skill-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes skill-marquee-rtl {
+    to {
+      transform: translateX(50%);
+    }
+  }
+
+  /* Stops for the pointer and for the keyboard, so the reverse can be read
+     either way — and so the movement has a stop mechanism at all. */
+  .skill-marquee:hover .skill-track,
+  .skill-marquee:focus-within .skill-track {
+    animation-play-state: paused;
+  }
+
+  .skill-flip {
+    perspective: 1200px;
+  }
+
+  .skill-flip-inner {
+    transform-style: preserve-3d;
+    transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .skill-card:hover .skill-flip-inner,
+  .skill-card:focus-within .skill-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  .skill-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .skill-face-back {
+    transform: rotateY(180deg);
+  }
+
   /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
 
   /* The card's gradient runs along the reading direction, so it has to flip in
@@ -376,6 +439,24 @@
     .regional-card::after {
       animation: none;
       background: none;
+    }
+
+    /* The marquee stops and becomes an ordinary scroller; the duplicate pass
+       has no purpose once nothing is looping, so it goes. */
+    .skill-track {
+      animation: none;
+    }
+
+    .skill-marquee {
+      overflow-x: auto;
+    }
+
+    .skill-marquee ul[aria-hidden="true"] {
+      display: none;
+    }
+
+    .skill-flip-inner {
+      transition: none;
     }
 
     .regional-row:hover,

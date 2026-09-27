@@ -6,6 +6,7 @@ import RegionalExperience from '@/components/RegionalExperience'
 import CaseStudy from '@/components/CaseStudy'
 import Experience from '@/components/Experience'
 import Credentials from '@/components/Credentials'
+import SkillCards from '@/components/SkillCards'
 import Footer from '@/components/Footer'
 import LanguageToggle from '@/components/LanguageToggle'
 import Reveal from '@/components/Reveal'
@@ -43,6 +44,7 @@ export default function Home() {
 
       <Experience />
       <Credentials />
+      <SkillCards />
       <Footer />
     </>
   )

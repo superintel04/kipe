@@ -18,6 +18,10 @@ import {
   saudiFlagMark,
   arabicEnglishMark,
   dgaMark,
+  skillRahman,
+  skillBruceLee,
+  skillEinstein,
+  skillJackson,
 } from './assets'
 import type { Content } from './types'
 
@@ -104,6 +108,52 @@ export const en: Content = {
         { accent: '(Claude Code + Figma + Figma MCP + Cursor )' },
         ' and workflows to accelerate concept exploration, research synthesis, and prototype-to-code handoff.',
       ],
+    },
+  ],
+
+  skillCards: [
+    {
+      image: skillRahman,
+      imageAlt: 'A. R. Rahman performing at a microphone',
+      person: 'A R Rahman',
+      title: ['UX', 'Strategist'],
+      back: [
+        { text: 'Experience as ', tone: 'indigo' },
+        { text: 'Entrepreneur.', tone: 'accent' },
+        { text: 'Helping Startups as UX Strategist', tone: 'indigo' },
+      ],
+    },
+    {
+      image: skillBruceLee,
+      imageAlt: 'Bruce Lee in portrait',
+      person: 'Bruce Lee',
+      title: ['Design', 'Systems'],
+      back: [
+        { text: 'Branding', tone: 'accent' },
+        { text: 'Graphics', tone: 'coral' },
+        { text: 'Design Library', tone: 'indigo' },
+        { text: 'Dev Components', tone: 'muted', spaced: true },
+      ],
+    },
+    {
+      image: skillEinstein,
+      imageAlt: 'Albert Einstein in portrait',
+      person: 'Albert Einstein',
+      title: ['User', 'Research'],
+      back: [
+        {
+          text: '10+ Years of Exp in User Research and Methods',
+          tone: 'indigo',
+        },
+      ],
+    },
+    {
+      image: skillJackson,
+      imageAlt: 'Michael Jackson performing on stage',
+      person: 'Michael Jackson',
+      title: ['UI', 'Design'],
+      showTools: true,
+      back: [{ text: '15+ Years of Exp in Visual Design', tone: 'indigo' }],
     },
   ],
 
@@ -660,6 +710,7 @@ export const en: Content = {
       newTab: 'opens in a new tab',
     },
     skillset: 'Skillset',
+    meetSkillset: 'Meet my skillset',
     experience: 'Experience',
     credentials: 'Education & Certification',
     challenge: 'Challenge',
