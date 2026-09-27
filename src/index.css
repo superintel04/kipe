@@ -321,6 +321,26 @@
     pointer-events: none;
   }
 
+  /* A card closed by its own × while the pointer is still on it. Hover would
+     otherwise flip it straight back and keep the strip paused, so closing
+     would look like it had done nothing. Both are suppressed until the
+     pointer leaves; these rules come last so they win on source order. */
+  .skill-card.is-dismissed .skill-flip-inner {
+    transform: none;
+  }
+
+  .skill-card.is-dismissed .skill-face-front {
+    pointer-events: auto;
+  }
+
+  .skill-card.is-dismissed .skill-face-back {
+    pointer-events: none;
+  }
+
+  .skill-marquee.is-resumed .skill-track {
+    animation-play-state: running;
+  }
+
   /* Phones get a swipeable strip rather than a marquee — a row that drifts out
      from under the thumb cannot be read. The duplicate pass goes with it,
      since nothing is looping any more. */
