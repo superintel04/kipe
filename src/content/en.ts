@@ -119,7 +119,6 @@ export const en: Content = {
     {
       image: skillRahman,
       imageAlt: 'A. R. Rahman performing at a microphone',
-      person: 'A R Rahman',
       title: ['UX', 'Strategist'],
       back: [
         { text: 'Experience as ', tone: 'indigo' },
@@ -130,7 +129,6 @@ export const en: Content = {
     {
       image: skillBruceLee,
       imageAlt: 'Bruce Lee in portrait',
-      person: 'Bruce Lee',
       title: ['Design', 'Systems'],
       back: [
         { text: 'Branding', tone: 'accent' },
@@ -142,7 +140,6 @@ export const en: Content = {
     {
       image: skillEinstein,
       imageAlt: 'Albert Einstein in portrait',
-      person: 'Albert Einstein',
       title: ['User', 'Research'],
       back: [
         {
@@ -154,7 +151,6 @@ export const en: Content = {
     {
       image: skillJackson,
       imageAlt: 'Michael Jackson performing on stage',
-      person: 'Michael Jackson',
       title: ['UI', 'Design'],
       tools: 'design',
       back: [{ text: '15+ Years of Exp in Visual Design', tone: 'indigo' }],
@@ -162,7 +158,6 @@ export const en: Content = {
     {
       image: skillDravid,
       imageAlt: 'Rahul Dravid walking off the field, bat in hand',
-      person: 'Rahul Dravid',
       title: ['Stakeholder', 'Management'],
       back: [
         {
@@ -174,7 +169,6 @@ export const en: Content = {
     {
       image: skillJobs,
       imageAlt: 'Steve Jobs in portrait',
-      person: 'Steve Jobs',
       title: ['UX Team', 'Management'],
       back: [
         {
@@ -189,7 +183,6 @@ export const en: Content = {
     {
       image: skillTerminator,
       imageAlt: 'The T-800 Terminator',
-      person: 'Terminator',
       title: ['AI', 'UX Engineering'],
       tools: 'ai',
       back: [],
@@ -197,7 +190,6 @@ export const en: Content = {
     {
       image: skillBean,
       imageAlt: 'Mr Bean pulling a face',
-      person: 'MR Bean',
       title: ['Front-end', 'Code'],
       tools: 'frontend',
       back: [

@@ -212,8 +212,6 @@ export type SkillCardLine = {
 export type SkillCard = {
   image: string
   imageAlt: string
-  /** The person pictured. */
-  person: string
   /** Card title, one array entry per line, as broken in the design. */
   title: string[]
   /** Reverse face. */

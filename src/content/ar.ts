@@ -131,7 +131,6 @@ export const ar: Content = {
     {
       image: skillRahman,
       imageAlt: 'أ. ر. رحمن أثناء أدائه أمام الميكروفون',
-      person: 'A R Rahman',
       title: ['استراتيجية', 'تجربة المستخدم'],
       back: [
         { text: 'خبرة في ريادة ', tone: 'indigo' },
@@ -145,7 +144,6 @@ export const ar: Content = {
     {
       image: skillBruceLee,
       imageAlt: 'صورة شخصية لبروس لي',
-      person: 'Bruce Lee',
       title: ['أنظمة', 'التصميم'],
       back: [
         { text: 'الهوية البصرية', tone: 'accent' },
@@ -157,7 +155,6 @@ export const ar: Content = {
     {
       image: skillEinstein,
       imageAlt: 'صورة شخصية لألبرت أينشتاين',
-      person: 'Albert Einstein',
       title: ['بحوث', 'المستخدم'],
       back: [
         {
@@ -169,7 +166,6 @@ export const ar: Content = {
     {
       image: skillJackson,
       imageAlt: 'مايكل جاكسون أثناء أدائه على المسرح',
-      person: 'Michael Jackson',
       title: ['تصميم', 'الواجهات'],
       tools: 'design',
       back: [
@@ -182,7 +178,6 @@ export const ar: Content = {
     {
       image: skillDravid,
       imageAlt: 'راهول درافيد يغادر الملعب حاملاً مضربه',
-      person: 'Rahul Dravid',
       title: ['إدارة', 'أصحاب المصلحة'],
       back: [
         {
@@ -194,7 +189,6 @@ export const ar: Content = {
     {
       image: skillJobs,
       imageAlt: 'صورة شخصية لستيف جوبز',
-      person: 'Steve Jobs',
       title: ['إدارة فريق', 'تجربة المستخدم'],
       back: [
         {
@@ -209,7 +203,6 @@ export const ar: Content = {
     {
       image: skillTerminator,
       imageAlt: 'الترميناتور من طراز T-800',
-      person: 'Terminator',
       title: ['هندسة تجربة', 'المستخدم بالذكاء الاصطناعي'],
       tools: 'ai',
       back: [],
@@ -217,7 +210,6 @@ export const ar: Content = {
     {
       image: skillBean,
       imageAlt: 'مستر بين وهو يرسم تعبيراً على وجهه',
-      person: 'MR Bean',
       title: ['برمجة', 'الواجهة الأمامية'],
       tools: 'frontend',
       back: [

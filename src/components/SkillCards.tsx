@@ -87,8 +87,8 @@ function ToolMarks({ set }: { set: SkillToolSet }) {
 
 /**
  * One card. The portrait panel flips on hover or focus to reveal the claim —
- * the panel only, not the whole card, so the person's name and the skill title
- * stay put beneath it and the card never changes size.
+ * the panel only, not the whole card, so the skill title stays put beneath it
+ * and the card never changes size.
  *
  * The card is focusable because the flip is otherwise mouse-only. Both faces
  * stay in the accessibility tree, so a screen reader reads the portrait's
@@ -139,12 +139,7 @@ function Card({
         </div>
       </div>
 
-      {/* Latin names stay left-to-right when the page mirrors. */}
-      <p className="mt-4 text-body-sm font-medium text-neutral-400" dir="ltr">
-        {card.person}
-      </p>
-
-      <p className="mt-3 text-[30px] leading-[1.375] font-bold tracking-[-0.43px] text-fg-inverse">
+      <p className="mt-5 text-[30px] leading-[1.375] font-bold tracking-[-0.43px] text-fg-inverse">
         {card.title.map((line) => (
           <span key={line} className="block">
             {line}
@@ -195,12 +190,12 @@ export default function SkillCards() {
         <div className="skill-track flex w-max">
           <ul className="flex gap-6 pe-6">
             {skillCards.map((card) => (
-              <Card key={card.person} card={card} />
+              <Card key={card.image} card={card} />
             ))}
           </ul>
           <ul aria-hidden="true" className="flex gap-6 pe-6">
             {skillCards.map((card) => (
-              <Card key={`${card.person}-copy`} card={card} duplicate />
+              <Card key={`${card.image}-copy`} card={card} duplicate />
             ))}
           </ul>
         </div>
