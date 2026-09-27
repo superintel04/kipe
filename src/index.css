@@ -244,9 +244,9 @@
   /* The track carries the cards twice and travels exactly half its width, so
      the join is invisible. Each pass includes its own trailing gap, which is
      what makes 50% land on a card edge rather than mid-gap. */
-  /* 60s across eight cards ≈ 43px/s, so a card passes roughly every 7s. */
+  /* 40s across eight cards ≈ 64px/s, so a card passes roughly every 5s. */
   .skill-track {
-    animation: skill-marquee 60s linear infinite;
+    animation: skill-marquee 40s linear infinite;
   }
 
   /* Leftward travel reads as backwards in Arabic. */
