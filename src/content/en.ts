@@ -176,7 +176,6 @@ export const en: Content = {
           tone: 'indigo',
         },
         { text: 'Design Ops', tone: 'muted', spaced: true },
-        { text: 'Product Owner', tone: 'muted' },
         { text: 'Agile', tone: 'muted' },
       ],
     },

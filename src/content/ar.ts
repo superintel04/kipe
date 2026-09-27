@@ -196,7 +196,6 @@ export const ar: Content = {
           tone: 'indigo',
         },
         { text: 'عمليات التصميم', tone: 'muted', spaced: true },
-        { text: 'مالك المنتج', tone: 'muted' },
         { text: 'أجايل', tone: 'muted' },
       ],
     },
