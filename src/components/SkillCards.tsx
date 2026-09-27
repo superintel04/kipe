@@ -9,7 +9,6 @@ import {
   lovableMark,
   openaiMark,
   reactMark,
-  skillShapes,
   tailwindMark,
   vercelMark,
 } from '@/content/assets'
@@ -44,7 +43,6 @@ const TOOL_SETS: Record<
       { src: illustratorMark, width: 36, height: 36 },
       { src: canvaMark, width: 80, height: 26 },
     ],
-    [{ src: skillShapes, width: 97, height: 113 }],
   ],
   ai: [
     [{ src: figmaMcpMark, width: 102, height: 102 }],

@@ -31,7 +31,6 @@ export { default as reactMark } from '@/assets/team-skill/react-mark.webp'
 export { default as tailwindMark } from '@/assets/team-skill/tailwind-mark.webp'
 export { default as illustratorMark } from '@/assets/team-skill/illustrator-mark.svg'
 export { default as canvaMark } from '@/assets/team-skill/canva-mark.svg'
-export { default as skillShapes } from '@/assets/team-skill/shapes.svg'
 
 export { default as saudiSkyline } from '@/assets/saudi-skyline.webp'
 export { default as saudiFlagMark } from '@/assets/saudi-flag.svg'
