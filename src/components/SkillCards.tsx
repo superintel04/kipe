@@ -63,7 +63,7 @@ function ToolMarks({ set }: { set: SkillToolSet }) {
   return (
     <div
       aria-hidden="true"
-      className={`flex flex-col ${set === 'ai' ? 'items-center gap-4' : 'mt-5 gap-5'}`}
+      className={`pointer-events-none relative flex flex-col md:pointer-events-auto ${set === 'ai' ? 'items-center gap-4' : 'mt-5 gap-5'}`}
     >
       {TOOL_SETS[set].map((row, index) => (
         <div key={index} className="flex items-center gap-5">
@@ -94,9 +94,10 @@ function ToolMarks({ set }: { set: SkillToolSet }) {
  * holds it open (`open`). The open state is what a touch visitor gets, and it
  * is also what keeps the marquee paused.
  *
- * The × only appears below `md`. On a desktop the pointer closes the card by
- * moving away, so a permanent close affordance is clutter; the portrait
- * button doubles as the toggle for anyone on a keyboard there.
+ * The × only appears below `md`, where the whole reverse is also tappable to
+ * turn the card back. On a desktop the pointer closes the card by moving
+ * away, so a permanent close affordance is clutter; the portrait button
+ * doubles as the toggle for anyone on a keyboard there.
  *
  * Each face is a real control rather than the card being one big button: the
  * portrait opens, the × closes, and neither ends up nested inside the other.
@@ -157,6 +158,18 @@ function Card({
           </button>
 
           <div className="skill-face skill-face-back absolute inset-0 flex flex-col justify-center overflow-hidden rounded-[15px] bg-bg p-4">
+            {/* Below `md` the whole panel turns the card back, not just the ×.
+                It sits under the copy — which drops its pointer events there
+                so taps fall through — and is hidden from assistive tech,
+                since the × already exposes this action. */}
+            <button
+              type="button"
+              aria-hidden="true"
+              tabIndex={-1}
+              onClick={onClose}
+              className="absolute inset-0 md:hidden"
+            />
+
             <button
               type="button"
               onClick={(event) => {
@@ -172,13 +185,13 @@ function Card({
               }}
               aria-label={ui.closeSkillDetails}
               tabIndex={duplicate || !open ? -1 : 0}
-              className="absolute end-2 top-2 flex size-9 items-center justify-center rounded-full border border-border text-body leading-none text-fg-muted transition-colors hover:bg-bg-inverse hover:text-fg-inverse md:hidden"
+              className="absolute end-2 top-2 z-10 flex size-9 items-center justify-center rounded-full border border-border text-body leading-none text-fg-muted transition-colors hover:bg-bg-inverse hover:text-fg-inverse md:hidden"
             >
               <span aria-hidden="true">×</span>
             </button>
 
             {card.back.length > 0 && (
-              <p className="text-[24px] leading-[1.375] font-bold tracking-[-0.43px]">
+              <p className="pointer-events-none relative text-[24px] leading-[1.375] font-bold tracking-[-0.43px] md:pointer-events-auto">
                 {card.back.map((line) => (
                   <span key={line.text} className={`block ${TONE[line.tone]}`}>
                     {line.spaced && (
