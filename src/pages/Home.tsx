@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import LanguageToggle from '@/components/LanguageToggle'
 import Reveal from '@/components/Reveal'
 import { useContent } from '@/content'
+import { LANGUAGE_SWITCH_ENABLED } from '@/content/context'
 
 export default function Home() {
   const content = useContent()
@@ -18,8 +19,11 @@ export default function Home() {
   return (
     <>
       {/* Floating over the hero rather than in flow, so the page opens on the
-          name; `end-0` follows the text direction. */}
-      <LanguageToggle className="fixed end-6 top-6 z-50 md:end-12" />
+          name; `end-0` follows the text direction. Hidden while the Arabic
+          side is switched off — see LANGUAGE_SWITCH_ENABLED. */}
+      {LANGUAGE_SWITCH_ENABLED && (
+        <LanguageToggle className="fixed end-6 top-6 z-50 md:end-12" />
+      )}
 
       <Hero />
 

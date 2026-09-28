@@ -7,6 +7,7 @@ import {
 } from 'react'
 import {
   bundles,
+  LANGUAGE_SWITCH_ENABLED,
   LanguageContext,
   STORAGE_KEY,
   type LanguageValue,
@@ -15,6 +16,10 @@ import type { Language } from './types'
 
 /** Remembered choice, falling back to English. Storage can throw in private mode. */
 function readStoredLanguage(): Language {
+  // While the switch is off the site is English regardless of what was
+  // remembered — see LANGUAGE_SWITCH_ENABLED.
+  if (!LANGUAGE_SWITCH_ENABLED) return 'en'
+
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored === 'ar' || stored === 'en') return stored
@@ -47,6 +52,7 @@ export default function LanguageProvider({
   }, [language])
 
   const toggleLanguage = useCallback(() => {
+    if (!LANGUAGE_SWITCH_ENABLED) return
     setLanguage((current) => (current === 'en' ? 'ar' : 'en'))
   }, [])
 
