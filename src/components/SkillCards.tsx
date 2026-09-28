@@ -127,6 +127,27 @@ function Card({
   const frontRef = useRef<HTMLButtonElement>(null)
   const title = card.title.join(' ')
 
+  /**
+   * Swipe-versus-tap. The cards sit in a horizontal scroller, so a drag that
+   * starts on a card still ends in a click — the browser only suppresses that
+   * reliably for vertical page scrolling, not for a scroll container being
+   * flung sideways. Anything that travelled more than a few pixels was the
+   * visitor scrolling, not choosing, so it is ignored.
+   */
+  const pressedAt = useRef<{ x: number; y: number } | null>(null)
+
+  const onPointerDown = (event: React.PointerEvent) => {
+    pressedAt.current = { x: event.clientX, y: event.clientY }
+  }
+
+  const wasDrag = (event: React.MouseEvent) => {
+    const start = pressedAt.current
+    pressedAt.current = null
+    // `detail` is 0 for keyboard activation, which has no travel to measure.
+    if (!start || event.detail === 0) return false
+    return Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10
+  }
+
   return (
     <li
       className={`skill-card flex w-[298px] shrink-0 snap-start flex-col rounded-2xl bg-bg-inverse px-6 py-[18px] ${
@@ -138,9 +159,14 @@ function Card({
           <button
             ref={frontRef}
             type="button"
+            onPointerDown={onPointerDown}
             // A toggle, not just an opener: above `md` the × is hidden, so
             // this is the only way a keyboard user can turn the card back.
-            onClick={open ? onClose : onOpen}
+            onClick={(event) => {
+              if (wasDrag(event)) return
+              if (open) onClose()
+              else onOpen()
+            }}
             aria-expanded={open}
             aria-label={ui.skillDetails(title)}
             tabIndex={duplicate ? -1 : 0}
@@ -166,13 +192,19 @@ function Card({
               type="button"
               aria-hidden="true"
               tabIndex={-1}
-              onClick={onClose}
+              onPointerDown={onPointerDown}
+              onClick={(event) => {
+                if (wasDrag(event)) return
+                onClose()
+              }}
               className="absolute inset-0 md:hidden"
             />
 
             <button
               type="button"
+              onPointerDown={onPointerDown}
               onClick={(event) => {
+                if (wasDrag(event)) return
                 onClose()
                 // `detail` is 0 only when the click came from the keyboard.
                 // A pointer click would otherwise leave focus sitting on this
