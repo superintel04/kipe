@@ -91,8 +91,12 @@ function ToolMarks({ set }: { set: SkillToolSet }) {
  *
  * Two ways in, because hover does not exist on a phone: pointing at the card
  * flips it for as long as the pointer stays (CSS), and activating the portrait
- * holds it open until the close button is pressed (`open`). The open state is
- * what a touch visitor gets, and it is also what keeps the marquee paused.
+ * holds it open (`open`). The open state is what a touch visitor gets, and it
+ * is also what keeps the marquee paused.
+ *
+ * The × only appears below `md`. On a desktop the pointer closes the card by
+ * moving away, so a permanent close affordance is clutter; the portrait
+ * button doubles as the toggle for anyone on a keyboard there.
  *
  * Each face is a real control rather than the card being one big button: the
  * portrait opens, the × closes, and neither ends up nested inside the other.
@@ -133,7 +137,9 @@ function Card({
           <button
             ref={frontRef}
             type="button"
-            onClick={onOpen}
+            // A toggle, not just an opener: above `md` the × is hidden, so
+            // this is the only way a keyboard user can turn the card back.
+            onClick={open ? onClose : onOpen}
             aria-expanded={open}
             aria-label={ui.skillDetails(title)}
             tabIndex={duplicate ? -1 : 0}
@@ -166,7 +172,7 @@ function Card({
               }}
               aria-label={ui.closeSkillDetails}
               tabIndex={duplicate || !open ? -1 : 0}
-              className="absolute end-2 top-2 flex size-9 items-center justify-center rounded-full border border-border text-body leading-none text-fg-muted transition-colors hover:bg-bg-inverse hover:text-fg-inverse"
+              className="absolute end-2 top-2 flex size-9 items-center justify-center rounded-full border border-border text-body leading-none text-fg-muted transition-colors hover:bg-bg-inverse hover:text-fg-inverse md:hidden"
             >
               <span aria-hidden="true">×</span>
             </button>

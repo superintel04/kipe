@@ -193,7 +193,7 @@ export const en: Content = {
       tools: 'frontend',
       back: [
         {
-          text: 'Working experience with Front end tools',
+          text: 'Working experience with Front end code',
           tone: 'indigo',
         },
       ],
@@ -754,7 +754,7 @@ export const en: Content = {
     },
     skillset: 'Skillset',
     meetSkillset: 'Meet my skillset',
-    skillDetails: (title) => `${title} — show details`,
+    skillDetails: (title) => `${title} — details`,
     closeSkillDetails: 'Close details',
     experience: 'Experience',
     credentials: 'Education & Certification',

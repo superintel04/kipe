@@ -213,7 +213,7 @@ export const ar: Content = {
       tools: 'frontend',
       back: [
         {
-          text: 'خبرة عملية في أدوات تطوير الواجهات الأمامية',
+          text: 'خبرة عملية في برمجة الواجهات الأمامية',
           tone: 'indigo',
         },
       ],
@@ -763,7 +763,7 @@ export const ar: Content = {
     },
     skillset: 'المهارات',
     meetSkillset: 'تعرّف على مهاراتي',
-    skillDetails: (title) => `${title} — عرض التفاصيل`,
+    skillDetails: (title) => `${title} — التفاصيل`,
     closeSkillDetails: 'إغلاق التفاصيل',
     experience: 'الخبرات العملية',
     credentials: 'المؤهلات والشهادات',
