@@ -53,10 +53,12 @@ function OutboundIcon() {
  * link, set as one ruled row above the name and aligned to the copy column's
  * leading edge.
  *
- * Plain anchors rather than router links: every target is on this page, so the
- * browser's own hash handling (with `scroll-behavior: smooth` from index.css)
- * does the work. The rules between items are borders on the list items, so
- * they mirror with the text direction rather than needing their own markup.
+ * Plain anchors rather than router links: the three jumps are on this page, so
+ * the browser's own hash handling (with `scroll-behavior: smooth` from
+ * index.css) does the work.
+ *
+ * The bar reads as two groups — where you can go, then what you can do — split
+ * by space rather than a divider.
  *
  * The two icons are decorative — each sits beside a label that already says
  * what the link does — so they carry `aria-hidden` and no alternative text.
@@ -74,22 +76,26 @@ export default function Nav() {
   return (
     <nav aria-label={nav.label}>
       <ul className="flex flex-wrap items-center gap-y-2">
-        <li className="pe-4 md:pe-6">
+        <li className="pe-6 md:pe-9">
           <a href="#skills" className={linkClass}>
             {nav.skills}
           </a>
         </li>
-        <li className="border-s border-border ps-4 pe-4 md:ps-6 md:pe-6">
+        <li className="pe-6 md:pe-9">
           <a href="#projects" className={linkClass}>
             {nav.projects}
           </a>
         </li>
-        <li className="border-s border-border ps-4 pe-4 md:ps-6 md:pe-6">
+        <li>
           <a href="#experience" className={linkClass}>
             {nav.certifications}
           </a>
         </li>
-        <li className="border-s border-border ps-4 pe-4 md:ps-6 md:pe-6">
+
+        {/* The two actions sit apart from the section jumps. Spacing rather
+            than a rule, and `ms-` so the gap moves to the other side in
+            Arabic; 120px only once there is room for it. */}
+        <li className="ms-10 pe-6 lg:ms-[120px] md:pe-9">
           {/* `download` names the saved file; the asset itself is fingerprinted
               by Vite, so its URL is not a readable filename. */}
           <a
@@ -101,7 +107,7 @@ export default function Nav() {
             {nav.resume}
           </a>
         </li>
-        <li className="border-s border-border ps-4 md:ps-6">
+        <li>
           <a
             href={LINKEDIN_URL}
             target="_blank"
