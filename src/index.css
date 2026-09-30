@@ -49,7 +49,9 @@
   --color-neutral-1000: #000000;
 
   /* ---- Colour: semantic (Light mode) ----------------------------------- */
-  --color-bg: #ffffff; /* dark: #000000 */
+  /* Off-white rather than the ramp's pure #ffffff — the page and every
+     surface that sits at "default background" move together. */
+  --color-bg: #f9fafa; /* dark: #000000 */
   --color-bg-subtle: #fafafa; /* dark: #0a0a0a */
   --color-bg-muted: #f4f4f4; /* dark: #171717 */
   --color-bg-sunken: #e4e4e4; /* dark: #000000 */
@@ -57,7 +59,10 @@
 
   --color-fg: #000000; /* dark: #ffffff */
   --color-fg-muted: #525252; /* dark: #a3a3a3 */
-  --color-fg-subtle: #757575; /* dark: #757575 */
+  /* Nudged from the ramp's #757575: on the off-white bg that measured 4.41:1
+     and failed AA for normal text. #717171 clears 4.5:1 on both bg and
+     bg-subtle, at a difference the eye cannot pick out. */
+  --color-fg-subtle: #717171; /* dark: #757575 */
   --color-fg-inverse: #ffffff; /* dark: #000000 */
   --color-fg-on-accent: #ffffff; /* dark: #000000 */
 
