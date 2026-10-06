@@ -179,16 +179,20 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
       {/* Leaves the foot of the preview image uncovered below the panel. */}
       <div aria-hidden="true" className="mt-auto h-[120px] shrink-0" />
 
-      {/* Decorative: the title's stretched link already covers the card and
-          names the destination, so announcing this would say it twice. */}
+      {/* A real link, so the pill itself navigates rather than relying on the
+          title's overlay sitting underneath it. `aria-hidden` and out of the
+          tab order because it is the same destination the title already
+          announces — otherwise every card would be two identical links. */}
       {card.slug && (
-        <span
+        <Link
+          to={`/${card.slug}`}
           aria-hidden="true"
-          className="project-card-cta pointer-events-none absolute end-8 bottom-8 z-20 inline-flex h-[56px] items-center gap-3 rounded-pill bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
+          tabIndex={-1}
+          className="project-card-cta absolute end-8 bottom-8 z-40 inline-flex h-[56px] items-center gap-3 rounded-pill bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
         >
           {ui.fullCaseStudy}
           <img src={iconArrow} alt="" width={20} height={20} />
-        </span>
+        </Link>
       )}
     </article>
   )
