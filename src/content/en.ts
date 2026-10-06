@@ -342,6 +342,7 @@ export const en: Content = {
       ],
       image: berkadiaPreview,
       imageAlt: 'The Berkadia financial statement analysis product',
+      slug: 'project4',
     },
     {
       logo: qatarMark,
@@ -820,6 +821,129 @@ export const en: Content = {
         ],
       },
 
+      nextLabel: 'See all case studies',
+      footerTagline: 'Ramesh  ·  Product & UX design',
+    },
+    {
+      slug: 'project4',
+      heroEyebrow: 'Case study  /  Financial document analysis  /  Banking',
+      name: 'FSA',
+      heroSubtitle:
+        'Financial Statement Analysis for Berkadia mortgage banking',
+      heroImage: berkadiaPreview,
+      heroAlt: 'A commercial property against open sky',
+      scrollCue: 'SCROLL',
+      meta: [
+        { label: 'Role', value: 'Lead UX Designer' },
+        { label: 'Users', value: 'Berkadia analysts and team leads' },
+        { label: 'Duration', value: '1 yr 5 mos' },
+      ],
+      briefLabel: '01 · The brief',
+      processLabel: '02 · Process',
+      resultLabel: '03 · Result',
+      challenge: [
+        'Berkadia\u2019s analysts read property financial documents by hand and keyed the numbers out one by one. The brief was to ',
+        { highlight: 'automate that analysis' },
+        ' and generate the data in the shape each customer needed. It arrived as a ',
+        { strong: 'fuzzy problem' },
+        ' rather than a specification: vague requirements, little information about the people doing the work, and a long runway. So the first job was to turn it into something that could be designed against.',
+      ],
+      approachIntro:
+        'Seven phases, most of them before a screen existed. Select a phase to read it.',
+      phases: [
+        {
+          title: 'Requirements Gathering',
+          chip: 'Phase 01  ·  Discovery',
+          bullets: [
+            'Met product owners and stakeholders',
+            'Ran a whiteboard session',
+            'Set expectations',
+          ],
+          outcome:
+            'Requirements came straight from the requesting team rather than second hand, and the whiteboard session put everyone in the room while the problem was still being described.',
+        },
+        {
+          title: 'Defining Product Scope',
+          chip: 'Phase 02  ·  Scope',
+          bullets: [
+            'Logged vague requirements',
+            'Named the unknowns',
+            'Scoped the research',
+          ],
+          outcome:
+            'A fuzzy problem with little user information was recognised for what it was and scoped as an in-depth research project, rather than being designed against assumptions and reworked later.',
+        },
+        {
+          title: 'Stakeholder Workshops',
+          chip: 'Phase 03  ·  Alignment',
+          bullets: [
+            'Ran workshops with stakeholders',
+            'Included product owners and users',
+          ],
+          outcome:
+            'Every product owner and stakeholder came onto the same page, which removed the conflicting expectations and produced a clear view of what users actually wanted.',
+        },
+        {
+          title: 'User Interviews',
+          chip: 'Phase 04  ·  Research',
+          bullets: [
+            'Interviewed analysts',
+            'Interviewed senior analysts',
+            'Interviewed team leads',
+          ],
+          outcome:
+            'Interviewing each role separately surfaced the real pain points, showed where analysts were spending their time, and established which parts of the job they wanted automated.',
+        },
+        {
+          title: 'Personas & User Flows',
+          chip: 'Phase 05  ·  Definition',
+          bullets: [
+            'Built user personas',
+            'Mapped four role flows',
+            'Documented the research',
+            'Reviewed with the product owner',
+          ],
+          outcome:
+            'Flows for the analyst, senior analyst, QC analyst and team lead made the differences between the four roles explicit, and the documented research gave the team one reference to design against.',
+        },
+        {
+          title: 'Mockups & Usability Testing',
+          chip: 'Phase 06  ·  Design',
+          bullets: [
+            'Sketched from research insight',
+            'Built low fidelity mockups',
+            'Built high fidelity mockups',
+            'Reviewed with users each round',
+            'Checked feasibility with the dev team',
+          ],
+          outcome:
+            'Each round went back to users before the next one started, and every iteration was checked against development feasibility, so the design that reached the build had already survived both.',
+        },
+        {
+          title: 'Visual Design & Design System',
+          chip: 'Phase 07  ·  Visual',
+          bullets: [
+            'Designed the interface in Figma',
+            'Ran A/B and usability tests',
+            'Built the Berkadia design system',
+            'Reviewed with product and architecture',
+          ],
+          outcome:
+            'The style guide, design patterns and UI components built here became the Berkadia design system, bringing consistency across the company\u2019s other products rather than just this one.',
+        },
+      ],
+      overallOutcome: {
+        label: 'Overall outcome',
+        items: [
+          'Document processing time cut by around 80%.',
+          'Error-free document analysis.',
+          'More documents processed per analyst.',
+          'Complete tracking of documents and deal details.',
+          'Less reliance on legacy applications, saving licence costs.',
+          'A Berkadia design system reused across other products.',
+          'Duplicate features avoided, saving development effort.',
+        ],
+      },
       nextLabel: 'See all case studies',
       footerTagline: 'Ramesh  ·  Product & UX design',
     },
