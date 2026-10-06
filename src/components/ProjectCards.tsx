@@ -102,15 +102,33 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
     <article
       className={`project-card relative flex h-full flex-col overflow-hidden rounded-[40px] bg-bg-muted ${cornerFor(index)}`}
     >
+      {/* Behind the content, so the panel above can overlap it. The card's
+          `overflow-hidden` clips it to the card's own corners, including the
+          square one, which saves recomputing four radii per card. */}
+      <img
+        src={card.image}
+        alt={card.imageAlt}
+        width={588}
+        height={235}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-x-0 bottom-0 z-0 block w-full object-cover"
+      />
+
       <div className="relative z-10 flex flex-col gap-6 px-8 pt-8">
         <div className="flex flex-col gap-4">
-          <img
-            src={card.logo}
-            alt={card.logoAlt}
-            width={card.logoWidth}
-            height={card.logoHeight}
-            className="block h-[60px] w-auto object-contain object-left rtl:object-right"
-          />
+          {/* Every mark sits in the design's 120×60 slot and is contained
+              inside it, so a wide, short logo renders small rather than being
+              stretched to the slot's height. */}
+          <span className="flex h-[60px] w-[120px] items-center justify-start">
+            <img
+              src={card.logo}
+              alt={card.logoAlt}
+              width={card.logoWidth}
+              height={card.logoHeight}
+              className="block max-h-full max-w-full object-contain"
+            />
+          </span>
           <h3 className="text-h4 leading-[1.14] font-bold tracking-[-0.312px]">
             {card.slug ? (
               <Link
@@ -137,9 +155,10 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
         </ul>
       </div>
 
-      {/* The design's white-to-translucent panel. It sits above the preview
-          image, which is what makes the image read as rising behind it. */}
-      <div className="relative z-10 mx-6 mt-6 rounded-[40px] bg-gradient-to-b from-bg to-bg/80 p-6 md:mx-8">
+      {/* The design's white-to-translucent panel: #FFFFFF at full opacity
+          down to #FFFFFF at 80%, so the preview image shows faintly through
+          its foot where the two overlap. */}
+      <div className="relative z-10 mx-6 mt-6 rounded-[40px] bg-gradient-to-b from-white to-white/80 p-6 md:mx-8">
         <p className="text-[20px] leading-[1.02] font-bold tracking-[-1.04px] text-fg-subtle">
           {ui.challenge}
         </p>
@@ -157,22 +176,15 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
         </div>
       </div>
 
-      <img
-        src={card.image}
-        alt={card.imageAlt}
-        width={588}
-        height={235}
-        loading="lazy"
-        decoding="async"
-        className="project-card-image mt-auto block w-full object-cover pt-6"
-      />
+      {/* Leaves the foot of the preview image uncovered below the panel. */}
+      <div aria-hidden="true" className="mt-auto h-[120px] shrink-0" />
 
       {/* Decorative: the title's stretched link already covers the card and
           names the destination, so announcing this would say it twice. */}
       {card.slug && (
         <span
           aria-hidden="true"
-          className="project-card-cta pointer-events-none absolute bottom-8 left-1/2 z-20 inline-flex h-[56px] -translate-x-1/2 items-center gap-3 rounded-pill bg-bg px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
+          className="project-card-cta pointer-events-none absolute end-8 bottom-8 z-20 inline-flex h-[56px] items-center gap-3 rounded-pill bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
         >
           {ui.fullCaseStudy}
           <img src={iconArrow} alt="" width={20} height={20} />
