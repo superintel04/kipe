@@ -13,6 +13,21 @@ export { default as graduationCap } from '@/assets/graduation-cap.svg'
 export { default as dewaneHero } from '@/assets/dewane-hero.jpg'
 export { default as culturalHubHero } from '@/assets/project-case-2-new.webp'
 export { default as beyondBusinessHero } from '@/assets/project-case-3-new.webp'
+// Project grid (Figma 869:4068)
+export { default as mocMark } from '@/assets/new-casestudy/moc-logo.webp'
+export { default as berkadiaMark } from '@/assets/new-casestudy/berkadia-logo.webp'
+export { default as qatarMark } from '@/assets/new-casestudy/qatarairways-logo.webp'
+export { default as dewanePreview } from '@/assets/new-casestudy/moc-preview.webp'
+export { default as berkadiaPreview } from '@/assets/new-casestudy/berkadia-preview.webp'
+export { default as qatarPreview } from '@/assets/new-casestudy/qatar-preview.webp'
+export { default as culturalHubPreview } from '@/assets/new-casestudy/cultural-hub-preview.webp'
+export { default as iconPhone } from '@/assets/new-casestudy/icons/phone.svg'
+export { default as iconMonitor } from '@/assets/new-casestudy/icons/monitor.svg'
+export { default as iconDocument } from '@/assets/new-casestudy/icons/document.svg'
+export { default as iconMoney } from '@/assets/new-casestudy/icons/money.svg'
+export { default as iconDga } from '@/assets/new-casestudy/icons/dga.svg'
+export { default as iconArrow } from '@/assets/new-casestudy/icons/arrow.svg'
+
 export { default as skillRahman } from '@/assets/team-skill/rahman.webp'
 export { default as skillBruceLee } from '@/assets/team-skill/bruce-lee.webp'
 export { default as skillEinstein } from '@/assets/team-skill/einstein.webp'
@@ -32,9 +47,17 @@ export { default as tailwindMark } from '@/assets/team-skill/tailwind-mark.webp'
 export { default as illustratorMark } from '@/assets/team-skill/illustrator-mark.svg'
 export { default as canvaMark } from '@/assets/team-skill/canva-mark.svg'
 
+export { default as atTuraif } from '@/assets/at-turaif.jpg'
 export { default as saudiSkyline } from '@/assets/saudi-skyline.webp'
 export { default as saudiFlagMark } from '@/assets/saudi-flag.svg'
 export { default as arabicEnglishMark } from '@/assets/arabic-eng.svg'
 export { default as dgaMark } from '@/assets/dga-logo.svg'
+/**
+ * The white marks are drawn over the case study heroes' dark photography; the
+ * colour marks are the same logos on light surfaces, as the project card uses
+ * them (Figma 793:2841 and 445:684).
+ */
 export { default as mocLogo } from '@/assets/moc-logo.svg'
 export { default as qatarAirwaysLogo } from '@/assets/project-case-3-new-logo.png'
+export { default as mocLogoColour } from '@/assets/moc-logo-colour.svg'
+export { default as qatarAirwaysLogoColour } from '@/assets/qatar-airways-logo.svg'

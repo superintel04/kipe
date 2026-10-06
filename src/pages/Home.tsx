@@ -3,13 +3,12 @@ import MetaGrid from '@/components/MetaGrid'
 import Section from '@/components/Section'
 import Skillset from '@/components/Skillset'
 import RegionalExperience from '@/components/RegionalExperience'
-import CaseStudy from '@/components/CaseStudy'
+import ProjectCards from '@/components/ProjectCards'
 import Experience from '@/components/Experience'
 import Credentials from '@/components/Credentials'
 import SkillCards from '@/components/SkillCards'
 import Footer from '@/components/Footer'
 import LanguageToggle from '@/components/LanguageToggle'
-import Reveal from '@/components/Reveal'
 import { useContent } from '@/content'
 import { LANGUAGE_SWITCH_ENABLED } from '@/content/context'
 
@@ -34,17 +33,7 @@ export default function Home() {
       <Skillset />
       <RegionalExperience />
 
-      <div id="projects" className="scroll-mt-16">
-        <Section innerClassName="pt-8 md:pt-16">
-          <Reveal>
-            <h2 className="text-h2 font-extrabold">{content.ui.caseStudy}</h2>
-          </Reveal>
-        </Section>
-
-        {content.caseStudies.map((study, index) => (
-          <CaseStudy key={study.name} study={study} index={index} />
-        ))}
-      </div>
+      <ProjectCards />
 
       <Experience />
       <Credentials />

@@ -22,9 +22,9 @@ import {
 
 /** Reverse-face colours. Indigo and coral are literals from Figma 710:1309. */
 const TONE: Record<SkillTone, string> = {
-  indigo: 'text-skill-indigo',
+  indigo: 'text-brand-indigo',
   accent: 'text-accent-fg',
-  coral: 'text-skill-coral',
+  coral: 'text-brand-coral',
   muted: 'text-fg-muted',
 }
 

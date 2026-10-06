@@ -23,6 +23,9 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
+  mocLogoColour,
+  qatarAirwaysLogoColour,
+  atTuraif,
   saudiFlagMark,
   arabicEnglishMark,
   dgaMark,
@@ -34,6 +37,13 @@ import {
   skillJobs,
   skillTerminator,
   skillBean,
+  mocMark,
+  berkadiaMark,
+  qatarMark,
+  dewanePreview,
+  berkadiaPreview,
+  qatarPreview,
+  culturalHubPreview,
 } from './assets'
 import type { Content } from './types'
 
@@ -317,6 +327,82 @@ export const ar: Content = {
     signOff: 'مع خالص التقدير،',
   },
 
+  projectCards: [
+    {
+      logo: mocMark,
+      logoAlt: 'وزارة الثقافة',
+      logoWidth: 99,
+      logoHeight: 60,
+      name: 'المنصة الرقمية للموظفين',
+      tags: ['تصميم الخدمات', 'الحكومة السعودية', 'تطبيق جوال'],
+      challenge:
+        'كانت وزارة الثقافة تعتمد على إجراءات يدوية في كثير من خدمات موظفيها، ما تسبب في التأخير وتكرار العمل وضعف تتبع الطلبات. وكانت بحاجة إلى بوابة داخلية واحدة توحّد هذه الخدمات وتبسّطها.',
+      metrics: [
+        { value: '50+', label: 'خدمة رقمية قابلة للتتبع' },
+        { icon: 'devices', label: 'منصتان، الويب وReact Native' },
+        { value: '05', label: 'هيئات تابعة للوزارة تعمل عليها' },
+        { value: '85%', label: 'نسبة الالتزام باتفاقية مستوى الخدمة' },
+      ],
+      image: dewanePreview,
+      imageAlt: 'منصة ديوان الرقمية للموظفين',
+      slug: 'project1',
+    },
+    {
+      logo: berkadiaMark,
+      logoAlt: 'Berkadia',
+      logoWidth: 113,
+      logoHeight: 25,
+      name: 'تحليل القوائم المالية',
+      tags: ['القطاع المصرفي', 'منتج رقمي'],
+      challenge:
+        'أتمتة عملية تحليل المستندات المالية العقارية، وتوليد البيانات وفق احتياج العميل.',
+      metrics: [
+        { value: '80%', label: 'انخفاض في زمن العملية' },
+        { value: '2X', label: 'مضاعفة معالجة المستندات' },
+        { value: '0%', label: 'أخطاء في تحليل المستندات' },
+        { icon: 'money', label: 'توفير في تكاليف التراخيص' },
+      ],
+      image: berkadiaPreview,
+      imageAlt: 'منتج تحليل القوائم المالية من Berkadia',
+    },
+    {
+      logo: qatarMark,
+      logoAlt: 'الخطوط الجوية القطرية',
+      logoWidth: 100,
+      logoHeight: 34,
+      name: 'بوابة الشركات للخطوط الجوية القطرية',
+      tags: ['الطيران', 'تصميم الخدمات', 'تطبيقات الويب'],
+      challenge:
+        'كانت بوابة Beyond Business الحالية تعاني من نماذج معقّدة وتنقّل غير واضح وتصميم غير متسق وتجربة ضعيفة على الجوال. أرادت الخطوط الجوية القطرية بوابة بسيطة ومتجاوبة تغطي التسجيل والحجز وإدارة الحساب والعروض واستبدال النقاط.',
+      metrics: [
+        { icon: 'document', label: 'تدفق تسجيل أبسط' },
+        { icon: 'devices', label: 'تجربة متجاوبة' },
+        { value: '1M', label: 'تسجيل في برنامج تعويض الكربون' },
+      ],
+      image: qatarPreview,
+      imageAlt: 'بوابة Beyond Business للشركات من الخطوط الجوية القطرية',
+      slug: 'project3',
+    },
+    {
+      logo: mocMark,
+      logoAlt: 'وزارة الثقافة',
+      logoWidth: 99,
+      logoHeight: 60,
+      name: 'بوابة الملتقى الثقافي',
+      tags: ['هيئة الحكومة الرقمية', 'الحكومة السعودية'],
+      challenge:
+        'أرادت الوزارة إعادة تصميم بوابة الملتقى الثقافي لإبراز الثقافة السعودية بصورة أفضل، وبما يتوافق مع معايير تصميم هيئة الحكومة الرقمية.',
+      metrics: [
+        { value: '100%', label: 'إعادة بناء على DGA Code' },
+        { icon: 'devices', label: 'منصتان، الويب وReact Native' },
+        { icon: 'dga', label: 'معتمدة من هيئة الحكومة الرقمية' },
+      ],
+      image: culturalHubPreview,
+      imageAlt: 'بوابة الملتقى الثقافي العامة',
+      slug: 'project2',
+    },
+  ],
+
   caseStudies: [
     {
       eyebrow: 'المشروع',
@@ -335,6 +421,29 @@ export const ar: Content = {
       imageWidth: 464,
       imageHeight: 259,
       bandRatio: 0.86,
+      card: {
+        logo: mocLogoColour,
+        logoAlt: 'وزارة الثقافة',
+        logoWidth: 98,
+        logoHeight: 62,
+        title: 'Dewane',
+        subtitle: 'منصة الموظفين الرقمية',
+        tags: ['تصميم الخدمات', 'القطاع الحكومي السعودي'],
+        challenges: [
+          'خدمات الموظفين تُنفذ ورقيًا',
+          'لا توجد وسيلة لتتبع الطلب',
+          'اعتمادات مرهقة وجمع بيانات يدوي',
+        ],
+        stats: [
+          { value: '50+', label: 'خدمة مرقمنة وقابلة للتتبع' },
+          { marks: true, label: 'منصتان، الويب وReact Native' },
+          { value: '05', label: 'هيئات أخرى بالوزارة تعمل عليها الآن' },
+          { value: '85%', label: 'نسبة الالتزام باتفاقية مستوى الخدمة' },
+        ],
+        roleLabel: 'كبير مصممي تجربة المستخدم',
+        photo: atTuraif,
+        photoAlt: 'قصر نجدي من الطين تضيئه الأنوار عند الغروب',
+      },
       detail: {
         challenge:
           'تقدم وزارة الثقافة عددًا كبيرًا من الخدمات لموظفيها، وكان معظمها يُنفذ يدويًا. فالطلبات كانت تتطلب معاملات ورقية وتدخلًا بشريًا مستمرًا، ولم تكن هناك وسيلة موثوقة لتتبع حالة الطلب، وهو ما جعل التأخير أمرًا معتادًا في غياب نظام فعّال لإدارة الخدمات. لذلك رغبت الوزارة في بناء بوابة داخلية تمثل منصة رقمية موحدة للموظفين باسم Dewane.',
@@ -372,6 +481,28 @@ export const ar: Content = {
       imageWidth: 459,
       imageHeight: 220,
       bandRatio: 0.95,
+      card: {
+        logo: mocLogoColour,
+        logoAlt: 'وزارة الثقافة',
+        logoWidth: 98,
+        logoHeight: 62,
+        title: 'Cultural Hub',
+        subtitle: 'البوابة الثقافية العامة',
+        tags: ['تصميم الخدمات', 'القطاع الحكومي السعودي'],
+        challenges: [
+          'مشكلات في التنقل عبر البوابة',
+          'لا تبدو كخدمة حكومية رسمية',
+          'تصميم لا يصمد على الجوال',
+        ],
+        stats: [
+          { value: 'DGA', label: 'أُعيد بناؤها على مكتبة التصميم الحكومية' },
+          { marks: true, label: 'متجاوبة على سطح المكتب والجوال' },
+          { value: 'KSA', label: 'بوابة واحدة تخدم السكان في كل المناطق' },
+        ],
+        roleLabel: 'كبير مصممي تجربة المستخدم',
+        photo: culturalHubHero,
+        photoAlt: 'قلعة تراثية سعودية عند الغروب',
+      },
       detail: {
         challenge:
           'تمثل Cultural Hub مصدر إلهام لكل ما يعزز الثقافة السعودية الفريدة التي تشكّلت عبر الزمن ويحافظ عليها. وقد رغبت الوزارة في إعادة بناء البوابة وفق DGA Code، وهو مكتبة التصميم الموحدة الصادرة عن هيئة الحكومة الرقمية لجميع التطبيقات الحكومية؛ فأعدنا تصميم تجربة البوابة بالكامل.',
@@ -407,6 +538,28 @@ export const ar: Content = {
       imageWidth: 451,
       imageHeight: 200,
       bandRatio: 0.88,
+      card: {
+        logo: qatarAirwaysLogoColour,
+        logoAlt: 'الخطوط الجوية القطرية',
+        logoWidth: 126,
+        logoHeight: 44,
+        title: 'Beyond Business',
+        subtitle: 'منصة مكافآت الشركات',
+        tags: ['تصميم التجربة', 'قطاع الطيران'],
+        challenges: [
+          'تسجيل مدفون في نماذج معقدة',
+          'تسميات تنقل غير واضحة',
+          'تجربة تتعثر على الشاشات الصغيرة',
+        ],
+        stats: [
+          { value: '05', label: 'رحلات مستخدم أساسية أُعيد بناؤها بالكامل' },
+          { marks: true, label: 'سطح المكتب واللوحي والجوال' },
+          { value: '04', label: 'بوابات منافسة خضعت للمقارنة المرجعية' },
+        ],
+        roleLabel: 'مصمم تجربة المستخدم',
+        photo: beyondBusinessHero,
+        photoAlt: 'مسافرو أعمال الخطوط الجوية القطرية في صالة المطار',
+      },
       detail: {
         challenge:
           'برنامج Beyond Business من الخطوط الجوية القطرية هو برنامج مكافآت مؤسسي يمنح الشركات وموظفيها مزايا على رحلات الأعمال. وكانت البوابة القائمة تُصعّب الرحلات الأساسية فيها: فالتسجيل يمر بنماذج معقدة، وعناوين التنقل غير واضحة، والعناصر البصرية غير متسقة، ولم تكن التجربة ملائمة للشاشات الصغيرة. وقد رغبت الخطوط الجوية القطرية في إعادة بناء التسجيل وحجز الرحلات وإدارة الحساب والعروض الحصرية واستبدال النقاط، بتصميم متجاوب ومتسق مع الهوية ومتكامل مع برنامج الولاء.',
@@ -772,6 +925,9 @@ export const ar: Content = {
     outcome: 'النتائج',
     screens: 'لقطات من المشروع',
     caseStudy: 'دراسة الحالة',
+    projects: 'المشاريع',
+    outcomeLabel: 'الأثر',
+    fullCaseStudy: 'دراسة الحالة كاملة',
     backToProfile: 'العودة إلى الملف الشخصي',
     backToTop: 'العودة إلى الأعلى',
     viewCaseStudy: 'عرض دراسة الحالة',

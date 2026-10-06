@@ -15,6 +15,9 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
+  mocLogoColour,
+  qatarAirwaysLogoColour,
+  atTuraif,
   saudiFlagMark,
   arabicEnglishMark,
   dgaMark,
@@ -26,6 +29,13 @@ import {
   skillJobs,
   skillTerminator,
   skillBean,
+  mocMark,
+  berkadiaMark,
+  qatarMark,
+  dewanePreview,
+  berkadiaPreview,
+  qatarPreview,
+  culturalHubPreview,
 } from './assets'
 import type { Content } from './types'
 
@@ -298,6 +308,82 @@ export const en: Content = {
     signOff: 'Regards,',
   },
 
+  projectCards: [
+    {
+      logo: mocMark,
+      logoAlt: 'Ministry of Culture',
+      logoWidth: 99,
+      logoHeight: 60,
+      name: 'Employee Digital Hub',
+      tags: ['Service Design', 'Saudi Government', 'Mobile App'],
+      challenge:
+        'The Ministry of Culture relied on manual processes for many employee services, causing delays, repeated work, and poor request tracking. They needed a single intranet portal to centralize and simplify these services.',
+      metrics: [
+        { value: '50+', label: 'Services digitised and trackable' },
+        { icon: 'devices', label: 'Platforms, web and React Native' },
+        { value: '05', label: 'Ministry commissions now running on it' },
+        { value: '85%', label: 'SLA reach' },
+      ],
+      image: dewanePreview,
+      imageAlt: 'The Dewane employee digital hub',
+      slug: 'project1',
+    },
+    {
+      logo: berkadiaMark,
+      logoAlt: 'Berkadia',
+      logoWidth: 113,
+      logoHeight: 25,
+      name: 'Financial Statement Analysis',
+      tags: ['Banking', 'Product'],
+      challenge:
+        'Automate the property financial document analysis process, and generate the data according to customer need.',
+      metrics: [
+        { value: '80%', label: 'Of the process time reduced' },
+        { value: '2X', label: 'Increased document processing' },
+        { value: '0%', label: 'Errors on document analysis' },
+        { icon: 'money', label: 'Saved money on licences' },
+      ],
+      image: berkadiaPreview,
+      imageAlt: 'The Berkadia financial statement analysis product',
+    },
+    {
+      logo: qatarMark,
+      logoAlt: 'Qatar Airways',
+      logoWidth: 100,
+      logoHeight: 34,
+      name: 'Qatar Airways Corporate Portal',
+      tags: ['Aviation', 'Service Design', 'Web Applications'],
+      challenge:
+        'The existing Beyond Business portal had complex forms, confusing navigation, inconsistent design, and poor mobile usability. Qatar Airways needed a simple, responsive portal for enrolment, bookings, account management, offers, and rewards redemption.',
+      metrics: [
+        { icon: 'document', label: 'A simpler enrolment flow' },
+        { icon: 'devices', label: 'Responsive experience' },
+        { value: '1M', label: 'Carbon offset enrolments' },
+      ],
+      image: qatarPreview,
+      imageAlt: 'The Qatar Airways Beyond Business corporate portal',
+      slug: 'project3',
+    },
+    {
+      logo: mocMark,
+      logoAlt: 'Ministry of Culture',
+      logoWidth: 99,
+      logoHeight: 60,
+      name: 'Cultural Hub Portal',
+      tags: ['Digital Gov Authority', 'Saudi Government'],
+      challenge:
+        'The Ministry wanted to redesign the Cultural Hub portal to better promote Saudi culture and align with the DGA design standards.',
+      metrics: [
+        { value: '100%', label: 'Rebuilt on DGA Code' },
+        { icon: 'devices', label: 'Platforms, web and React Native' },
+        { icon: 'dga', label: 'Certified by DGA' },
+      ],
+      image: culturalHubPreview,
+      imageAlt: 'The Cultural Hub public portal',
+      slug: 'project2',
+    },
+  ],
+
   caseStudies: [
     {
       eyebrow: 'Project',
@@ -316,6 +402,29 @@ export const en: Content = {
       imageWidth: 464,
       imageHeight: 259,
       bandRatio: 0.86,
+      card: {
+        logo: mocLogoColour,
+        logoAlt: 'Ministry of Culture',
+        logoWidth: 98,
+        logoHeight: 62,
+        title: 'Dewane',
+        subtitle: 'Employee Digital Hub',
+        tags: ['Service Design', 'Saudi Government'],
+        challenges: [
+          'Employee services running on paper',
+          'No way to track a request',
+          'Hectic approvals and data collection',
+        ],
+        stats: [
+          { value: '50+', label: 'Services digitised and trackable' },
+          { marks: true, label: 'Platforms, web and React Native' },
+          { value: '05', label: 'Other Ministry commissions now running on it' },
+          { value: '85%', label: 'SLA reach' },
+        ],
+        roleLabel: 'Lead UX Designer',
+        photo: atTuraif,
+        photoAlt: 'A floodlit Najdi mud-brick palace at dusk',
+      },
       detail: {
         challenge:
           'The Ministry of Culture runs a large catalogue of services for its own employees, and most of them were manual. Requests meant paperwork and constant manual intervention, there was no reliable way to track where a request stood, and delays were routine with no proper service management underneath any of it. They wanted an intranet portal: an employee digital hub called Dewane.',
@@ -353,6 +462,28 @@ export const en: Content = {
       imageWidth: 459,
       imageHeight: 220,
       bandRatio: 0.95,
+      card: {
+        logo: mocLogoColour,
+        logoAlt: 'Ministry of Culture',
+        logoWidth: 98,
+        logoHeight: 62,
+        title: 'Cultural Hub',
+        subtitle: 'Public Cultural Portal',
+        tags: ['Service Design', 'Saudi Government'],
+        challenges: [
+          'Navigation problems across the portal',
+          'Not recognisably a government service',
+          'Layout breaking down on mobile',
+        ],
+        stats: [
+          { value: 'DGA', label: 'Rebuilt on the government design library' },
+          { marks: true, label: 'Responsive across desktop and mobile' },
+          { value: 'KSA', label: 'One portal serving citizens nationwide' },
+        ],
+        roleLabel: 'Lead UX Designer',
+        photo: culturalHubHero,
+        photoAlt: 'A Saudi heritage fort at dusk',
+      },
       detail: {
         challenge:
           'Cultural Hub is a source of inspiration for everything that promotes and preserves the unique Saudi culture shaped over time. The Ministry wanted the portal rebuilt on DGA Code the Digital Government Authority’s unified design library for all government applications so we redesigned the portal’s experience end to end.',
@@ -388,6 +519,28 @@ export const en: Content = {
       imageWidth: 451,
       imageHeight: 200,
       bandRatio: 0.88,
+      card: {
+        logo: qatarAirwaysLogoColour,
+        logoAlt: 'Qatar Airways',
+        logoWidth: 126,
+        logoHeight: 44,
+        title: 'Beyond Business',
+        subtitle: 'Corporate Rewards Platform',
+        tags: ['Experience Design', 'Aviation'],
+        challenges: [
+          'Enrolment buried in complex forms',
+          'Unclear navigation labels',
+          'Breaking down on smaller screens',
+        ],
+        stats: [
+          { value: '05', label: 'Core journeys rebuilt end to end' },
+          { marks: true, label: 'Desktop, tablet and mobile' },
+          { value: '04', label: 'Competitor portals benchmarked' },
+        ],
+        roleLabel: 'UX Designer',
+        photo: beyondBusinessHero,
+        photoAlt: 'Qatar Airways business travellers in an airport terminal',
+      },
       detail: {
         challenge:
           'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys hard work: enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt: responsive, consistent with the brand, and properly integrated with the loyalty programme.',
@@ -763,6 +916,9 @@ export const en: Content = {
     outcome: 'Outcome',
     screens: 'Screens',
     caseStudy: 'Case study',
+    projects: 'Project',
+    outcomeLabel: 'Outcome',
+    fullCaseStudy: 'Full Case study',
     backToProfile: 'Back to profile',
     backToTop: 'Back to top',
     viewCaseStudy: 'View Case study',

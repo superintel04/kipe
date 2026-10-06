@@ -56,6 +56,9 @@
   --color-bg-muted: #f4f4f4; /* dark: #171717 */
   --color-bg-sunken: #e4e4e4; /* dark: #000000 */
   --color-bg-inverse: #000000; /* dark: #ffffff */
+  /* Sits over imagery rather than over the page, so it stays the ramp's pure
+     white while `bg` is off-white — see the case-study card's panel. */
+  --color-bg-overlay: #ffffff; /* dark: #0a0a0a */
 
   --color-fg: #000000; /* dark: #ffffff */
   --color-fg-muted: #525252; /* dark: #a3a3a3 */
@@ -79,12 +82,13 @@
   --color-accent-solid: #027a43; /* dark: #02b262 */
   --color-focus: #027a43; /* dark: #02b262 */
 
-  /* Skill-card reverse faces (Figma 710:1309). Not DS tokens — the design
-     introduced them for this section alone. The coral is darkened from the
-     design's #ff725e, which reaches only 2.7:1 on white and fails AA at any
-     size; #c9452f keeps the hue and clears 4.5:1. */
-  --color-skill-indigo: #717dff;
-  --color-skill-coral: #c9452f;
+  /* Accents the designs introduce outside the DS palette: the skill-card
+     reverse faces (Figma 710:1309) and the case-study card's project name
+     (Figma 793:2832). The coral is darkened from the designs' #ff725e /
+     #eb5a3c, which reach 2.7:1 and 3.1:1 on white and fail AA at any size;
+     #c9452f keeps the hue and clears 4.5:1. */
+  --color-brand-indigo: #717dff;
+  --color-brand-coral: #c9452f;
 
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;
@@ -242,6 +246,46 @@
     opacity: 1;
     transform: none;
     visibility: visible;
+  }
+
+  /* ---- Project cards (Figma 869:4068) ----------------------------------- */
+
+  .project-card {
+    transition:
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 420ms ease;
+  }
+
+  .project-card-image {
+    transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* `:focus-within` as well as `:hover`, so the pill is not a mouse-only
+     affordance — tabbing to the card surfaces it the same way. */
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgb(0 0 0 / 0.1);
+  }
+
+  .project-card:hover .project-card-image,
+  .project-card:focus-within .project-card-image {
+    transform: scale(1.04);
+  }
+
+  /* The "Full Case study" pill is hidden until the card is reached. */
+  .project-card-cta {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+    transition:
+      opacity 320ms ease,
+      transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-card:hover .project-card-cta,
+  .project-card:focus-within .project-card-cta {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
   /* ---- Meet my skillset (Figma 710:1309) -------------------------------- */
@@ -510,6 +554,22 @@
     .regional-card::after {
       animation: none;
       background: none;
+    }
+
+    /* The pill still appears; it just does not travel, and the card and its
+       preview stay put. */
+    .project-card:hover,
+    .project-card:focus-within,
+    .project-card:hover .project-card-image,
+    .project-card:focus-within .project-card-image {
+      transform: none;
+    }
+
+    .project-card-cta,
+    .project-card:hover .project-card-cta,
+    .project-card:focus-within .project-card-cta {
+      transform: translateX(-50%);
+      transition: opacity 160ms ease;
     }
 
     /* The marquee stops and becomes an ordinary scroller; the duplicate pass
