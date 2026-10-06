@@ -1,4 +1,4 @@
-import resumeUrl from '@/assets/RameshPanti-UXUI-Designer.pdf'
+import resumeUrl from '@/assets/Ramesh-Panti-Lead-Product-Designer-Resume.pdf'
 import { useContent } from '@/content'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ramesh-ux-designer/'
@@ -100,7 +100,7 @@ export default function Nav() {
               by Vite, so its URL is not a readable filename. */}
           <a
             href={resumeUrl}
-            download="RameshPanti-UXUI-Designer.pdf"
+            download="Ramesh-Panti-Lead-Product-Designer-Resume.pdf"
             className={iconLinkClass}
           >
             <DownloadIcon />
