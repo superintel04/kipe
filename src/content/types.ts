@@ -65,50 +65,6 @@ export type CaseStudyDetail = {
   gallery?: { src: string; alt: string }[]
 }
 
-/**
- * One headline figure in the card's Outcome row. Either a figure of its own
- * ("50+", "85%") or, where the claim is a set of platforms rather than a
- * number, the pair of platform marks in place of one.
- */
-export type CaseStudyStat = {
-  /** The figure. Omitted on the stat that carries `marks` instead. */
-  value?: string
-  /** Shows the phone and monitor marks where the figure would sit. */
-  marks?: boolean
-  label: string
-}
-
-/**
- * The project card on the home page (Figma node 793:2832): client mark and
- * product name, the disciplines it sat in, then the problem it started from
- * and the figures it ended on, over a photograph of the project's setting.
- *
- * This is the summary face of a project. The long-form write-up stays on the
- * project's own page — the card links to it.
- */
-export type CaseStudyCard = {
-  /** Client mark — a Vite asset import. */
-  logo: string
-  logoAlt: string
-  /** The mark's own designed dimensions, as in `Credential`. */
-  logoWidth: number
-  logoHeight: number
-  /** Product name, set in the card's coral. */
-  title: string
-  subtitle: string
-  /** Discipline and sector, shown as pills. */
-  tags: string[]
-  /** The problems the project started from, one short phrase each. */
-  challenges: string[]
-  /** What it delivered, as headline figures. */
-  stats: CaseStudyStat[]
-  /** Named under the figures, so the card still says what the role was. */
-  roleLabel: string
-  /** Photograph along the card's bottom edge — a Vite asset import. */
-  photo: string
-  photoAlt: string
-}
-
 export type CaseStudy = {
   eyebrow: string
   /** Accented first half of the title, e.g. the product name. */
@@ -133,8 +89,6 @@ export type CaseStudy = {
    * band height ÷ mockup bottom edge.
    */
   bandRatio: number
-  /** The home page's summary card for this project. */
-  card: CaseStudyCard
   detail?: CaseStudyDetail
 }
 

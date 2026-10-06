@@ -15,9 +15,6 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
-  mocLogoColour,
-  qatarAirwaysLogoColour,
-  atTuraif,
   saudiFlagMark,
   arabicEnglishMark,
   dgaMark,
@@ -402,30 +399,7 @@ export const en: Content = {
       imageWidth: 464,
       imageHeight: 259,
       bandRatio: 0.86,
-      card: {
-        logo: mocLogoColour,
-        logoAlt: 'Ministry of Culture',
-        logoWidth: 98,
-        logoHeight: 62,
-        title: 'Dewane',
-        subtitle: 'Employee Digital Hub',
-        tags: ['Service Design', 'Saudi Government'],
-        challenges: [
-          'Employee services running on paper',
-          'No way to track a request',
-          'Hectic approvals and data collection',
-        ],
-        stats: [
-          { value: '50+', label: 'Services digitised and trackable' },
-          { marks: true, label: 'Platforms, web and React Native' },
-          { value: '05', label: 'Other Ministry commissions now running on it' },
-          { value: '85%', label: 'SLA reach' },
-        ],
-        roleLabel: 'Lead UX Designer',
-        photo: atTuraif,
-        photoAlt: 'A floodlit Najdi mud-brick palace at dusk',
-      },
-      detail: {
+        detail: {
         challenge:
           'The Ministry of Culture runs a large catalogue of services for its own employees, and most of them were manual. Requests meant paperwork and constant manual intervention, there was no reliable way to track where a request stood, and delays were routine with no proper service management underneath any of it. They wanted an intranet portal: an employee digital hub called Dewane.',
         approach: {
@@ -462,29 +436,7 @@ export const en: Content = {
       imageWidth: 459,
       imageHeight: 220,
       bandRatio: 0.95,
-      card: {
-        logo: mocLogoColour,
-        logoAlt: 'Ministry of Culture',
-        logoWidth: 98,
-        logoHeight: 62,
-        title: 'Cultural Hub',
-        subtitle: 'Public Cultural Portal',
-        tags: ['Service Design', 'Saudi Government'],
-        challenges: [
-          'Navigation problems across the portal',
-          'Not recognisably a government service',
-          'Layout breaking down on mobile',
-        ],
-        stats: [
-          { value: 'DGA', label: 'Rebuilt on the government design library' },
-          { marks: true, label: 'Responsive across desktop and mobile' },
-          { value: 'KSA', label: 'One portal serving citizens nationwide' },
-        ],
-        roleLabel: 'Lead UX Designer',
-        photo: culturalHubHero,
-        photoAlt: 'A Saudi heritage fort at dusk',
-      },
-      detail: {
+        detail: {
         challenge:
           'Cultural Hub is a source of inspiration for everything that promotes and preserves the unique Saudi culture shaped over time. The Ministry wanted the portal rebuilt on DGA Code the Digital Government Authority’s unified design library for all government applications so we redesigned the portal’s experience end to end.',
         approach: {
@@ -519,29 +471,7 @@ export const en: Content = {
       imageWidth: 451,
       imageHeight: 200,
       bandRatio: 0.88,
-      card: {
-        logo: qatarAirwaysLogoColour,
-        logoAlt: 'Qatar Airways',
-        logoWidth: 126,
-        logoHeight: 44,
-        title: 'Beyond Business',
-        subtitle: 'Corporate Rewards Platform',
-        tags: ['Experience Design', 'Aviation'],
-        challenges: [
-          'Enrolment buried in complex forms',
-          'Unclear navigation labels',
-          'Breaking down on smaller screens',
-        ],
-        stats: [
-          { value: '05', label: 'Core journeys rebuilt end to end' },
-          { marks: true, label: 'Desktop, tablet and mobile' },
-          { value: '04', label: 'Competitor portals benchmarked' },
-        ],
-        roleLabel: 'UX Designer',
-        photo: beyondBusinessHero,
-        photoAlt: 'Qatar Airways business travellers in an airport terminal',
-      },
-      detail: {
+        detail: {
         challenge:
           'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys hard work: enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt: responsive, consistent with the brand, and properly integrated with the loyalty programme.',
         approach: {

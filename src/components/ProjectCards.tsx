@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import Link from './Link'
 import Reveal from './Reveal'
 import Section from './Section'
@@ -87,33 +86,21 @@ function cornerFor(index: number) {
   return firstRow ? 'rounded-ee-none' : 'rounded-se-none'
 }
 
-function CardShell({
-  card,
-  className,
-  children,
-}: {
-  card: ProjectCard
-  className: string
-  children: ReactNode
-}) {
-  if (!card.slug) {
-    return <article className={className}>{children}</article>
-  }
-  return (
-    <Link to={`/${card.slug}`} className={className}>
-      {children}
-    </Link>
-  )
-}
-
-/** One project card (Figma node 869:4068). */
+/**
+ * One project card (Figma node 869:4068).
+ *
+ * The whole card is clickable, but the link itself is only around the title,
+ * stretched over the card with a pseudo-element. Wrapping everything in the
+ * anchor would make the challenge paragraph and every metric part of the
+ * link's accessible name — a screen reader would read the entire card as one
+ * enormous link label. This way the link announces as the project name.
+ */
 function Card({ card, index }: { card: ProjectCard; index: number }) {
   const { ui } = useContent()
 
   return (
-    <CardShell
-      card={card}
-      className={`project-card group relative flex h-full flex-col overflow-hidden rounded-[40px] bg-bg-muted ${cornerFor(index)}`}
+    <article
+      className={`project-card relative flex h-full flex-col overflow-hidden rounded-[40px] bg-bg-muted ${cornerFor(index)}`}
     >
       <div className="relative z-10 flex flex-col gap-6 px-8 pt-8">
         <div className="flex flex-col gap-4">
@@ -125,7 +112,16 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
             className="block h-[60px] w-auto object-contain object-left rtl:object-right"
           />
           <h3 className="text-h4 leading-[1.14] font-bold tracking-[-0.312px]">
-            {card.name}
+            {card.slug ? (
+              <Link
+                to={`/${card.slug}`}
+                className="after:absolute after:inset-0 after:z-30"
+              >
+                {card.name}
+              </Link>
+            ) : (
+              card.name
+            )}
           </h3>
         </div>
 
@@ -171,8 +167,8 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
         className="project-card-image mt-auto block w-full object-cover pt-6"
       />
 
-      {/* Decorative: the whole card is already the link, so announcing this
-          would name the same destination twice. It is a hover affordance. */}
+      {/* Decorative: the title's stretched link already covers the card and
+          names the destination, so announcing this would say it twice. */}
       {card.slug && (
         <span
           aria-hidden="true"
@@ -182,7 +178,7 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
           <img src={iconArrow} alt="" width={20} height={20} />
         </span>
       )}
-    </CardShell>
+    </article>
   )
 }
 
