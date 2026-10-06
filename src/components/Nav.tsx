@@ -93,9 +93,12 @@ export default function Nav() {
         </li>
 
         {/* The two actions sit apart from the section jumps. Spacing rather
-            than a rule, and `ms-` so the gap moves to the other side in
-            Arabic; 120px only once there is room for it. */}
-        <li className="ms-10 pe-6 lg:ms-[120px] md:pe-9">
+            than a rule, and `ms-` throughout so the separation moves to the
+            other side in Arabic. On a phone the bar wraps, so `ms-auto` eats
+            the free space and pushes these two to the trailing edge of their
+            own line; from `md` it goes back to a fixed gap, and 120px once
+            there is room for it. */}
+        <li className="ms-auto pe-6 lg:ms-[120px] md:ms-10 md:pe-9">
           {/* `download` names the saved file; the asset itself is fingerprinted
               by Vite, so its URL is not a readable filename. */}
           <a
