@@ -295,8 +295,10 @@ export const en: Content = {
   ],
 
   closing: {
-    message:
-      'Thank you for visiting my profile. I look forward to new opportunities where I can make a meaningful impact.',
+    message: [
+      'Thank you for visiting my profile.',
+      'I look forward to new opportunities where I can make a meaningful impact.',
+    ],
     contactPrefix: 'Please reach out to me on mobile:',
     emailLabel: 'email:',
     phone: '+966 53 731 3849',

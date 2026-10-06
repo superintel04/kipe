@@ -282,7 +282,8 @@ export type Content = {
   experience: Role[]
   credentials: Credential[]
   closing: {
-    message: string
+    /** One entry per line — the break is authored, not left to wrapping. */
+    message: string[]
     contactPrefix: string
     emailLabel: string
     phone: string

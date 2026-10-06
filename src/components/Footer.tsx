@@ -15,16 +15,20 @@ export default function Footer() {
       className="bg-bg-inverse text-fg-inverse"
       innerClassName="py-24 md:py-36"
     >
-      {/* Aligned to the trailing edge — `text-end` rather than `text-right`,
-          so the whole band mirrors to the left in Arabic. */}
-      <footer className="text-end">
+      <footer>
         <Reveal>
-          <p className="ms-auto max-w-4xl text-h3 leading-snug font-medium text-balance">
-            {closing.message}
+          {/* One line per entry — the break is authored in the content rather
+              than left to where the measure happens to wrap. */}
+          <p className="max-w-4xl text-h3 leading-snug font-medium">
+            {closing.message.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </p>
         </Reveal>
 
-        <div className="mt-14 flex flex-col gap-6 md:mt-20 md:flex-row md:items-center md:justify-end md:gap-14">
+        <div className="mt-14 flex flex-col gap-6 md:mt-20 md:flex-row md:items-center md:gap-14">
           <Reveal delay={120}>
             <Magnetic strength={8}>
               <a
