@@ -52,7 +52,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={140}>
-          <p className="mt-10 text-h4 leading-10 font-medium text-pretty">
+          <p className="mt-10 text-[20px] leading-8 font-normal text-pretty">
             <RichText segments={profile.tagline} />
           </p>
         </Reveal>
