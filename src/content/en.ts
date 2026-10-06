@@ -296,7 +296,7 @@ export const en: Content = {
 
   closing: {
     message:
-      'Thank you for considering my profile. I am looking forward to taking on a new challenge, whether as a Team Leader or an Individual Contributor.',
+      'Thank you for visiting my profile. I look forward to new opportunities where I can make a meaningful impact.',
     contactPrefix: 'Please reach out to me on mobile:',
     emailLabel: 'email:',
     phone: '+966 53 731 3849',
