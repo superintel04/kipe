@@ -22,7 +22,7 @@ export default function Credentials() {
           <li key={item.label}>
             <Reveal
               delay={Math.min(index, 3) * 90}
-              className="group h-full rounded-xl border border-border p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-[0_12px_32px_rgba(2,178,98,0.12)]"
+              className="group h-full rounded-xl bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(2,178,98,0.12)]"
             >
               <span className="flex size-14 items-center justify-center overflow-hidden rounded-lg bg-accent-subtle transition-colors duration-300 group-hover:bg-accent/15">
                 <img
