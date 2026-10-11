@@ -57,7 +57,9 @@ export default function RegionalExperience() {
           </Parallax>
         </div>
 
-        <div className="regional-card relative overflow-hidden rounded-[15px] px-8 py-12 md:px-12 lg:py-20 lg:ps-[32%] lg:pe-12">
+        {/* 100px on one diagonal, square on the other. Logical corners, so the
+            diagonal flips with the reading direction in Arabic. */}
+        <div className="regional-card relative overflow-hidden rounded-ss-[100px] rounded-ee-[100px] px-8 py-12 md:px-12 lg:py-20 lg:ps-[32%] lg:pe-12">
           <ul className="relative flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12">
             {regional.points.map((point, index) => (
               <li key={point.label} className="lg:flex-1">
