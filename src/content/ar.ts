@@ -347,6 +347,24 @@ export const ar: Content = {
       slug: 'project1',
     },
     {
+      logo: qatarMark,
+      logoAlt: 'الخطوط الجوية القطرية',
+      logoWidth: 100,
+      logoHeight: 34,
+      name: 'بوابة الشركات للخطوط الجوية القطرية',
+      tags: ['الطيران', 'تصميم الخدمات', 'تطبيقات الويب'],
+      challenge:
+        'كانت بوابة Beyond Business الحالية تعاني من نماذج معقّدة وتنقّل غير واضح وتصميم غير متسق وتجربة ضعيفة على الجوال. أرادت الخطوط الجوية القطرية بوابة بسيطة ومتجاوبة تغطي التسجيل والحجز وإدارة الحساب والعروض واستبدال النقاط.',
+      metrics: [
+        { icon: 'document', label: 'تدفق تسجيل أبسط' },
+        { icon: 'devices', label: 'تجربة متجاوبة' },
+        { value: '1M', label: 'تسجيل في برنامج تعويض الكربون' },
+      ],
+      image: qatarPreview,
+      imageAlt: 'بوابة Beyond Business للشركات من الخطوط الجوية القطرية',
+      slug: 'project3',
+    },
+    {
       logo: berkadiaMark,
       logoAlt: 'Berkadia',
       logoWidth: 113,
@@ -364,24 +382,6 @@ export const ar: Content = {
       image: berkadiaPreview,
       imageAlt: 'منتج تحليل القوائم المالية من Berkadia',
       slug: 'project4',
-    },
-    {
-      logo: qatarMark,
-      logoAlt: 'الخطوط الجوية القطرية',
-      logoWidth: 100,
-      logoHeight: 34,
-      name: 'بوابة الشركات للخطوط الجوية القطرية',
-      tags: ['الطيران', 'تصميم الخدمات', 'تطبيقات الويب'],
-      challenge:
-        'كانت بوابة Beyond Business الحالية تعاني من نماذج معقّدة وتنقّل غير واضح وتصميم غير متسق وتجربة ضعيفة على الجوال. أرادت الخطوط الجوية القطرية بوابة بسيطة ومتجاوبة تغطي التسجيل والحجز وإدارة الحساب والعروض واستبدال النقاط.',
-      metrics: [
-        { icon: 'document', label: 'تدفق تسجيل أبسط' },
-        { icon: 'devices', label: 'تجربة متجاوبة' },
-        { value: '1M', label: 'تسجيل في برنامج تعويض الكربون' },
-      ],
-      image: qatarPreview,
-      imageAlt: 'بوابة Beyond Business للشركات من الخطوط الجوية القطرية',
-      slug: 'project3',
     },
     {
       logo: mocMark,

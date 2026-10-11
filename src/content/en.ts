@@ -328,6 +328,24 @@ export const en: Content = {
       slug: 'project1',
     },
     {
+      logo: qatarMark,
+      logoAlt: 'Qatar Airways',
+      logoWidth: 100,
+      logoHeight: 34,
+      name: 'Qatar Airways Corporate Portal',
+      tags: ['Aviation', 'Service Design', 'Web Applications'],
+      challenge:
+        'The existing Beyond Business portal had complex forms, confusing navigation, inconsistent design, and poor mobile usability. Qatar Airways needed a simple, responsive portal for enrolment, bookings, account management, offers, and rewards redemption.',
+      metrics: [
+        { icon: 'document', label: 'A simpler enrolment flow' },
+        { icon: 'devices', label: 'Responsive experience' },
+        { value: '1M', label: 'Carbon offset enrolments' },
+      ],
+      image: qatarPreview,
+      imageAlt: 'The Qatar Airways Beyond Business corporate portal',
+      slug: 'project3',
+    },
+    {
       logo: berkadiaMark,
       logoAlt: 'Berkadia',
       logoWidth: 113,
@@ -345,24 +363,6 @@ export const en: Content = {
       image: berkadiaPreview,
       imageAlt: 'The Berkadia financial statement analysis product',
       slug: 'project4',
-    },
-    {
-      logo: qatarMark,
-      logoAlt: 'Qatar Airways',
-      logoWidth: 100,
-      logoHeight: 34,
-      name: 'Qatar Airways Corporate Portal',
-      tags: ['Aviation', 'Service Design', 'Web Applications'],
-      challenge:
-        'The existing Beyond Business portal had complex forms, confusing navigation, inconsistent design, and poor mobile usability. Qatar Airways needed a simple, responsive portal for enrolment, bookings, account management, offers, and rewards redemption.',
-      metrics: [
-        { icon: 'document', label: 'A simpler enrolment flow' },
-        { icon: 'devices', label: 'Responsive experience' },
-        { value: '1M', label: 'Carbon offset enrolments' },
-      ],
-      image: qatarPreview,
-      imageAlt: 'The Qatar Airways Beyond Business corporate portal',
-      slug: 'project3',
     },
     {
       logo: mocMark,
@@ -846,12 +846,10 @@ export const en: Content = {
       challenge: [
         'Berkadia\u2019s analysts read property financial documents by hand and keyed the numbers out one by one. The brief was to ',
         { highlight: 'automate that analysis' },
-        ' and generate the data in the shape each customer needed. It arrived as a ',
-        { strong: 'fuzzy problem' },
-        ' rather than a specification: vague requirements, little information about the people doing the work, and a long runway. So the first job was to turn it into something that could be designed against.',
+        ' and generate the data in the shape each customer needed.',
       ],
       approachIntro:
-        'Seven phases, most of them before a screen existed. Select a phase to read it.',
+        ' ',
       phases: [
         {
           title: 'Requirements Gathering',
@@ -972,7 +970,7 @@ export const en: Content = {
     outcome: 'Outcome',
     screens: 'Screens',
     caseStudy: 'Case study',
-    projects: 'Project',
+    projects: 'Projects',
     outcomeLabel: 'Outcome',
     fullCaseStudy: 'Full Case study',
     backToProfile: 'Back to profile',
