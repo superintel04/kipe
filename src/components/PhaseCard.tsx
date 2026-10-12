@@ -34,7 +34,7 @@ export default function PhaseCard({
       ref={ref}
       onClick={onSelect}
       onPointerMove={trackPointer}
-      className={`phase-card relative overflow-hidden rounded-md border bg-bg p-7 transition-all duration-300 md:p-12 ${
+      className={`phase-card relative overflow-hidden rounded-md border bg-white p-7 transition-all duration-300 md:p-12 ${
         active
           ? 'is-active -translate-x-[3px] -translate-y-[3px] border-2 border-border-strong opacity-100 shadow-[8px_8px_0_var(--color-border-strong)]'
           : 'cursor-pointer border-border opacity-60 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-fg-muted hover:opacity-90'
