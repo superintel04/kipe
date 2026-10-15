@@ -124,7 +124,6 @@ export type CaseStudyPage = {
   briefLabel: string
   processLabel: string
   resultLabel: string
-  challenge: Segment[]
   /** Optional lead-in above the timeline. */
   approachIntro?: string
   phases: CaseStudyPhase[]

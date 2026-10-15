@@ -1,73 +1,9 @@
 import Link from './Link'
 import Reveal from './Reveal'
 import Section from './Section'
-import {
-  iconArrow,
-  iconDga,
-  iconDocument,
-  iconMoney,
-  iconMonitor,
-  iconPhone,
-} from '@/content/assets'
-import {
-  useContent,
-  type ProjectCard,
-  type ProjectMetric,
-  type ProjectMetricIcon,
-} from '@/content'
-
-/**
- * Marks a metric can carry in place of a figure, at the dimensions they were
- * exported at (Figma 869:4068). `devices` is the overlapping phone-and-monitor
- * pair, so it is composed rather than looked up.
- */
-const METRIC_ICON: Record<
-  Exclude<ProjectMetricIcon, 'devices'>,
-  { src: string; width: number; height: number }
-> = {
-  document: { src: iconDocument, width: 29, height: 29 },
-  money: { src: iconMoney, width: 36, height: 36 },
-  dga: { src: iconDga, width: 22, height: 32 },
-}
-
-function MetricMark({ icon }: { icon: ProjectMetricIcon }) {
-  if (icon === 'devices') {
-    return (
-      <span aria-hidden="true" className="flex h-10 items-center -space-x-1.5">
-        <img src={iconPhone} alt="" width={27} height={27} />
-        <img src={iconMonitor} alt="" width={27} height={27} />
-      </span>
-    )
-  }
-
-  const mark = METRIC_ICON[icon]
-  return (
-    <span aria-hidden="true" className="flex h-10 items-center">
-      <img src={mark.src} alt="" width={mark.width} height={mark.height} />
-    </span>
-  )
-}
-
-/**
- * One outcome: a figure and a caption, or a mark and a caption. The caption
- * carries the meaning either way, which is why the marks are decorative.
- */
-function Metric({ metric }: { metric: ProjectMetric }) {
-  return (
-    <div className="flex flex-col gap-2">
-      {metric.value ? (
-        <p className="flex h-10 items-center text-h4 leading-[1.14] font-bold tracking-[-0.312px]">
-          {metric.value}
-        </p>
-      ) : (
-        metric.icon && <MetricMark icon={metric.icon} />
-      )}
-      <p className="text-body leading-[1.6] tracking-[-0.192px]">
-        {metric.label}
-      </p>
-    </div>
-  )
-}
+import ProjectMetrics from './ProjectMetrics'
+import { iconArrow } from '@/content/assets'
+import { useContent, type ProjectCard } from '@/content'
 
 /**
  * Three corners take the design's 40px radius and the fourth is cut square.
@@ -169,11 +105,7 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
         <p className="mt-10 text-[20px] leading-[1.02] font-bold tracking-[-1.04px] text-fg-subtle">
           {ui.outcomeLabel}
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-3">
-          {card.metrics.map((metric) => (
-            <Metric key={metric.label} metric={metric} />
-          ))}
-        </div>
+        <ProjectMetrics metrics={card.metrics} className="mt-6" />
       </div>
 
       {/* Leaves the foot of the preview image uncovered below the panel. */}

@@ -4,7 +4,7 @@ import Link from '@/components/Link'
 import Magnetic from '@/components/Magnetic'
 import PhaseCard from '@/components/PhaseCard'
 import Reveal from '@/components/Reveal'
-import RichText from '@/components/RichText'
+import ProjectMetrics from '@/components/ProjectMetrics'
 import ScrollProgress from '@/components/ScrollProgress'
 import Section from '@/components/Section'
 import { useContent, type CaseStudyPage as CaseStudyPageType } from '@/content'
@@ -24,7 +24,13 @@ type CaseStudyPageProps = {
  * user expects from a single-choice control.
  */
 export default function CaseStudyPage({ page }: CaseStudyPageProps) {
-  const { ui } = useContent()
+  const { ui, projectCards } = useContent()
+
+  /**
+   * The brief reads from the project's home-page card, so the challenge and
+   * the figures are written once and say the same thing in both places.
+   */
+  const card = projectCards.find((candidate) => candidate.slug === page.slug)
   const [phase, setPhase] = useState(0)
 
   const dotsRef = useRef<(HTMLButtonElement | null)[]>([])
@@ -168,9 +174,21 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
           </Reveal>
           <Reveal delay={90}>
             <h2 className="text-h1 font-bold">{ui.challenge}</h2>
-            <p className="mt-11 max-w-[1000px] text-lead leading-[1.5] tracking-[-0.012em] text-fg-muted text-pretty">
-              <RichText segments={page.challenge} />
-            </p>
+            {card && (
+              <>
+                <p className="mt-11 max-w-[1000px] text-lead leading-[1.5] tracking-[-0.012em] text-fg-muted text-pretty">
+                  {card.challenge}
+                </p>
+
+                <p className="mt-14 text-[20px] leading-[1.02] font-bold tracking-[-1.04px] text-fg-subtle">
+                  {ui.outcomeLabel}
+                </p>
+                <ProjectMetrics
+                  metrics={card.metrics}
+                  className="mt-6 max-w-[1000px]"
+                />
+              </>
+            )}
           </Reveal>
         </div>
       </Section>

@@ -517,13 +517,6 @@ export const en: Content = {
       briefLabel: '01 · The brief',
       processLabel: '02 · Process',
       resultLabel: '03 · Result',
-      challenge: [
-        'The Ministry of Culture runs a large catalogue of services for its own employees. Most of them were still ',
-        { highlight: 'manual' },
-        ': paper forms, hand-offs between departments, no way to track a request once it was raised. The result was constant manual intervention, delayed services and no single view of how anything was performing. They wanted one intranet portal to absorb all of it: an employee digital hub called ',
-        { strong: 'Dewane' },
-        '.',
-      ],
       phases: [
         {
           title: 'Business Intent',
@@ -666,13 +659,6 @@ export const en: Content = {
       briefLabel: '01 · The brief',
       processLabel: '02 · Process',
       resultLabel: '03 · Result',
-      challenge: [
-        'Cultural Hub is a source of inspiration for everything that promotes and preserves the ',
-        { highlight: 'unique Saudi culture' },
-        ' shaped over time. The Ministry wanted the portal rebuilt on ',
-        { strong: 'DGA Code' },
-        ' (the Digital Government Authority’s unified design library for all government applications), so we redesigned the portal’s experience end to end.',
-      ],
       approachIntro:
         'The rebuild started from an audit of the existing experience rather than a visual refresh. Select a phase to read it.',
       phases: [
@@ -743,13 +729,6 @@ export const en: Content = {
       briefLabel: '01 · The brief',
       processLabel: '02 · Process',
       resultLabel: '03 · Result',
-      challenge: [
-        'Beyond Business by Qatar Airways is a corporate rewards programme that gives companies and their employees benefits for business travel. The existing portal made its core journeys ',
-        { highlight: 'hard work' },
-        ': enrolment ran through complex form flows, navigation labels were unclear, visual elements were inconsistent, and the experience did not hold up on smaller screens. Qatar Airways wanted enrolment, flight booking, account management, exclusive offers, and points redemption rebuilt: responsive, consistent with the brand, and properly integrated with the ',
-        { strong: 'loyalty programme' },
-        '.',
-      ],
       approachIntro:
         'Research, visual design and the design system, working from evidence before touching the interface. Select a phase to read it.',
       phases: [
@@ -843,11 +822,6 @@ export const en: Content = {
       briefLabel: '01 · The brief',
       processLabel: '02 · Process',
       resultLabel: '03 · Result',
-      challenge: [
-        'Berkadia\u2019s analysts read property financial documents by hand and keyed the numbers out one by one. The brief was to ',
-        { highlight: 'automate that analysis' },
-        ' and generate the data in the shape each customer needed.',
-      ],
       approachIntro:
         ' ',
       phases: [
