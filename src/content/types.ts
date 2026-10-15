@@ -99,8 +99,6 @@ export type CaseStudy = {
  */
 export type CaseStudyPhase = {
   title: string
-  /** Small pill above the phase, e.g. "Phase 01 · Alignment". */
-  chip: string
   bullets: string[]
   outcome: string
 }

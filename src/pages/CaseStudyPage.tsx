@@ -249,7 +249,10 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
                   aria-checked={active}
                   tabIndex={active ? 0 : -1}
                   onClick={() => select(index)}
-                  aria-label={item.chip}
+                  // Names the dot after the phase it selects, and leads with
+                  // the number the dot shows — WCAG 2.5.3 wants the visible
+                  // label inside the accessible name.
+                  aria-label={`${String(index + 1).padStart(2, '0')} ${item.title}`}
                   className={`relative z-10 grid size-8 place-items-center rounded-full border-[3px] font-mono text-caption transition-all duration-300 md:size-12 ${
                     active
                       ? 'scale-[1.14] border-accent bg-accent text-white'
@@ -260,20 +263,9 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
                 </button>
 
                 <PhaseCard active={active} onSelect={() => select(index)}>
-                  <div className="mb-9 flex flex-col items-start justify-between gap-6 md:flex-row">
-                    <h3 className="text-h3 leading-[1.08] font-bold tracking-[-0.035em] text-balance">
-                      {item.title}
-                    </h3>
-                    <span
-                      className={`shrink-0 rounded-pill border px-3 py-1.5 text-overline font-bold tracking-[0.16em] uppercase transition-colors duration-200 ${
-                        active
-                          ? 'border-accent text-accent-fg'
-                          : 'border-border text-fg-muted'
-                      }`}
-                    >
-                      {item.chip}
-                    </span>
-                  </div>
+                  <h3 className="mb-9 text-h3 leading-[1.08] font-bold tracking-[-0.035em] text-balance">
+                    {item.title}
+                  </h3>
 
                   <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
                     <ul>

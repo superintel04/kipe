@@ -520,7 +520,6 @@ export const en: Content = {
       phases: [
         {
           title: 'Business Intent',
-          chip: 'Phase 01  ·  Alignment',
           bullets: [
             'Defined product vision',
             'Scoped 50+ services',
@@ -533,7 +532,6 @@ export const en: Content = {
         },
         {
           title: 'Product & Technical Focus Group',
-          chip: 'Phase 02  ·  Feasibility',
           bullets: [
             'Ran cross-team focus group',
             'Captured product owner vision',
@@ -546,7 +544,6 @@ export const en: Content = {
         },
         {
           title: 'UX Roadmap & Requirements Analysis',
-          chip: 'Phase 03  ·  Definition',
           bullets: [
             'Built UX roadmap',
             'Planned timeline and resources',
@@ -559,7 +556,6 @@ export const en: Content = {
         },
         {
           title: 'Research',
-          chip: 'Phase 04  ·  Discovery',
           bullets: [
             'Interviewed MoC employees',
             'Studied existing processes',
@@ -572,7 +568,6 @@ export const en: Content = {
         },
         {
           title: 'Information Architecture & User Flows',
-          chip: 'Phase 05  ·  Structure',
           bullets: [
             'Categorised 50+ services',
             'Defined navigation structure',
@@ -584,7 +579,6 @@ export const en: Content = {
         },
         {
           title: 'Brand Styleguide & Design System',
-          chip: 'Phase 06  ·  Foundations',
           bullets: [
             'Followed MoC brand guidelines',
             'Built reusable components',
@@ -595,7 +589,6 @@ export const en: Content = {
         },
         {
           title: 'Wireframes & Visual Design',
-          chip: 'Phase 07  ·  Design',
           bullets: [
             'Wireframed key screens',
             'Reviewed flows with teams',
@@ -608,7 +601,6 @@ export const en: Content = {
         },
         {
           title: 'Usability Testing',
-          chip: 'Phase 08  ·  Validation',
           bullets: [
             'Scripted testing scenarios',
             'Identified usability issues',
@@ -618,7 +610,6 @@ export const en: Content = {
         },
         {
           title: 'Developer Handover',
-          chip: 'Phase 09  ·  Handover',
           bullets: ['Prepared final UI specs', 'Supported implementation'],
           outcome:
             'A smooth design-to-development transition, with reduced ambiguity and less rework during the build.',
@@ -664,7 +655,6 @@ export const en: Content = {
       phases: [
         {
           title: 'Heuristic Evaluation',
-          chip: 'Phase 01  ·  Audit',
           bullets: [
             'Ran heuristic evaluation',
             'Identified navigation problems',
@@ -674,7 +664,6 @@ export const en: Content = {
         },
         {
           title: 'Departmental User Research',
-          chip: 'Phase 02  ·  Research',
           bullets: [
             'Researched commission departments',
             'Pinpointed expectations and needs',
@@ -684,7 +673,6 @@ export const en: Content = {
         },
         {
           title: 'Redesign on DGA Code',
-          chip: 'Phase 03  ·  Rebuild',
           bullets: [
             'Rebuilt on DGA Code',
             'Redesigned the complete portal',
@@ -734,7 +722,6 @@ export const en: Content = {
       phases: [
         {
           title: 'Stakeholder Interviews',
-          chip: 'Phase 01  ·  Discovery',
           bullets: [
             'Interviewed marketing and product',
             'Fixed the project scope',
@@ -745,7 +732,6 @@ export const en: Content = {
         },
         {
           title: 'Heuristic Evaluation',
-          chip: 'Phase 02  ·  Audit',
           bullets: [
             'Audited the core journeys',
             'Documented issues with screenshots',
@@ -756,7 +742,6 @@ export const en: Content = {
         },
         {
           title: 'Competitor Benchmarking',
-          chip: 'Phase 03  ·  Benchmarking',
           bullets: [
             'Benchmarked four airlines',
             'Compared earning and redemption',
@@ -767,7 +752,6 @@ export const en: Content = {
         },
         {
           title: 'Information Architecture',
-          chip: 'Phase 04  ·  Structure',
           bullets: [
             'Ran card sorting',
             'Ran tree testing',
@@ -779,7 +763,6 @@ export const en: Content = {
         },
         {
           title: 'Responsive Interface Design',
-          chip: 'Phase 05  ·  Design',
           bullets: [
             'Designed the responsive interface',
             'Applied the brand style guide',
@@ -827,7 +810,6 @@ export const en: Content = {
       phases: [
         {
           title: 'Requirements Gathering',
-          chip: 'Phase 01  ·  Discovery',
           bullets: [
             'Met product owners and stakeholders',
             'Ran a whiteboard session',
@@ -838,7 +820,6 @@ export const en: Content = {
         },
         {
           title: 'Defining Product Scope',
-          chip: 'Phase 02  ·  Scope',
           bullets: [
             'Logged vague requirements',
             'Named the unknowns',
@@ -849,7 +830,6 @@ export const en: Content = {
         },
         {
           title: 'Stakeholder Workshops',
-          chip: 'Phase 03  ·  Alignment',
           bullets: [
             'Ran workshops with stakeholders',
             'Included product owners and users',
@@ -859,7 +839,6 @@ export const en: Content = {
         },
         {
           title: 'User Interviews',
-          chip: 'Phase 04  ·  Research',
           bullets: [
             'Interviewed analysts',
             'Interviewed senior analysts',
@@ -870,7 +849,6 @@ export const en: Content = {
         },
         {
           title: 'Personas & User Flows',
-          chip: 'Phase 05  ·  Definition',
           bullets: [
             'Built user personas',
             'Mapped four role flows',
@@ -882,7 +860,6 @@ export const en: Content = {
         },
         {
           title: 'Mockups & Usability Testing',
-          chip: 'Phase 06  ·  Design',
           bullets: [
             'Sketched from research insight',
             'Built low fidelity mockups',
@@ -895,7 +872,6 @@ export const en: Content = {
         },
         {
           title: 'Visual Design & Design System',
-          chip: 'Phase 07  ·  Visual',
           bullets: [
             'Designed the interface in Figma',
             'Ran A/B and usability tests',
