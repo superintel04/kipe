@@ -75,14 +75,18 @@
   --color-border-subtle: #e4e4e4; /* dark: #171717 */
   --color-border-strong: #000000; /* dark: #ffffff */
 
-  --color-accent: #02b262;
-  --color-accent-hover: #029b55; /* dark: #16be74 */
-  --color-accent-active: #027a43; /* dark: #4ace93 */
-  --color-accent-fg: #027a43; /* dark: #4ace93 */
-  --color-accent-subtle: #e6f8ef; /* dark: #01371e */
-  --color-accent-border: #8cdeb8; /* dark: #027a43 */
-  --color-accent-solid: #027a43; /* dark: #02b262 */
-  --color-focus: #027a43; /* dark: #02b262 */
+  /* Accent fill. White on it measures 4.78:1, so it clears AA as a button
+     label — which the previous green did not. */
+  --color-accent: #2a65fe;
+  --color-accent-hover: #1f55e0; /* dark: #5c8bff */
+  --color-accent-active: #1a4fd0; /* dark: #8aaaff */
+  /* Accent as text. A step darker than the fill: the fill itself measures
+     4.32:1 on the page background, just under the threshold. */
+  --color-accent-fg: #1f55e0; /* dark: #8aaaff */
+  --color-accent-subtle: #e9efff; /* dark: #0d1f4d */
+  --color-accent-border: #a9c0ff; /* dark: #1a4fd0 */
+  --color-accent-solid: #1a4fd0; /* dark: #2a65fe */
+  --color-focus: #1f55e0; /* dark: #2a65fe */
 
   /* Accents the designs introduce outside the DS palette: the skill-card
      reverse faces (Figma 710:1309) and the case-study card's project name
