@@ -397,26 +397,15 @@
 
   /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
 
-  /* The card's gradient runs along the reading direction, so it has to flip in
-     Arabic — Tailwind has no logical gradient utility. The first stop is the
-     DS accent-active; the second is a literal from the design with no token. */
+  /* A flat accent fill. It was a two-stop gradient transcribed from the
+     design; now that the accent is a token rather than a pair of literals,
+     one colour keeps the card in step with every other accent surface — and
+     there is no longer a direction for it to flip in Arabic. */
   .regional-card {
-    background-image: linear-gradient(
-      to right,
-      var(--color-accent-active),
-      #019652
-    );
+    background-color: var(--color-accent);
   }
 
-  [dir="rtl"] .regional-card {
-    background-image: linear-gradient(
-      to left,
-      var(--color-accent-active),
-      #019652
-    );
-  }
-
-  /* A slow band of light crossing the card, to keep the green from reading as
+  /* A slow band of light crossing the card, to keep the fill from reading as
      a flat block. Sits under the content and never intercepts the pointer. */
   .regional-card::after {
     content: "";
