@@ -12,9 +12,9 @@ import { useContent } from '@/content'
  *
  * Transcribed from the design: the card is 306px tall and the skyline 383.5px,
  * bottom-aligned to it, so the towers overhang the card's top by 77.5px. The
- * skyline is 30.7% of the card's width rather than the design's 29.8% because
- * the design squeezes the source 3% horizontally; at its true aspect that
- * width reproduces the designed height, and so the designed overhang. The copy
+ * skyline is the design's 29.8% of the card's width — the asset is exported at
+ * the design's own proportion, so that width reproduces the designed height
+ * and therefore the designed overhang without correction. The copy
  * begins at 32% of the card, clear of the towers, and each claim centres its
  * mark above two lines of 26px bold.
  *
@@ -41,14 +41,14 @@ export default function RegionalExperience() {
       <div className="relative">
         {/* In flow on small screens; lifted out of it at `lg`, where its
             bottom edge meets the card's and the towers overhang the top. */}
-        <div className="mx-auto mb-[-1px] block w-[62%] max-w-[320px] lg:absolute lg:bottom-0 lg:start-0 lg:z-10 lg:mx-0 lg:mb-0 lg:w-[30.7%] lg:max-w-none lg:overflow-hidden lg:pt-12">
+        <div className="mx-auto mb-[-1px] block w-[62%] max-w-[320px] lg:absolute lg:bottom-0 lg:start-0 lg:z-10 lg:mx-0 lg:mb-0 lg:w-[29.8%] lg:max-w-none lg:overflow-hidden lg:pt-12">
           <Parallax distance={-24}>
             <Reveal>
               <img
                 src={saudiSkyline}
                 alt={regional.skylineAlt}
-                width={558}
-                height={518}
+                width={401}
+                height={384}
                 loading="lazy"
                 decoding="async"
                 className="block w-full"
