@@ -95,6 +95,10 @@
      #c9452f keeps the hue and clears 4.5:1. */
   --color-brand-indigo: #717dff;
   --color-brand-coral: #c9452f;
+  /* The logo lockup's own blue (Figma 960:1324/960:1335) — deeper than the
+     accent, so it is a token of its own rather than an alias. 7.52:1 on the
+     page background. */
+  --color-brand-mark: #1337d4;
 
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;

@@ -1,4 +1,5 @@
 import Magnetic from './Magnetic'
+import Logo from './Logo'
 import Nav from './Nav'
 import Reveal from './Reveal'
 import RichText from './RichText'
@@ -47,8 +48,22 @@ export default function Hero() {
           <Nav />
         </Reveal>
 
+        {/* The lockup is the heading (Figma 960:1324 + 960:1335): the mark,
+            then the name set as real text on two lines rather than baked into
+            the artwork, so it is still read and still indexed. The split is
+            on the name's own words, so Arabic breaks in the right place and
+            `uppercase` is simply a no-op there. */}
         <Reveal delay={60}>
-          <h1 className="mt-10 text-h1 font-extrabold">{profile.name}</h1>
+          <h1 className="mt-10 flex items-center gap-4 text-brand-mark">
+            <Logo className="size-[76px] shrink-0" />
+            <span className="text-[38px] leading-[48px] font-bold uppercase">
+              {profile.name.split(' ').map((word) => (
+                <span key={word} className="block">
+                  {word}
+                </span>
+              ))}
+            </span>
+          </h1>
         </Reveal>
 
         <Reveal delay={140}>
