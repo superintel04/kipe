@@ -49,9 +49,7 @@
   --color-neutral-1000: #000000;
 
   /* ---- Colour: semantic (Light mode) ----------------------------------- */
-  /* A cool off-white rather than the ramp's pure #ffffff — the page and every
-     surface that sits at "default background" move together. */
-  --color-bg: #f2f3fa; /* dark: #000000 */
+  --color-bg: #ffffff; /* dark: #000000 */
   --color-bg-subtle: #fafafa; /* dark: #0a0a0a */
   /* Carries the project cards, so it is a visible step down from `bg` rather
      than the ramp's near-white. */
