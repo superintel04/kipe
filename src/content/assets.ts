@@ -30,7 +30,7 @@ export { default as iconArrow } from '@/assets/new-casestudy/icons/arrow.svg'
 
 export { default as skillRahman } from '@/assets/team-skill/rahman.webp'
 export { default as skillBruceLee } from '@/assets/team-skill/bruce-lee.webp'
-export { default as skillEinstein } from '@/assets/team-skill/einstein.webp'
+export { default as skillUserResearch } from '@/assets/team-skill/user-research.webp'
 export { default as skillJackson } from '@/assets/team-skill/michael-jackson.webp'
 export { default as skillDravid } from '@/assets/team-skill/rahul-dravid.webp'
 export { default as skillJobs } from '@/assets/team-skill/steve-jobs.webp'

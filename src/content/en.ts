@@ -20,7 +20,7 @@ import {
   dgaMark,
   skillRahman,
   skillBruceLee,
-  skillEinstein,
+  skillUserResearch,
   skillJackson,
   skillDravid,
   skillJobs,
@@ -145,8 +145,8 @@ export const en: Content = {
       ],
     },
     {
-      image: skillEinstein,
-      imageAlt: 'Albert Einstein in portrait',
+      image: skillUserResearch,
+      imageAlt: 'A bearded man in glasses, chin resting on folded hands',
       title: ['User', 'Research'],
       back: [
         {

@@ -28,7 +28,7 @@ import {
   dgaMark,
   skillRahman,
   skillBruceLee,
-  skillEinstein,
+  skillUserResearch,
   skillJackson,
   skillDravid,
   skillJobs,
@@ -160,8 +160,8 @@ export const ar: Content = {
       ],
     },
     {
-      image: skillEinstein,
-      imageAlt: 'صورة شخصية لألبرت أينشتاين',
+      image: skillUserResearch,
+      imageAlt: 'رجل ملتحٍ يضع نظارة، يسند ذقنه على يديه المتشابكتين',
       title: ['بحوث', 'المستخدم'],
       back: [
         {
