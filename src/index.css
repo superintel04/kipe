@@ -99,6 +99,10 @@
      accent, so it is a token of its own rather than an alias. 7.52:1 on the
      page background. */
   --color-brand-mark: #1337d4;
+  /* The Saudi-experience card keeps the green of the Saudi flag rather than
+     following the accent — it is the card's subject, not its theme. White on
+     it measures 2.78:1; see the note in `.regional-card`. */
+  --color-brand-saudi: #02b262;
 
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;
@@ -401,12 +405,14 @@
 
   /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
 
-  /* A flat accent fill. It was a two-stop gradient transcribed from the
-     design; now that the accent is a token rather than a pair of literals,
-     one colour keeps the card in step with every other accent surface — and
-     there is no longer a direction for it to flip in Arabic. */
+  /* Saudi green rather than the site accent: the card is about the Kingdom,
+     so the colour is subject matter rather than theme.
+     Accessibility note: white on #02b262 is 2.78:1. The claims are 20px bold,
+     which counts as large text and needs 3:1, so this is below AA. Darkening
+     to #028a4b clears it (4.43:1) at a difference most people would not
+     notice — worth doing if the band ever has to pass an audit. */
   .regional-card {
-    background-color: var(--color-accent);
+    background-color: var(--color-brand-saudi);
   }
 
   /* A slow band of light crossing the card, to keep the fill from reading as
