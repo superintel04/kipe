@@ -99,10 +99,10 @@
      accent, so it is a token of its own rather than an alias. 7.52:1 on the
      page background. */
   --color-brand-mark: #1337d4;
-  /* The Saudi-experience card keeps the green of the Saudi flag rather than
-     following the accent — it is the card's subject, not its theme. White on
-     it measures 2.78:1; see the note in `.regional-card`. */
-  --color-brand-saudi: #02b262;
+  /* The Saudi-experience card keeps a green rather than following the accent
+     — it is the card's subject, not its theme. `green/700` from the DS
+     Primitives collection; white on it measures 5.43:1. */
+  --color-brand-saudi: #027a43;
 
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;
@@ -405,12 +405,9 @@
 
   /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
 
-  /* Saudi green rather than the site accent: the card is about the Kingdom,
-     so the colour is subject matter rather than theme.
-     Accessibility note: white on #02b262 is 2.78:1. The claims are 20px bold,
-     which counts as large text and needs 3:1, so this is below AA. Darkening
-     to #028a4b clears it (4.43:1) at a difference most people would not
-     notice — worth doing if the band ever has to pass an audit. */
+  /* Green rather than the site accent: the card is about the Kingdom, so the
+     colour is subject matter rather than theme. White on green/700 measures
+     5.43:1, which clears AA for the claims at any size. */
   .regional-card {
     background-color: var(--color-brand-saudi);
   }
