@@ -67,7 +67,20 @@ export default function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal delay={140}>
+        {/* The same portrait, in flow, for viewports too narrow to sit it
+            alongside the copy. It follows the name here rather than closing
+            the band, so a phone opens on the lockup and the face together. */}
+        <Reveal delay={120} className="lg:hidden">
+          <img
+            src={heroPortrait}
+            alt={profile.name}
+            width={1254}
+            height={1254}
+            className="mt-10 aspect-[707/654] w-full rounded-none rounded-es-[80px] object-cover"
+          />
+        </Reveal>
+
+        <Reveal delay={180}>
           <p className="mt-10 text-[20px] leading-8 font-normal text-pretty">
             <RichText segments={profile.tagline} />
           </p>
@@ -84,18 +97,6 @@ export default function Hero() {
               {profile.portfolioLabel}
             </a>
           </Magnetic>
-        </Reveal>
-
-        {/* The same portrait, in flow, for viewports too narrow to sit it
-            alongside the copy. */}
-        <Reveal delay={200} className="lg:hidden">
-          <img
-            src={heroPortrait}
-            alt={profile.name}
-            width={1254}
-            height={1254}
-            className="mt-14 aspect-[707/654] w-full rounded-none rounded-es-[80px] object-cover"
-          />
         </Reveal>
       </div>
     </Section>
