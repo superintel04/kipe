@@ -76,7 +76,9 @@ export default function Hero() {
           <Magnetic className="mt-14">
             <a
               href={profile.portfolioUrl}
-              className="inline-flex h-[56px] items-center rounded-pill bg-accent px-10 text-body font-bold text-fg-on-accent transition-colors hover:bg-accent-hover"
+              // 100px on three corners, square on the trailing bottom one.
+              // Logical corners, so the square one mirrors in Arabic.
+              className="inline-flex h-[56px] items-center rounded-[100px] rounded-ee-none bg-accent px-10 text-body font-bold text-fg-on-accent transition-colors hover:bg-accent-hover"
             >
               {profile.portfolioLabel}
             </a>

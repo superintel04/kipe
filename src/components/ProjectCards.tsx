@@ -120,7 +120,8 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
           to={`/${card.slug}`}
           aria-hidden="true"
           tabIndex={-1}
-          className="project-card-cta absolute end-8 bottom-8 z-40 inline-flex h-[56px] items-center gap-3 rounded-pill bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
+          // Square on the trailing top corner — the mirror of the hero CTA.
+          className="project-card-cta absolute end-8 bottom-8 z-40 inline-flex h-[56px] items-center gap-3 rounded-[100px] rounded-se-none bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
         >
           {ui.fullCaseStudy}
           <img src={iconArrow} alt="" width={20} height={20} />
