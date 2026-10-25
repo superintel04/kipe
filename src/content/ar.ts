@@ -228,7 +228,6 @@ export const ar: Content = {
   ],
 
   regional: {
-    skylineAlt: 'أفق الرياض خلف أسوار حي الطريف الطينية في الدرعية',
     points: [
       {
         icon: saudiFlagMark,

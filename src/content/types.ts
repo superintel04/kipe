@@ -274,7 +274,6 @@ export type Content = {
   /** Saudi-experience band: three claims over the Riyadh skyline. */
   regional: {
     points: RegionalPoint[]
-    skylineAlt: string
   }
   experience: Role[]
   credentials: Credential[]

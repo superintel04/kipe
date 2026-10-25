@@ -48,7 +48,6 @@ export { default as illustratorMark } from '@/assets/team-skill/illustrator-mark
 export { default as canvaMark } from '@/assets/team-skill/canva-mark.svg'
 
 export { default as atTuraif } from '@/assets/at-turaif.jpg'
-export { default as saudiSkyline } from '@/assets/saudi-skyline.webp'
 export { default as saudiFlagMark } from '@/assets/saudi-flag.svg'
 export { default as arabicEnglishMark } from '@/assets/arabic-eng.svg'
 export { default as dgaMark } from '@/assets/dga-logo.svg'
