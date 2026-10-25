@@ -97,10 +97,6 @@
      accent, so it is a token of its own rather than an alias. 7.52:1 on the
      page background. */
   --color-brand-mark: #1337d4;
-  /* The Saudi-experience card keeps a green rather than following the accent
-     — it is the card's subject, not its theme. `green/700` from the DS
-     Primitives collection; white on it measures 5.43:1. */
-  --color-brand-saudi: #027a43;
 
   /* ---- Shape ------------------------------------------------------------ */
   --radius-xs: 3px;
@@ -401,62 +397,6 @@
     }
   }
 
-  /* ---- Saudi-experience band (Figma 563:1918) --------------------------- */
-
-  /* Green rather than the site accent: the card is about the Kingdom, so the
-     colour is subject matter rather than theme. White on green/700 measures
-     5.43:1, which clears AA for the claims at any size. */
-  .regional-card {
-    background-color: var(--color-brand-saudi);
-  }
-
-  /* A slow band of light crossing the card, to keep the fill from reading as
-     a flat block. Sits under the content and never intercepts the pointer. */
-  .regional-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      105deg,
-      transparent 30%,
-      rgb(255 255 255 / 0.07) 50%,
-      transparent 70%
-    );
-    background-size: 220% 100%;
-    animation: regional-sheen 9s ease-in-out infinite;
-  }
-
-  @keyframes regional-sheen {
-    0%,
-    100% {
-      background-position: 120% 0;
-    }
-    50% {
-      background-position: -20% 0;
-    }
-  }
-
-  /* Each claim lifts slightly and its mark leans in on hover. */
-  .regional-row {
-    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .regional-mark {
-    transition:
-      transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-      filter 420ms ease;
-  }
-
-  .regional-row:hover {
-    transform: translateY(-4px);
-  }
-
-  .regional-row:hover .regional-mark {
-    transform: scale(1.12);
-    filter: drop-shadow(0 6px 18px rgb(0 0 0 / 0.3));
-  }
-
   /* Accent glow following the pointer across the selected phase card.
      `--mx`/`--my` are written by PhaseCard. */
   .phase-card::before {
@@ -530,11 +470,6 @@
       animation: none;
     }
 
-    .regional-card::after {
-      animation: none;
-      background: none;
-    }
-
     /* The pill still appears; it just does not travel. */
     .project-card-cta,
     .project-card:hover .project-card-cta,
@@ -561,9 +496,5 @@
       transition: none;
     }
 
-    .regional-row:hover,
-    .regional-row:hover .regional-mark {
-      transform: none;
-    }
   }
 }

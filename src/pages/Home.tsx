@@ -2,7 +2,6 @@ import Hero from '@/components/Hero'
 import MetaGrid from '@/components/MetaGrid'
 import Section from '@/components/Section'
 import Skillset from '@/components/Skillset'
-import RegionalExperience from '@/components/RegionalExperience'
 import ProjectCards from '@/components/ProjectCards'
 import Experience from '@/components/Experience'
 import Credentials from '@/components/Credentials'
@@ -31,7 +30,6 @@ export default function Home() {
       </Section>
 
       <Skillset />
-      <RegionalExperience />
 
       <ProjectCards />
 

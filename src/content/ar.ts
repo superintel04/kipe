@@ -23,9 +23,6 @@ import {
   beyondBusinessHero,
   mocLogo,
   qatarAirwaysLogo,
-  saudiFlagMark,
-  arabicEnglishMark,
-  dgaMark,
   skillRahman,
   skillBruceLee,
   skillUserResearch,
@@ -226,29 +223,6 @@ export const ar: Content = {
       ],
     },
   ],
-
-  regional: {
-    points: [
-      {
-        icon: saudiFlagMark,
-        iconWidth: 53,
-        iconHeight: 59,
-        label: 'خبرة في السياق التصميمي والثقافة السعودية',
-      },
-      {
-        icon: arabicEnglishMark,
-        iconWidth: 63,
-        iconHeight: 31,
-        label: 'تصميم واجهات عربية بمنهجية «العربية أولاً»',
-      },
-      {
-        icon: dgaMark,
-        iconWidth: 43,
-        iconHeight: 65,
-        label: 'مكتبة التصميم السعودية',
-      },
-    ],
-  },
 
   experience: [
     {

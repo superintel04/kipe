@@ -48,9 +48,6 @@ export { default as illustratorMark } from '@/assets/team-skill/illustrator-mark
 export { default as canvaMark } from '@/assets/team-skill/canva-mark.svg'
 
 export { default as atTuraif } from '@/assets/at-turaif.jpg'
-export { default as saudiFlagMark } from '@/assets/saudi-flag.svg'
-export { default as arabicEnglishMark } from '@/assets/arabic-eng.svg'
-export { default as dgaMark } from '@/assets/dga-logo.svg'
 /**
  * The white marks are drawn over the case study heroes' dark photography; the
  * colour marks are the same logos on light surfaces, as the project card uses
