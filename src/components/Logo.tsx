@@ -1,8 +1,12 @@
 /**
- * The Kipe mark (Figma node 960:1335) — the exported vector, inlined so it
- * draws in `currentColor` rather than carrying its own fill. That keeps the
- * mark and the wordmark beside it the same colour by construction, from one
- * declaration on their shared parent.
+ * The R mark (Figma file "R Logo", nodes 8:148 and 40:283) — the exported
+ * vector, inlined so it draws in `currentColor` rather than carrying its own
+ * fill. That keeps the mark and the wordmark beside it the same colour by
+ * construction, from one declaration on their shared parent.
+ *
+ * The mark is two nodes in the source: the outlined R and the short diagonal
+ * inside its bowl. They are composed here on the R's own 100×100 box, with
+ * the diagonal translated to the offset it sits at in the design.
  *
  * Decorative: the wordmark next to it is real text, so the name is already in
  * the accessibility tree and this would only repeat it.
@@ -10,15 +14,26 @@
 export default function Logo({ className = '' }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 76 76"
+      viewBox="0 0 100 100"
       fill="none"
       aria-hidden="true"
       className={className}
     >
       <path
-        d="M56.667 0C67.099 1.74665e-05 75.5557 8.4576 75.5557 18.8896C75.5552 29.3213 67.0987 37.7783 56.667 37.7783H46.4521L67.4775 58.8037C68.2055 59.532 68.2057 60.7123 67.4775 61.4404C66.7494 62.1684 65.569 62.1684 64.8408 61.4404L41.0195 37.6191C40.2913 36.891 40.2915 35.7107 41.0195 34.9824C41.3849 34.6171 41.864 34.4343 42.3428 34.4355V34.0488H56.667C64.9079 34.0488 71.6131 27.4722 71.8213 19.2812L71.8262 18.8896C71.8262 10.6481 65.2496 3.94212 57.0586 3.73438L56.667 3.72949H3.72949V56.667C3.72974 65.0389 10.5166 71.826 18.8887 71.8262C27.1301 71.8262 33.836 65.2495 34.0439 57.0586L34.0488 56.667V42.3857H34.0674C34.0673 42.3773 34.0664 42.3688 34.0664 42.3604C34.0664 41.3356 34.8971 40.4922 35.9219 40.4922C36.9466 40.4922 37.7773 41.3356 37.7773 42.3604C37.7773 42.3688 37.7765 42.3773 37.7764 42.3857H37.7783V56.667C37.7781 67.0989 29.3206 75.5557 18.8887 75.5557C8.45687 75.5555 0.000248777 67.0988 0 56.667V0H56.667Z"
+        d="M75.001 0C88.8078 0.000263885 100.001 11.1931 100.001 25C100.001 38.8068 88.8078 49.9997 75.001 50H60.8281L88.9873 78.1592C89.7678 78.9403 89.7682 80.2064 88.9873 80.9873C88.2064 81.7682 86.9403 81.7678 86.1592 80.9873L54.6309 49.459C53.8498 48.6779 53.8498 47.4119 54.6309 46.6309C55.021 46.2408 55.5318 46.0454 56.043 46.0449V46H75.001C86.4175 45.9997 95.7065 36.8892 95.9941 25.542L96.001 25C96.0009 13.5836 86.8903 4.29456 75.543 4.00684L75.001 4H4V75C4.00013 86.5976 13.4031 95.9998 25.001 96C36.4175 95.9997 45.7065 86.8892 45.9941 75.542L46.001 75V56.0986H46.0059C46.0558 55.0385 46.9285 54.1943 48.001 54.1943C49.0735 54.1943 49.9462 55.0385 49.9961 56.0986H50.001V75C50.0008 88.8068 38.8078 99.9997 25.001 100C11.1941 99.9998 0.000131948 88.8069 0 75V0H75.001Z"
         fill="currentColor"
       />
+      <g transform="translate(35.24,40.22)">
+        <line
+          x1="12.7353"
+          y1="12.7352"
+          x2="2.00012"
+          y2="2"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+      </g>
     </svg>
   )
 }

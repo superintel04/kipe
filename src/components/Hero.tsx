@@ -55,9 +55,9 @@ export default function Hero() {
             on the name's own words, so Arabic breaks in the right place and
             `uppercase` is simply a no-op there. */}
         <Reveal delay={60}>
-          <h1 className="mt-10 flex items-center gap-4 text-brand-mark">
+          <h1 className="mt-10 flex items-center gap-6 text-brand-mark">
             <Logo className="size-[76px] shrink-0" />
-            <span className="text-[38px] leading-[48px] font-bold uppercase">
+            <span className="text-[38px] leading-[48px] font-light uppercase">
               {profile.name.split(' ').map((word) => (
                 <span key={word} className="block">
                   {word}
