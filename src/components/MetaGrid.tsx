@@ -1,5 +1,6 @@
 import Reveal from './Reveal'
 import type { MetaItem } from '@/content'
+import { contactMethodFor, trackContactClick } from '@/analytics'
 
 type MetaGridProps = {
   items: MetaItem[]
@@ -14,6 +15,10 @@ type MetaGridProps = {
  *
  * Phone numbers and email addresses carry `dir="ltr"` so they stay readable
  * when the page mirrors into Arabic.
+ *
+ * A linked entry is tracked only when its href is a `tel:` or `mailto:` — the
+ * same grid renders each case study's role and platform row, where the values
+ * are plain text and there is nothing to count.
  */
 export default function MetaGrid({
   items,
@@ -35,6 +40,10 @@ export default function MetaGrid({
               href={item.href}
               dir="ltr"
               className="mt-2 block text-h5 font-medium break-words transition-colors hover:text-accent-fg rtl:text-right"
+              onClick={() => {
+                const method = contactMethodFor(item.href)
+                if (method) trackContactClick(method)
+              }}
             >
               {item.value}
             </a>

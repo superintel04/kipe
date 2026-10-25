@@ -1,7 +1,9 @@
 import resumeUrl from '@/assets/Ramesh-Panti-Lead-Product-Designer-Resume.pdf'
 import { useContent } from '@/content'
+import { trackOutboundClick, trackResumeDownload } from '@/analytics'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ramesh-ux-designer/'
+const RESUME_FILE_NAME = 'Ramesh-Panti-Lead-Product-Designer-Resume.pdf'
 
 /**
  * Tray-and-arrow download glyph. Drawn at 16px on a 16px grid so the strokes
@@ -103,8 +105,12 @@ export default function Nav() {
               by Vite, so its URL is not a readable filename. */}
           <a
             href={resumeUrl}
-            download="Ramesh-Panti-Lead-Product-Designer-Resume.pdf"
+            download={RESUME_FILE_NAME}
             className={iconLinkClass}
+            // Fires on the click, not on the transfer finishing — a download
+            // emits no completion event a page can observe. It is the intent
+            // that is interesting here anyway.
+            onClick={() => trackResumeDownload(RESUME_FILE_NAME)}
           >
             <DownloadIcon />
             {nav.resume}
@@ -117,6 +123,9 @@ export default function Nav() {
             rel="noreferrer noopener"
             aria-label={`${nav.linkedin} (${nav.newTab})`}
             className={iconLinkClass}
+            // The link opens a new tab, so this page is never unloaded and the
+            // event has time to send without a transport beacon.
+            onClick={() => trackOutboundClick(LINKEDIN_URL, nav.linkedin)}
           >
             {nav.linkedin}
             <OutboundIcon />

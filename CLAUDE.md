@@ -37,6 +37,16 @@ Use the semantic colour tokens (`bg`, `bg-subtle`, `bg-muted`, `bg-inverse`, `fg
 
 Imports use the `@/` alias for `src/`, declared in **both** `vite.config.ts` (resolve.alias) and `tsconfig.app.json` (paths) — changing one requires changing the other.
 
+### Analytics
+
+GA4 lives in `src/analytics.ts`, behind `VITE_GA_MEASUREMENT_ID` (set in Vercel, never committed; see `.env.example`). **Every function no-ops unless the variable is set *and* the bundle is a production build**, so dev servers never report — which also means `npm run dev` is useless for verifying a tag change. Use `npm run build && npm run preview` with the variable in `.env.local`, and confirm in GA4's Realtime report. Vite inlines `VITE_*` at build time, so changing the value in Vercel requires a redeploy.
+
+The tag is configured `send_page_view: false` and `App.tsx` sends every `page_view` itself, keyed on the router path. This is not optional: GA4's automatic pageview fires once per document load, so on this SPA a case study opened from the grid would otherwise never be counted. `page_title` is passed from the content bundle rather than read from `document.title`, because React runs child effects before parent ones and `LanguageProvider` has not written the title yet when the first pageview fires.
+
+Interaction events are sent from the component that owns the control — `trackResumeDownload` and `trackOutboundClick` in `Nav.tsx`, `trackCaseStudyOpen` in `ProjectCards.tsx`, `trackContactClick` in `MetaGrid.tsx`. Prefer adding a named wrapper in `analytics.ts` over calling `trackEvent` with a bare string at the call site, so the event vocabulary stays in one file.
+
+**The resume event collides with Enhanced measurement.** `file_download` is GA4's own recommended event *and* fires automatically for any link ending in `.pdf`, so "File downloads" must stay **off** under Admin → Data streams → Enhanced measurement or downloads double-count. It is sent explicitly anyway because Vite fingerprints the asset, and the automatic event would record the hashed filename.
+
 ### Figma is the source of record
 
 The design is [`Kipe / Content`](https://www.figma.com/design/I1nCoRD5vABRiKUgiTo46o/Kipe?node-id=1-7), and several values are transcribed from it rather than authored. Component doc comments cite their Figma node IDs; preserve those references. Concretely:

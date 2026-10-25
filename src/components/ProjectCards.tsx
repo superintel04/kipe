@@ -4,6 +4,7 @@ import Section from './Section'
 import ProjectMetrics from './ProjectMetrics'
 import { iconArrow } from '@/content/assets'
 import { useContent, type ProjectCard } from '@/content'
+import { trackCaseStudyOpen } from '@/analytics'
 
 /**
  * Three corners take the design's 40px radius and the fourth is cut square.
@@ -70,6 +71,10 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
               <Link
                 to={`/${card.slug}`}
                 className="after:absolute after:inset-0 after:z-30"
+                // `card` rather than `cta`: this link is the one stretched over
+                // the whole card, so it catches clicks anywhere except on the
+                // pill, which sits above it and reports itself.
+                onClick={() => trackCaseStudyOpen(card.name, 'card')}
               >
                 {card.name}
               </Link>
@@ -120,6 +125,7 @@ function Card({ card, index }: { card: ProjectCard; index: number }) {
           to={`/${card.slug}`}
           aria-hidden="true"
           tabIndex={-1}
+          onClick={() => trackCaseStudyOpen(card.name, 'cta')}
           // Square on the trailing top corner — the mirror of the hero CTA.
           className="project-card-cta absolute end-8 bottom-8 z-40 inline-flex h-[56px] items-center gap-3 rounded-[100px] rounded-se-none bg-white px-6 whitespace-nowrap text-body font-bold text-accent-fg shadow-[0_10px_30px_rgb(0_0_0/0.12)]"
         >
