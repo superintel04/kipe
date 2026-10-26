@@ -185,6 +185,18 @@ export type UiStrings = {
   languageToggleAria: string
 }
 
+/**
+ * One claim in the Saudi-experience band. The mark keeps its own designed
+ * dimensions rather than being normalised, as in `Credential`.
+ */
+export type RegionalPoint = {
+  /** Vite asset import for the mark, drawn in white on the green card. */
+  icon: string
+  iconWidth: number
+  iconHeight: number
+  label: string
+}
+
 /** Marks a metric can carry instead of a figure (Figma node 869:4068). */
 export type ProjectMetricIcon = 'devices' | 'document' | 'money' | 'dga'
 
@@ -259,6 +271,10 @@ export type Content = {
   skills: Skill[]
   /** "Meet my skillset" marquee. */
   skillCards: SkillCard[]
+  /** Saudi-experience band: three claims over the Riyadh skyline. */
+  regional: {
+    points: RegionalPoint[]
+  }
   experience: Role[]
   credentials: Credential[]
   closing: {
