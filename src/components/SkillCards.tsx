@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal'
 import Section from './Section'
 import {
@@ -19,6 +19,223 @@ import {
   type SkillTone,
   type SkillToolSet,
 } from '@/content'
+
+/**
+ * 64px/s — the pace the CSS keyframe marquee ran at (one 8-card pass in 40s),
+ * kept so the section's rhythm is unchanged by the rewrite.
+ */
+const DRIFT_SPEED = 64
+
+/** How long the strip stays still after a drag before it picks up again. */
+const RESUME_DELAY = 1800
+
+/** Pointer travel past which a press was a drag, not a click on a card. */
+const DRAG_THRESHOLD = 10
+
+/** Positive modulo — `-5 % 100` is `-5` in JS, and we want `95`. */
+function wrap(value: number, span: number) {
+  return ((value % span) + span) % span
+}
+
+/**
+ * Drives the strip.
+ *
+ * The cards used to move by animating `transform: translateX` on the track
+ * inside an `overflow: hidden` box, which cannot be scrolled — a transform is
+ * not a scroll position, so there was nothing for a visitor to grab. This runs
+ * the same motion by writing `scrollLeft` on a real scroll container instead,
+ * which costs a frame loop but means the trackpad, a drag, the scrollbar and
+ * the keyboard all reach it for free.
+ *
+ * Looping works the same way it did: the track holds two identical passes and
+ * the position wraps at half the scroll width, which is exactly one pass, so
+ * the seam is invisible. The wrap runs in both directions, so dragging
+ * backwards past the start continues rather than hitting a wall.
+ *
+ * Positions are held as a "logical" offset counting up from zero whichever way
+ * the page reads — in RTL `scrollLeft` runs from `-max` to `0`, and a sign
+ * flip at the boundary keeps the rest of the arithmetic identical.
+ *
+ * The loop runs only above `md` and only with motion allowed, matching where
+ * the duplicate pass is rendered — below that the strip is left as an ordinary
+ * native scroller, so a phone neither burns a frame loop nor wraps against a
+ * track that is half the width the maths assumes.
+ */
+function useDriftingScroller(held: boolean) {
+  const viewportRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [dragging, setDragging] = useState(false)
+
+  // Read inside the frame loop, so changing one never restarts the loop.
+  const heldRef = useRef(held)
+  const hoveredRef = useRef(false)
+  const draggingRef = useRef(false)
+  const resumeAtRef = useRef(0)
+  const halfRef = useRef(0)
+  const dragRef = useRef<{ startX: number; startAt: number } | null>(null)
+
+  useEffect(() => {
+    heldRef.current = held
+  }, [held])
+
+  // One pass is the wrap point. Remeasured on resize because the cards are a
+  // fixed width but the gap and the container are not.
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const measure = () => {
+      halfRef.current = track.scrollWidth / 2
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(track)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const viewport = viewportRef.current
+    if (!viewport) return
+
+    const wide = window.matchMedia('(min-width: 768px)')
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let frame = 0
+    let last = 0
+
+    const tick = (now: number) => {
+      frame = requestAnimationFrame(tick)
+
+      const elapsed = last ? Math.min((now - last) / 1000, 0.05) : 0
+      last = now
+
+      const half = halfRef.current
+      if (!half) return
+
+      /**
+       * Leave the position alone while something inside holds focus. The
+       * browser scrolls a focused card into view, and wrapping underneath it
+       * would scroll it straight back out.
+       */
+      if (viewport.contains(document.activeElement)) return
+
+      const sign = document.documentElement.dir === 'rtl' ? -1 : 1
+      let position = sign * viewport.scrollLeft
+
+      const drifting =
+        !heldRef.current &&
+        !hoveredRef.current &&
+        !draggingRef.current &&
+        now >= resumeAtRef.current
+      if (drifting) position += DRIFT_SPEED * elapsed
+
+      if (position >= half) position -= half
+      /**
+       * `<= 0` rather than `< 0`: the browser clamps a native backwards scroll
+       * at zero before this ever sees a negative value, so resting *at* zero is
+       * what has to move. It lands a pass along, where the content is
+       * identical, which hides the hop and leaves room to keep scrolling back.
+       *
+       * One pixel short of the pass, and a second `if` rather than an `else`,
+       * so that landing exactly on the wrap point cannot bounce straight back
+       * to zero — the two rules would then trade the position every frame.
+       */
+      if (position <= 0) position = half - 1
+
+      const next = sign * position
+      // Only write when the value actually changes — an unconditional write
+      // every frame would cancel the momentum of a trackpad fling.
+      if (Math.abs(next - viewport.scrollLeft) > 0.01) viewport.scrollLeft = next
+    }
+
+    const sync = () => {
+      const active = wide.matches && !still.matches
+      if (active && !frame) {
+        last = 0
+        frame = requestAnimationFrame(tick)
+      } else if (!active && frame) {
+        cancelAnimationFrame(frame)
+        frame = 0
+      }
+    }
+
+    sync()
+    wide.addEventListener('change', sync)
+    still.addEventListener('change', sync)
+    return () => {
+      wide.removeEventListener('change', sync)
+      still.removeEventListener('change', sync)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  /**
+   * Mouse drag. Touch is left to the browser, which already pans a scroll
+   * container and does it with momentum; driving it from here as well would
+   * move the strip twice per gesture.
+   */
+  const onPointerDown = useCallback((event: React.PointerEvent) => {
+    const viewport = viewportRef.current
+    if (!viewport || event.pointerType !== 'mouse' || event.button !== 0) return
+    const sign = document.documentElement.dir === 'rtl' ? -1 : 1
+    dragRef.current = {
+      startX: event.clientX,
+      startAt: sign * viewport.scrollLeft,
+    }
+    draggingRef.current = true
+    setDragging(true)
+  }, [])
+
+  useEffect(() => {
+    if (!dragging) return
+    const viewport = viewportRef.current
+    if (!viewport) return
+
+    const onMove = (event: PointerEvent) => {
+      const drag = dragRef.current
+      const half = halfRef.current
+      if (!drag || !half) return
+      const sign = document.documentElement.dir === 'rtl' ? -1 : 1
+      // Dragging right always reveals earlier content, whichever way the page
+      // reads, so the offset is subtracted in both directions.
+      const position = wrap(drag.startAt - (event.clientX - drag.startX), half)
+      // Wrapped before it is assigned, so the browser is never handed a value
+      // outside the scroll range and never clamps the drag to a stop.
+      viewport.scrollLeft = sign * position
+    }
+
+    const onUp = () => {
+      dragRef.current = null
+      draggingRef.current = false
+      setDragging(false)
+      resumeAtRef.current = performance.now() + RESUME_DELAY
+    }
+
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
+    window.addEventListener('pointercancel', onUp)
+    return () => {
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+      window.removeEventListener('pointercancel', onUp)
+    }
+  }, [dragging])
+
+  const onPointerEnter = useCallback(() => {
+    hoveredRef.current = true
+  }, [])
+
+  const onPointerLeave = useCallback(() => {
+    hoveredRef.current = false
+  }, [])
+
+  return {
+    viewportRef,
+    trackRef,
+    dragging,
+    onPointerDown,
+    onPointerEnter,
+    onPointerLeave,
+  }
+}
 
 /** Reverse-face colours. Indigo and coral are literals from Figma 710:1309. */
 const TONE: Record<SkillTone, string> = {
@@ -128,11 +345,12 @@ function Card({
   const title = card.title.join(' ')
 
   /**
-   * Swipe-versus-tap. The cards sit in a horizontal scroller, so a drag that
+   * Drag-versus-click. The cards sit in a horizontal scroller, so a drag that
    * starts on a card still ends in a click — the browser only suppresses that
    * reliably for vertical page scrolling, not for a scroll container being
-   * flung sideways. Anything that travelled more than a few pixels was the
-   * visitor scrolling, not choosing, so it is ignored.
+   * pulled sideways. Anything that travelled more than a few pixels was the
+   * visitor scrolling, not choosing, so it is ignored. This covers the mouse
+   * now that the strip can be dragged on a desktop too, not just the thumb.
    */
   const pressedAt = useRef<{ x: number; y: number } | null>(null)
 
@@ -145,7 +363,10 @@ function Card({
     pressedAt.current = null
     // `detail` is 0 for keyboard activation, which has no travel to measure.
     if (!start || event.detail === 0) return false
-    return Math.hypot(event.clientX - start.x, event.clientY - start.y) > 10
+    return (
+      Math.hypot(event.clientX - start.x, event.clientY - start.y) >
+      DRAG_THRESHOLD
+    )
   }
 
   return (
@@ -251,24 +472,26 @@ function Card({
 }
 
 /**
- * "Meet my skillset" (Figma node 710:1309) — the cards drift past in a
- * continuous marquee, pausing whenever one is hovered or focused so the flip
- * can be read.
+ * "Meet my skillset" (Figma node 710:1309) — the cards drift past, and can be
+ * dragged or scrolled either way at any point, on a desktop as much as on a
+ * phone. The drift pauses whenever a card is hovered, focused or held open so
+ * the flip can be read, and picks up again a beat after a drag ends.
  *
- * All eight cards are distinct. The strip still runs them twice — that second
- * pass is what makes the loop seamless, since the track slides exactly half
- * its width and lands back where it started — but it is hidden from assistive
+ * All eight cards are distinct. The strip runs them twice — that second pass
+ * is what makes the loop seamless, since the position wraps after exactly one
+ * pass and lands on identical content — but it is hidden from assistive
  * technology and out of the tab order, so nothing is announced twice. Each
- * pass carries its own trailing gap (`pe-6`) to keep that halfway point exact.
- * The direction flips in Arabic, where a strip travelling leftwards would run
- * against the reading direction.
+ * pass carries its own trailing gap (`pe-6`) to keep that wrap point exact.
+ * `useDriftingScroller` holds the rest of the mechanics.
  *
- * Below `md`, and under `prefers-reduced-motion`, the animation stops and the
- * strip becomes an ordinary swipeable scroller with the duplicate pass removed
- * — a marquee that drifts out from under a thumb is no use on a phone.
+ * Below `md`, and under `prefers-reduced-motion`, the drift stops and the
+ * strip is left as an ordinary native scroller with the duplicate pass removed
+ * — a row that moves out from under a thumb is no use on a phone, and the
+ * wrap would be measuring against half a track.
+ *
  * Pausing on hover, on focus, and while a card is held open is what keeps this
  * clear of WCAG 2.2.2, which wants a stop mechanism for anything that moves
- * for more than five seconds.
+ * for more than five seconds; being able to drag it is now a second one.
  */
 export default function SkillCards() {
   const { skillCards, ui } = useContent()
@@ -294,6 +517,15 @@ export default function SkillCards() {
     setDismissed(id)
   }
 
+  const {
+    viewportRef,
+    trackRef,
+    dragging,
+    onPointerDown,
+    onPointerEnter,
+    onPointerLeave,
+  } = useDriftingScroller(openCard !== null)
+
   return (
     <Section
       labelledBy="meet-skillset-heading"
@@ -310,12 +542,18 @@ export default function SkillCards() {
       {/* `py-2` is headroom for the focus ring, which `overflow-hidden` would
           otherwise clip off the top and bottom of a focused card. */}
       <div
-        onPointerLeave={() => setDismissed(null)}
+        ref={viewportRef}
+        onPointerDown={onPointerDown}
+        onPointerEnter={onPointerEnter}
+        onPointerLeave={() => {
+          onPointerLeave()
+          setDismissed(null)
+        }}
         className={`skill-marquee -mx-6 mt-12 py-2 md:-mx-12 md:mt-16 ${
-          openCard ? 'is-paused' : ''
-        } ${dismissed ? 'is-resumed' : ''}`}
+          dragging ? 'is-dragging' : ''
+        }`}
       >
-        <div className="skill-track flex w-max">
+        <div ref={trackRef} className="skill-track flex w-max">
           <ul className="flex gap-6 pe-6">
             {skillCards.map((card) => (
               <Card

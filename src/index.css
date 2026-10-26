@@ -277,42 +277,43 @@
 
   /* ---- Meet my skillset (Figma 710:1309) -------------------------------- */
 
-  /* The track carries the cards twice and travels exactly half its width, so
+  /* A real scroll container, not a clipped box: the drift is written to
+     `scrollLeft` by SkillCards rather than animated as a transform, which is
+     what lets the trackpad, a drag and the scrollbar all reach it. The track
+     carries the cards twice and the position wraps after exactly one pass, so
      the join is invisible. Each pass includes its own trailing gap, which is
-     what makes 50% land on a card edge rather than mid-gap. */
+     what makes that point land on a card edge rather than mid-gap.
+
+     `scroll-behavior: auto` is explicit because `html` sets `smooth`: the
+     property does not inherit today, but if it ever did, every frame's write
+     would queue a smooth scroll and the strip would crawl.
+
+     `overscroll-behavior-x: contain` stops a horizontal fling that reaches the
+     end from being taken as the browser's back gesture. */
   .skill-marquee {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
   }
 
-  /* 40s across eight cards ≈ 64px/s, so a card passes roughly every 5s. */
-  .skill-track {
-    animation: skill-marquee 40s linear infinite;
+  .skill-marquee::-webkit-scrollbar {
+    display: none;
   }
 
-  /* Leftward travel reads as backwards in Arabic. */
-  [dir="rtl"] .skill-track {
-    animation-name: skill-marquee-rtl;
-  }
-
-  @keyframes skill-marquee {
-    to {
-      transform: translateX(-50%);
+  /* The strip is draggable wherever the pointer is, so it says so. Only from
+     `md`: below that the gesture is a swipe and there is no cursor to shape. */
+  @media (min-width: 768px) and (pointer: fine) {
+    .skill-marquee {
+      cursor: grab;
     }
-  }
 
-  @keyframes skill-marquee-rtl {
-    to {
-      transform: translateX(50%);
+    .skill-marquee.is-dragging {
+      cursor: grabbing;
+      /* Otherwise a drag across the cards selects the titles underneath. */
+      user-select: none;
     }
-  }
-
-  /* Stops for the pointer, for the keyboard, and while a card is held open —
-     the last of those is the one a touch visitor gets, since there is no
-     hover to pause on. */
-  .skill-marquee:hover .skill-track,
-  .skill-marquee:focus-within .skill-track,
-  .skill-marquee.is-paused .skill-track {
-    animation-play-state: paused;
   }
 
   .skill-flip {
@@ -373,20 +374,13 @@
     pointer-events: none;
   }
 
-  .skill-marquee.is-resumed .skill-track {
-    animation-play-state: running;
-  }
-
-  /* Phones get a swipeable strip rather than a marquee — a row that drifts out
-     from under the thumb cannot be read. The duplicate pass goes with it,
-     since nothing is looping any more. */
+  /* Phones get a plain swipeable strip — a row that drifts out from under the
+     thumb cannot be read. The duplicate pass goes with it, since nothing is
+     looping any more; `useDriftingScroller` holds its frame loop to the same
+     breakpoint, because the wrap point is measured as half the track and a
+     single pass would put it in the middle of the cards. */
   @media (max-width: 767px) {
-    .skill-track {
-      animation: none;
-    }
-
     .skill-marquee {
-      overflow-x: auto;
       scroll-snap-type: x proximity;
       scroll-padding-inline-start: 1.5rem;
       -webkit-overflow-scrolling: touch;
@@ -478,16 +472,11 @@
       transition: opacity 160ms ease;
     }
 
-    /* The marquee stops and becomes an ordinary scroller; the duplicate pass
-       has no purpose once nothing is looping, so it goes. */
-    .skill-track {
-      animation: none;
-    }
-
-    .skill-marquee {
-      overflow-x: auto;
-    }
-
+    /* The drift stops — `useDriftingScroller` watches the same query and does
+       not start its loop — but the strip is still a scroller, so the cards
+       stay reachable by drag, trackpad and keyboard. The duplicate pass has no
+       purpose once nothing is looping, so it goes; the hook's wrap is held
+       back in step with it, since one pass would put the wrap point mid-row. */
     .skill-marquee ul[aria-hidden="true"] {
       display: none;
     }
@@ -495,6 +484,5 @@
     .skill-flip-inner {
       transition: none;
     }
-
   }
 }
