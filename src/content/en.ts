@@ -208,6 +208,8 @@ export const en: Content = {
   ],
 
   regional: {
+    skylineAlt:
+      'The Riyadh skyline rising behind the mud-brick walls of At-Turaif in Diriyah',
     points: [
       {
         icon: saudiFlagMark,
