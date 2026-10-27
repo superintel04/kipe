@@ -1,9 +1,19 @@
-import resumeUrl from '@/assets/Ramesh-Panti-Lead-Product-Designer-Resume.pdf'
 import { useContent } from '@/content'
-import { trackOutboundClick, trackResumeDownload } from '@/analytics'
+import { trackOutboundClick, trackResumeOpen } from '@/analytics'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/in/ramesh-ux-designer/'
 const RESUME_FILE_NAME = 'Ramesh-Panti-Lead-Product-Designer-Resume.pdf'
+
+/**
+ * Served from `/public` rather than imported from `src/assets`, which is the
+ * one deliberate exception to the fingerprint-everything rule in CLAUDE.md.
+ * The resume now opens in the browser's PDF viewer instead of downloading
+ * straight away, so its URL is what the visitor sees and what "Save as" names
+ * the file — a Vite-hashed `…-a1b2c3d4.pdf` would land in their downloads
+ * folder. Unfingerprinted means a replaced resume relies on cache headers
+ * rather than a new URL, which Vercel revalidates for static files by default.
+ */
+const RESUME_URL = `/${RESUME_FILE_NAME}`
 
 /**
  * Tray-and-arrow download glyph. Drawn at 16px on a 16px grid so the strokes
@@ -101,16 +111,17 @@ export default function Nav() {
             own line; from `md` it goes back to a fixed gap, and 120px once
             there is room for it. */}
         <li className="ms-auto pe-6 lg:ms-[120px] md:ms-10 md:pe-9">
-          {/* `download` names the saved file; the asset itself is fingerprinted
-              by Vite, so its URL is not a readable filename. */}
+          {/* Opens in the browser's own PDF viewer rather than carrying
+              `download`, so the resume can be read before it is saved — the
+              viewer's own download button handles the rest. A new tab, not
+              this one, so the portfolio is still there behind it. */}
           <a
-            href={resumeUrl}
-            download={RESUME_FILE_NAME}
+            href={RESUME_URL}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label={`${nav.resume} (${nav.newTab})`}
             className={iconLinkClass}
-            // Fires on the click, not on the transfer finishing — a download
-            // emits no completion event a page can observe. It is the intent
-            // that is interesting here anyway.
-            onClick={() => trackResumeDownload(RESUME_FILE_NAME)}
+            onClick={() => trackResumeOpen(RESUME_FILE_NAME)}
           >
             <DownloadIcon />
             {nav.resume}

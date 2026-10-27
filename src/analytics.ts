@@ -88,17 +88,18 @@ export function trackEvent(name: string, params: GtagParams = {}) {
 }
 
 /**
- * Resume download.
+ * The resume being opened. It opens in the browser's PDF viewer rather than
+ * downloading, so this counts intent to read it — whether it is then saved
+ * happens inside the viewer, where no page can observe it.
  *
- * `file_download` is a GA4 recommended event, so it reports without any custom
- * dimensions — but GA4's own Enhanced measurement sends the same event for any
- * link ending in `.pdf`. **Turn "File downloads" off** under Admin → Data
- * streams → Enhanced measurement, or every download is counted twice. The
- * trade is worth it: the resume URL is fingerprinted by Vite, so the automatic
- * event would record a filename like `Resume-a1b2c3d4.pdf`, while this one
- * records the name the visitor actually saves.
+ * Still `file_download`, which GA4 defines as a click on a link leading to a
+ * file and does not condition on the `download` attribute, so the event stays
+ * accurate and keeps its place in the standard reports. But GA4's own Enhanced
+ * measurement sends the same event for any link ending in `.pdf`: **turn "File
+ * downloads" off** under Admin → Data streams → Enhanced measurement, or every
+ * click is counted twice.
  */
-export function trackResumeDownload(fileName: string) {
+export function trackResumeOpen(fileName: string) {
   trackEvent('file_download', {
     file_name: fileName,
     file_extension: 'pdf',

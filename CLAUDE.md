@@ -43,9 +43,11 @@ GA4 lives in `src/analytics.ts`, behind `VITE_GA_MEASUREMENT_ID` (set in Vercel,
 
 The tag is configured `send_page_view: false` and `App.tsx` sends every `page_view` itself, keyed on the router path. This is not optional: GA4's automatic pageview fires once per document load, so on this SPA a case study opened from the grid would otherwise never be counted. `page_title` is passed from the content bundle rather than read from `document.title`, because React runs child effects before parent ones and `LanguageProvider` has not written the title yet when the first pageview fires.
 
-Interaction events are sent from the component that owns the control — `trackResumeDownload` and `trackOutboundClick` in `Nav.tsx`, `trackCaseStudyOpen` in `ProjectCards.tsx`, `trackContactClick` in `MetaGrid.tsx`. Prefer adding a named wrapper in `analytics.ts` over calling `trackEvent` with a bare string at the call site, so the event vocabulary stays in one file.
+Interaction events are sent from the component that owns the control — `trackResumeOpen` and `trackOutboundClick` in `Nav.tsx`, `trackCaseStudyOpen` in `ProjectCards.tsx`, `trackContactClick` in `MetaGrid.tsx`. Prefer adding a named wrapper in `analytics.ts` over calling `trackEvent` with a bare string at the call site, so the event vocabulary stays in one file.
 
-**The resume event collides with Enhanced measurement.** `file_download` is GA4's own recommended event *and* fires automatically for any link ending in `.pdf`, so "File downloads" must stay **off** under Admin → Data streams → Enhanced measurement or downloads double-count. It is sent explicitly anyway because Vite fingerprints the asset, and the automatic event would record the hashed filename.
+**The resume event collides with Enhanced measurement.** `file_download` is GA4's own recommended event *and* fires automatically for any link ending in `.pdf`, so "File downloads" must stay **off** under Admin → Data streams → Enhanced measurement or every click double-counts.
+
+**The resume PDF lives in `/public`, not `src/assets`** — the one deliberate exception to importing every asset so Vite fingerprints it. The nav link opens the PDF in a new tab for reading rather than forcing a download, so the URL is visible to the visitor and is what the viewer's "Save as" names the file; a hashed `…-a1b2c3d4.pdf` would end up in their downloads folder. The cost is that replacing the resume no longer changes its URL, so propagation depends on cache headers rather than a new filename — fine on Vercel, which revalidates unfingerprinted static files by default.
 
 ### Figma is the source of record
 
