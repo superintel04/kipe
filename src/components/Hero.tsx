@@ -55,12 +55,17 @@ export default function Hero() {
             on the name's own words, so Arabic breaks in the right place and
             `uppercase` is simply a no-op there. */}
         <Reveal delay={60}>
-          <h1 className="mt-10 flex items-center gap-6 text-brand-mark">
-            {/* 40px: a little under one 48px line, so the mark reads as a
-                compact device beside the name rather than a second block
-                squaring up to both lines. It stays centred against the pair,
-                which keeps it on the optical midpoint of the wordmark. */}
-            <Logo className="size-10 shrink-0" />
+          {/* `items-baseline` rather than a nudged `items-start`: an SVG is a
+              replaced element, so flexbox takes its bottom edge as its
+              baseline and sits it on the baseline of RAMESH. Pair that with a
+              mark exactly one cap-height tall and its top lands on the cap top
+              too — the mark and the first word measure the same, without
+              hard-coding an offset that only holds for Inter's metrics. */}
+          <h1 className="mt-10 flex items-baseline gap-6 text-brand-mark">
+            {/* 28px is the cap height of RAMESH at 38px Inter Light, measured
+                at 28.03px — `size-7` to the pixel. The path fills its viewBox
+                edge to edge, so the box height is the visible height. */}
+            <Logo className="size-7 shrink-0" />
             <span className="text-[38px] leading-[48px] font-light uppercase">
               {profile.name.split(' ').map((word) => (
                 <span key={word} className="block">
