@@ -56,7 +56,11 @@ export default function Hero() {
             `uppercase` is simply a no-op there. */}
         <Reveal delay={60}>
           <h1 className="mt-10 flex items-center gap-6 text-brand-mark">
-            <Logo className="size-[76px] shrink-0" />
+            {/* 40px: a little under one 48px line, so the mark reads as a
+                compact device beside the name rather than a second block
+                squaring up to both lines. It stays centred against the pair,
+                which keeps it on the optical midpoint of the wordmark. */}
+            <Logo className="size-10 shrink-0" />
             <span className="text-[38px] leading-[48px] font-light uppercase">
               {profile.name.split(' ').map((word) => (
                 <span key={word} className="block">
