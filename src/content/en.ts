@@ -43,7 +43,7 @@ export const en: Content = {
     name: 'Ramesh Panti',
     tagline: [
       'Lead Product Designer with ',
-      { highlight: '15+ years' },
+      { highlight: '10 years' },
       ' across UX strategy, research, and design systems. Research-led product design, end to end: from user insight to interface to front-end. Currently with the ',
       { strong: 'Ministry of Culture' },
       ' in Riyadh, KSA.',
@@ -54,7 +54,7 @@ export const en: Content = {
   },
 
   meta: [
-    { label: 'Experience', value: '15+ Yrs' },
+    { label: 'Experience', value: '10 Yrs' },
     { label: 'Current Location', value: 'Riyadh, KSA' },
     { label: 'Client', value: 'ITCI (Ministry of Culture)' },
     { label: 'Contact', value: '+966 53 731 3849', href: 'tel:+966537313849' },
@@ -160,7 +160,7 @@ export const en: Content = {
       imageAlt: 'Michael Jackson performing on stage',
       title: ['UI', 'Design'],
       tools: 'design',
-      back: [{ text: '15+ Years of Exp in Visual Design', tone: 'indigo' }],
+      back: [{ text: '10 Years of Exp in Visual Design', tone: 'indigo' }],
     },
     {
       image: skillDravid,
