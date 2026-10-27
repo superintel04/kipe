@@ -113,7 +113,7 @@ export const en: Content = {
       ],
     },
     {
-      title: 'Value AI Strategist',
+      title: 'AI Design Engineering',
       body: [
         'Research, Building, Testing and Shipping the Apps using',
         { accent: '(Claude Code + Figma + Figma MCP + Cursor )' },

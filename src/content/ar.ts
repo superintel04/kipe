@@ -125,7 +125,7 @@ export const ar: Content = {
       ],
     },
     {
-      title: 'استراتيجية الذكاء الاصطناعي',
+      title: 'هندسة التصميم بالذكاء الاصطناعي',
       body: [
         'البحث وبناء التطبيقات واختبارها وإطلاقها باستخدام ',
         { accent: '(Claude Code + Figma + Figma MCP + Cursor)' },
