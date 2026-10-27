@@ -80,6 +80,14 @@ export const en: Content = {
       ],
     },
     {
+      title: 'AI Design Engineering',
+      body: [
+        'Research, Building, Testing and Shipping the Apps using',
+        { accent: '(Claude Code + Figma + Figma MCP + Cursor )' },
+        ' and workflows to accelerate concept exploration, research synthesis, and prototype-to-code handoff.',
+      ],
+    },
+    {
       title: 'User Research',
       body: [
         'Conducted interviews, usability sessions, surveys with users, converting findings into design decisions that resolved recurring drop-off points.',
@@ -110,14 +118,6 @@ export const en: Content = {
       title: 'Cross-functional Collaboration',
       body: [
         'Partnered daily with product, engineering, and QA from discovery to launch, supporting implementation through to sign-off.',
-      ],
-    },
-    {
-      title: 'AI Design Engineering',
-      body: [
-        'Research, Building, Testing and Shipping the Apps using',
-        { accent: '(Claude Code + Figma + Figma MCP + Cursor )' },
-        ' and workflows to accelerate concept exploration, research synthesis, and prototype-to-code handoff.',
       ],
     },
   ],
