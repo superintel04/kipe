@@ -61,7 +61,7 @@ export default function Hero() {
               mark exactly one cap-height tall and its top lands on the cap top
               too — the mark and the first word measure the same, without
               hard-coding an offset that only holds for Inter's metrics. */}
-          <h1 className="mt-10 flex items-baseline gap-6 text-brand-mark">
+          <h1 className="mt-10 flex items-baseline gap-4 text-brand-mark">
             {/* 28px is the cap height of RAMESH at 38px Inter Light, measured
                 at 28.03px — `size-7` to the pixel. The path fills its viewBox
                 edge to edge, so the box height is the visible height. */}
