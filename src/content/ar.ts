@@ -358,7 +358,7 @@ export const ar: Content = {
       metrics: [
         { icon: 'document', label: 'تدفق تسجيل أبسط' },
         { icon: 'devices', label: 'تجربة متجاوبة' },
-        { value: '1M', label: 'تسجيل في برنامج تعويض الكربون' },
+        { value: '28 مليون كجم', label: 'من ثاني أكسيد الكربون المعوَّض' },
       ],
       image: qatarPreview,
       imageAlt: 'بوابة Beyond Business للشركات من الخطوط الجوية القطرية',

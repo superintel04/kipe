@@ -339,7 +339,7 @@ export const en: Content = {
       metrics: [
         { icon: 'document', label: 'A simpler enrolment flow' },
         { icon: 'devices', label: 'Responsive experience' },
-        { value: '1M', label: 'Carbon offset enrolments' },
+        { value: '28M kg', label: 'CO₂ compensated' },
       ],
       image: qatarPreview,
       imageAlt: 'The Qatar Airways Beyond Business corporate portal',
