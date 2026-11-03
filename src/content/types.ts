@@ -166,7 +166,7 @@ export type UiStrings = {
   caseStudy: string
   /** Heading over the project grid. */
   projects: string
-  /** "Outcome" label on a project card — `outcome` is the case-study one. */
+  /** "Impact" label on a project card — `outcome` is the case-study one. */
   outcomeLabel: string
   fullCaseStudy: string
   backToProfile: string

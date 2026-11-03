@@ -925,7 +925,7 @@ export const ar: Content = {
     credentials: 'المؤهلات والشهادات',
     challenge: 'التحدي',
     approach: 'المنهجية',
-    outcome: 'النتائج',
+    outcome: 'الأثر',
     screens: 'لقطات من المشروع',
     caseStudy: 'دراسة الحالة',
     projects: 'المشاريع',

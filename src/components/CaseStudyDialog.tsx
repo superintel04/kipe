@@ -14,7 +14,7 @@ type Enlarged = { src: string; alt: string } | null
 
 /**
  * Full-window case study (Figma node 41:59): hero, project title, details,
- * then Challenge / Approach / Outcome.
+ * then Challenge / Approach / Impact.
  *
  * Built on the native <dialog> element, so focus trapping, background inerting
  * and Esc-to-close come from the platform rather than hand-rolled JavaScript.

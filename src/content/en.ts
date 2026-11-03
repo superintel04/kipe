@@ -617,7 +617,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall outcome',
+        label: 'Overall impact',
         items: [
           '50+ employee services moved to digital, trackable workflows.',
           'Reduced dependency on manual processes.',
@@ -684,7 +684,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall outcome',
+        label: 'Overall impact',
         items: [
           'The portal reads immediately as an official government service.',
           'Users’ trust earned through a recognisably DGA-compliant experience.',
@@ -774,7 +774,7 @@ export const en: Content = {
       ],
 
       overallOutcome: {
-        label: 'Overall outcome',
+        label: 'Overall impact',
         items: [
           'Critical usability issues resolved ahead of everything else.',
           'A simpler enrolment flow and clearer navigation labels.',
@@ -883,7 +883,7 @@ export const en: Content = {
         },
       ],
       overallOutcome: {
-        label: 'Overall outcome',
+        label: 'Overall impact',
         items: [
           'Document processing time cut by around 80%.',
           'Error-free document analysis.',
@@ -917,11 +917,11 @@ export const en: Content = {
     credentials: 'Education & Certification',
     challenge: 'Challenge',
     approach: 'Approach',
-    outcome: 'Outcome',
+    outcome: 'Impact',
     screens: 'Screens',
     caseStudy: 'Case study',
     projects: 'Projects',
-    outcomeLabel: 'Outcome',
+    outcomeLabel: 'Impact',
     fullCaseStudy: 'Full Case study',
     backToProfile: 'Back to profile',
     backToTop: 'Back to top',
