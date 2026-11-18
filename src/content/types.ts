@@ -258,6 +258,212 @@ export type SkillCard = {
 /** Named groups of tool marks; the images themselves live in `SkillCards`. */
 export type SkillToolSet = 'design' | 'ai' | 'frontend'
 
+/**
+ * The cities the journey page flies between. These name the 3D scene each stop
+ * is drawn in — structure, not copy — so they are identical in every locale.
+ */
+export type JourneyCity = 'hyderabad' | 'new-york' | 'doha' | 'riyadh'
+
+/**
+ * One city on the journey page: the card that rises when the plane lands.
+ * A stop with `projectSlug` takes its logo, figures and case-study link from
+ * that project's card, so they are written once; a stop without one carries
+ * its own `metrics`.
+ */
+export type JourneyStop = {
+  scene: JourneyCity
+  /** Short code on the route rail, e.g. "HYD". */
+  code: string
+  city: string
+  country: string
+  /** One line under the city name. */
+  story: string
+  company: string
+  role: string
+  period?: string
+  tags: string[]
+  /** Case-study summary, revealed with the figures. */
+  summary: string
+  projectSlug?: string
+  metrics?: ProjectMetric[]
+  /** Marks temporary copy, shown with a "draft" chip until it is replaced. */
+  placeholder?: boolean
+}
+
+/** The `/journey` page: a scroll-driven flight across the career's cities. */
+export type Journey = {
+  loading: string
+  skipIntro: string
+  heroEyebrow: string
+  /** One entry per line. */
+  heroTitle: string[]
+  heroBody: string
+  scrollCue: string
+  /** Accessible name for the route rail. */
+  routeLabel: string
+  /** e.g. "Fly to Doha" — takes the city name. */
+  flyTo: (city: string) => string
+  stops: JourneyStop[]
+  showImpact: string
+  hideImpact: string
+  comingSoon: string
+  draft: string
+  /** The three phrases revealed over the light-speed section. */
+  craft: string[]
+  connect: {
+    title: string
+    body: string
+    linkedin: string
+    email: string
+    resume: string
+  }
+  /** Shown above the plain list of stops when WebGL is unavailable. */
+  fallbackNote: string
+}
+
+/* ---- /branding: the personal brand studio landing page ------------------ */
+
+/** One in-page jump in the branding header or footer. */
+export type BrandingLink = {
+  label: string
+  /** An in-page `#anchor`, or an absolute URL for anything off-site. */
+  href: string
+}
+
+/**
+ * A numbered caption marking one of the hero's deliverables (Figma 10:487).
+ * The number is content rather than a list index because the design orders
+ * them 01, 03, 04 down the left column and 02 under the devices.
+ */
+export type BrandingTag = {
+  number: string
+  label: string
+}
+
+/** One of the six "what you get" cards. */
+export type BrandingDeliverable = {
+  title: string
+  body: string
+}
+
+/** One pricing tier (Figma 5:235). */
+export type BrandingTier = {
+  name: string
+  price: string
+  /** The "best for" line under the price. */
+  bestFor: string
+  features: string[]
+  cta: string
+  /**
+   * Set on the recommended tier only: it takes the badge, the accent border
+   * and the filled button. The design's rule is one accent per view.
+   */
+  badge?: string
+}
+
+export type BrandingFaq = {
+  question: string
+  answer: string
+}
+
+/** The `/branding` landing page (Figma 23:1238). */
+export type Branding = {
+  documentTitle: string
+  /**
+   * Where every "book a call" control on the page points. One field because
+   * the page has five of them and they must never drift apart — swap in a
+   * Calendly or Cal.com link here and the whole page follows.
+   */
+  bookingUrl: string
+  /** Where the two "see packages" style jumps land. */
+  packagesAnchor: string
+  /** Split so the trailing full stop can take the accent colour. */
+  wordmark: { text: string; stop: string }
+  nav: BrandingLink[]
+  navLabel: string
+  headerCta: string
+
+  hero: {
+    profileTag: BrandingTag
+    deliverablesTag: BrandingTag
+    stationeryTag: BrandingTag
+    devicesTag: BrandingTag
+    /** The LinkedIn-style card the hero is built around. */
+    card: {
+      bannerName: string
+      bannerTagline: string
+      initials: string
+      headline: string
+      body: string
+      meta: string[]
+      /** The last meta entry is accented — availability, not description. */
+      primaryCta: string
+      secondaryCta: string
+      bannerAlt: string
+    }
+    lockup: {
+      name: string
+      caption: string
+    }
+    /** The sample visiting card inside the deliverables column. */
+    visitingCard: {
+      initials: string
+      name: string
+      roles: string[]
+      phone: string
+      email: string
+      scanLabel: string
+      site: string
+      qrAlt: string
+    }
+    /** Mug, keychain, letterhead, notebook — captions under each tile. */
+    stationery: string[]
+    devices: {
+      desktopAlt: string
+      tabletAlt: string
+    }
+  }
+
+  deliverables: {
+    overline: string
+    heading: string
+    lead: string
+    cards: BrandingDeliverable[]
+  }
+
+  packages: {
+    overline: string
+    heading: string
+    lead: string
+    tiers: BrandingTier[]
+    /** Left and right halves of the value-anchor row. */
+    anchor: string
+    availability: string
+    guarantee: string
+  }
+
+  faq: {
+    overline: string
+    heading: string
+    lead: string
+    items: BrandingFaq[]
+  }
+
+  finalCta: {
+    heading: string
+    body: string
+    cta: string
+  }
+
+  footer: {
+    wordmark: { text: string; stop: string }
+    blurb: string
+    columns: { heading: string; links: BrandingLink[] }[]
+    copyright: string
+    note: string
+  }
+}
+
 export type Content = {
   profile: {
     name: string
@@ -293,6 +499,9 @@ export type Content = {
   caseStudies: CaseStudy[]
   /** Long-form project pages, each at its own route. */
   caseStudyPages: CaseStudyPage[]
+  journey: Journey
+  /** The personal brand studio landing page at `/branding`. */
+  branding: Branding
   ui: UiStrings
   /** Used for the <html lang> and <title> attributes. */
   documentTitle: string

@@ -17,7 +17,7 @@ Vite 8 builds with rolldown. If the dev server dies with `Cannot find native bin
 
 ## Architecture
 
-Two routes, resolved in `App.tsx` against `src/router.ts` — a ~30-line History-API hook rather than a router library, since there is currently one extra page. `/` renders `pages/Home.tsx`; each entry in `content.caseStudyPages` claims `/{slug}` and renders `pages/CaseStudyPage.tsx`. Unknown paths fall through to the profile. `vercel.json` already rewrites every path to index.html, so deep links work in production.
+Routes are resolved in `App.tsx` against `src/router.ts` — a ~30-line History-API hook rather than a router library, since there is currently one extra page. `/` renders `pages/Home.tsx`; each entry in `content.caseStudyPages` claims `/{slug}` and renders `pages/CaseStudyPage.tsx`. Unknown paths fall through to the profile. `vercel.json` already rewrites every path to index.html, so deep links work in production.
 
 There is no state management library and no data fetching — each page renders one fixed sequence of sections, and the "View Projects" link is an in-page `#projects` anchor.
 
@@ -36,6 +36,28 @@ Language state lives in `LanguageProvider.tsx`, which sets `<html lang>` and `<h
 Use the semantic colour tokens (`bg`, `bg-subtle`, `bg-muted`, `bg-inverse`, `fg`, `fg-muted`, `fg-subtle`, `fg-inverse`, `fg-on-accent`, `border`, `border-subtle`, `border-strong`, `accent`, `accent-fg`, `accent-subtle`) rather than raw hex or the neutral ramp — the ramp exists to define the semantics, not to be used directly. Type comes from the DS scale (`text-display-1` … `text-overline`); the large steps are `clamp()`ed so one scale serves mobile and desktop. Each colour's Dark-mode value is noted in a comment beside it, so the second mode can be switched on without reopening Figma.
 
 Imports use the `@/` alias for `src/`, declared in **both** `vite.config.ts` (resolve.alias) and `tsconfig.app.json` (paths) — changing one requires changing the other.
+
+### Journey page (`/journey`)
+
+`JOURNEY_PATH` in `router.ts`; `pages/JourneyPage.tsx`, lazy-loaded from `App.tsx` because it carries three.js (~165 kB gzipped) — the build's "chunk larger than 500 kB" warning is that chunk and is expected. It is a scroll-driven flight: a dotted globe dives into Hyderabad, then a plane flies runway to runway through New York, Doha and Riyadh, each city raising a `StopCard`; then `CraftWarp` (2D canvas) and `ConnectSection` (a second, small globe).
+
+- **One clock.** `src/journey/timeline.ts` turns scroll through the flight section into segments (`globe`, `dive`, `reveal`, `hold`, `fly`, `outro`). Both `JourneyScene` (camera, plane) and the DOM overlays (`overlays()`: hero, flash, rail, active card) read it, so they cannot drift. Retune pacing by changing segment weights there, not by adding scroll handlers.
+- **Content** is `content.journey` in both bundles. A stop with `projectSlug` takes its logo, figures and case-study link from that project card; Hyderabad currently carries `placeholder: true` copy and its own `metrics` until its case study exists. City geography (`GEO` in `JourneyPage.tsx`) and the 3D models are structure, not copy.
+- **Cities** are generated in `src/journey/cities.ts` from one street grid plus per-city styles and primitive landmarks; layout is seeded, so it is stable between visits. Flags and the ground grid are canvas textures (`textures.ts`). The only image asset is `src/assets/land-mask.png`, rasterised from Natural Earth's public-domain 110m land.
+- **Motion contract** holds: under `prefers-reduced-motion` there is no intro, the scene clock stays at zero (no cars, spin or pulses), and the camera moves only with scroll. The intro plays once per session (`kipe:journey-intro` in sessionStorage). No WebGL → the stops render as a plain list.
+- `BackToTop` is not mounted on this route — the route rail does that job, and on a phone the button would sit on the cards.
+- Headless Chrome screenshots of the WebGL canvas can come back black or partial; check this page in a real browser.
+
+### Branding studio (`/branding`)
+
+`BRANDING_PATH` in `router.ts`; `pages/BrandingPage.tsx`, lazy-loaded from `App.tsx`. A single landing page for the personal brand studio, built from [Figma `R-Branding` 23:1238](https://www.figma.com/design/OvJfssUMGTXIhfZWU3Z4T1/R-Branding?node-id=23-1238). It is a **separate business from the profile**, so it owns its whole chrome — its own sticky header, nav and footer — and does not mount `BackToTop`.
+
+- **It rebinds the accent rather than adding a palette.** Every other token in the Figma file (type scale, radii, spacing, neutrals) already matches the DS one for one; only the accent differs, green instead of blue. `.branding` in `index.css` overrides the `--color-accent-*` family plus `--color-bg-muted`, so the ordinary `bg-accent` / `text-accent-fg` utilities keep working and simply resolve green inside the page. **Don't introduce `branding-` colour utilities** — change those variables instead.
+- **The raw Figma accent `#02b262` is never used as body text** — it measures 2.78:1 on white. `--color-accent-fg` is a step darker (`#016b3b`, 6.63:1) and is what every accented word uses. The only exception is the wordmark's trailing full stop, which is decorative.
+- **Content** is `content.branding` in both bundles, same rule as everywhere else. `bookingUrl` is the single destination for all five "book a call" controls — swap in a Calendly link there and the whole page follows.
+- **Section components** live in `components/branding/`. `BrandingPrimitives.tsx` holds the wordmark, overline, numbered deliverable tag, button and check icon; `BrandingHero.tsx` and `BrandingSections.tsx` hold the bands.
+- **The device mockups are drawn, not exported** — the monitor, laptop and tablet chrome is markup at the design's geometry (Figma 23:1363), so only the screen art is a raster. Those two rasters live in `public/branding/` as placeholders; replacing them is a drop-in by filename.
+- **The visiting card's QR is real**, generated for `https://kipe.ai` at the design's own 25-module / 84px grid. The Figma layer is explicitly a non-scannable placeholder.
 
 ### Analytics
 

@@ -21,6 +21,12 @@ export function usePath(): string {
   return normalisePath(path)
 }
 
+/** The 3D career flight. A path rather than content: it is the same in every locale. */
+export const JOURNEY_PATH = '/journey'
+
+/** The personal brand studio landing page. Same path in every locale. */
+export const BRANDING_PATH = '/branding'
+
 /** Trailing slashes and casing shouldn't produce a 404. */
 export function normalisePath(path: string): string {
   const trimmed = path.replace(/\/+$/, '').toLowerCase()

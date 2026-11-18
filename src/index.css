@@ -556,3 +556,184 @@
     }
   }
 }
+
+/* ---- Journey page (/journey) ---------------------------------------------- */
+@layer components {
+  /* The intro draws the R mark as a line, then fills it. */
+  .journey-loader {
+    transition: opacity 600ms ease;
+  }
+  .journey-loader.is-leaving {
+    opacity: 0;
+  }
+  .journey-loader-mark path {
+    fill: currentColor;
+    fill-opacity: 0;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation:
+      journey-draw 1.5s cubic-bezier(0.65, 0, 0.35, 1) 150ms forwards,
+      journey-fill 600ms ease 1.45s forwards;
+  }
+  @keyframes journey-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes journey-fill {
+    to {
+      fill-opacity: 1;
+    }
+  }
+
+  /* "Scroll to take off": a line that keeps dropping. */
+  .journey-cue-line {
+    transform-origin: top;
+    animation: journey-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+  @keyframes journey-cue {
+    0% {
+      transform: scaleY(0);
+    }
+    50% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    51% {
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+
+  /* City cards rise as the plane lands and drop away as it leaves. The
+     visibility delay keeps a fading card from being clicked. */
+  .journey-card {
+    opacity: 0;
+    transform: translateY(28px);
+    visibility: hidden;
+    transition:
+      opacity 450ms ease,
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 600ms;
+  }
+  .journey-card.is-active {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  /* Route rail. `--route` (0–1) is written by the page as the plane flies. */
+  .journey-rail {
+    transition:
+      opacity 400ms ease,
+      visibility 0s linear 400ms;
+  }
+  .journey-rail[data-visible="false"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .journey-rail[data-visible="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .journey-rail-fill {
+    width: calc(var(--route, 0) * 100%);
+  }
+  .journey-rail-plane {
+    inset-inline-start: calc(var(--route, 0) * 100%);
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  html[dir="rtl"] .journey-rail-plane {
+    transform: translate(50%, -50%) rotate(-90deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .journey-loader-mark path,
+    .journey-cue-line {
+      animation: none;
+      stroke-dashoffset: 0;
+      fill-opacity: 1;
+    }
+    .journey-card,
+    .journey-rail {
+      transition: none;
+    }
+  }
+}
+
+/**
+ * The branding studio (/branding) is a separate business with its own accent:
+ * the Figma file binds it to a green (`--k-color-accent`) where the profile
+ * uses the site's blue. Every other token in that file — the type scale, the
+ * radii, the spacing, the neutrals — already matches the DS one for one, so
+ * rather than a second palette this just rebinds the accent family on the
+ * page's root. Tailwind v4 compiles `bg-accent` to `var(--color-accent)`, so
+ * the existing utilities keep working and simply resolve green inside here.
+ *
+ * Contrast, computed against this page's surfaces:
+ *   accent-solid #027a43 with white text ....... 5.43:1  (AA, any size)
+ *   accent-fg    #016b3b on #ffffff ............ 6.63:1  (AA)
+ *   accent       #02b262 as a 2px border ....... non-text, no minimum
+ * The fill itself is never used behind body text for that reason.
+ */
+@layer components {
+  .branding {
+    --color-accent: #02b262;
+    --color-accent-hover: #027a43;
+    --color-accent-active: #016b3b;
+    /* A step darker than the Figma accent so accent-coloured *text* clears
+       AA on white; the flat #02b262 measures only 2.4:1 and would fail. */
+    --color-accent-fg: #016b3b;
+    --color-accent-subtle: #e6f8ef;
+    --color-accent-border: #8cdeb8;
+    --color-accent-solid: #027a43;
+    --color-focus: #016b3b;
+    /* The design's own neutral step for card surfaces, a touch lighter than
+       the profile's `bg-muted` (#e0e1e8), which is tuned for project cards. */
+    --color-bg-muted: #f4f4f4;
+  }
+
+  /* The device mockups in the hero. Geometry transcribed from Figma 23:1363:
+     a 580x370 monitor on a 46x32 neck and a 168x10 base, a 440x282 laptop on
+     a 474x11 base, and a 216x282 tablet. Drawn rather than exported so the
+     bezels stay crisp at any zoom and the screens can hold real images. */
+  .device-bezel {
+    background: linear-gradient(160deg, #2b2b2b, #0a0a0a);
+  }
+
+  /* The FAQ rows animate open on grid-template-rows, which transitions
+     smoothly from 0fr to 1fr where `height: auto` cannot. */
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-answer > div {
+    overflow: hidden;
+  }
+
+  .faq-row[data-open='true'] .faq-answer {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-row[data-open='true'] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-chevron {
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-answer,
+    .faq-chevron {
+      transition: none;
+    }
+  }
+}

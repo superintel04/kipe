@@ -899,6 +899,300 @@ export const en: Content = {
     },
   ],
 
+  /**
+   * The /journey page. New York, Doha and Riyadh draw their figures and
+   * case-study links from the project cards above (via `projectSlug`).
+   *
+   * PLACEHOLDER: the Hyderabad stop is temporary copy until its case study is
+   * written — replace `summary` and `metrics`, then drop `placeholder`.
+   */
+  journey: {
+    loading: 'Loading',
+    skipIntro: 'Skip intro',
+    heroEyebrow: 'Ramesh Panti · Lead Product Designer',
+    heroTitle: ['Ten years.', 'Four cities.'],
+    heroBody:
+      'Fly the route from my first product in Hyderabad to Saudi government platforms in Riyadh.',
+    scrollCue: 'Scroll to take off',
+    routeLabel: 'Route',
+    flyTo: (city) => `Fly to ${city}`,
+    stops: [
+      {
+        scene: 'hyderabad',
+        code: 'HYD',
+        city: 'Hyderabad',
+        country: 'India',
+        story: 'Where it started: learning that research decides the screens.',
+        company: 'HAPP · The Healthcare App',
+        role: 'Senior UX Designer',
+        period: 'Feb 2016 – Jul 2017',
+        tags: ['Healthcare', 'Mobile App', 'User Research'],
+        summary:
+          'Temporary summary while the case study is written: my first product role, designing a healthcare app end to end and running the research behind it.',
+        metrics: [
+          { icon: 'devices', label: 'Mobile app, designed end to end' },
+          { icon: 'document', label: 'Case study in progress' },
+        ],
+        placeholder: true,
+      },
+      {
+        scene: 'new-york',
+        code: 'NYC',
+        city: 'New York',
+        country: 'United States',
+        story: 'Turning analysts’ manual work into a product.',
+        company: 'Berkadia',
+        role: 'Lead UX Designer → Principal Engineer, UI/UX',
+        period: 'Jul 2017 – Jan 2020',
+        tags: ['Banking', 'Product', 'User Research'],
+        summary:
+          'Financial Statement Analysis for Berkadia mortgage banking: automating how property financial documents are analysed, and generating the data each customer needs.',
+        projectSlug: 'project4',
+      },
+      {
+        scene: 'doha',
+        code: 'DOH',
+        city: 'Doha',
+        country: 'Qatar',
+        story: 'Designing for business travellers at airline scale.',
+        company: 'Qatar Airways',
+        role: 'UX Designer',
+        tags: ['Aviation', 'Service Design', 'Web Applications'],
+        summary:
+          'Beyond Business, the Qatar Airways corporate rewards platform: enrolment, bookings, account management, offers and Qrewards redemption, rebuilt as one responsive portal.',
+        projectSlug: 'project3',
+      },
+      {
+        scene: 'riyadh',
+        code: 'RUH',
+        city: 'Riyadh',
+        country: 'Saudi Arabia',
+        story: 'Government services, RTL-first, built on DGA Code.',
+        company: 'ITC Infotech · Ministry of Culture',
+        role: 'User Experience Lead',
+        period: 'Dec 2021 – Present',
+        tags: ['Service Design', 'Saudi Government', 'Mobile App'],
+        summary:
+          'Dewane, the Ministry of Culture’s employee digital hub: 50+ manual services moved to trackable web and mobile workflows, now running across the Ministry’s commissions.',
+        projectSlug: 'project1',
+      },
+    ],
+    showImpact: 'Show impact',
+    hideImpact: 'Hide impact',
+    comingSoon: 'Case study coming soon',
+    draft: 'Draft',
+    craft: ['From user insight,', 'to interface,', 'to front-end.'],
+    connect: {
+      title: 'Let’s build what’s next',
+      body: 'I look forward to new opportunities where I can make a meaningful impact.',
+      linkedin: 'LinkedIn',
+      email: 'Email',
+      resume: 'Resume',
+    },
+    fallbackNote:
+      'The 3D route needs WebGL, which is turned off in this browser, so here are the stops as a list.',
+  },
+
+  branding: {
+    documentTitle: 'branding. · A personal brand studio by Ramesh Panti',
+    bookingUrl: 'mailto:superintel04@gmail.com?subject=Brand%20call',
+    packagesAnchor: '#packages',
+    wordmark: { text: 'branding', stop: '.' },
+    navLabel: 'Branding studio sections',
+    nav: [
+      { label: 'Work', href: '#work' },
+      { label: 'Packages', href: '#packages' },
+      { label: 'FAQ', href: '#faq' },
+    ],
+    headerCta: 'Book a free call',
+
+    hero: {
+      profileTag: { number: '01', label: 'Designed LinkedIn banner' },
+      devicesTag: { number: '02', label: 'Personal website, every screen' },
+      deliverablesTag: { number: '03', label: 'Logo + digital visiting card' },
+      stationeryTag: { number: '04', label: 'Stationery & merchandise' },
+      card: {
+        bannerName: 'you.com',
+        bannerTagline: 'Research.   Design.   Build.   Test.   Deploy.',
+        initials: 'RP',
+        headline: 'Stand out with a personal brand and profile site made for you.',
+        body: 'A uniquely handcrafted personal brand — logo, style guide, profile website, stationery and social kit. One designer, one price, ready in about four weeks.',
+        meta: ['Personal brand studio', 'Remote, worldwide', '4 new clients a month'],
+        primaryCta: 'Book a free brand call',
+        secondaryCta: 'See packages',
+        bannerAlt:
+          'A LinkedIn profile with a designed banner carrying the brand mark and tagline',
+      },
+      lockup: {
+        name: 'you.com',
+        caption: 'Personal mark, lockup and favicon',
+      },
+      visitingCard: {
+        initials: 'RP',
+        name: 'your name',
+        roles: [
+          'Product Designer | Usability Architect',
+          'Visual Designer | AI Design Engineering',
+        ],
+        phone: '+966 537313849',
+        email: 'superintel04@gmail.com',
+        scanLabel: 'Scan for my portfolio',
+        site: 'kipe.ai',
+        qrAlt: 'QR code linking to kipe.ai',
+      },
+      stationery: ['Ceramic mug', 'LED keychain', 'Letterhead', 'Notebook'],
+      devices: {
+        desktopAlt: 'The profile website on a desktop monitor and a laptop',
+        tabletAlt: 'The same website on a tablet, in its narrow layout',
+      },
+    },
+
+    deliverables: {
+      overline: 'What you get',
+      heading: 'One package. Everything your brand needs.',
+      lead: 'Not a list of files — a system that holds together everywhere people meet you, from a search result to a boardroom handshake.',
+      cards: [
+        {
+          title: 'Personal logo & mark',
+          body: 'Three concepts drawn from your story, refined to one. Never a stock icon beside a typeface.',
+        },
+        {
+          title: 'Brand style guide',
+          body: 'Logo use, colours, type and tone of voice in one document anyone can follow.',
+        },
+        {
+          title: 'Profile website',
+          body: 'A one-page site designed by a UX designer to turn visitors into booked calls.',
+        },
+        {
+          title: 'Stationery',
+          body: 'Business card, letterhead and email signature that match everything else you send.',
+        },
+        {
+          title: 'Social branding',
+          body: 'LinkedIn banner and profile frame, plus an X and WhatsApp Business kit.',
+        },
+        {
+          title: 'Source files & 12-month care',
+          body: 'You own every file. Hosting, backups and small edits handled for a full year.',
+        },
+      ],
+    },
+
+    packages: {
+      overline: 'Packages',
+      // The design's "Three ways" predates the Executive tier being cut.
+      heading: 'Two ways to work together.',
+      lead: 'One designer, one price, no agency hand-offs. Most people choose Signature.',
+      tiers: [
+        {
+          name: 'Starter — Brand Mark/Logo',
+          price: '$600',
+          bestFor: 'For professionals who only need a visual identity.',
+          features: [
+            '2 logo concepts, 2 revision rounds',
+            '1-page mini style guide',
+            'Business card design',
+            'LinkedIn banner + photo frame',
+            'Source files · about 1–2 weeks',
+          ],
+          cta: 'Start with Brand Mark/Logo',
+        },
+        {
+          name: 'Signature — Brand + Site + Stationary + Styleguide',
+          price: '$1,000',
+          bestFor: 'For consultants and coaches who need to be found and trusted.',
+          features: [
+            '4 concepts, unlimited revisions for 2 weeks',
+            'Brand story and messaging',
+            'Up to 5 pages, bilingual option',
+            'Stationery, deck and CV design',
+            'LinkedIn, X & WhatsApp kit · 3–4 weeks',
+          ],
+          cta: 'Book a free brand call',
+          badge: 'Most chosen',
+        },
+      ],
+      anchor:
+        'Bought separately: logo $800 + website $1,500 + stationery $400 + social kit $300 = $3,000+.',
+      availability: 'Add-ons from $150 · I take 4 new clients a month.',
+      guarantee:
+        'My promise: if you don’t love any of the logo concepts, I redesign once more for free — or refund your deposit.',
+    },
+
+    faq: {
+      overline: 'FAQ',
+      heading: 'Questions, answered.',
+      lead: 'Still unsure? Ask on the call. It is twenty minutes, free, and there is no pitch at the end.',
+      items: [
+        {
+          question: 'How long does the whole thing take?',
+          answer:
+            'Starter runs about one to two weeks and Signature three to four. The clock starts at the deposit, and the total time asked of you is roughly three hours.',
+        },
+        {
+          question: 'How many revision rounds do I get?',
+          answer:
+            'Starter includes two rounds. Signature has no round limit for the first two weeks — we keep going until the mark is right, then lock it and move on to the build.',
+        },
+        {
+          question: 'Who owns the logo and the source files?',
+          answer:
+            'You do, outright, from the final payment. That includes the editable vector source, the full export set and the font licence trail. Nothing is held back.',
+        },
+        {
+          question: 'What does the 12-month website care cover?',
+          answer:
+            'Hosting, SSL, backups, dependency updates and small content edits — new copy, a new photo, a changed link. New pages or a redesign are quoted separately.',
+        },
+        {
+          question: 'Can you deliver the brand in Arabic and English?',
+          answer:
+            'Yes. Signature includes a bilingual option: Arabic type selection, right-to-left layouts and a translated site, with the Arabic read by a native speaker before launch.',
+        },
+        {
+          question: 'How does payment work?',
+          answer:
+            'Half to start and half on delivery, by bank transfer or card. The deposit stays refundable under the promise above until the first concepts are presented.',
+        },
+      ],
+    },
+
+    finalCta: {
+      heading: 'Let’s make you easy to choose.',
+      body: 'Book a free 20-minute brand call, message me on WhatsApp, or send a short brief. I reply to every one.',
+      cta: 'Book a free brand call',
+    },
+
+    footer: {
+      wordmark: { text: 'Ramesh Panti', stop: '.' },
+      blurb:
+        'A personal brand studio for senior professionals. One designer, one price, about four weeks.',
+      columns: [
+        {
+          heading: 'Studio',
+          links: [
+            { label: 'Selected work', href: '/' },
+            { label: 'Packages', href: '#packages' },
+          ],
+        },
+        {
+          heading: 'Contact',
+          links: [
+            { label: 'Book a free call', href: 'mailto:superintel04@gmail.com' },
+            { label: 'WhatsApp', href: 'https://wa.me/966537313849' },
+            {
+              label: 'superintel04@gmail.com',
+              href: 'mailto:superintel04@gmail.com',
+            },
+          ],
+        },
+      ],
+      copyright: '© 2026 Ramesh Panti. All rights reserved.',
+      note: 'No templates. Designed from scratch, every time.',
+    },
+  },
+
   ui: {
     nav: {
       label: 'Sections',
