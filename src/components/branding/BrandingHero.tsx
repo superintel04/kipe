@@ -3,6 +3,7 @@ import Logo from '@/components/Logo'
 import Reveal from '@/components/Reveal'
 import Section from '@/components/Section'
 import { useContent } from '@/content'
+import { trackWhatsAppClick } from '@/analytics'
 import {
   BrandingButton,
   DeliverableTag,
@@ -95,6 +96,7 @@ function ProfileCard() {
           <BrandingButton
             href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
             whatsapp
+            onClick={() => trackWhatsAppClick('hero')}
           >
             {card.primaryCta}
           </BrandingButton>

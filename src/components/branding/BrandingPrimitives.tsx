@@ -113,6 +113,8 @@ type ButtonProps = {
   size?: 'sm' | 'lg'
   /** Puts the WhatsApp glyph before the label — set on every CTA that opens a chat. */
   whatsapp?: boolean
+  /** Fires before navigation; used to report the click to GA4. */
+  onClick?: () => void
   className?: string
 }
 
@@ -127,6 +129,7 @@ export function BrandingButton({
   variant = 'solid',
   size = 'lg',
   whatsapp = false,
+  onClick,
   className = '',
 }: ButtonProps) {
   const variants = {
@@ -145,6 +148,7 @@ export function BrandingButton({
   return (
     <a
       href={href}
+      onClick={onClick}
       {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
       className={`inline-flex items-center justify-center gap-2 rounded-[5px] border-[1.5px] font-bold whitespace-nowrap transition-colors ${variants[variant]} ${sizes[size]} ${className}`}
     >

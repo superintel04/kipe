@@ -3,6 +3,12 @@ import Reveal from '@/components/Reveal'
 import Section from '@/components/Section'
 import { useContent } from '@/content'
 import {
+  contactMethodFor,
+  trackContactClick,
+  trackFaqOpen,
+  trackWhatsAppClick,
+} from '@/analytics'
+import {
   BrandingButton,
   CheckIcon,
   Overline,
@@ -147,6 +153,13 @@ export function BrandingPackages() {
                   )}
                   variant={tier.badge ? 'solid' : 'outline'}
                   whatsapp
+                  // The badge marks the recommended tier, which is what
+                  // distinguishes the two cards everywhere else on the page.
+                  onClick={() =>
+                    trackWhatsAppClick(
+                      tier.badge ? 'tier-signature' : 'tier-starter',
+                    )
+                  }
                   className="mt-auto w-full"
                 >
                   {tier.cta}
@@ -184,12 +197,23 @@ function FaqRow({
   const [open, setOpen] = useState(false)
   const panelId = useId()
 
+  /**
+   * The event is sent here rather than inside the `setOpen` updater: React
+   * invokes updater functions twice under StrictMode, and a side effect in
+   * one would report every opening twice in development.
+   */
+  const toggle = () => {
+    const next = !open
+    setOpen(next)
+    if (next) trackFaqOpen(question)
+  }
+
   return (
     <div data-open={open} className="faq-row border-b border-border-subtle">
       <h3>
         <button
           type="button"
-          onClick={() => setOpen((value) => !value)}
+          onClick={toggle}
           aria-expanded={open}
           aria-controls={panelId}
           className="flex w-full items-center justify-between gap-4 py-5 text-start text-h5 font-bold"
@@ -280,6 +304,7 @@ export function BrandingFinalCta() {
             href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
             variant="inverse"
             whatsapp
+            onClick={() => trackWhatsAppClick('final-cta')}
           >
             {finalCta.cta}
           </BrandingButton>
@@ -292,6 +317,7 @@ export function BrandingFinalCta() {
               target="_blank"
               rel="noreferrer noopener"
               dir="ltr"
+              onClick={() => trackWhatsAppClick('final-number')}
               className="font-bold text-fg-inverse underline underline-offset-4"
             >
               {branding.whatsapp.display}
@@ -335,6 +361,14 @@ export function BrandingFooter() {
                   {...(link.href.startsWith('http')
                     ? { target: '_blank', rel: 'noreferrer noopener' }
                     : {})}
+                  onClick={() => {
+                    if (link.href.startsWith('https://wa.me/')) {
+                      trackWhatsAppClick('footer')
+                    } else {
+                      const method = contactMethodFor(link.href)
+                      if (method) trackContactClick(method)
+                    }
+                  }}
                   className="text-body font-medium text-fg-muted transition-colors hover:text-fg"
                 >
                   {link.label}

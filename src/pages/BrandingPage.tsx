@@ -14,6 +14,7 @@ import {
   whatsappHref,
 } from '@/components/branding/BrandingPrimitives'
 import { useContent } from '@/content'
+import { trackWhatsAppClick } from '@/analytics'
 
 /** The sticky header (Figma 23:1239). */
 function BrandingHeader() {
@@ -45,6 +46,7 @@ function BrandingHeader() {
           href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
           size="sm"
           whatsapp
+          onClick={() => trackWhatsAppClick('header')}
           className="shrink-0"
         >
           {branding.headerCta}

@@ -25,8 +25,17 @@ const BrandingPage = lazy(() => import('@/pages/BrandingPage'))
  * profile, so an unknown URL shows the site rather than a dead end.
  */
 export default function App() {
-  const { caseStudyPages, documentTitle } = useContent()
+  const { caseStudyPages, documentTitle, branding } = useContent()
   const path = usePath()
+
+  /**
+   * The branding studio is its own business with its own title, and this
+   * effect runs before the early return that renders it — so without this the
+   * whole of `/branding` would report under the profile's title and the two
+   * would be indistinguishable in GA4's title-keyed reports.
+   */
+  const title =
+    path === BRANDING_PATH ? branding.documentTitle : documentTitle
 
   /**
    * GA4's automatic pageview fires once per document load, which on a
@@ -36,12 +45,13 @@ export default function App() {
    * so a back/forward step counts too.
    *
    * The title comes from the content bundle rather than `document.title`,
-   * which this effect would otherwise read before LanguageProvider has set it.
+   * which this effect would otherwise read before the page that owns the
+   * route has set it.
    */
   useEffect(() => {
     initAnalytics()
-    trackPageView(path, documentTitle)
-  }, [path, documentTitle])
+    trackPageView(path, title)
+  }, [path, title])
 
   if (path === BRANDING_PATH) {
     return (

@@ -68,6 +68,10 @@ The tag is configured `send_page_view: false` and `App.tsx` sends every `page_vi
 
 Interaction events are sent from the component that owns the control — `trackResumeOpen` and `trackOutboundClick` in `Nav.tsx`, `trackCaseStudyOpen` in `ProjectCards.tsx`, `trackContactClick` in `MetaGrid.tsx`. Prefer adding a named wrapper in `analytics.ts` over calling `trackEvent` with a bare string at the call site, so the event vocabulary stays in one file.
 
+**`/branding` reports its own title.** `App.tsx` picks `branding.documentTitle` for that route, because the pageview effect runs *before* the early return that renders the page — without it the whole studio would report under the profile's title and the two would be indistinguishable.
+
+**The branding studio's conversion is `generate_lead`**, sent by `trackWhatsAppClick(source)` from all seven WhatsApp controls, with `source` naming which one (`header`, `hero`, `tier-starter`, `tier-signature`, `final-cta`, `final-number`, `footer`). It is a GA4 recommended event, so it can be marked a key event without a custom definition; `source` needs registering under Admin → Custom definitions to show in reports. `faq_open` carries the question and fires on opening only.
+
 **The resume event collides with Enhanced measurement.** `file_download` is GA4's own recommended event *and* fires automatically for any link ending in `.pdf`, so "File downloads" must stay **off** under Admin → Data streams → Enhanced measurement or every click double-counts.
 
 **The resume PDF lives in `/public`, not `src/assets`** — the one deliberate exception to importing every asset so Vite fingerprints it. The nav link opens the PDF in a new tab for reading rather than forcing a download, so the URL is visible to the visitor and is what the viewer's "Save as" names the file; a hashed `…-a1b2c3d4.pdf` would end up in their downloads folder. The cost is that replacing the resume no longer changes its URL, so propagation depends on cache headers rather than a new filename — fine on Vercel, which revalidates unfingerprinted static files by default.

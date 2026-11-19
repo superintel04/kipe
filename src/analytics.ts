@@ -136,6 +136,42 @@ export function trackContactClick(method: 'phone' | 'email') {
 }
 
 /**
+ * Where a WhatsApp click came from on the branding page. The page has six
+ * controls all opening the same chat, so the source is the whole point of the
+ * event — without it the report says only that someone tapped something.
+ */
+export type WhatsAppSource =
+  | 'header'
+  | 'hero'
+  | 'tier-starter'
+  | 'tier-signature'
+  | 'final-cta'
+  | 'final-number'
+  | 'footer'
+
+/**
+ * The branding studio's only conversion. `generate_lead` is a GA4 recommended
+ * event, so it reports without a custom definition and can be marked a key
+ * event directly — which `whatsapp_click` could not.
+ *
+ * Nothing here collides with Enhanced measurement: its automatic outbound
+ * `click` still fires for wa.me as well, but under a different event name, so
+ * the two sit side by side rather than double-counting.
+ */
+export function trackWhatsAppClick(source: WhatsAppSource) {
+  trackEvent('generate_lead', { method: 'whatsapp', source })
+}
+
+/**
+ * A FAQ row being opened. Only the opening is sent — a toggle that reported
+ * closing too would double every count and tell you nothing extra about what
+ * people actually wanted to know.
+ */
+export function trackFaqOpen(question: string) {
+  trackEvent('faq_open', { question })
+}
+
+/**
  * `tel:` and `mailto:` are the two contact schemes the meta grid carries.
  * Takes `undefined` so callers can pass an optional href straight through
  * rather than asserting it — most entries in that grid have no link at all.
