@@ -1188,7 +1188,7 @@ export const en: Content = {
           ],
         },
       ],
-      copyright: '© 2026 Ramesh Panti. All rights reserved.',
+      copyright: '© 2026 branding. All rights reserved.',
       note: 'No templates. Designed from scratch, every time.',
     },
   },
