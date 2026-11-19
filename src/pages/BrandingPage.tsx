@@ -11,6 +11,7 @@ import {
 import {
   BrandingButton,
   Wordmark,
+  whatsappHref,
 } from '@/components/branding/BrandingPrimitives'
 import { useContent } from '@/content'
 
@@ -41,8 +42,9 @@ function BrandingHeader() {
         </nav>
 
         <BrandingButton
-          href="mailto:superintel04@gmail.com"
+          href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
           size="sm"
+          whatsapp
           className="shrink-0"
         >
           {branding.headerCta}

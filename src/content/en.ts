@@ -995,7 +995,11 @@ export const en: Content = {
 
   branding: {
     documentTitle: 'branding. · A personal brand studio by Ramesh Panti',
-    bookingUrl: 'mailto:superintel04@gmail.com?subject=Brand%20call',
+    whatsapp: {
+      number: '966537313849',
+      display: '+966 53 731 3849',
+      message: 'Hi Ramesh — I came from the branding page and I’d like to talk about a personal brand.',
+    },
     packagesAnchor: '#packages',
     wordmark: { text: 'branding', stop: '.' },
     navLabel: 'Branding studio sections',
@@ -1098,6 +1102,7 @@ export const en: Content = {
             'Source files · about 1–2 weeks',
           ],
           cta: 'Start with Brand Mark/Logo',
+          message: 'Hi Ramesh — I’d like to start with the Starter package (brand mark and logo).',
         },
         {
           name: 'Signature — Brand + Site + Stationary + Styleguide',
@@ -1112,6 +1117,7 @@ export const en: Content = {
           ],
           cta: 'Book a free brand call',
           badge: 'Most chosen',
+          message: 'Hi Ramesh — I’d like to talk about the Signature package.',
         },
       ],
       anchor:
@@ -1163,6 +1169,7 @@ export const en: Content = {
       heading: 'Let’s make you easy to choose.',
       body: 'Book a free 20-minute brand call, message me on WhatsApp, or send a short brief. I reply to every one.',
       cta: 'Book a free brand call',
+      phonePrefix: 'or message',
     },
 
     footer: {
@@ -1180,8 +1187,10 @@ export const en: Content = {
         {
           heading: 'Contact',
           links: [
-            { label: 'Book a free call', href: 'mailto:superintel04@gmail.com' },
-            { label: 'WhatsApp', href: 'https://wa.me/966537313849' },
+            {
+              label: 'WhatsApp +966 53 731 3849',
+              href: 'https://wa.me/966537313849',
+            },
             {
               label: 'superintel04@gmail.com',
               href: 'mailto:superintel04@gmail.com',

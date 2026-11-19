@@ -6,6 +6,7 @@ import { useContent } from '@/content'
 import {
   BrandingButton,
   DeliverableTag,
+  whatsappHref,
 } from '@/components/branding/BrandingPrimitives'
 import qrCode from '@/assets/branding/qr-kipe.svg'
 import mug from '@/assets/branding/mug.svg'
@@ -97,7 +98,10 @@ function ProfileCard() {
         </ul>
 
         <div className="flex flex-wrap gap-3 pt-2">
-          <BrandingButton href={branding.bookingUrl}>
+          <BrandingButton
+            href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
+            whatsapp
+          >
             {card.primaryCta}
           </BrandingButton>
           <BrandingButton href={branding.packagesAnchor} variant="outline">

@@ -7,6 +7,7 @@ import {
   CheckIcon,
   Overline,
   Wordmark,
+  whatsappHref,
 } from '@/components/branding/BrandingPrimitives'
 import chevronDown from '@/assets/branding/icon-chevron-down.svg'
 
@@ -139,8 +140,13 @@ export function BrandingPackages() {
                 </ul>
 
                 <BrandingButton
-                  href={branding.bookingUrl}
+                  href={whatsappHref(
+                    branding.whatsapp.number,
+                    // Falls back to the general opener when a tier has none.
+                    tier.message ?? branding.whatsapp.message,
+                  )}
                   variant={tier.badge ? 'solid' : 'outline'}
+                  whatsapp
                   className="mt-auto w-full"
                 >
                   {tier.cta}
@@ -275,9 +281,27 @@ export function BrandingFinalCta() {
           <p className="max-w-[640px] text-body leading-[1.6] text-neutral-400">
             {finalCta.body}
           </p>
-          <BrandingButton href={branding.bookingUrl} variant="inverse">
+          <BrandingButton
+            href={whatsappHref(branding.whatsapp.number, branding.whatsapp.message)}
+            variant="inverse"
+            whatsapp
+          >
             {finalCta.cta}
           </BrandingButton>
+          {/* The one place the number itself is shown. `dir="ltr"` so the
+              digits do not reorder when the page mirrors into Arabic. */}
+          <p className="text-body-sm text-neutral-400">
+            {finalCta.phonePrefix}{' '}
+            <a
+              href={whatsappHref(branding.whatsapp.number, undefined)}
+              target="_blank"
+              rel="noreferrer noopener"
+              dir="ltr"
+              className="font-bold text-fg-inverse underline underline-offset-4"
+            >
+              {branding.whatsapp.display}
+            </a>
+          </p>
         </div>
       </Reveal>
     </Section>

@@ -355,6 +355,11 @@ export type BrandingTier = {
   features: string[]
   cta: string
   /**
+   * Pre-filled WhatsApp opener for this tier's button, so an enquiry arrives
+   * saying which package it came from. Falls back to the general message.
+   */
+  message?: string
+  /**
    * Set on the recommended tier only: it takes the badge, the accent border
    * and the filled button. The design's rule is one accent per view.
    */
@@ -370,11 +375,18 @@ export type BrandingFaq = {
 export type Branding = {
   documentTitle: string
   /**
-   * Where every "book a call" control on the page points. One field because
-   * the page has five of them and they must never drift apart — swap in a
-   * Calendly or Cal.com link here and the whole page follows.
+   * Where every call-to-action on the page points. One block because the page
+   * has five of them and they must never drift apart — change the number here
+   * and the whole page follows, including the line under the closing band.
    */
-  bookingUrl: string
+  whatsapp: {
+    /** Digits only, no `+` or spaces: the form `wa.me` requires. */
+    number: string
+    /** Human form, the only place the number is actually shown. */
+    display: string
+    /** Pre-filled opener for the general "book a call" buttons. */
+    message: string
+  }
   /** Where the two "see packages" style jumps land. */
   packagesAnchor: string
   /** Split so the trailing full stop can take the accent colour. */
@@ -459,6 +471,8 @@ export type Branding = {
     heading: string
     body: string
     cta: string
+    /** Sits under the button, e.g. "or message +966 53 731 3849". */
+    phonePrefix: string
   }
 
   footer: {

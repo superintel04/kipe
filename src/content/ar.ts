@@ -1002,7 +1002,11 @@ export const ar: Content = {
 
   branding: {
     documentTitle: 'branding. · استوديو العلامة الشخصية — رامش بانتي',
-    bookingUrl: 'mailto:superintel04@gmail.com?subject=%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A9%20%D8%B9%D9%84%D8%A7%D9%85%D8%A9',
+    whatsapp: {
+      number: '966537313849',
+      display: '+966 53 731 3849',
+      message: 'مرحبًا رامش — وصلتك من صفحة العلامة الشخصية وأود التحدث عن بناء علامتي.',
+    },
     packagesAnchor: '#packages',
     // The wordmark is the studio's name and stays in Latin script, as brand
     // names do throughout this bundle.
@@ -1105,6 +1109,7 @@ export const ar: Content = {
             'الملفات المصدرية · نحو أسبوع إلى أسبوعين',
           ],
           cta: 'ابدأ بباقة الشعار',
+          message: 'مرحبًا رامش — أود البدء بباقة Starter (الشعار والعلامة).',
         },
         {
           name: 'Signature — علامة وموقع وقرطاسية ودليل هوية',
@@ -1119,6 +1124,7 @@ export const ar: Content = {
           ],
           cta: 'احجز مكالمة مجانية',
           badge: 'الأكثر اختيارًا',
+          message: 'مرحبًا رامش — أود التحدث عن باقة Signature.',
         },
       ],
       anchor:
@@ -1170,6 +1176,7 @@ export const ar: Content = {
       heading: 'لنجعل اختيارك قرارًا سهلًا.',
       body: 'احجز مكالمة مجانية مدتها 20 دقيقة، أو راسلني على واتساب، أو أرسل موجزًا قصيرًا. أرد على كل رسالة.',
       cta: 'احجز مكالمة مجانية',
+      phonePrefix: 'أو راسلني على',
     },
 
     footer: {
@@ -1187,8 +1194,10 @@ export const ar: Content = {
         {
           heading: 'التواصل',
           links: [
-            { label: 'احجز مكالمة مجانية', href: 'mailto:superintel04@gmail.com' },
-            { label: 'واتساب', href: 'https://wa.me/966537313849' },
+            {
+              label: 'واتساب +966 53 731 3849',
+              href: 'https://wa.me/966537313849',
+            },
             {
               label: 'superintel04@gmail.com',
               href: 'mailto:superintel04@gmail.com',
