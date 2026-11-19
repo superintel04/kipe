@@ -234,7 +234,7 @@ export const en: Content = {
     {
       title: 'User Experience Lead',
       company: 'ITC Infotech · Full-time',
-      period: 'Dec 2021 – Present · 4 yrs 9 mos',
+      period: 'Dec 2021 – Aug 2026 · 4 yrs 9 mos',
       location: 'Riyadh, Saudi Arabia · On-site',
     },
     {
@@ -968,7 +968,7 @@ export const en: Content = {
         story: 'Government services, RTL-first, built on DGA Code.',
         company: 'ITC Infotech · Ministry of Culture',
         role: 'User Experience Lead',
-        period: 'Dec 2021 – Present',
+        period: 'Dec 2021 – Aug 2026',
         tags: ['Service Design', 'Saudi Government', 'Mobile App'],
         summary:
           'Dewane, the Ministry of Culture’s employee digital hub: 50+ manual services moved to trackable web and mobile workflows, now running across the Ministry’s commissions.',
