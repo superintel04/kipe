@@ -1021,9 +1021,9 @@ export const ar: Content = {
 
     hero: {
       profileTag: { number: '01', label: 'غلاف لينكدإن مصمم' },
-      devicesTag: { number: '02', label: 'موقع شخصي على كل الشاشات' },
-      deliverablesTag: { number: '03', label: 'شعار + بطاقة تعريف رقمية' },
-      stationeryTag: { number: '04', label: 'القرطاسية والهدايا الدعائية' },
+      devicesTag: { number: '04', label: 'موقع شخصي على كل الشاشات' },
+      deliverablesTag: { number: '02', label: 'شعار + بطاقة تعريف رقمية' },
+      stationeryTag: { number: '03', label: 'القرطاسية والهدايا الدعائية' },
       card: {
         bannerName: 'you.com',
         bannerTagline: 'شعارك | رسالتك | مهاراتك',
@@ -1106,7 +1106,7 @@ export const ar: Content = {
             'دليل هوية مختصر في صفحة واحدة',
             'تصميم بطاقة عمل',
             'غلاف لينكدإن وإطار للصورة',
-            'الملفات المصدرية · نحو أسبوع إلى أسبوعين',
+            'الملفات المصدرية',
           ],
           cta: 'ابدأ بباقة الشعار',
           message: 'مرحبًا رامش — أود البدء بباقة Starter (الشعار والعلامة).',
@@ -1120,7 +1120,7 @@ export const ar: Content = {
             'قصة العلامة ورسائلها',
             'حتى 5 صفحات، مع خيار ثنائي اللغة',
             'تصميم القرطاسية والعرض التقديمي',
-            'حزمة لينكدإن وX وواتساب · نحو أسبوع إلى أسبوعين',
+            'حزمة لينكدإن وX وواتساب',
           ],
           cta: 'احجز مكالمة مجانية',
           badge: 'الأكثر اختيارًا',
@@ -1177,7 +1177,7 @@ export const ar: Content = {
     },
 
     footer: {
-      wordmark: { text: 'رامش بانتي', stop: '.' },
+      wordmark: { text: 'Branding', stop: '.' },
       blurb:
         'استوديو علامة شخصية للمحترفين أصحاب الخبرة. مصمم واحد، سعر واحد، نحو أسبوعين.',
       columns: [

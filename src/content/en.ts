@@ -1012,9 +1012,9 @@ export const en: Content = {
 
     hero: {
       profileTag: { number: '01', label: 'Designed LinkedIn banner' },
-      devicesTag: { number: '02', label: 'Personal website, every screen' },
-      deliverablesTag: { number: '03', label: 'Logo + digital visiting card' },
-      stationeryTag: { number: '04', label: 'Stationery & merchandise' },
+      devicesTag: { number: '04', label: 'Personal website, every screen' },
+      deliverablesTag: { number: '02', label: 'Logo + digital visiting card' },
+      stationeryTag: { number: '03', label: 'Stationery & merchandise' },
       card: {
         bannerName: 'you.com',
         bannerTagline: 'Your slogan | mission | Skillset',
@@ -1099,7 +1099,7 @@ export const en: Content = {
             '1-page mini style guide',
             'Business card design',
             'LinkedIn banner + photo frame',
-            'Source files · about 1–2 weeks',
+            'Source files',
           ],
           cta: 'Start with Brand Mark/Logo',
           message: 'Hi Ramesh — I’d like to start with the Starter package (brand mark and logo).',
@@ -1113,7 +1113,7 @@ export const en: Content = {
             'Brand story and messaging',
             'Up to 5 pages, bilingual option',
             'Stationery and deck design',
-            'LinkedIn, X & WhatsApp kit · about 1–2 weeks',
+            'LinkedIn, X & WhatsApp kit',
           ],
           cta: 'Book a free brand call',
           badge: 'Most chosen',
@@ -1170,7 +1170,7 @@ export const en: Content = {
     },
 
     footer: {
-      wordmark: { text: 'Ramesh Panti', stop: '.' },
+      wordmark: { text: 'Branding', stop: '.' },
       blurb:
         'A personal brand studio for senior professionals. One designer, one price, about two weeks.',
       columns: [
