@@ -1013,7 +1013,7 @@ export const en: Content = {
       stationeryTag: { number: '04', label: 'Stationery & merchandise' },
       card: {
         bannerName: 'you.com',
-        bannerTagline: 'Research.   Design.   Build.   Test.   Deploy.',
+        bannerTagline: 'Your slogan | mission | Skillset',
         portraitAlt: 'Ramesh Panti',
         initials: 'RP',
         headline: 'Stand out with a personal brand and profile site made for you.',

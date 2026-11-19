@@ -46,7 +46,7 @@ function ProfileCard() {
         <span className="absolute end-7 top-6 text-[18px] font-extrabold tracking-[-0.03em] text-white md:text-[24px]">
           {card.bannerName}
         </span>
-        <span className="absolute end-7 bottom-7 hidden text-[17px] font-bold tracking-[-0.02em] whitespace-pre text-white lg:block">
+        <span className="absolute end-7 bottom-7 hidden text-[17px] font-bold tracking-[-0.02em] whitespace-nowrap text-white lg:block">
           {card.bannerTagline}
         </span>
       </div>

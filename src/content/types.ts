@@ -391,6 +391,10 @@ export type Branding = {
     /** The LinkedIn-style card the hero is built around. */
     card: {
       bannerName: string
+      /**
+       * Sample copy, like `bannerName` and the visiting card's "your name":
+       * the banner is a picture of what a client's own banner would carry.
+       */
       bannerTagline: string
       /** Falls back to `initials` if the portrait fails to load. */
       portraitAlt: string

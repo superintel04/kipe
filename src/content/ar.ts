@@ -1022,7 +1022,7 @@ export const ar: Content = {
       stationeryTag: { number: '04', label: 'القرطاسية والهدايا الدعائية' },
       card: {
         bannerName: 'you.com',
-        bannerTagline: 'بحث.   تصميم.   بناء.   اختبار.   إطلاق.',
+        bannerTagline: 'شعارك | رسالتك | مهاراتك',
         portraitAlt: 'رامش بانتي',
         initials: 'ر ب',
         headline: 'تميّز بعلامة شخصية وموقع تعريفي مصمَّمين خصيصًا لك.',
