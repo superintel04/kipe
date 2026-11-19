@@ -1018,10 +1018,10 @@ export const ar: Content = {
     headerCta: 'احجز مكالمة مجانية',
 
     hero: {
-      profileTag: { number: '01', label: 'غلاف لينكدإن مصمم' },
-      devicesTag: { number: '04', label: 'موقع شخصي على كل الشاشات' },
-      deliverablesTag: { number: '02', label: 'شعار + بطاقة تعريف رقمية' },
-      stationeryTag: { number: '03', label: 'تصميم القرطاسية والهدايا الدعائية' },
+      profileTag: { label: 'غلاف لينكدإن مصمم' },
+      devicesTag: { label: 'موقع شخصي على كل الشاشات' },
+      deliverablesTag: { label: 'شعار + بطاقة تعريف رقمية' },
+      stationeryTag: { label: 'تصميم القرطاسية والهدايا الدعائية' },
       card: {
         bannerName: 'you.com',
         bannerTagline: 'شعارك | رسالتك | مهاراتك',
@@ -1059,7 +1059,6 @@ export const ar: Content = {
     },
 
     deliverables: {
-      overline: 'ما الذي تحصل عليه',
       heading: 'باقة واحدة. كل ما تحتاجه علامتك.',
       lead: 'ليست قائمة ملفات، بل نظام متماسك يظهر أينما التقى بك الناس، من نتيجة بحث إلى مصافحة في قاعة اجتماعات.',
       cards: [
@@ -1091,7 +1090,6 @@ export const ar: Content = {
     },
 
     packages: {
-      overline: 'الباقات',
       heading: 'طريقتان للعمل معًا.',
       lead: 'مصمم واحد، سعر واحد، بلا وسطاء من الوكالات. أغلب العملاء يختارون باقة Signature.',
       tiers: [
@@ -1130,7 +1128,6 @@ export const ar: Content = {
     },
 
     faq: {
-      overline: 'الأسئلة الشائعة',
       heading: 'أسئلة، وإجابتها.',
       lead: 'ما زلت متردِّدًا؟ اسأل في المكالمة. عشرون دقيقة، مجانًا، وبلا عرض بيع في نهايتها.',
       items: [

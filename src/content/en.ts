@@ -1009,10 +1009,10 @@ export const en: Content = {
     headerCta: 'Book a free call',
 
     hero: {
-      profileTag: { number: '01', label: 'Designed LinkedIn banner' },
-      devicesTag: { number: '04', label: 'Personal website, every screen' },
-      deliverablesTag: { number: '02', label: 'Logo + digital visiting card' },
-      stationeryTag: { number: '03', label: 'Stationery & merchandise design' },
+      profileTag: { label: 'Designed LinkedIn banner' },
+      devicesTag: { label: 'Personal website, every screen' },
+      deliverablesTag: { label: 'Logo + digital visiting card' },
+      stationeryTag: { label: 'Stationery & merchandise design' },
       card: {
         bannerName: 'you.com',
         bannerTagline: 'Your slogan | mission | Skillset',
@@ -1051,7 +1051,6 @@ export const en: Content = {
     },
 
     deliverables: {
-      overline: 'What you get',
       heading: 'One package. Everything your brand needs.',
       lead: 'Not a list of files — a system that holds together everywhere people meet you, from a search result to a boardroom handshake.',
       cards: [
@@ -1083,7 +1082,6 @@ export const en: Content = {
     },
 
     packages: {
-      overline: 'Packages',
       // The design's "Three ways" predates the Executive tier being cut.
       heading: 'Two ways to work together.',
       lead: 'One designer, one price, no agency hand-offs. Most people choose Signature.',
@@ -1123,7 +1121,6 @@ export const en: Content = {
     },
 
     faq: {
-      overline: 'FAQ',
       heading: 'Questions, answered.',
       lead: 'Still unsure? Ask on the call. It is twenty minutes, free, and there is no pitch at the end.',
       items: [

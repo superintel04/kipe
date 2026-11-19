@@ -30,40 +30,16 @@ export function Wordmark({
 }
 
 /**
- * A section's eyebrow: 11px bold uppercase in the accent, tracked out to the
- * design's 14% (Figma's `Label/Overline`).
+ * The caption marking a deliverable in the hero (Figma 10:487). The design
+ * numbered these 01-04; the numbers are gone, but the short accent rule stays
+ * as the lead-in — without it the hero carries no accent at all, since the
+ * numbers were the only accented run in it.
+ *
+ * The rule is decorative, so the line reads as just the label.
  */
-export function Overline({
-  children,
-  className = '',
-}: {
-  children: ReactNode
-  className?: string
-}) {
-  return (
-    <p
-      className={`text-overline font-bold tracking-[0.14em] text-accent-fg uppercase ${className}`}
-    >
-      {children}
-    </p>
-  )
-}
-
-/**
- * The numbered caption marking a deliverable in the hero (Figma 10:487): the
- * number in the accent, a 16px rule, then the label. The rule is decorative,
- * so it is hidden from assistive technology and the pair reads as one line.
- */
-export function DeliverableTag({
-  number,
-  label,
-}: {
-  number: string
-  label: string
-}) {
+export function DeliverableTag({ label }: { label: string }) {
   return (
     <p className="flex items-center gap-2 text-overline font-bold tracking-[0.14em] uppercase">
-      <span className="text-accent-fg">{number}</span>
       <span aria-hidden="true" className="h-[2px] w-4 shrink-0 bg-accent" />
       <span className="text-fg-muted">{label}</span>
     </p>

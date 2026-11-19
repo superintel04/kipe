@@ -11,20 +11,17 @@ import {
 import {
   BrandingButton,
   CheckIcon,
-  Overline,
   Wordmark,
   whatsappHref,
 } from '@/components/branding/BrandingPrimitives'
 import chevronDown from '@/assets/branding/icon-chevron-down.svg'
 
-/** Overline, heading and lead — the head every band below the hero opens with. */
+/** Heading and lead — the head every band below the hero opens with. */
 function SectionHead({
-  overline,
   heading,
   lead,
   id,
 }: {
-  overline: string
   heading: string
   lead: string
   id: string
@@ -32,14 +29,11 @@ function SectionHead({
   return (
     <div className="flex flex-col gap-4">
       <Reveal>
-        <Overline>{overline}</Overline>
-      </Reveal>
-      <Reveal delay={60}>
         <h2 id={id} className="max-w-[900px] text-h2 font-bold">
           {heading}
         </h2>
       </Reveal>
-      <Reveal delay={120}>
+      <Reveal delay={60}>
         <p className="max-w-[720px] text-body-lg leading-[1.6] text-fg-muted">
           {lead}
         </p>
@@ -61,7 +55,6 @@ export function BrandingDeliverables() {
     >
       <SectionHead
         id="branding-deliverables-heading"
-        overline={deliverables.overline}
         heading={deliverables.heading}
         lead={deliverables.lead}
       />
@@ -100,7 +93,6 @@ export function BrandingPackages() {
     >
       <SectionHead
         id="branding-packages-heading"
-        overline={packages.overline}
         heading={packages.heading}
         lead={packages.lead}
       />
@@ -259,14 +251,11 @@ export function BrandingFaq() {
       <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
         <div className="flex flex-col gap-4 lg:w-[400px] lg:shrink-0">
           <Reveal>
-            <Overline>{faq.overline}</Overline>
-          </Reveal>
-          <Reveal delay={60}>
             <h2 id="branding-faq-heading" className="text-h2 font-bold">
               {faq.heading}
             </h2>
           </Reveal>
-          <Reveal delay={120}>
+          <Reveal delay={60}>
             <p className="text-body leading-[1.6] text-fg-muted">{faq.lead}</p>
           </Reveal>
         </div>

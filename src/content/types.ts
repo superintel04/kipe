@@ -331,12 +331,12 @@ export type BrandingLink = {
 }
 
 /**
- * A numbered caption marking one of the hero's deliverables (Figma 10:487).
- * The number is content rather than a list index because the design orders
- * them 01, 03, 04 down the left column and 02 under the devices.
+ * A caption marking one of the hero's deliverables (Figma 10:487). The design
+ * numbered these; the numbers have since been dropped, so only the label is
+ * left — kept as an object so a number or icon can come back without
+ * rewriting every call site.
  */
 export type BrandingTag = {
-  number: string
   label: string
 }
 
@@ -443,14 +443,12 @@ export type Branding = {
   }
 
   deliverables: {
-    overline: string
     heading: string
     lead: string
     cards: BrandingDeliverable[]
   }
 
   packages: {
-    overline: string
     heading: string
     lead: string
     tiers: BrandingTier[]
@@ -458,7 +456,6 @@ export type Branding = {
   }
 
   faq: {
-    overline: string
     heading: string
     lead: string
     items: BrandingFaq[]
