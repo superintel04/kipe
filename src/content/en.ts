@@ -1014,7 +1014,7 @@ export const en: Content = {
       profileTag: { number: '01', label: 'Designed LinkedIn banner' },
       devicesTag: { number: '04', label: 'Personal website, every screen' },
       deliverablesTag: { number: '02', label: 'Logo + digital visiting card' },
-      stationeryTag: { number: '03', label: 'Stationery & merchandise' },
+      stationeryTag: { number: '03', label: 'Stationery & merchandise design' },
       card: {
         bannerName: 'you.com',
         bannerTagline: 'Your slogan | mission | Skillset',
@@ -1022,7 +1022,7 @@ export const en: Content = {
         initials: 'RP',
         headline: 'Stand out with a personal brand and profile site made for you.',
         body: 'A uniquely handcrafted personal brand — logo, style guide, profile website, stationery and social kit. One designer, one price, ready in about two weeks.',
-        meta: ['Personal brand studio', 'Remote, worldwide', '4 new clients a month'],
+        meta: ['Personal brand studio', 'Remote, worldwide'],
         primaryCta: 'Book a free brand call',
         secondaryCta: 'See packages',
         bannerAlt:
@@ -1059,7 +1059,7 @@ export const en: Content = {
       cards: [
         {
           title: 'Personal logo & mark',
-          body: 'Three concepts drawn from your story, refined to one. Never a stock icon beside a typeface.',
+          body: 'Unlimited concepts drawn from your story, refined to one. Never a stock icon beside a typeface.',
         },
         {
           title: 'Brand style guide',
@@ -1174,13 +1174,6 @@ export const en: Content = {
       blurb:
         'A personal brand studio for senior professionals. One designer, one price, about two weeks.',
       columns: [
-        {
-          heading: 'Studio',
-          links: [
-            { label: 'Selected work', href: '/' },
-            { label: 'Packages', href: '#packages' },
-          ],
-        },
         {
           heading: 'Contact',
           links: [

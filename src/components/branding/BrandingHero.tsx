@@ -77,16 +77,10 @@ function ProfileCard() {
 
         <ul className="flex flex-wrap items-center gap-2 text-body-sm leading-[1.6]">
           {card.meta.map((item, index) => (
-            <li
-              key={item}
-              className={
-                // The last entry is availability, not description, so it
-                // takes the accent — the one accented run in this block.
-                index === card.meta.length - 1
-                  ? 'text-accent-fg'
-                  : 'text-fg-subtle'
-              }
-            >
+            // Every entry here is description, so none takes the accent.
+            // The rule used to be positional — last entry wins — which would
+            // now silently accent whichever line happened to come last.
+            <li key={item} className="text-fg-subtle">
               {index > 0 && (
                 <span aria-hidden="true" className="me-2 text-fg-subtle">
                   ·
