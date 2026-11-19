@@ -54,7 +54,7 @@ export const en: Content = {
   meta: [
     { label: 'Experience', value: '15 Yrs' },
     { label: 'Current Location', value: 'Riyadh, KSA' },
-    { label: 'Client', value: 'ITCI (Ministry of Culture)' },
+    { label: 'Previous Client', value: 'ITCI (Ministry of Culture)' },
     { label: 'Contact', value: '+966 53 731 3849', href: 'tel:+966537313849' },
     {
       label: 'Email',
