@@ -1014,6 +1014,7 @@ export const en: Content = {
       card: {
         bannerName: 'you.com',
         bannerTagline: 'Research.   Design.   Build.   Test.   Deploy.',
+        portraitAlt: 'Ramesh Panti',
         initials: 'RP',
         headline: 'Stand out with a personal brand and profile site made for you.',
         body: 'A uniquely handcrafted personal brand — logo, style guide, profile website, stationery and social kit. One designer, one price, ready in about four weeks.',

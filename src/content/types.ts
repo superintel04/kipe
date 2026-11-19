@@ -392,6 +392,8 @@ export type Branding = {
     card: {
       bannerName: string
       bannerTagline: string
+      /** Falls back to `initials` if the portrait fails to load. */
+      portraitAlt: string
       initials: string
       headline: string
       body: string

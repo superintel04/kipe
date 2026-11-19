@@ -1,3 +1,4 @@
+import Avatar from '@/components/Avatar'
 import Logo from '@/components/Logo'
 import Reveal from '@/components/Reveal'
 import Section from '@/components/Section'
@@ -10,6 +11,10 @@ import qrCode from '@/assets/branding/qr-kipe.svg'
 import mug from '@/assets/branding/mug.svg'
 import letterhead from '@/assets/branding/letterhead.svg'
 import keychainRing from '@/assets/branding/keychain-ring.svg'
+import linkedInPortrait from '@/assets/branding/linkedin-dp.png'
+import websiteLarge from '@/assets/branding/website-large.png'
+import websiteMedium from '@/assets/branding/website-md.png'
+import websiteMobile from '@/assets/branding/website-mobile.png'
 
 /** The brand blue the mockups are drawn in (Figma 23:1257). */
 const MOCK_BLUE = '#2a65fe'
@@ -46,12 +51,19 @@ function ProfileCard() {
         </span>
       </div>
 
-      {/* Avatar, overlapping the banner's lower edge as in the design. */}
-      <div
-        aria-hidden="true"
-        className="absolute start-7 top-[96px] flex size-[88px] items-center justify-center rounded-full border-[5px] border-white bg-bg-muted text-h3 font-bold text-fg-subtle md:top-[125px] md:size-[132px]"
-      >
-        {card.initials}
+      {/* Portrait, overlapping the banner's lower edge as in the design. The
+          white ring sits on the wrapper so the disc does not clip it, which
+          means the image is the design's 132px *minus* its 5px ring on each
+          side — 122px — so the lockup still measures 132px overall. */}
+      <div className="absolute start-7 top-[96px] rounded-full border-[5px] border-white md:top-[125px]">
+        <Avatar
+          src={linkedInPortrait}
+          alt={card.portraitAlt}
+          initials={card.initials}
+          shape="circle"
+          className="size-[78px] md:size-[122px]"
+          initialsClassName="text-h3 font-bold"
+        />
       </div>
 
       <div className="flex flex-col gap-3 px-6 pt-[56px] pb-6 md:pt-[76px]">
@@ -285,17 +297,18 @@ function Devices() {
 
   return (
     <div className="relative mx-auto hidden h-[450px] w-[1184px] origin-top lg:block">
-      {/* Monitor */}
+      {/* Monitor. Each screen art is exported at exactly its slot size, so
+          the images fill without cropping and need no object-fit. */}
       <div className="device-bezel absolute start-[280px] top-0 h-[370px] w-[580px] rounded-[10px] p-[10px]">
         <div className="h-full w-full overflow-hidden rounded-[2px] bg-bg">
           <img
-            src="/branding/showcase-desktop.png"
+            src={websiteLarge}
             alt={devices.desktopAlt}
             width={560}
             height={350}
             loading="lazy"
             decoding="async"
-            className="block h-full w-full object-cover object-top"
+            className="block h-full w-full"
           />
         </div>
       </div>
@@ -305,15 +318,17 @@ function Devices() {
       {/* Laptop */}
       <div className="device-bezel absolute start-[702px] top-[150px] h-[282px] w-[440px] rounded-[8px] p-[7px]">
         <div className="h-full w-full overflow-hidden rounded-[2px] bg-bg">
+          {/* Decorative: the monitor beside it already carries the alt, and
+              three mockups of one website announced in turn is noise. */}
           <img
-            src="/branding/showcase-desktop.png"
+            src={websiteMedium}
             alt=""
             aria-hidden="true"
             width={426}
             height={266}
             loading="lazy"
             decoding="async"
-            className="block h-full w-full object-cover object-top"
+            className="block h-full w-full"
           />
         </div>
       </div>
@@ -323,13 +338,13 @@ function Devices() {
       <div className="device-bezel absolute start-[120px] top-[120px] h-[282px] w-[216px] rounded-[12px] p-[8px]">
         <div className="h-full w-full overflow-hidden rounded-[4px] bg-bg">
           <img
-            src="/branding/showcase-tablet.png"
+            src={websiteMobile}
             alt={devices.tabletAlt}
             width={200}
             height={266}
             loading="lazy"
             decoding="async"
-            className="block h-full w-full object-cover object-top"
+            className="block h-full w-full"
           />
         </div>
       </div>
