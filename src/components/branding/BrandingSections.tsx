@@ -157,15 +157,10 @@ export function BrandingPackages() {
         ))}
       </ul>
 
-      <Reveal>
-        <div className="mt-12 flex flex-col gap-6 text-body-sm leading-[1.6] md:flex-row md:items-center md:justify-between">
-          <p className="max-w-[560px] text-fg-muted">{packages.anchor}</p>
-          <p className="max-w-[400px] text-fg-subtle">{packages.availability}</p>
-        </div>
-      </Reveal>
-
+      {/* The guarantee follows the tiers directly — the design's value-anchor
+          row between them has been dropped, so it takes that row's top gap. */}
       <Reveal delay={80}>
-        <p className="mt-10 flex items-center gap-4 rounded-[12px] border border-accent-border bg-accent-subtle px-6 py-6 text-body leading-[1.6] md:px-8">
+        <p className="mt-12 flex items-center gap-4 rounded-[12px] border border-accent-border bg-accent-subtle px-6 py-6 text-body leading-[1.6] md:px-8">
           <CheckIcon className="size-5" />
           <span className="min-w-px flex-1">{packages.guarantee}</span>
         </p>

@@ -1092,7 +1092,7 @@ export const en: Content = {
       tiers: [
         {
           name: 'Starter — Brand Mark/Logo',
-          price: '$600',
+          price: '$300',
           bestFor: 'For professionals who only need a visual identity.',
           features: [
             '2 logo concepts, 2 revision rounds',
@@ -1106,7 +1106,7 @@ export const en: Content = {
         },
         {
           name: 'Signature — Brand + Site + Stationary + Styleguide',
-          price: '$1,000',
+          price: '$900',
           bestFor: 'For consultants and coaches who need to be found and trusted.',
           features: [
             '4 concepts, unlimited revisions for 2 weeks',
@@ -1120,9 +1120,6 @@ export const en: Content = {
           message: 'Hi Ramesh — I’d like to talk about the Signature package.',
         },
       ],
-      anchor:
-        'Bought separately: logo $800 + website $1,500 + stationery $400 + social kit $300 = $3,000+.',
-      availability: 'Add-ons from $150 · I take 4 new clients a month.',
       guarantee:
         'My promise: if you don’t love any of the logo concepts, I redesign once more for free — or refund your deposit.',
     },

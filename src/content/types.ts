@@ -454,9 +454,6 @@ export type Branding = {
     heading: string
     lead: string
     tiers: BrandingTier[]
-    /** Left and right halves of the value-anchor row. */
-    anchor: string
-    availability: string
     guarantee: string
   }
 
