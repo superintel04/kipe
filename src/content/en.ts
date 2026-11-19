@@ -1021,7 +1021,7 @@ export const en: Content = {
         portraitAlt: 'Ramesh Panti',
         initials: 'RP',
         headline: 'Stand out with a personal brand and profile site made for you.',
-        body: 'A uniquely handcrafted personal brand — logo, style guide, profile website, stationery and social kit. One designer, one price, ready in about four weeks.',
+        body: 'A uniquely handcrafted personal brand — logo, style guide, profile website, stationery and social kit. One designer, one price, ready in about two weeks.',
         meta: ['Personal brand studio', 'Remote, worldwide', '4 new clients a month'],
         primaryCta: 'Book a free brand call',
         secondaryCta: 'See packages',
@@ -1095,7 +1095,7 @@ export const en: Content = {
           price: '$300',
           bestFor: 'For professionals who only need a visual identity.',
           features: [
-            '2 logo concepts, 2 revision rounds',
+            'Unlimited logo concepts and revisions',
             '1-page mini style guide',
             'Business card design',
             'LinkedIn banner + photo frame',
@@ -1109,11 +1109,11 @@ export const en: Content = {
           price: '$900',
           bestFor: 'For consultants and coaches who need to be found and trusted.',
           features: [
-            '4 concepts, unlimited revisions for 2 weeks',
+            'Unlimited logo concepts and revisions',
             'Brand story and messaging',
             'Up to 5 pages, bilingual option',
-            'Stationery, deck and CV design',
-            'LinkedIn, X & WhatsApp kit · 3–4 weeks',
+            'Stationery and deck design',
+            'LinkedIn, X & WhatsApp kit · about 1–2 weeks',
           ],
           cta: 'Book a free brand call',
           badge: 'Most chosen',
@@ -1132,12 +1132,12 @@ export const en: Content = {
         {
           question: 'How long does the whole thing take?',
           answer:
-            'Starter runs about one to two weeks and Signature three to four. The clock starts at the deposit, and the total time asked of you is roughly three hours.',
+            'Both packages run about one to two weeks. The clock starts at the deposit, and the total time asked of you is roughly three hours.',
         },
         {
           question: 'How many revision rounds do I get?',
           answer:
-            'Starter includes two rounds. Signature has no round limit for the first two weeks — we keep going until the mark is right, then lock it and move on to the build.',
+            'Both packages are unlimited — concepts and revisions alike. We keep going until the mark is right, then lock it and move on to the build.',
         },
         {
           question: 'Who owns the logo and the source files?',
@@ -1172,7 +1172,7 @@ export const en: Content = {
     footer: {
       wordmark: { text: 'Ramesh Panti', stop: '.' },
       blurb:
-        'A personal brand studio for senior professionals. One designer, one price, about four weeks.',
+        'A personal brand studio for senior professionals. One designer, one price, about two weeks.',
       columns: [
         {
           heading: 'Studio',
