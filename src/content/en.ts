@@ -44,9 +44,7 @@ export const en: Content = {
     tagline: [
       'Lead Product Designer with ',
       { highlight: '15 years' },
-      ' across UX strategy, research, and design systems. Research-led product design, end to end: from user insight to interface to front-end. Currently with the ',
-      { strong: 'Ministry of Culture' },
-      ' in Riyadh, KSA.',
+      ' across UX strategy, research, and design systems. Research-led product design, end to end: from user insight to interface to front-end.',
     ],
     portfolioLabel: 'View Projects',
     portfolioUrl: '#projects',
