@@ -12,6 +12,18 @@ import LanguageToggle from '@/components/LanguageToggle'
 import { useContent } from '@/content'
 import { LANGUAGE_SWITCH_ENABLED } from '@/content/context'
 
+/**
+ * The one switch for "Meet my skillset" — the marquee of portraits below the
+ * credentials. `false` keeps it off the page; the component, its `skillCards`
+ * content in both bundles, its assets and its `.skill-*` styles all stay put,
+ * so flipping this back to `true` is the only change needed to restore it.
+ *
+ * Note that the portraits are still emitted into the build: `en.ts` imports
+ * them at module scope for `content.skillCards`, so they remain fetchable at
+ * their asset URLs even while nothing renders them.
+ */
+const SKILL_CARDS_ENABLED = false
+
 export default function Home() {
   const content = useContent()
 
@@ -37,7 +49,7 @@ export default function Home() {
 
       <Experience />
       <Credentials />
-      <SkillCards />
+      {SKILL_CARDS_ENABLED && <SkillCards />}
       <Footer />
     </>
   )
