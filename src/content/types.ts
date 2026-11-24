@@ -97,10 +97,54 @@ export type CaseStudy = {
  * e.g. `/project1`. Each step is a card straddling the central timeline rail:
  * what was done on one side, what it produced on the other.
  */
+/** One figure and its caption in a case-study stats row. */
+export type CaseStudyStat = {
+  figure: string
+  caption: string
+}
+
+/** One slide in a case-study carousel. */
+export type CaseStudySlide = {
+  /** Vite asset import. */
+  image: string
+  imageAlt: string
+  /** Sits above the name, e.g. "Form", "Pattern", "Card". */
+  category?: string
+  name: string
+  /** e.g. "10 variants · Field, upload zone, help text and validation". */
+  meta?: string
+}
+
+/**
+ * The designed block that sits beneath a phase's bullets and outcome
+ * (Figma 1206:1419). A phase declares which kind it carries, so the renderer
+ * never infers it from the shape of the data:
+ *
+ * - `stats`    — big figures with captions, optionally led by a client mark
+ * - `stack`    — technology marks over a device mockup
+ * - `carousel` — an auto-scrolling rail of screens or components
+ */
+export type CaseStudyVisual =
+  | {
+      kind: 'stats'
+      /** Leads the row, e.g. the Ministry lockup under "One Ministry". */
+      mark?: { src: string; alt: string; caption: string }
+      stats: CaseStudyStat[]
+    }
+  | {
+      kind: 'stack'
+      marks: { src: string; alt: string }[]
+      image: string
+      imageAlt: string
+    }
+  | { kind: 'carousel'; slides: CaseStudySlide[] }
+
 export type CaseStudyPhase = {
   title: string
   bullets: string[]
   outcome: string
+  /** Optional designed block below the copy — phases without one are unchanged. */
+  visual?: CaseStudyVisual
 }
 
 export type CaseStudyPage = {

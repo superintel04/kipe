@@ -61,3 +61,7 @@ export { default as mocLogo } from '@/assets/moc-logo.svg'
 export { default as qatarAirwaysLogo } from '@/assets/project-case-3-new-logo.png'
 export { default as mocLogoColour } from '@/assets/moc-logo-colour.svg'
 export { default as qatarAirwaysLogoColour } from '@/assets/qatar-airways-logo.svg'
+
+/* ---- Dewane case study, designed phase blocks (Figma 1206:1419) -------- */
+export { default as mocLockup } from '@/assets/moc-logo-colour.svg'
+export { default as dewaneDevices } from '@/assets/project-case-1.webp'

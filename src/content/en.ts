@@ -33,6 +33,8 @@ import {
   berkadiaPreview,
   qatarPreview,
   culturalHubPreview,
+  mocLockup,
+  dewaneDevices,
 } from './assets'
 import type { Content } from './types'
 
@@ -527,6 +529,20 @@ export const en: Content = {
           ],
           outcome:
             'A shared definition of success gave every team the same target. KPIs turned an abstract vision into something trackable, kept cross-functional teams pulling in one direction, and gave stakeholders regular visibility into progress and early wins.',
+
+          visual: {
+            kind: 'stats',
+            mark: {
+              src: mocLockup,
+              alt: 'Ministry of Culture',
+              caption: 'One Ministry',
+            },
+            stats: [
+              { figure: '11', caption: 'Culture Commissions' },
+              { figure: '3000+', caption: 'Employees' },
+              { figure: '50', caption: 'Services' },
+            ],
+          },
         },
         {
           title: 'Product & Technical Focus Group',
@@ -539,6 +555,14 @@ export const en: Content = {
           ],
           outcome:
             'Technical constraints surfaced early rather than mid-build, so design decisions stayed within what the chosen stack could support. This cut feasibility rework and let product items be prioritized realistically against the release plan.',
+
+          visual: {
+            kind: 'stack',
+            marks: [],
+            image: dewaneDevices,
+            imageAlt:
+              'Dewane on a phone, a laptop and a tablet — the same services across every screen',
+          },
         },
         {
           title: 'UX Roadmap & Requirements Analysis',
@@ -551,6 +575,15 @@ export const en: Content = {
           ],
           outcome:
             'Ambiguous and missing requirements were resolved, and unnecessary functions eliminated, before a single screen was designed. Design began from a validated, signed-off baseline, which reduced downstream development rework.',
+
+          visual: {
+            kind: 'stats',
+            stats: [
+              { figure: '02', caption: 'Devise platform\nWeb & Mobile app' },
+              { figure: '04', caption: 'Scrum Teams' },
+              { figure: '06', caption: 'Members\nDesign Team' },
+            ],
+          },
         },
         {
           title: 'Research',

@@ -3,6 +3,7 @@ import CaseStudyHero from '@/components/CaseStudyHero'
 import Link from '@/components/Link'
 import Magnetic from '@/components/Magnetic'
 import PhaseCard from '@/components/PhaseCard'
+import CaseStudyVisual from '@/components/CaseStudyVisual'
 import Reveal from '@/components/Reveal'
 import ProjectMetrics from '@/components/ProjectMetrics'
 import ScrollProgress from '@/components/ScrollProgress'
@@ -295,6 +296,11 @@ export default function CaseStudyPage({ page }: CaseStudyPageProps) {
                       </p>
                     </div>
                   </div>
+
+                  {/* The designed block sits inside the card, under both
+                      columns, so it reads as part of the phase rather than
+                      as a separate band. */}
+                  {item.visual && <CaseStudyVisual visual={item.visual} />}
                 </PhaseCard>
               </div>
             )
