@@ -43,6 +43,19 @@ import {
   culturalHubPreview,
   mocLockup,
   dewaneDevices,
+  markSharePoint,
+  markReact,
+  sgInputAttachment,
+  sgRequestProcess,
+  sgDiscountCards,
+  sgCalendar,
+  sgNewRequestCard,
+  wfLanguageSelection,
+  wfOnboarding,
+  wfLogin,
+  wfHomepage,
+  wfApprovalCenter,
+  wfSystemServices,
 } from './assets'
 import type { Content } from './types'
 
@@ -575,7 +588,10 @@ export const ar: Content = {
             'ظهرت القيود التقنية مبكرًا بدلًا من منتصف مرحلة التطوير، فبقيت قرارات التصميم ضمن ما تدعمه المنظومة التقنية المختارة. وقلّل ذلك إعادة العمل المرتبطة بالجدوى، وأتاح ترتيب عناصر المنتج بواقعية مقابل خطة الإصدار.',
           visual: {
             kind: 'stack',
-            marks: [],
+            marks: [
+              { src: markSharePoint, alt: 'SharePoint' },
+              { src: markReact, alt: 'React Native' },
+            ],
             image: dewaneDevices,
             imageAlt:
               'ديوان على الهاتف والحاسوب المحمول والجهاز اللوحي — الخدمات نفسها على كل شاشة',
@@ -633,6 +649,46 @@ export const ar: Content = {
           ],
           outcome:
             'أساس تصميمي متسق وقابل للتوسع عبر خدمات متعددة. وقد قلّلت المكونات الجاهزة جهد تطوير الواجهات، مع استخدام Lovable لتوليد كود الواجهة الأمامية.',
+          visual: {
+            kind: 'carousel',
+            slides: [
+              {
+                image: sgInputAttachment,
+                imageAlt: 'حقل المرفقات مع عنوانه ومنطقة الرفع ونص المساعدة ورسالة التحقق',
+                category: 'نموذج',
+                name: 'حقل الإدخال والمرفقات',
+                meta: '10 أنماط · حقل ومنطقة رفع ونص مساعدة وتحقق',
+              },
+              {
+                image: sgRequestProcess,
+                imageAlt: 'سلسلة الاعتماد بست خطوات، من مقدم الطلب إلى منفذ الخدمة',
+                category: 'نمط',
+                name: 'مسار الطلب',
+                meta: '12 نمطًا · سلسلة الاعتماد حسب الدور ونوع الطلب',
+              },
+              {
+                image: sgDiscountCards,
+                imageAlt: 'بطاقة خصم للموظفين تعرض العرض والشريك وتواريخ الصلاحية',
+                category: 'بطاقة',
+                name: 'بطاقات الخصومات',
+                meta: '5 أنماط · عروض الموظفين وخصومات الشركاء',
+              },
+              {
+                image: sgCalendar,
+                imageAlt: 'منتقي التاريخ، يعرض شبكة الشهر مع اليوم المحدد',
+                category: 'نمط',
+                name: 'التقويم',
+                meta: '3 أنماط · اختيار اليوم والشهر والسنة',
+              },
+              {
+                image: sgNewRequestCard,
+                imageAlt: 'طلب جديد مع رقمه المرجعي وحالته وإجراءاته',
+                category: 'بطاقة',
+                name: 'بطاقة طلب جديد',
+                meta: 'نمطان · الطلب المرفوع وحالته وإجراءاته',
+              },
+            ],
+          },
         },
         {
           title: 'المخططات الأولية والتصميم البصري',
@@ -645,6 +701,17 @@ export const ar: Content = {
           ],
           outcome:
             'جرى التحقق من الهيكل ومسارات المستخدم قبل الاستثمار في التصميم البصري، بما أنتج حلولًا تركّز على المستخدم وقابلة للتنفيذ تقنيًا في آن واحد، وتجربة واقعية جاهزة لاعتماد أصحاب المصلحة وللتطوير.',
+          visual: {
+            kind: 'carousel',
+            slides: [
+              { image: wfLanguageSelection, imageAlt: 'اختيار اللغة عند أول تشغيل، العربية أو الإنجليزية', name: 'اختيار اللغة' },
+              { image: wfOnboarding, imageAlt: 'شاشة التعريف بالمنصة للموظف الجديد', name: 'التعريف بالمنصة' },
+              { image: wfLogin, imageAlt: 'شاشة تسجيل الدخول إلى ديوان', name: 'تسجيل الدخول' },
+              { image: wfHomepage, imageAlt: 'الصفحة الرئيسية بالعربية، وفيها الأخبار والخدمات وطلبات الموظف', name: 'الصفحة الرئيسية' },
+              { image: wfApprovalCenter, imageAlt: 'مركز الاعتماد، يعرض الطلبات بانتظار القرار', name: 'مركز الاعتماد' },
+              { image: wfSystemServices, imageAlt: 'دليل الأنظمة والخدمات', name: 'الأنظمة والخدمات' },
+            ],
+          },
         },
         {
           title: 'اختبار قابلية الاستخدام',

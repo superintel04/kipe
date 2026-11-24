@@ -35,6 +35,19 @@ import {
   culturalHubPreview,
   mocLockup,
   dewaneDevices,
+  markSharePoint,
+  markReact,
+  sgInputAttachment,
+  sgRequestProcess,
+  sgDiscountCards,
+  sgCalendar,
+  sgNewRequestCard,
+  wfLanguageSelection,
+  wfOnboarding,
+  wfLogin,
+  wfHomepage,
+  wfApprovalCenter,
+  wfSystemServices,
 } from './assets'
 import type { Content } from './types'
 
@@ -558,7 +571,10 @@ export const en: Content = {
 
           visual: {
             kind: 'stack',
-            marks: [],
+            marks: [
+              { src: markSharePoint, alt: 'SharePoint' },
+              { src: markReact, alt: 'React Native' },
+            ],
             image: dewaneDevices,
             imageAlt:
               'Dewane on a phone, a laptop and a tablet — the same services across every screen',
@@ -617,6 +633,46 @@ export const en: Content = {
           ],
           outcome:
             'A consistent, scalable design foundation across multiple services. Predefined components cut front-end effort, and Lovable was used to generate front-end code.',
+          visual: {
+            kind: 'carousel',
+            slides: [
+              {
+                image: sgInputAttachment,
+                imageAlt: 'The attachment field with its label, upload zone, format help and validation message',
+                category: 'Form',
+                name: 'Input & attachment',
+                meta: '10 variants · Field, upload zone, help text and validation',
+              },
+              {
+                image: sgRequestProcess,
+                imageAlt: 'The six-step approval chain, from requester to service executor',
+                category: 'Pattern',
+                name: 'Request process',
+                meta: '12 variants · Approval chain by role and request type',
+              },
+              {
+                image: sgDiscountCards,
+                imageAlt: 'An employee discount card with its offer, partner and validity dates',
+                category: 'Card',
+                name: 'Discount cards',
+                meta: '5 variants · Employee offers and partner discounts',
+              },
+              {
+                image: sgCalendar,
+                imageAlt: 'The date picker, showing a month grid with the selected day',
+                category: 'Pattern',
+                name: 'Calendar',
+                meta: '3 variants · Date, month and year selection',
+              },
+              {
+                image: sgNewRequestCard,
+                imageAlt: 'A newly raised request with its reference, status and actions',
+                category: 'Card',
+                name: 'New request card',
+                meta: '2 variants · Raised request, status and actions',
+              },
+            ],
+          },
         },
         {
           title: 'Wireframes & Visual Design',
@@ -629,6 +685,17 @@ export const en: Content = {
           ],
           outcome:
             'Structure and journeys were validated before investing in visual design, producing solutions that were both user-focused and technically feasible, and a realistic product experience ready for stakeholder validation and development.',
+          visual: {
+            kind: 'carousel',
+            slides: [
+              { image: wfLanguageSelection, imageAlt: 'Language selection on first launch, Arabic or English', name: 'Language selection' },
+              { image: wfOnboarding, imageAlt: 'Onboarding, introducing the hub to a new employee', name: 'Onboarding' },
+              { image: wfLogin, imageAlt: 'The Dewane sign-in screen', name: 'Sign in' },
+              { image: wfHomepage, imageAlt: 'The Arabic home screen, with news, services and the employee’s requests', name: 'Home' },
+              { image: wfApprovalCenter, imageAlt: 'The approval centre, listing requests awaiting a decision', name: 'Approval centre' },
+              { image: wfSystemServices, imageAlt: 'The systems and services directory', name: 'Systems & services' },
+            ],
+          },
         },
         {
           title: 'Usability Testing',

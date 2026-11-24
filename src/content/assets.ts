@@ -65,3 +65,20 @@ export { default as qatarAirwaysLogoColour } from '@/assets/qatar-airways-logo.s
 /* ---- Dewane case study, designed phase blocks (Figma 1206:1419) -------- */
 export { default as mocLockup } from '@/assets/moc-logo-colour.svg'
 export { default as dewaneDevices } from '@/assets/project-case-1.webp'
+export { default as markSharePoint } from '@/assets/new-casestudy/p-1/sharepoint.svg'
+export { default as markReact } from '@/assets/new-casestudy/p-1/react.svg'
+
+/* The Ministry's own components, as they appear in its design system. */
+export { default as sgInputAttachment } from '@/assets/new-casestudy/p-1/sg-input-attachment.webp'
+export { default as sgRequestProcess } from '@/assets/new-casestudy/p-1/sg-request-process.webp'
+export { default as sgDiscountCards } from '@/assets/new-casestudy/p-1/sg-discount-cards.webp'
+export { default as sgCalendar } from '@/assets/new-casestudy/p-1/sg-calendar.webp'
+export { default as sgNewRequestCard } from '@/assets/new-casestudy/p-1/sg-new-request-card.webp'
+
+/* Dewane screens, in the order a visitor meets them. */
+export { default as wfLanguageSelection } from '@/assets/new-casestudy/p-1/wf-language-selection.webp'
+export { default as wfOnboarding } from '@/assets/new-casestudy/p-1/wf-onboarding.webp'
+export { default as wfLogin } from '@/assets/new-casestudy/p-1/wf-login.webp'
+export { default as wfHomepage } from '@/assets/new-casestudy/p-1/wf-homepage.webp'
+export { default as wfApprovalCenter } from '@/assets/new-casestudy/p-1/wf-approval-center.webp'
+export { default as wfSystemServices } from '@/assets/new-casestudy/p-1/wf-system-services.webp'
