@@ -26,6 +26,46 @@ export default function CaseStudyVisual({ visual }: { visual: Visual }) {
       {visual.kind === 'carousel' && <Carousel slides={visual.slides} />}
       {visual.kind === 'figure' && <Figure visual={visual} />}
       {visual.kind === 'cards' && <Cards visual={visual} />}
+      {visual.kind === 'logos' && <Logos visual={visual} />}
+    </div>
+  )
+}
+
+/**
+ * A small grid of marks — the carriers Beyond Business was measured against
+ * (Figma 46:1380). Each sits in its own cell on white, which is what makes a
+ * set out of lockups that are a mix of solid colour blocks and marks on
+ * transparent, and the grid is capped near the design's own 386px rather than
+ * run to the card's full width.
+ */
+function Logos({ visual }: { visual: Extract<Visual, { kind: 'logos' }> }) {
+  return (
+    <div className="flex flex-col gap-4">
+      <ul className="grid max-w-[30rem] grid-cols-2 overflow-hidden rounded-md border border-border-subtle bg-white">
+        {visual.logos.map((logo, index) => (
+          <li
+            key={logo.src}
+            /* Hairlines between the cells only, not around them: the grid's
+               own border is already drawing the outside edge. */
+            className={`flex h-[104px] items-center justify-center p-5 ${
+              index % 2 === 0 ? 'border-e border-border-subtle' : ''
+            } ${index < 2 ? 'border-b border-border-subtle' : ''}`}
+          >
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+              decoding="async"
+              className="max-h-full max-w-full object-contain"
+            />
+          </li>
+        ))}
+      </ul>
+      {visual.caption && (
+        <p className="max-w-[60ch] text-body-sm leading-[1.6] text-fg-muted">
+          {visual.caption}
+        </p>
+      )}
     </div>
   )
 }

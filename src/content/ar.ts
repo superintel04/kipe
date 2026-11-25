@@ -50,7 +50,17 @@ import {
   sgDiscountCards,
   sgCalendar,
   sgNewRequestCard,
-  bbCompetitors,
+  bbLogoEmirates,
+  bbLogoEtihad,
+  bbLogoSingapore,
+  bbLogoOman,
+  bbScreenLanding,
+  bbScreenLogin,
+  bbScreenDashboard,
+  bbScreenBenefits,
+  bbScreenProfile,
+  bbScreenActivities,
+  bbScreenTrips,
   bbSitemap,
   bbAreaOnboarding,
   bbAreaRewards,
@@ -886,12 +896,15 @@ export const ar: Content = {
           outcome:
             'جرت المقارنة مع طيران الإمارات والاتحاد للطيران والخطوط الجوية السنغافورية والطيران العُماني، لتحديد ما يتوقعه المستخدمون من كسب النقاط واستبدالها ومستويات العضوية وعروض الشركاء.',
           visual: {
-            kind: 'figure',
-            image: bbCompetitors,
-            imageAlt:
-              'شركات الطيران الأربع محل المقارنة: طيران الإمارات والاتحاد للطيران والخطوط الجوية السنغافورية والطيران العُماني',
+            kind: 'logos',
+            logos: [
+              { src: bbLogoEmirates, alt: 'طيران الإمارات' },
+              { src: bbLogoEtihad, alt: 'الاتحاد للطيران' },
+              { src: bbLogoSingapore, alt: 'الخطوط الجوية السنغافورية' },
+              { src: bbLogoOman, alt: 'الطيران العُماني' },
+            ],
             caption:
-              'مقارنة البوابات الأربع المناظرة لـBeyond Business، ميزةً بميزة، ببوابة الخطوط الجوية القطرية.',
+              'مقارنة البرامج المؤسسية الأربعة، ميزةً بميزة، ببرنامج الخطوط الجوية القطرية.',
           },
         },
         {
@@ -977,19 +990,72 @@ export const ar: Content = {
             kind: 'carousel',
             slides: [
               {
+                image: bbScreenLanding,
+                imageAlt:
+                  'صفحة Beyond Business التعريفية، من الواجهة إلى عروض التوفير ثم مزايا البرنامج',
+                category: 'تسويق',
+                name: 'الصفحة التعريفية',
+                meta: 'الصفحة العامة التي تصل إليها الشركة أولًا',
+              },
+              {
+                image: bbScreenLogin,
+                imageAlt: 'شاشة تسجيل الدخول إلى Beyond Business',
+                category: 'الحساب',
+                name: 'تسجيل الدخول',
+                meta: 'مدخل البوابة',
+              },
+              {
+                image: bbScreenDashboard,
+                imageAlt:
+                  'لوحة معلومات العضو، وتضم بطاقة العضوية وحلقة النقاط والنشاط الأخير',
+                category: 'الحساب',
+                name: 'لوحة المعلومات',
+                meta: 'بطاقة العضوية ورصيد النقاط وتاريخ انتهائها',
+              },
+              {
+                image: bbScreenBenefits,
+                imageAlt: 'صفحة المزايا، وتعرض المزايا الحالية وغير المستبدلة',
+                category: 'المكافآت',
+                name: 'مزاياي',
+                meta: 'الحالية وغير المستبدلة جنبًا إلى جنب',
+              },
+              {
+                image: bbScreenActivities,
+                imageAlt:
+                  'صفحة النشاطات، وتعرض النشاط الأخير وكشوف الحساب لفترة محددة',
+                category: 'المكافآت',
+                name: 'نشاطاتي',
+                meta: 'النشاط الأخير وكشوف الحساب القابلة للتنزيل',
+              },
+              {
+                image: bbScreenTrips,
+                imageAlt: 'صفحة الحجوزات القادمة، حيث يدير العضو رحلاته',
+                category: 'الحجز',
+                name: 'الرحلات القادمة',
+                meta: 'الترقيات واختيار المقعد والوجبة والتعديل والإلغاء',
+              },
+              {
+                image: bbScreenProfile,
+                imageAlt:
+                  'صفحة إدارة الملف، حيث يُسجَّل الموظفون المسافرون وتُوزَّع المزايا',
+                category: 'الإدارة',
+                name: 'إدارة الملف',
+                meta: 'تسجيل الموظفين وتوزيع المزايا',
+              },
+              {
                 image: bbScreenHome,
                 imageAlt:
-                  'الصفحة الرئيسية لـBeyond Business بعرض سطح المكتب، من الواجهة حتى مزايا البرنامج',
-                category: 'شاشة',
-                name: 'الصفحة الرئيسية',
-                meta: 'سطح المكتب · الصفحة كاملة',
+                  'الصفحة الرئيسية كما صُممت، بعرض سطح المكتب',
+                category: 'التجاوب',
+                name: 'الرئيسية، سطح المكتب',
+                meta: 'الصفحة ذاتها بالعرض الكامل',
               },
               {
                 image: bbScreenHomeMobile,
                 imageAlt: 'الصفحة الرئيسية ذاتها معاد تنسيقها للجوال',
-                category: 'شاشة',
-                name: 'الصفحة الرئيسية',
-                meta: 'الجوال · الصفحة ذاتها معاد تنسيقها',
+                category: 'التجاوب',
+                name: 'الرئيسية، الجوال',
+                meta: 'الصفحة ذاتها معاد تنسيقها للجوال',
               },
             ],
           },

@@ -78,7 +78,17 @@ export { default as sgNewRequestCard } from '@/assets/new-casestudy/p-1/sg-new-r
 /* Beyond Business (Figma 46:1332). The five `bbArea` drawings are cropped out
    of the card exports, which carry their heading and body baked in — that copy
    lives in the content bundles instead, so it translates and is selectable. */
-export { default as bbCompetitors } from '@/assets/new-casestudy/p-2/competitor-comparison.webp'
+export { default as bbLogoEmirates } from '@/assets/new-casestudy/p-2/logo-emirates.webp'
+export { default as bbLogoEtihad } from '@/assets/new-casestudy/p-2/logo-etihad.webp'
+export { default as bbLogoSingapore } from '@/assets/new-casestudy/p-2/logo-singapore.webp'
+export { default as bbLogoOman } from '@/assets/new-casestudy/p-2/logo-oman.webp'
+export { default as bbScreenLanding } from '@/assets/new-casestudy/p-2/screen-landing.webp'
+export { default as bbScreenLogin } from '@/assets/new-casestudy/p-2/screen-login.webp'
+export { default as bbScreenDashboard } from '@/assets/new-casestudy/p-2/screen-dashboard.webp'
+export { default as bbScreenBenefits } from '@/assets/new-casestudy/p-2/screen-benefits.webp'
+export { default as bbScreenProfile } from '@/assets/new-casestudy/p-2/screen-profile.webp'
+export { default as bbScreenActivities } from '@/assets/new-casestudy/p-2/screen-activities.webp'
+export { default as bbScreenTrips } from '@/assets/new-casestudy/p-2/screen-trips.webp'
 export { default as bbSitemap } from '@/assets/new-casestudy/p-2/ia-sitemap.webp'
 export { default as bbAreaOnboarding } from '@/assets/new-casestudy/p-2/aoi-onboarding.webp'
 export { default as bbAreaRewards } from '@/assets/new-casestudy/p-2/aoi-rewards.webp'

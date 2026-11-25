@@ -42,7 +42,17 @@ import {
   sgDiscountCards,
   sgCalendar,
   sgNewRequestCard,
-  bbCompetitors,
+  bbLogoEmirates,
+  bbLogoEtihad,
+  bbLogoSingapore,
+  bbLogoOman,
+  bbScreenLanding,
+  bbScreenLogin,
+  bbScreenDashboard,
+  bbScreenBenefits,
+  bbScreenProfile,
+  bbScreenActivities,
+  bbScreenTrips,
   bbSitemap,
   bbAreaOnboarding,
   bbAreaRewards,
@@ -880,12 +890,15 @@ export const en: Content = {
           outcome:
             'Measured against Emirates, Etihad Airways, Singapore Airlines and Oman Air, establishing what users would expect from earning, redemption, membership tiers and partner offers.',
           visual: {
-            kind: 'figure',
-            image: bbCompetitors,
-            imageAlt:
-              'The four benchmarked carriers: Emirates, Etihad Airways, Singapore Airlines and Oman Air',
+            kind: 'logos',
+            logos: [
+              { src: bbLogoEmirates, alt: 'Emirates' },
+              { src: bbLogoEtihad, alt: 'Etihad Airways' },
+              { src: bbLogoSingapore, alt: 'Singapore Airlines' },
+              { src: bbLogoOman, alt: 'Oman Air' },
+            ],
             caption:
-              'The four Beyond Business equivalents compared, feature by feature, against Qatar Airways’.',
+              'The four corporate programmes compared, feature by feature, against Qatar Airways’.',
           },
         },
         {
@@ -972,19 +985,73 @@ export const en: Content = {
             kind: 'carousel',
             slides: [
               {
-                image: bbScreenHome,
+                image: bbScreenLanding,
                 imageAlt:
-                  'The Beyond Business home page at desktop width, from the hero through to the programme benefits',
-                category: 'Screen',
-                name: 'Home',
-                meta: 'Desktop · The full landing page',
+                  'The Beyond Business landing page, from the hero through the savings offers to the programme benefits',
+                category: 'Marketing',
+                name: 'Landing page',
+                meta: 'The public page a company arrives on',
+              },
+              {
+                image: bbScreenLogin,
+                imageAlt: 'The Beyond Business sign-in screen',
+                category: 'Account',
+                name: 'Log in',
+                meta: 'The way into the portal',
+              },
+              {
+                image: bbScreenDashboard,
+                imageAlt:
+                  'The member dashboard, with the membership card, the points ring and recent activity',
+                category: 'Account',
+                name: 'Dashboard',
+                meta: 'Membership card, points balance and expiry',
+              },
+              {
+                image: bbScreenBenefits,
+                imageAlt:
+                  'My Benefits, listing current and unredeemed benefits',
+                category: 'Rewards',
+                name: 'My benefits',
+                meta: 'Current and unredeemed, side by side',
+              },
+              {
+                image: bbScreenActivities,
+                imageAlt:
+                  'My Activities, listing recent activity and statements over a selected period',
+                category: 'Rewards',
+                name: 'My activities',
+                meta: 'Recent activity and downloadable statements',
+              },
+              {
+                image: bbScreenTrips,
+                imageAlt:
+                  'Forward Booking, where a member manages upcoming trips',
+                category: 'Booking',
+                name: 'Upcoming trips',
+                meta: 'Upgrades, seat and meal, changes and cancellations',
+              },
+              {
+                image: bbScreenProfile,
+                imageAlt:
+                  'Manage your profile, where travelling employees are registered and benefits allocated',
+                category: 'Admin',
+                name: 'Manage profile',
+                meta: 'Registering employees and allocating benefits',
+              },
+              {
+                image: bbScreenHome,
+                imageAlt: 'The home page as designed, at desktop width',
+                category: 'Responsive',
+                name: 'Home, desktop',
+                meta: 'The same page at full width',
               },
               {
                 image: bbScreenHomeMobile,
                 imageAlt: 'The same home page reflowed to a phone',
-                category: 'Screen',
-                name: 'Home',
-                meta: 'Mobile · The same page, reflowed',
+                category: 'Responsive',
+                name: 'Home, mobile',
+                meta: 'The same page, reflowed to a phone',
               },
             ],
           },

@@ -141,6 +141,7 @@ export type CaseStudyCard = {
  * - `figure`   — one wide image that rewards being looked at closely, such as
  *                a sitemap; it opens full size
  * - `cards`    — a grid of findings, with or without illustrations
+ * - `logos`    — a small grid of marks, e.g. the benchmarked carriers
  */
 export type CaseStudyVisual =
   | {
@@ -158,6 +159,16 @@ export type CaseStudyVisual =
   | { kind: 'carousel'; slides: CaseStudySlide[] }
   | { kind: 'figure'; image: string; imageAlt: string; caption?: string }
   | { kind: 'cards'; intro?: string; cards: CaseStudyCard[] }
+  | {
+      kind: 'logos'
+      /**
+       * Each mark sits in its own cell on white, as the design's 2×2 card
+       * does — the supplied lockups are a mix of solid colour blocks and
+       * marks on transparent, and a shared cell is what makes them a set.
+       */
+      logos: { src: string; alt: string }[]
+      caption?: string
+    }
 
 export type CaseStudyPhase = {
   title: string
