@@ -4,18 +4,19 @@ import Lightbox from './Lightbox'
 import { DRAG_THRESHOLD, useDriftingScroller } from './useDriftingScroller'
 import {
   useContent,
+  type CaseStudyCard,
   type CaseStudySlide,
   type CaseStudyStat,
   type CaseStudyVisual as Visual,
 } from '@/content'
 
 /**
- * The designed block beneath a phase's copy (Figma 1206:1419).
+ * The designed block beneath a phase's copy (Figma 1206:1419 for Dewane,
+ * 46:1332 for Beyond Business).
  *
- * Three kinds, chosen by the phase rather than inferred: a stats row, a
- * technology stack over a device mockup, or an auto-scrolling carousel. Each
- * is separated from the copy above by a hairline, so the card still reads as
- * one card rather than two stacked panels.
+ * Five kinds, chosen by the phase rather than inferred from the data. Each is
+ * separated from the copy above by a hairline, so the card still reads as one
+ * card rather than two stacked panels.
  */
 export default function CaseStudyVisual({ visual }: { visual: Visual }) {
   return (
@@ -23,7 +24,146 @@ export default function CaseStudyVisual({ visual }: { visual: Visual }) {
       {visual.kind === 'stats' && <Stats visual={visual} />}
       {visual.kind === 'stack' && <Stack visual={visual} />}
       {visual.kind === 'carousel' && <Carousel slides={visual.slides} />}
+      {visual.kind === 'figure' && <Figure visual={visual} />}
+      {visual.kind === 'cards' && <Cards visual={visual} />}
     </div>
+  )
+}
+
+/** What the lightbox is showing, if anything. */
+type Enlarged = { src: string; alt: string } | null
+
+/**
+ * The enlarge overlay, shared by the carousel and the single figure.
+ *
+ * It is portalled to the body rather than rendered in place: the phase card
+ * around these blocks is translated a few pixels and clips its overflow, and
+ * a transformed ancestor is what `position: fixed` resolves against — left
+ * here the overlay would be cropped to the card instead of covering the page.
+ *
+ * Esc and the scroll lock live here too. The case-study dialog does both for
+ * its own lightbox, but these blocks also run on the standalone case-study
+ * page, where there is no dialog above them.
+ */
+function useEnlarge() {
+  const { ui } = useContent()
+  const [enlarged, setEnlarged] = useState<Enlarged>(null)
+
+  useEffect(() => {
+    if (!enlarged) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setEnlarged(null)
+    }
+    document.addEventListener('keydown', onKeyDown)
+
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previous
+    }
+  }, [enlarged])
+
+  const overlay =
+    enlarged &&
+    createPortal(
+      <Lightbox
+        src={enlarged.src}
+        alt={enlarged.alt}
+        closeLabel={ui.closeImage}
+        onClose={() => setEnlarged(null)}
+      />,
+      document.body,
+    )
+
+  return { enlarged, setEnlarged, overlay }
+}
+
+/**
+ * One wide image worth looking at closely — the Beyond Business sitemap runs
+ * 1054px across in the design and is unreadable at a column's width, so the
+ * whole thing is a zoom control.
+ */
+function Figure({ visual }: { visual: Extract<Visual, { kind: 'figure' }> }) {
+  const { ui } = useContent()
+  const { setEnlarged, overlay } = useEnlarge()
+
+  return (
+    <figure className="flex flex-col gap-3">
+      <button
+        type="button"
+        onClick={() =>
+          setEnlarged({ src: visual.image, alt: visual.imageAlt })
+        }
+        aria-label={ui.enlargeScreen(visual.imageAlt)}
+        className="block cursor-zoom-in overflow-hidden rounded-md border border-border-subtle bg-bg-subtle transition-colors hover:border-fg-muted"
+      >
+        <img
+          src={visual.image}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          className="block w-full"
+        />
+      </button>
+      {visual.caption && (
+        <figcaption className="text-body-sm leading-[1.6] text-fg-muted">
+          {visual.caption}
+        </figcaption>
+      )}
+      {overlay}
+    </figure>
+  )
+}
+
+/**
+ * A grid of findings. Illustrated cards go three up, because the drawing
+ * needs the width; written ones go two up, because a column of prose that
+ * narrow is harder to read than it is compact.
+ */
+function Cards({ visual }: { visual: Extract<Visual, { kind: 'cards' }> }) {
+  const illustrated = visual.cards.some((card) => card.image)
+
+  return (
+    <div className="flex flex-col gap-8">
+      {visual.intro && (
+        <p className="max-w-[60ch] text-body leading-[1.7] text-fg-muted">
+          {visual.intro}
+        </p>
+      )}
+      <ul
+        className={`grid gap-6 md:grid-cols-2 ${
+          illustrated ? 'xl:grid-cols-3' : ''
+        }`}
+      >
+        {visual.cards.map((card) => (
+          <Card key={card.title} card={card} />
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function Card({ card }: { card: CaseStudyCard }) {
+  return (
+    <li className="flex flex-col gap-4 rounded-md border border-border-subtle bg-bg-subtle p-6 md:p-7">
+      {card.image && (
+        <img
+          src={card.image}
+          alt={card.imageAlt ?? ''}
+          loading="lazy"
+          decoding="async"
+          className="h-[140px] w-full object-contain object-left rtl:object-right"
+        />
+      )}
+      <div className="flex flex-col gap-2">
+        <h4 className="text-h5 font-bold">{card.title}</h4>
+        <p className="text-body-sm leading-[1.7] text-fg-muted">{card.body}</p>
+      </div>
+    </li>
   )
 }
 
@@ -186,8 +326,9 @@ function Slide({
  * the second pass is hidden from assistive technology.
  */
 function Carousel({ slides }: { slides: CaseStudySlide[] }) {
-  const { ui } = useContent()
-  const [enlarged, setEnlarged] = useState<CaseStudySlide | null>(null)
+  const { enlarged, setEnlarged, overlay } = useEnlarge()
+  // The drift would otherwise carry on behind the overlay, so the rail would
+  // be somewhere else when it closes.
   const {
     viewportRef,
     trackRef,
@@ -197,27 +338,8 @@ function Carousel({ slides }: { slides: CaseStudySlide[] }) {
     onPointerLeave,
   } = useDriftingScroller(enlarged !== null)
 
-  /**
-   * Esc and the page's scroll, which the case-study dialog handles for its own
-   * lightbox but nobody handles here — this rail also runs on the standalone
-   * case-study page, where there is no dialog above it.
-   */
-  useEffect(() => {
-    if (!enlarged) return
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setEnlarged(null)
-    }
-    document.addEventListener('keydown', onKeyDown)
-
-    const previous = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previous
-    }
-  }, [enlarged])
+  const open = (slide: CaseStudySlide) =>
+    setEnlarged({ src: slide.image, alt: slide.imageAlt })
 
   return (
     <>
@@ -233,11 +355,7 @@ function Carousel({ slides }: { slides: CaseStudySlide[] }) {
         <div ref={trackRef} className="skill-track flex w-max">
           <ul className="flex gap-6 pe-6">
             {slides.map((slide) => (
-              <Slide
-                key={slide.name}
-                slide={slide}
-                onOpen={() => setEnlarged(slide)}
-              />
+              <Slide key={slide.name} slide={slide} onOpen={() => open(slide)} />
             ))}
           </ul>
           <ul aria-hidden="true" className="flex gap-6 pe-6">
@@ -245,7 +363,7 @@ function Carousel({ slides }: { slides: CaseStudySlide[] }) {
               <Slide
                 key={`${slide.name}-copy`}
                 slide={slide}
-                onOpen={() => setEnlarged(slide)}
+                onOpen={() => open(slide)}
                 duplicate
               />
             ))}
@@ -253,20 +371,7 @@ function Carousel({ slides }: { slides: CaseStudySlide[] }) {
         </div>
       </div>
 
-      {/* Into the body, not in place: the phase card around this carousel is
-          translated a few pixels and clips its overflow, and a transformed
-          ancestor is what `position: fixed` resolves against — left here the
-          overlay would be cropped to the card instead of covering the page. */}
-      {enlarged &&
-        createPortal(
-          <Lightbox
-            src={enlarged.image}
-            alt={enlarged.imageAlt}
-            closeLabel={ui.closeImage}
-            onClose={() => setEnlarged(null)}
-          />,
-          document.body,
-        )}
+      {overlay}
     </>
   )
 }

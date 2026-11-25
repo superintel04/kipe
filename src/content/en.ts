@@ -837,6 +837,29 @@ export const en: Content = {
           ],
           outcome:
             'Critical usability issues were addressed first: clearer navigation labels, a simpler enrolment flow, and consistent visual elements across the portal.',
+          visual: {
+            kind: 'cards',
+            intro:
+              'What the evaluation found, grouped and ranked by severity before any redesign began.',
+            cards: [
+              {
+                title: 'Usability issues',
+                body: 'Unclear navigation labels, inconsistent visual elements, and complex form flows through the enrolment process.',
+              },
+              {
+                title: 'Opportunities',
+                body: 'The loyalty programme’s benefits were not being explained anywhere a member would actually read them.',
+              },
+              {
+                title: 'Recommendations',
+                body: 'Redesign the navigation to be more intuitive, and rewrite the content to be clearer and more concise.',
+              },
+              {
+                title: 'Prioritisation',
+                body: 'Critical issues were taken first, so the work had an immediate effect on users rather than a deferred one.',
+              },
+            ],
+          },
         },
         {
           title: 'Competitor Benchmarking',
@@ -858,6 +881,43 @@ export const en: Content = {
           ],
           outcome:
             'Exclusive offers, new benefits and limited-time promotions were surfaced deliberately within the architecture, so users can find and act on them.',
+        },
+        {
+          title: 'Areas of Improvement',
+          bullets: [
+            'Named five areas to fix',
+            'Traced each one back to the research',
+            'Set the direction for the redesign',
+          ],
+          outcome:
+            'Five areas carried the redesign: enrolment, personalisation and rewards, a clearer architecture, responsiveness, and alignment with the airline’s brand.',
+          visual: {
+            kind: 'cards',
+            intro:
+              'Where the research said the experience needed the most work.',
+            cards: [
+              {
+                title: 'User onboarding and enrolment',
+                body: 'Members enrol in Beyond Business before they can earn anything, so the way in had to be the clearest path in the portal.',
+              },
+              {
+                title: 'Personalisation and rewards',
+                body: 'Members redeem accumulated points for flight upgrades, free flights and other rewards — what they hold and what it is worth belongs on the surface.',
+              },
+              {
+                title: 'Clear information architecture',
+                body: 'Exclusive offers, new benefits and limited-time promotions are highlighted deliberately, so members discover them while they are still worth acting on.',
+              },
+              {
+                title: 'Mobile responsiveness',
+                body: 'Members arrive from desktops, laptops, tablets and phones. The design adapts to the screen rather than shrinking into it.',
+              },
+              {
+                title: 'Alignment with branding',
+                body: 'The brand style guide sets colour, typography, icons and imagery. Familiar Qatar Airways elements build the credibility a rewards programme depends on.',
+              },
+            ],
+          },
         },
         {
           title: 'Responsive Interface Design',

@@ -116,13 +116,31 @@ export type CaseStudySlide = {
 }
 
 /**
+ * One card in a `cards` block — a finding, or an area the work had to
+ * improve. The illustration is optional: the Qatar heuristic outcomes are
+ * four written findings, while its areas of improvement each carry a drawing.
+ */
+export type CaseStudyCard = {
+  /** Vite asset import. Cards without one render as text. */
+  image?: string
+  imageAlt?: string
+  title: string
+  body: string
+}
+
+/**
  * The designed block that sits beneath a phase's bullets and outcome
- * (Figma 1206:1419). A phase declares which kind it carries, so the renderer
- * never infers it from the shape of the data:
+ * (Figma 1206:1419 for Dewane, 46:1332 for Beyond Business). A phase declares
+ * which kind it carries, so the renderer never infers it from the shape of
+ * the data:
  *
  * - `stats`    — big figures with captions, optionally led by a client mark
- * - `stack`    — technology marks over a device mockup
+ * - `stack`    — marks over a wide image: a technology stack over a device
+ *                mockup, or the benchmarked airlines over their comparison
  * - `carousel` — an auto-scrolling rail of screens or components
+ * - `figure`   — one wide image that rewards being looked at closely, such as
+ *                a sitemap; it opens full size
+ * - `cards`    — a grid of findings, with or without illustrations
  */
 export type CaseStudyVisual =
   | {
@@ -138,6 +156,8 @@ export type CaseStudyVisual =
       imageAlt: string
     }
   | { kind: 'carousel'; slides: CaseStudySlide[] }
+  | { kind: 'figure'; image: string; imageAlt: string; caption?: string }
+  | { kind: 'cards'; intro?: string; cards: CaseStudyCard[] }
 
 export type CaseStudyPhase = {
   title: string
