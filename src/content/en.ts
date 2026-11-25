@@ -1317,6 +1317,7 @@ export const en: Content = {
     viewCaseStudy: 'View Case study',
     closeCaseStudy: 'Close case study',
     closeImage: 'Close image',
+    enlargeScreen: (name) => `${name} — view full screen`,
     profileDetails: 'Profile details',
     projectDetails: (name) => `${name} project details`,
     languageToggle: 'Switch to Arabic',

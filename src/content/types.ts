@@ -219,6 +219,8 @@ export type UiStrings = {
   viewCaseStudy: string
   closeCaseStudy: string
   closeImage: string
+  /** e.g. "Homepage — view full screen"; takes the slide's name. */
+  enlargeScreen: (name: string) => string
   profileDetails: string
   /** e.g. "Dewane project details" — takes the project name. */
   projectDetails: (name: string) => string

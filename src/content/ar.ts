@@ -1321,6 +1321,7 @@ export const ar: Content = {
     viewCaseStudy: 'عرض دراسة الحالة',
     closeCaseStudy: 'إغلاق دراسة الحالة',
     closeImage: 'إغلاق الصورة',
+    enlargeScreen: (name) => `${name} — عرض الشاشة كاملة`,
     profileDetails: 'بيانات الملف الشخصي',
     projectDetails: (name) => `تفاصيل مشروع ${name}`,
     languageToggle: 'التبديل إلى الإنجليزية',

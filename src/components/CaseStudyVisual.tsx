@@ -1,8 +1,12 @@
-import { useDriftingScroller } from './useDriftingScroller'
-import type {
-  CaseStudySlide,
-  CaseStudyStat,
-  CaseStudyVisual as Visual,
+import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import Lightbox from './Lightbox'
+import { DRAG_THRESHOLD, useDriftingScroller } from './useDriftingScroller'
+import {
+  useContent,
+  type CaseStudySlide,
+  type CaseStudyStat,
+  type CaseStudyVisual as Visual,
 } from '@/content'
 
 /**
@@ -90,28 +94,73 @@ function Stack({ visual }: { visual: Extract<Visual, { kind: 'stack' }> }) {
   )
 }
 
-/** One slide: the art, then its category, name and variant line. */
+/**
+ * One slide: the art, then its category, name and variant line.
+ *
+ * The art is a button, because the rail shows every screen shrunk into a
+ * 220px box — too small to read — and activating it opens the full image.
+ * The second, duplicated pass is still clickable (it is the same picture, on
+ * screen, and a visitor cannot tell which pass they are looking at) but stays
+ * out of the tab order and hidden from assistive technology.
+ */
 function Slide({
   slide,
+  onOpen,
   duplicate = false,
 }: {
   slide: CaseStudySlide
+  onOpen: () => void
   duplicate?: boolean
 }) {
+  const { ui } = useContent()
+
+  /**
+   * Drag-versus-click, as on the skill cards: the rail is a scroll container
+   * being pulled sideways, which the browser does not suppress the trailing
+   * click for. Anything that travelled more than a few pixels was a scroll.
+   */
+  const pressedAt = useRef<{ x: number; y: number } | null>(null)
+
+  const onPointerDown = (event: React.PointerEvent) => {
+    pressedAt.current = { x: event.clientX, y: event.clientY }
+  }
+
+  const wasDrag = (event: React.MouseEvent) => {
+    const start = pressedAt.current
+    pressedAt.current = null
+    // `detail` is 0 for keyboard activation, which has no travel to measure.
+    if (!start || event.detail === 0) return false
+    return (
+      Math.hypot(event.clientX - start.x, event.clientY - start.y) >
+      DRAG_THRESHOLD
+    )
+  }
+
   return (
     <li
       {...(duplicate ? { 'aria-hidden': true } : {})}
       className="flex w-[260px] shrink-0 flex-col gap-4 md:w-[320px]"
     >
-      <div className="flex h-[200px] items-center justify-center overflow-hidden rounded-md border border-border-subtle bg-bg-subtle p-5 md:h-[220px]">
+      <button
+        type="button"
+        onPointerDown={onPointerDown}
+        onClick={(event) => {
+          if (wasDrag(event)) return
+          onOpen()
+        }}
+        aria-label={ui.enlargeScreen(slide.name)}
+        tabIndex={duplicate ? -1 : 0}
+        className="flex h-[200px] cursor-zoom-in items-center justify-center overflow-hidden rounded-md border border-border-subtle bg-bg-subtle p-5 transition-colors hover:border-fg-muted md:h-[220px]"
+      >
         <img
           src={slide.image}
-          alt={duplicate ? '' : slide.imageAlt}
+          alt=""
+          aria-hidden="true"
           loading="lazy"
           decoding="async"
           className="max-h-full max-w-full object-contain"
         />
-      </div>
+      </button>
       <div className="flex flex-col gap-1.5">
         {slide.category && (
           <p className="text-overline font-bold tracking-[0.14em] text-fg-subtle uppercase">
@@ -137,31 +186,87 @@ function Slide({
  * the second pass is hidden from assistive technology.
  */
 function Carousel({ slides }: { slides: CaseStudySlide[] }) {
-  const { viewportRef, trackRef, dragging, onPointerDown, onPointerEnter, onPointerLeave } =
-    useDriftingScroller(false)
+  const { ui } = useContent()
+  const [enlarged, setEnlarged] = useState<CaseStudySlide | null>(null)
+  const {
+    viewportRef,
+    trackRef,
+    dragging,
+    onPointerDown,
+    onPointerEnter,
+    onPointerLeave,
+  } = useDriftingScroller(enlarged !== null)
+
+  /**
+   * Esc and the page's scroll, which the case-study dialog handles for its own
+   * lightbox but nobody handles here — this rail also runs on the standalone
+   * case-study page, where there is no dialog above it.
+   */
+  useEffect(() => {
+    if (!enlarged) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setEnlarged(null)
+    }
+    document.addEventListener('keydown', onKeyDown)
+
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previous
+    }
+  }, [enlarged])
 
   return (
-    <div
-      ref={viewportRef}
-      onPointerDown={onPointerDown}
-      onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
-      className={`skill-marquee -mx-7 px-7 md:-mx-12 md:px-12 ${
-        dragging ? 'is-dragging' : ''
-      }`}
-    >
-      <div ref={trackRef} className="skill-track flex w-max">
-        <ul className="flex gap-6 pe-6">
-          {slides.map((slide) => (
-            <Slide key={slide.name} slide={slide} />
-          ))}
-        </ul>
-        <ul aria-hidden="true" className="flex gap-6 pe-6">
-          {slides.map((slide) => (
-            <Slide key={`${slide.name}-copy`} slide={slide} duplicate />
-          ))}
-        </ul>
+    <>
+      <div
+        ref={viewportRef}
+        onPointerDown={onPointerDown}
+        onPointerEnter={onPointerEnter}
+        onPointerLeave={onPointerLeave}
+        className={`skill-marquee -mx-7 px-7 md:-mx-12 md:px-12 ${
+          dragging ? 'is-dragging' : ''
+        }`}
+      >
+        <div ref={trackRef} className="skill-track flex w-max">
+          <ul className="flex gap-6 pe-6">
+            {slides.map((slide) => (
+              <Slide
+                key={slide.name}
+                slide={slide}
+                onOpen={() => setEnlarged(slide)}
+              />
+            ))}
+          </ul>
+          <ul aria-hidden="true" className="flex gap-6 pe-6">
+            {slides.map((slide) => (
+              <Slide
+                key={`${slide.name}-copy`}
+                slide={slide}
+                onOpen={() => setEnlarged(slide)}
+                duplicate
+              />
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+
+      {/* Into the body, not in place: the phase card around this carousel is
+          translated a few pixels and clips its overflow, and a transformed
+          ancestor is what `position: fixed` resolves against — left here the
+          overlay would be cropped to the card instead of covering the page. */}
+      {enlarged &&
+        createPortal(
+          <Lightbox
+            src={enlarged.image}
+            alt={enlarged.imageAlt}
+            closeLabel={ui.closeImage}
+            onClose={() => setEnlarged(null)}
+          />,
+          document.body,
+        )}
+    </>
   )
 }
