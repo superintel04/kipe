@@ -75,6 +75,19 @@ export { default as sgDiscountCards } from '@/assets/new-casestudy/p-1/sg-discou
 export { default as sgCalendar } from '@/assets/new-casestudy/p-1/sg-calendar.webp'
 export { default as sgNewRequestCard } from '@/assets/new-casestudy/p-1/sg-new-request-card.webp'
 
+/* Beyond Business (Figma 46:1332). The five `bbArea` drawings are cropped out
+   of the card exports, which carry their heading and body baked in — that copy
+   lives in the content bundles instead, so it translates and is selectable. */
+export { default as bbCompetitors } from '@/assets/new-casestudy/p-2/competitor-comparison.webp'
+export { default as bbSitemap } from '@/assets/new-casestudy/p-2/ia-sitemap.webp'
+export { default as bbAreaOnboarding } from '@/assets/new-casestudy/p-2/aoi-onboarding.webp'
+export { default as bbAreaRewards } from '@/assets/new-casestudy/p-2/aoi-rewards.webp'
+export { default as bbAreaArchitecture } from '@/assets/new-casestudy/p-2/aoi-architecture.webp'
+export { default as bbAreaResponsive } from '@/assets/new-casestudy/p-2/aoi-responsive.webp'
+export { default as bbAreaBranding } from '@/assets/new-casestudy/p-2/aoi-branding.webp'
+export { default as bbScreenHome } from '@/assets/new-casestudy/p-2/screen-home.webp'
+export { default as bbScreenHomeMobile } from '@/assets/new-casestudy/p-2/screen-home-mobile.webp'
+
 /* Dewane screens, in the order a visitor meets them. */
 export { default as wfLanguageSelection } from '@/assets/new-casestudy/p-1/wf-language-selection.webp'
 export { default as wfOnboarding } from '@/assets/new-casestudy/p-1/wf-onboarding.webp'

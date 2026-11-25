@@ -42,6 +42,15 @@ import {
   sgDiscountCards,
   sgCalendar,
   sgNewRequestCard,
+  bbCompetitors,
+  bbSitemap,
+  bbAreaOnboarding,
+  bbAreaRewards,
+  bbAreaArchitecture,
+  bbAreaResponsive,
+  bbAreaBranding,
+  bbScreenHome,
+  bbScreenHomeMobile,
   wfLanguageSelection,
   wfOnboarding,
   wfLogin,
@@ -870,6 +879,14 @@ export const en: Content = {
           ],
           outcome:
             'Measured against Emirates, Etihad Airways, Singapore Airlines and Oman Air, establishing what users would expect from earning, redemption, membership tiers and partner offers.',
+          visual: {
+            kind: 'figure',
+            image: bbCompetitors,
+            imageAlt:
+              'The four benchmarked carriers: Emirates, Etihad Airways, Singapore Airlines and Oman Air',
+            caption:
+              'The four Beyond Business equivalents compared, feature by feature, against Qatar Airways’.',
+          },
         },
         {
           title: 'Information Architecture',
@@ -881,6 +898,14 @@ export const en: Content = {
           ],
           outcome:
             'Exclusive offers, new benefits and limited-time promotions were surfaced deliberately within the architecture, so users can find and act on them.',
+          visual: {
+            kind: 'figure',
+            image: bbSitemap,
+            imageAlt:
+              'The portal’s top-level navigation opened out, showing redemption, bookings, benefits, carbon offset and support',
+            caption:
+              'The navigation that came out of the card sorting and tree testing, opened out across every top-level section.',
+          },
         },
         {
           title: 'Areas of Improvement',
@@ -897,22 +922,37 @@ export const en: Content = {
               'Where the research said the experience needed the most work.',
             cards: [
               {
+                image: bbAreaOnboarding,
+                imageAlt:
+                  'A member filling in the Beyond Business sign-up form on a phone',
                 title: 'User onboarding and enrolment',
                 body: 'Members enrol in Beyond Business before they can earn anything, so the way in had to be the clearest path in the portal.',
               },
               {
+                image: bbAreaRewards,
+                imageAlt:
+                  'A member walking out from a stack of gift boxes, beside a card and loyalty coins',
                 title: 'Personalisation and rewards',
                 body: 'Members redeem accumulated points for flight upgrades, free flights and other rewards — what they hold and what it is worth belongs on the surface.',
               },
               {
+                image: bbAreaArchitecture,
+                imageAlt:
+                  'A person arranging panels on a large sitemap',
                 title: 'Clear information architecture',
                 body: 'Exclusive offers, new benefits and limited-time promotions are highlighted deliberately, so members discover them while they are still worth acting on.',
               },
               {
+                image: bbAreaResponsive,
+                imageAlt:
+                  'The same portal on a monitor, a tablet and a phone, with a member reading on a handset',
                 title: 'Mobile responsiveness',
                 body: 'Members arrive from desktops, laptops, tablets and phones. The design adapts to the screen rather than shrinking into it.',
               },
               {
+                image: bbAreaBranding,
+                imageAlt:
+                  'A designer setting out colour swatches, typefaces and controls on a style board',
                 title: 'Alignment with branding',
                 body: 'The brand style guide sets colour, typography, icons and imagery. Familiar Qatar Airways elements build the credibility a rewards programme depends on.',
               },
@@ -928,6 +968,26 @@ export const en: Content = {
           ],
           outcome:
             'A design that adapts across desktop, laptop, tablet and mobile, with visual language aligned to Qatar Airways’ brand identity.',
+          visual: {
+            kind: 'carousel',
+            slides: [
+              {
+                image: bbScreenHome,
+                imageAlt:
+                  'The Beyond Business home page at desktop width, from the hero through to the programme benefits',
+                category: 'Screen',
+                name: 'Home',
+                meta: 'Desktop · The full landing page',
+              },
+              {
+                image: bbScreenHomeMobile,
+                imageAlt: 'The same home page reflowed to a phone',
+                category: 'Screen',
+                name: 'Home',
+                meta: 'Mobile · The same page, reflowed',
+              },
+            ],
+          },
         },
       ],
 
